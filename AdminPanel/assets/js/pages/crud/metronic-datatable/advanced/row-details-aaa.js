@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = function() {
 				type: 'remote',
 				source: {
 					read: {
-						url: 'http://localhost/JomlahBazar/AdminPanel/controllers/RD_AAA.php',
+						url: 'http://localhost/JomlahBazar/AdminPanel/controllers/json/RD_AAA.php',
 					},
 				},
 				pageSize: 10,
@@ -41,68 +41,11 @@ var KTDatatableAutoColumnHideDemo = function() {
 			columns: [
 				{
 					field: 'aaaId',
-					title: 'Order ID',
-				}, {
-					field: 'Country',
-					title: 'Country',
-					template: function(row) {
-						return row.Country + ' ' + row.ShipCountry;
-					},
+					title: 'AAA ID',
 				}, {
 					field: 'email',
-					title: 'Email',
+					title: 'email',
 					width: 'auto',
-				}, {
-					field: 'ShipDate',
-					title: 'Ship Date',
-					type: 'date',
-					format: 'MM/DD/YYYY',
-				}, {
-					field: 'CompanyName',
-					title: 'Company Name',
-					width: 'auto',
-				}, {
-					field: 'ShipAddress',
-					title: 'Ship Address',
-				}, {
-					field: 'Website',
-					title: 'Website',
-				}, {
-					field: 'TotalPayment',
-					title: 'Payment',
-				}, {
-					field: 'Notes',
-					title: 'Notes',
-					width: 'auto',
-				}, {
-					field: 'Status',
-					title: 'Status',
-					// callback function support for column rendering
-					template: function(row) {
-						var status = {
-							1: {'title': 'Pending', 'class': 'kt-badge--brand'},
-							2: {'title': 'Delivered', 'class': ' kt-badge--danger'},
-							3: {'title': 'Canceled', 'class': ' kt-badge--primary'},
-							4: {'title': 'Success', 'class': ' kt-badge--success'},
-							5: {'title': 'Info', 'class': ' kt-badge--info'},
-							6: {'title': 'Danger', 'class': ' kt-badge--danger'},
-							7: {'title': 'Warning', 'class': ' kt-badge--warning'},
-						};
-						return '<span class="kt-badge ' + status[row.Status].class + ' kt-badge--inline kt-badge--pill">' + status[row.Status].title + '</span>';
-					},
-				}, {
-					field: 'Type',
-					title: 'Type',
-					// callback function support for column rendering
-					template: function(row) {
-						var status = {
-							1: {'title': 'Online', 'state': 'danger'},
-							2: {'title': 'Retail', 'state': 'primary'},
-							3: {'title': 'Direct', 'state': 'success'},
-						};
-						return '<span class="kt-badge kt-badge--' + status[row.Type].state + ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' + status[row.Type].state + '">' +
-								status[row.Type].title + '</span>';
-					},
 				}, {
 					field: 'Actions',
 					title: 'Actions',
