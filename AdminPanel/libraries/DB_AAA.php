@@ -59,7 +59,7 @@ class DB_AAA {
      * returns json array/Null
      */
     public function getAll_aaa() {
-        $stmt = $this->conn->prepare("SELECT * FROM aaa");
+        $stmt = $this->conn->prepare("CALL GetCustomers()");
         if ($stmt->execute()) {			
             $aaa = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
             $stmt->close();
