@@ -1,8 +1,8 @@
 <?php
 
 include 'class-list-util.php';
-
-$data = $alldata = json_decode(file_get_contents('aaa.json'));
+if(isset($_GET['jsonname'])) $jsonname=$_GET['jsonname'];
+$data = $alldata = json_decode(file_get_contents($jsonname));
 
 $datatable = array_merge(array('pagination' => array(), 'sort' => array(), 'query' => array()), $_REQUEST);
 

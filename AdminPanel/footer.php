@@ -86,7 +86,6 @@ var KTAppOptions = {
 
 <!--begin::Page Scripts(used by this page) -->
 <script src="assets/js/pages/dashboard.js" type="text/javascript"></script>
-<script src="assets/js/pages/crud/metronic-datatable/advanced/row-details-aaa.js" type="text/javascript"></script>
 <!--end::Page Scripts -->
 </body>
 <!-- end::Body -->
