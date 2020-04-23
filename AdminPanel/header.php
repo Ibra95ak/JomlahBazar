@@ -176,7 +176,7 @@
                                                 class="kt-menu__link"><span
                                                     class="kt-menu__link-text">PRODUCTS</span></span></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                                            data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                            data-ktmenu-submenu-toggle="hover"><a href="product_datatable.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
                                                     class="kt-menu__link-text">Categories</span></a></li>

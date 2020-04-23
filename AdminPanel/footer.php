@@ -1,32 +1,33 @@
 </div>
 <!-- begin:: Footer -->
-					<div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
-						<div class="kt-container  kt-container--fluid ">
-							<div class="kt-footer__copyright">
-								2020&nbsp;&copy;&nbsp;<a href="http://keenthemes.com/metronic" target="_blank" class="kt-link">Keenthemes</a>
-							</div>
-							<div class="kt-footer__menu">
-								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">About</a>
-								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Team</a>
-								<a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
-							</div>
-						</div>
-					</div>
+<div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
+    <div class="kt-container  kt-container--fluid ">
+        <div class="kt-footer__copyright">
+            2020&nbsp;&copy;&nbsp;<a href="http://keenthemes.com/metronic" target="_blank"
+                class="kt-link">Keenthemes</a>
+        </div>
+        <div class="kt-footer__menu">
+            <a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">About</a>
+            <a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Team</a>
+            <a href="http://keenthemes.com/metronic" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
+        </div>
+    </div>
+</div>
 
-					<!-- end:: Footer -->
-				</div>
-			</div>
-		</div>
+<!-- end:: Footer -->
+</div>
+</div>
+</div>
 
-		<!-- end:: Page -->
+<!-- end:: Page -->
 
 
-		<!-- begin::Scrolltop -->
-		<div id="kt_scrolltop" class="kt-scrolltop">
-			<i class="fa fa-arrow-up"></i>
-		</div>
+<!-- begin::Scrolltop -->
+<div id="kt_scrolltop" class="kt-scrolltop">
+    <i class="fa fa-arrow-up"></i>
+</div>
 
-		<!-- end::Scrolltop -->
+<!-- end::Scrolltop -->
 
 
 <!-- begin::Scrolltop -->
@@ -83,10 +84,11 @@ var KTAppOptions = {
 
 <!--end::Page Vendors -->
 
-		<!--begin::Page Scripts(used by this page) -->
-		<script src="assets/js/pages/dashboard.js" type="text/javascript"></script>
-		<script src="assets/js/pages/crud/metronic-datatable/advanced/row-details-aaa.js" type="text/javascript"></script>
-		<!--end::Page Scripts -->
-	</body>
+<!--begin::Page Scripts(used by this page) -->
+<script src="assets/js/pages/dashboard.js" type="text/javascript"></script>
+<script src="assets/js/pages/crud/metronic-datatable/advanced/row-details-aaa.js" type="text/javascript"></script>
+<!--end::Page Scripts -->
+</body>
 <!-- end::Body -->
+
 </html>

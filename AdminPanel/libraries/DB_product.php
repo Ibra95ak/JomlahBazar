@@ -1,5 +1,5 @@
 <?php 
-class DB_AAA {
+class DB_product {
     private $conn;
     // constructor
     function __construct() {
@@ -14,20 +14,12 @@ class DB_AAA {
     }
     
     /**
-     * Storing new AAA
+     * Storing new product
      * @param email, password
      * returns Boolean
      */
-    public function addAAA($email,$password) {
-        $hash = $this->hashSSHA($password); // encryption function
-        $encrypted_password = $hash["encrypted"]; // encrypted password
-        $salt = $hash["salt"]; // salt
-        //email activation code
-        $hash_act = $this->hashSSHA($emai.date("Y-m-d h:i:s")); // encryption function
-        $activation_code = $hash_act["encrypted"]; // encrypted password
-        $activation_salt = $hash_act["salt"]; // salt
-        
-        $stmt = $this->conn->prepare("INSERT INTO aaa(aaaId, email, encrypted_password, salt, activation_code, activation_salt, otp, addressId) VALUES (NULL,?,?,?,?,?,0,0)");
+    public function addproduct($email,$password) {        
+        $stmt = $this->conn->prepare("CALL insertProduct(?,?)");
 		$stmt->bind_param("sssss",$email,$encrypted_password,$salt,$activation_code,$activation_salt);
 		$result = $stmt->execute();
         $stmt->close();
@@ -39,10 +31,10 @@ class DB_AAA {
 
 	/**
      * Edit aaa info
-     * @param aaaId, email, password, opt
+     * @param productId, email, password, opt
      * returns Boolean
      */
-    public function editAAA($aaaId,$email,$password,$opt) {
+    public function editproduct($aaaId,$email,$password,$opt) {
 		$hash = $this->hashSSHA($password);
         $encrypted_password = $hash["encrypted"];
         $salt = $hash["salt"];
@@ -55,31 +47,31 @@ class DB_AAA {
     }
 	
     /**
-     * Get all aaa table
+     * Get all product table
      * returns json array/Null
      */
-    public function getAll_aaa() {
-        $stmt = $this->conn->prepare("CALL aaa()");
+    public function getAll_product() {
+        $stmt = $this->conn->prepare("CALL sp_listproducts()");
         if ($stmt->execute()) {			
-            $aaa = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+            $product = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
             $stmt->close();
-			return $aaa; 
+			return $product; 
         } else {
             return NULL;
         }
     }
 
     /**
-     * Get aaa by ID
+     * Get product by ID
      * returns array/Null
      */
-    public function getBYId_aaa($aaaId) {
-        $stmt = $this->conn->prepare("SELECT * FROM aaa where aaaId=?");
-        $stmt->bind_param("i",$aaaId);
+    public function getBYId_product($productId) {
+        $stmt = $this->conn->prepare("SELECT * FROM product where productId=?");
+        $stmt->bind_param("i",$productId);
         if ($stmt->execute()) {			
-            $aaa = $stmt->get_result()->fetch_assoc();
+            $product = $stmt->get_result()->fetch_assoc();
             $stmt->close();
-			return $aaa; 
+			return $product; 
         } else {
             return NULL;
         }
