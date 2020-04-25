@@ -1,5 +1,5 @@
 <?php 
-class DB_Admin {
+class Ser_Admin {
     private $conn;
     // constructor
     function __construct() {
@@ -96,6 +96,39 @@ class DB_Admin {
         $hash = base64_encode(sha1($password . $salt, true) . $salt);
 
         return $hash;
+    }
+
+        	
+    /**
+     * Get all admins 
+     * returns json/Null
+     */
+    public function Getadmins() {
+        $stmt = $this->conn->prepare("CALL sp_GetAdmins()");
+        if ($stmt->execute()) {
+            $admins = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch admin data and store in array
+            $stmt->close();
+            if ($admins==true) {
+                return $admins;
+            }
+        } else return NULL;
+    }
+    
+    /**
+     * Get all admins 
+     * params admin Id
+     * returns json/Null
+     */
+    public function GetAdminById($adminId) {
+        $stmt = $this->conn->prepare("CALL sp_GetAdminById(?)");
+        $stmt->bind_param("i",$adminId);
+        if ($stmt->execute()) {
+            $admins = $stmt->get_result()->fetch_assoc(); //fetch admin data and store in array
+            $stmt->close();
+            if ($admins==true) {
+                return $admins;
+            }
+        } else return NULL;
     }
 
 }

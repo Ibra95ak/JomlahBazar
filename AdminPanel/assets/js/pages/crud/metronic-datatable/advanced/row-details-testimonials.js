@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "http://localhost/JomlahBazar/AdminPanel/controllers/json/RD.php?jname=products.js",
+              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=testimonials.json",
           },
         },
         pageSize: 10,
@@ -40,19 +40,16 @@ var KTDatatableAutoColumnHideDemo = (function () {
       // columns definition
       columns: [
         {
-          field: "productid",
-          title: "Product ID",
-          width: "auto",
+          field: "testimonialId",
+          title: "Testimonial ID",
         },
         {
-          field: "productname",
-          title: "Product Name",
-          width: "auto",
+          field: "name",
+          title: "Testimonial Name",
         },
         {
-          field: "quantity",
-          title: "Quantity",
-          width: "auto",
+          field: "description",
+          title: "Testimonial description",
         },
         {
           field: "Actions",

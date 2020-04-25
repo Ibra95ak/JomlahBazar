@@ -151,4 +151,7 @@
     </div>
 </div>
 <!-- end:: Content -->
+
 <?php include("footer.php");?>
+<script src="assets/js/pages/crud/metronic-datatable/advanced/row-details-addresses.js" type="text/javascript">
+</script>

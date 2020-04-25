@@ -137,18 +137,19 @@
                         </div>
                     </div>
                 </div>
+
+                <!--end: Search Form -->
             </div>
+            <div class="kt-portlet__body kt-portlet__body--fit">
 
-            <!--end: Search Form -->
-        </div>
-        <div class="kt-portlet__body kt-portlet__body--fit">
+                <!--begin: Datatable -->
+                <div class="kt-datatable" id="auto_column_hide"></div>
 
-            <!--begin: Datatable -->
-            <div class="kt-datatable" id="auto_column_hide"></div>
-
-            <!--end: Datatable -->
+                <!--end: Datatable -->
+            </div>
         </div>
     </div>
-</div>
-<!-- end:: Content -->
-<?php include("footer.php");?>
+    <!-- end:: Content -->
+    <?php include("footer.php");?>
+    <script src="assets/js/pages/crud/metronic-datatable/advanced/row-details-admins.js" type="text/javascript">
+    </script>

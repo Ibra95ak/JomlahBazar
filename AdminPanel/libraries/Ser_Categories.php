@@ -27,6 +27,23 @@ class Ser_Categories {
             }
         } else return NULL;
     }
+
+    /**
+     * Delete categories by Id
+     * params category Id
+     * returns json/Null
+     */
+    public function DeleteCategory() {
+        $stmt = $this->conn->prepare("CALL sp_DeleteCategoryById(?)");
+        $stmt->bind_param("i",$categoryId);
+        if ($stmt->execute()) {
+            $categories = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch categories data and store in array
+            $stmt->close();
+            if ($categories==true) {
+                return $categories;
+            }
+        } else return NULL;
+    }
     
     /**
      * Get all categories 
@@ -44,6 +61,5 @@ class Ser_Categories {
             }
         } else return NULL;
     }
-
 }
 ?>

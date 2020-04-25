@@ -147,17 +147,17 @@
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
                                                     class="kt-menu__link-text">Buyers</span></a></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                                            data-ktmenu-submenu-toggle="hover"><a href="suppliers_datatable.php"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_suppliers.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
                                                     class="kt-menu__link-text">Suppliers</span></a></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                                            data-ktmenu-submenu-toggle="hover"><a href="shippers_datatable.php"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_shippers.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
                                                     class="kt-menu__link-text">shippers</span></a></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                                            data-ktmenu-submenu-toggle="hover"><a href="admins_datatable.php"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_admins.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
                                                     class="kt-menu__link-text">admins</span></a></li>
@@ -176,10 +176,172 @@
                                                 class="kt-menu__link"><span
                                                     class="kt-menu__link-text">PRODUCTS</span></span></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                                            data-ktmenu-submenu-toggle="hover"><a href="product_datatable.php"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_products.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                                                    class="kt-menu__link-text">Categories</span></a></li>
+                                                    class="kt-menu__link-text">All Products</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">CREDITCARD</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span
+                                                    class="kt-menu__link-text">CREDITCARD</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_creditcard.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Creditcard</span></a></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_creditcarddetails.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Creditcard-Details</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">PRIVILEDGES</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span
+                                                    class="kt-menu__link-text">PRIVILEDGES</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_priviledges.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Priviledges</span></a></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_adminpriviledge.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">Admin Priviledges</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">FAQ'S</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span
+                                                    class="kt-menu__link-text">FAQ'S</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_faqs.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All faq's</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">PICTURES</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span
+                                                    class="kt-menu__link-text">PICTURES</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_pictures.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Pictures</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">DISCOUNT TYPES</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span class="kt-menu__link-text">DISCOUNT
+                                                    TYPES</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_discounttypes.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Discount types</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">ADDRESS</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span
+                                                    class="kt-menu__link-text">ADDRESSES</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_addresses.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Addresses</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">BRANDS</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span class="kt-menu__link-text">
+                                                    BRANDS</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_brands.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Brands</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">CATEGORIES</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span
+                                                    class="kt-menu__link-text">CATEGORIES</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_categories.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Categories</span></a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -195,10 +357,10 @@
                                                 class="kt-menu__link"><span
                                                     class="kt-menu__link-text">SUBSCRIPTION-PLAN</span></span></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                                            data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por-subscriptionplans.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                                                    class="kt-menu__link-text">Option1</span></a></li>
+                                                    class="kt-menu__link-text">All Subscription-plans</span></a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -214,10 +376,29 @@
                                                 class="kt-menu__link"><span
                                                     class="kt-menu__link-text">INVENTORY</span></span></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                                            data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_inventories.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                                                    class="kt-menu__link-text">Option1</span></a></li>
+                                                    class="kt-menu__link-text">All Inventories</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">CART</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span
+                                                    class="kt-menu__link-text">CART</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_carts.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Carts</span></a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -233,10 +414,10 @@
                                                 class="kt-menu__link"><span
                                                     class="kt-menu__link-text">TESTIMONIALS</span></span></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                                            data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_testimonials.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                                                    class="kt-menu__link-text">Option1</span></a></li>
+                                                    class="kt-menu__link-text">All Testimonials</span></a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -252,10 +433,10 @@
                                                 class="kt-menu__link"><span
                                                     class="kt-menu__link-text">ORDERS</span></span></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                                            data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_orders.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                                                    class="kt-menu__link-text">Option1</span></a></li>
+                                                    class="kt-menu__link-text">All Orders</span></a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -271,10 +452,10 @@
                                                 class="kt-menu__link"><span
                                                     class="kt-menu__link-text">STORES</span></span></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
-                                            data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_stores.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                                                    class="kt-menu__link-text">Option1</span></a></li>
+                                                    class="kt-menu__link-text">All Stores</span></a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -1818,9 +1999,10 @@
                 </div>
 
                 <!-- end:: Header -->
-                <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+                <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content"
+                    style="padding-top: 0px;">
 
-                    <!-- begin:: Subheader -->
+                    <!-- begin:: Subheader 
                     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
                         <div class="kt-container  kt-container--fluid ">
                             <div class="kt-subheader__main">
@@ -1837,7 +2019,7 @@
                                     <a href="" class="kt-subheader__breadcrumbs-link">
                                         Empty Page </a>
 
-                                    <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                                    <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> 
                                 </div>
                             </div>
                             <div class="kt-subheader__toolbar">
@@ -1850,7 +2032,7 @@
                                         <span class="kt-subheader__btn-daterange-date"
                                             id="kt_dashboard_daterangepicker_date">Aug 16</span>
 
-                                        <!--<i class="flaticon2-calendar-1"></i>-->
+                                        <!--<i class="flaticon2-calendar-1"></i>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
                                             viewBox="0 0 24 24" version="1.1" class="kt-svg-icon kt-svg-icon--sm">
@@ -1883,12 +2065,12 @@
                                                 </g>
                                             </svg>
 
-                                            <!--<i class="flaticon2-plus"></i>-->
+                                            <!--<i class="flaticon2-plus"></i>
                                         </a>
                                         <div
                                             class="dropdown-menu dropdown-menu-fit dropdown-menu-md dropdown-menu-right">
 
-                                            <!--begin::Nav-->
+                                            <!--begin::Nav
                                             <ul class="kt-nav">
                                                 <li class="kt-nav__head">
                                                     Add anything or jump to:
@@ -1933,7 +2115,7 @@
                                                 </li>
                                             </ul>
 
-                                            <!--end::Nav-->
+                                            <!--end::Nav
                                         </div>
                                     </div>
                                 </div>
