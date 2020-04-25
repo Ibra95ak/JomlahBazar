@@ -152,10 +152,20 @@
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
                                                     class="kt-menu__link-text">Suppliers</span></a></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_registeredsuppliers.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">Registered-suppliers</span></a></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                                             data-ktmenu-submenu-toggle="hover"><a href="por_shippers.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
                                                     class="kt-menu__link-text">shippers</span></a></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_shipperdetails.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">Shipper-details</span></a></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                                             data-ktmenu-submenu-toggle="hover"><a href="por_admins.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
@@ -180,6 +190,11 @@
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
                                                     class="kt-menu__link-text">All Products</span></a></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_productdetails.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">Product Details </span></a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -247,6 +262,25 @@
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
                                                     class="kt-menu__link-text">All faq's</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">PAYPAL</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span
+                                                    class="kt-menu__link-text">PAYPAL</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_paypals.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Paypal</span></a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -342,6 +376,11 @@
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
                                                     class="kt-menu__link-text">All Categories</span></a></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_subcategories.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Sub-Categories</span></a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -437,6 +476,11 @@
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
                                                     class="kt-menu__link-text">All Orders</span></a></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_orderdetails.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">Order Details</span></a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -456,6 +500,82 @@
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
                                                     class="kt-menu__link-text">All Stores</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">REVIEWS</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span
+                                                    class="kt-menu__link-text">REVIEWS</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_reviews.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Reviews</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">REACHOUTS</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span
+                                                    class="kt-menu__link-text">REACHOUTS</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_reachouts.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Reachouts</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">WISHLISTS</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span
+                                                    class="kt-menu__link-text">WISHLISTS</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_wishlists.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Wishlists</span></a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                data-ktmenu-submenu-toggle="hover"><a href="javascript:;"
+                                    class="kt-menu__link kt-menu__toggle"><i
+                                        class="kt-menu__link-icon flaticon-web"></i><span
+                                        class="kt-menu__link-text">WALLET</span><i
+                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
+                                                class="kt-menu__link"><span
+                                                    class="kt-menu__link-text">WALLET</span></span></li>
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                            data-ktmenu-submenu-toggle="hover"><a href="por_wallets.php"
+                                                class="kt-menu__link kt-menu__toggle"><i
+                                                    class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
+                                                    class="kt-menu__link-text">All Wallet</span></a></li>
                                     </ul>
                                 </div>
                             </li>
