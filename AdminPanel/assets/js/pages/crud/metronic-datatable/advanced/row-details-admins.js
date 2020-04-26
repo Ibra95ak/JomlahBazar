@@ -55,7 +55,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: 110,
           overflow: "visible",
           autoHide: false,
-          template: function () {
+          template: function (row) {
             return '\
 							<div class="dropdown">\
 								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
@@ -70,7 +70,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
 							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\
 							</a>\
-							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
+							<a href="http://localhost/JomlahBazar/AdminPanel/controllers/CON_Admins.php?action=delete&adminId='+row.adminId+'" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
 								<i class="la la-trash"></i>\
 							</a>\
 						';

@@ -71,34 +71,7 @@ class Ser_Admin {
             }
         } else return NULL;
     }
-	
-    /**
-     * Encrypting password
-     * @param password
-     * returns salt and encrypted password
-     */
-    public function hashSSHA($password) {
-
-        $salt = sha1(rand());
-        $salt = substr($salt, 0, 10);
-        $encrypted = base64_encode(sha1($password . $salt, true) . $salt);
-        $hash = array("salt" => $salt, "encrypted" => $encrypted);
-        return $hash;
-    }
-
-    /**
-     * Decrypting password
-     * @param salt, password
-     * returns hash string
-     */
-    public function checkhashSSHA($salt, $password) {
-
-        $hash = base64_encode(sha1($password . $salt, true) . $salt);
-
-        return $hash;
-    }
-
-        	
+	        	
     /**
      * Get all admins 
      * returns json/Null
@@ -130,6 +103,45 @@ class Ser_Admin {
             }
         } else return NULL;
     }
+    
+    /**
+     * Delete admin By Id 
+     * params admin Id
+     * returns json/Null
+     */
+    public function DeleteAdminById($adminId) {
+        $stmt = $this->conn->prepare("Delete From admins where adminId=?");
+        $stmt->bind_param("i",$adminId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * Encrypting password
+     * @param password
+     * returns salt and encrypted password
+     */
+    public function hashSSHA($password) {
 
+        $salt = sha1(rand());
+        $salt = substr($salt, 0, 10);
+        $encrypted = base64_encode(sha1($password . $salt, true) . $salt);
+        $hash = array("salt" => $salt, "encrypted" => $encrypted);
+        return $hash;
+    }
+
+    /**
+     * Decrypting password
+     * @param salt, password
+     * returns hash string
+     */
+    public function checkhashSSHA($salt, $password) {
+
+        $hash = base64_encode(sha1($password . $salt, true) . $salt);
+
+        return $hash;
+    }
 }
 ?>

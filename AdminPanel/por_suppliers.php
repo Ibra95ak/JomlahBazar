@@ -1,4 +1,7 @@
-<?php include('header.php');?>
+<?php 
+include('header.php');
+require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Suppliers.php');
+?>
 <!-- begin:: Content -->
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
     <div class="kt-portlet__body kt-portlet__body--fit">
