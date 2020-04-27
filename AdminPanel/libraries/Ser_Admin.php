@@ -14,14 +14,14 @@ class Ser_Admin {
     }
     /**
      * Storing new admin
-     * @param username, password, admintypeId
+     * @param username, password
      * returns Boolean
      */
     public function addAdmin($username,$password) {
         $hash = $this->hashSSHA($password); // encryption function
         $encrypted_password = $hash["encrypted"]; // encrypted password
         $salt = $hash["salt"]; // salt
-        $stmt = $this->conn->prepare("INSERT INTO admins(adminId, username, encrypted_password, salt, active, created_date) VALUES (NULL,?,?,?,1,NOW())");
+        $stmt = $this->conn->prepare("CALL sp_AddAdmin(?,?,?)");
 		$stmt->bind_param("sss",$username,$encrypted_password,$salt);
 		$result = $stmt->execute();
         $stmt->close();
@@ -32,16 +32,16 @@ class Ser_Admin {
     }
 
 	/**
-     * Change admin password
-     * @param adminId, password
+     * Edit admin 
+     * @param adminId, username, password
      * returns Boolean
      */
-    public function changePass($adminId,$password) {
+    public function editAdmin($adminId,$username,$password,$active) {
 		$hash = $this->hashSSHA($password);
         $encrypted_password = $hash["encrypted"];
         $salt = $hash["salt"];
-        $stmt = $this->conn->prepare("UPDATE admins SET encrypted_password=?, salt=? where adminId=?");
-		$stmt->bind_param("ssi",$encrypted_password,$salt,$adminId);
+        $stmt = $this->conn->prepare("CALL sp_EditAdmin(?,?,?,?,?)");
+		$stmt->bind_param("isssi",$adminId,$username,$encrypted_password,$salt,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;
@@ -93,7 +93,7 @@ class Ser_Admin {
      * returns json/Null
      */
     public function GetAdminById($adminId) {
-        $stmt = $this->conn->prepare("CALL sp_GetAdminById(?)");
+        $stmt = $this->conn->prepare("CALL sp_GetAdminbyId(?)");
         $stmt->bind_param("i",$adminId);
         if ($stmt->execute()) {
             $admins = $stmt->get_result()->fetch_assoc(); //fetch admin data and store in array
