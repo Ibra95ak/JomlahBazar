@@ -45,5 +45,19 @@ class Ser_Reviews{
         } else return NULL;
     }
 
+        /**
+     * Delete Review By Id 
+     * params Review Id
+     * returns json/Null
+     */
+    public function DeleteReviewById($reviewId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteReviewbyId(?)");
+        $stmt->bind_param("i",$reviewId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

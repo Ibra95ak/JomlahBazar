@@ -45,5 +45,19 @@ class Ser_Adminpriviledges {
         } else return NULL;
     }
 
+       /**
+     * Delete adminpriviledge By Id 
+     * params adminpriviledge Id
+     * returns json/Null
+     */
+    public function DeleteAdminpriviledgeById($adminpriviledgeId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteAdminpriviledgebyId(?)");
+        $stmt->bind_param("i",$adminpriviledgeId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

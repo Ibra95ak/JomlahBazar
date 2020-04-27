@@ -45,5 +45,19 @@ class Ser_Testimonials {
         } else return NULL;
     }
 
+        /**
+     * Delete Testimonial By Id 
+     * params Testimonial Id
+     * returns json/Null
+     */
+    public function DeleteTestimonialById($testimonialId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteTestimonialbyId(?)");
+        $stmt->bind_param("i",$testimonialId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

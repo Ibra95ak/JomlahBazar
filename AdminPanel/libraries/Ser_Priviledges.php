@@ -45,5 +45,19 @@ class Ser_Priviledges {
         } else return NULL;
     }
 
+        /**
+     * Delete Priviledge By Id 
+     * params Priviledge Id
+     * returns json/Null
+     */
+    public function DeletePriviledgeById($priviledgeId) {
+        $stmt = $this->conn->prepare("CALL sp_DeletePriviledgebyId(?)");
+        $stmt->bind_param("i",$priviledgeId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

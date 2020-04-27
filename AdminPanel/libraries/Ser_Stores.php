@@ -45,5 +45,18 @@ class Ser_Stores {
         } else return NULL;
     }
 
+        /**
+     * Delete Store By Id 
+     * params Store Id
+     * returns json/Null
+     */
+    public function DeleteStoreById($storeId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteStorebyId(?)");
+        $stmt->bind_param("i",$storeId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
 }
 ?>

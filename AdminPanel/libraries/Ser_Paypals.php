@@ -45,5 +45,19 @@ class Ser_Paypals {
         } else return NULL;
     }
 
+        /**
+     * Delete paypal By Id 
+     * params paypal Id
+     * returns json/Null
+     */
+    public function DeletePaypalById($paypalId) {
+        $stmt = $this->conn->prepare("CALL sp_DeletePaypalbyId(?)");
+        $stmt->bind_param("i",$paypalId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

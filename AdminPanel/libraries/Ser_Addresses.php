@@ -45,5 +45,19 @@ class Ser_Addresses {
         } else return NULL;
     }
 
+            /**
+     * Delete address By Id 
+     * params address Id
+     * returns json/Null
+     */
+    public function DeleteAddressById($addressId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteAddressbyId(?)");
+        $stmt->bind_param("i",$addressId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

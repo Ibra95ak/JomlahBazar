@@ -45,5 +45,18 @@ class Ser_Shippers {
         } else return NULL;
     }
 
+        /**
+     * Delete Shipper By Id 
+     * params Shipper Id
+     * returns json/Null
+     */
+    public function DeleteShipperById($shipperId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteShipperbyId(?)");
+        $stmt->bind_param("i",$shipperId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
 }
 ?>

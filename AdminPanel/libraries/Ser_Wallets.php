@@ -45,5 +45,19 @@ class Ser_Wallets {
         } else return NULL;
     }
 
+            /**
+     * Delete Wallet By Id 
+     * params Wallet Id
+     * returns json/Null
+     */
+    public function DeleteWalletById($walletId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteWalletbyId(?)");
+        $stmt->bind_param("i",$walletId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

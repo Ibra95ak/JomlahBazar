@@ -45,5 +45,19 @@ class Ser_Carts {
         } else return NULL;
     }
 
+    /**
+     * Delete cart By Id 
+     * params cart Id
+     * returns json/Null
+     */
+    public function DeleteCartById($cartId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteCartbyId(?)");
+        $stmt->bind_param("i",$cartId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

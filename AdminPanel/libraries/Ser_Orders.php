@@ -45,5 +45,19 @@ class Ser_Orders {
         } else return NULL;
     }
 
+        /**
+     * Delete order By Id 
+     * params order Id
+     * returns json/Null
+     */
+    public function DeleteOrderById($orderId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteOrderbyId(?)");
+        $stmt->bind_param("i",$orderId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

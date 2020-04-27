@@ -45,5 +45,19 @@ class Ser_Inventories {
         } else return NULL;
     }
 
+        /**
+     * Delete inventory By Id 
+     * params inventory Id
+     * returns json/Null
+     */
+    public function DeleteInventoryById($inventoryId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteInventorybyId(?)");
+        $stmt->bind_param("i",$inventoryId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

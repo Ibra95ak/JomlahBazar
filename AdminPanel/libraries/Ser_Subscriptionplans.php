@@ -45,5 +45,19 @@ class Ser_Subscriptionplans {
         } else return NULL;
     }
 
+        /**
+     * Delete Subscriptionplan By Id 
+     * params Subscriptionplan Id
+     * returns json/Null
+     */
+    public function DeleteSubscriptionplanById($subscriptionplanId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteSubscriptionplanbyId(?)");
+        $stmt->bind_param("i",$subscriptionplanId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

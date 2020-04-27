@@ -45,5 +45,18 @@ class Ser_Suppliers {
         } else return NULL;
     }
 
+        /**
+     * Delete Supplier By Id 
+     * params Supplier Id
+     * returns json/Null
+     */
+    public function DeleteSupplierById($supplierId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteSupplierbyId(?)");
+        $stmt->bind_param("i",$supplierId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
 }
 ?>

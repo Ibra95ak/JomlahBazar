@@ -45,5 +45,19 @@ class Ser_Reachouts {
         } else return NULL;
     }
 
+        /**
+     * Delete Reachout By Id 
+     * params Reachout Id
+     * returns json/Null
+     */
+    public function DeleteReachoutById($reachoutId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteReachoutbyId(?)");
+        $stmt->bind_param("i",$reachoutId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

@@ -45,5 +45,20 @@ class Ser_Wishlists {
         } else return NULL;
     }
 
+
+        /**
+     * Delete Wishlist By Id 
+     * params Wishlist Id
+     * returns json/Null
+     */
+    public function DeleteWishlistById($wishlistId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteWishlistbyId(?)");
+        $stmt->bind_param("i",$wishlistId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

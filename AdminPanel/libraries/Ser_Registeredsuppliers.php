@@ -45,5 +45,19 @@ class Ser_Registeredsuppliers {
         } else return NULL;
     }
 
+        /**
+     * Delete Registeredsupplier By Id 
+     * params Registeredsupplier Id
+     * returns json/Null
+     */
+    public function DeleteRegisteredsupplierById($registeredsupplierId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteRegisteredsupplierbyId(?)");
+        $stmt->bind_param("i",$registeredsupplierId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

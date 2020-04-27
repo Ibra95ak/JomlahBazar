@@ -45,5 +45,19 @@ class Ser_Creditcards {
         } else return NULL;
     }
 
+        /**
+     * Delete creditcard By Id 
+     * params creditcard Id
+     * returns json/Null
+     */
+    public function DeleteCreditcardById($creditcardId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteCreditCardbyId(?)");
+        $stmt->bind_param("i",$creditcardId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

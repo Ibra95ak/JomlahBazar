@@ -45,5 +45,19 @@ class Ser_Pictures {
         } else return NULL;
     }
 
+        /**
+     * Delete Picture By Id 
+     * params Picture Id
+     * returns json/Null
+     */
+    public function DeletePictureById($pictureId) {
+        $stmt = $this->conn->prepare("CALL sp_DeletePicturebyId(?)");
+        $stmt->bind_param("i",$pictureId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

@@ -45,5 +45,19 @@ class Ser_Orderdetails {
         } else return NULL;
     }
 
+        /**
+     * Delete orderdetail By Id 
+     * params orderdetail Id
+     * returns json/Null
+     */
+    public function DeleteOrderdetailById($orderdetailId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteOrderdetailbyId(?)");
+        $stmt->bind_param("i",$orderdetailId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

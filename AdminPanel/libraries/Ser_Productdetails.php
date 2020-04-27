@@ -45,5 +45,19 @@ class Ser_Productdetails {
         } else return NULL;
     }
 
+        /**
+     * Delete Productdetail By Id 
+     * params Productdetail Id
+     * returns json/Null
+     */
+    public function DeleteProductdetailById($productdetailId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteProductdetailbyId(?)");
+        $stmt->bind_param("i",$productdetailId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

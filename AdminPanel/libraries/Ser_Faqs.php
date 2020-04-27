@@ -45,5 +45,19 @@ class Ser_Faqs {
         } else return NULL;
     }
 
+        /**
+     * Delete faq By Id 
+     * params faq Id
+     * returns json/Null
+     */
+    public function DeleteFaqById($faqId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteFaqbyId(?)");
+        $stmt->bind_param("i",$faqId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

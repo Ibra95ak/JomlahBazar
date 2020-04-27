@@ -45,5 +45,19 @@ class Ser_Discounttypes {
         } else return NULL;
     }
 
+        /**
+     * Delete discounttype By Id 
+     * params discounttype Id
+     * returns json/Null
+     */
+    public function DeleteDiscounttypeById($discounttypeId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteDiscounttypebyId(?)");
+        $stmt->bind_param("i",$discounttypeId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

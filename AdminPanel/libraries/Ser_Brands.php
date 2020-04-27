@@ -45,5 +45,19 @@ class Ser_Brands {
         } else return NULL;
     }
 
+        /**
+     * Delete brand By Id 
+     * params brand Id
+     * returns json/Null
+     */
+    public function DeleteBrandById($brandId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteBrandbyId(?)");
+        $stmt->bind_param("i",$brandId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+
 }
 ?>

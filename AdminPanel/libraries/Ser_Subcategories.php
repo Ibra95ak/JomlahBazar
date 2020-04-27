@@ -45,5 +45,18 @@ class Ser_Subcategories {
         } else return NULL;
     }
 
+        /**
+     * Delete Subcategory By Id 
+     * params Subcategory Id
+     * returns json/Null
+     */
+    public function DeleteSubcategoryById($subcategoryId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteSubcategorybyId(?)");
+        $stmt->bind_param("i",$subcategoryId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
 }
 ?>

@@ -1,60 +1,63 @@
 "use strict";
 // Class definition
 
-var KTDatatableAutoColumnHideDemo = function() {
-	// Private functions
+var KTDatatableAutoColumnHideDemo = (function () {
+  // Private functions
 
-	// basic demo
-	var demo = function() {
+  // basic demo
+  var demo = function () {
+    var datatable = $(".kt-datatable").KTDatatable({
+      // datasource definition
+      data: {
+        type: "remote",
+        source: {
+          read: {
+            url:
+              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=categories.json",
+          },
+        },
+        pageSize: 10,
+        saveState: false,
+        serverPaging: true,
+        serverFiltering: true,
+        serverSorting: true,
+      },
 
-		var datatable = $('.kt-datatable').KTDatatable({
-			// datasource definition
-			data: {
-				type: 'remote',
-				source: {
-					read: {
-						url: 'http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=categories.json',
-					},
-				},
-				pageSize: 10,
-				saveState: false,
-				serverPaging: true,
-				serverFiltering: true,
-				serverSorting: true,
-			},
+      layout: {
+        scroll: true,
+        height: 550,
+      },
 
-			layout: {
-				scroll: true,
-				height: 550,
-			},
+      // column sorting
+      sortable: true,
 
-			// column sorting
-			sortable: true,
+      pagination: true,
 
-			pagination: true,
+      search: {
+        input: $("#generalSearch"),
+      },
 
-			search: {
-				input: $('#generalSearch'),
-			},
-
-			// columns definition
-			columns: [
-				{
-					field: 'categoryId',
-					title: 'Category ID',
-				}, {
-					field: 'name',
-					title: 'Name',
-					width: 'auto',
-				}, {
-					field: 'Actions',
-					title: 'Actions',
-					sortable: false,
-					width: 110,
-					overflow: 'visible',
-					autoHide: false,
-					template: function() {
-						return '\
+      // columns definition
+      columns: [
+        {
+          field: "categoryId",
+          title: "Category ID",
+        },
+        {
+          field: "name",
+          title: "Name",
+          width: "auto",
+        },
+        {
+          field: "Actions",
+          title: "Actions",
+          sortable: false,
+          width: 110,
+          overflow: "visible",
+          autoHide: false,
+          template: function (row) {
+            return (
+              '\
 							<div class="dropdown">\
 								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
 	                                <i class="la la-ellipsis-h"></i>\
@@ -68,35 +71,37 @@ var KTDatatableAutoColumnHideDemo = function() {
 							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\
 							</a>\
-							<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
+							<a href="http://localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Category.php?categoryId=' +
+              row.categoryId +
+              '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
 								<i class="la la-trash"></i>\
 							</a>\
-						';
-					},
-				}],
-
-		});
-
-    $('#kt_form_status').on('change', function() {
-      datatable.search($(this).val().toLowerCase(), 'Status');
+						'
+            );
+          },
+        },
+      ],
     });
 
-    $('#kt_form_type').on('change', function() {
-      datatable.search($(this).val().toLowerCase(), 'Type');
+    $("#kt_form_status").on("change", function () {
+      datatable.search($(this).val().toLowerCase(), "Status");
     });
 
-    $('#kt_form_status,#kt_form_type').selectpicker();
+    $("#kt_form_type").on("change", function () {
+      datatable.search($(this).val().toLowerCase(), "Type");
+    });
 
-	};
+    $("#kt_form_status,#kt_form_type").selectpicker();
+  };
 
-	return {
-		// public functions
-		init: function() {
-			demo();
-		},
-	};
-}();
+  return {
+    // public functions
+    init: function () {
+      demo();
+    },
+  };
+})();
 
-jQuery(document).ready(function() {
-	KTDatatableAutoColumnHideDemo.init();
+jQuery(document).ready(function () {
+  KTDatatableAutoColumnHideDemo.init();
 });

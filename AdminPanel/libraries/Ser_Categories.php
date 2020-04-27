@@ -61,5 +61,19 @@ class Ser_Categories {
             }
         } else return NULL;
     }
+
+    /**
+     * Delete category By Id 
+     * params category Id
+     * returns json/Null
+     */
+    public function DeleteCategoryById($categoryId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteCategorybyId(?)");
+        $stmt->bind_param("i",$categoryId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
 }
 ?>
