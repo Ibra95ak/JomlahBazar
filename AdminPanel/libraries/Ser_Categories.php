@@ -12,7 +12,34 @@ class Ser_Categories {
     function __destruct() {
         
     }
-    	
+        
+    /**
+     * Storing new Category
+     * returns Boolean
+     */
+    public function addCategory($name,$icon,$productId,$subcategoryId,$brandId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddCategory(?,?,?,?,?,?)");
+		$stmt->bind_param("ssiiii",$name,$icon,$productId,$subcategoryId,$brandId,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
+
+    /**
+     * Edit category 
+     * returns Boolean
+     */
+    public function editCategory($categoryId,$name,$icon,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditCategory(?,?,?,?)");
+		$stmt->bind_param("issi",$categoryId,$name,$icon,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
+
     /**
      * Get all categories 
      * returns json/Null

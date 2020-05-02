@@ -12,7 +12,35 @@ class Ser_Paypals {
     function __destruct() {
         
     }
+
+    
+/**
+     * Storing new Paypal
+     * returns Boolean
+     */
+    public function addPaypal($email) {
+        $stmt = $this->conn->prepare("CALL sp_AddPaypal(?)");
+		$stmt->bind_param("s",$email);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
     	
+    /**
+     * Edit paypal 
+     * @param typeId, username, password
+     * returns Boolean
+     */
+    public function editPaypal($typeId,$email) {
+        $stmt = $this->conn->prepare("CALL sp_EditPaypal(?,?)");
+		$stmt->bind_param("is",$typeId,$email);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     /**
      * Get all Paypals 
      * returns json/Null
@@ -33,9 +61,9 @@ class Ser_Paypals {
      * params paypal Id
      * returns json/Null
      */
-    public function GetPaypalById($paypalId) {
+    public function GetPaypalById($typeId) {
         $stmt = $this->conn->prepare("CALL sp_GetPaypalById(?)");
-        $stmt->bind_param("i",$paypalId);
+        $stmt->bind_param("i",$typeId);
         if ($stmt->execute()) {
             $paypals = $stmt->get_result()->fetch_assoc(); //fetch paypal data and paypal in array
             $stmt->close();
@@ -50,9 +78,9 @@ class Ser_Paypals {
      * params paypal Id
      * returns json/Null
      */
-    public function DeletePaypalById($paypalId) {
+    public function DeletePaypalById($typeId) {
         $stmt = $this->conn->prepare("CALL sp_DeletePaypalbyId(?)");
-        $stmt->bind_param("i",$paypalId);
+        $stmt->bind_param("i",$typeId);
         if ($stmt->execute()) {
             $stmt->close();
             return true;

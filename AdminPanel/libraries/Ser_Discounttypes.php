@@ -27,6 +27,35 @@ class Ser_Discounttypes {
             }
         } else return NULL;
     }
+
+/**
+     * Storing new Discounttype
+     * @param type,active
+     * returns Boolean
+     */
+    public function addDiscounttype($type,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddDiscounttype(?,?)");
+		$stmt->bind_param("si",$type,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
+
+    /**
+     * Edit discounttype 
+     * @param discounttypeId, username, password
+     * returns Boolean
+     */
+    public function editDiscounttype($discounttypeId,$type,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditDiscounttype(?,?,?)");
+		$stmt->bind_param("isi",$discounttypeId,$type,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     
     /**
      * Get all discounttypes 

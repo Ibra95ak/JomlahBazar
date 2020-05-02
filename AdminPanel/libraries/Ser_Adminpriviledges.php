@@ -27,6 +27,35 @@ class Ser_Adminpriviledges {
             }
         } else return NULL;
     }
+
+/**
+     * Storing new Adminpriviledge
+     * @param adminId, priviledgeId
+     * returns Boolean
+     */
+    public function addAdminpriviledge($adminId,$priviledgeId) {
+        $stmt = $this->conn->prepare("CALL sp_AddAdminpriviledge(?,?)");
+		$stmt->bind_param("ii",$adminId,$priviledgeId);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
+
+    /**
+     * Edit adminpriviledge 
+     * @param adminpriviledgeId, username, password
+     * returns Boolean
+     */
+    public function editAdminpriviledge($adminpriviledgeId,$adminId,$priviledgeId) {
+        $stmt = $this->conn->prepare("CALL sp_EditAdminpriviledge(?,?,?)");
+		$stmt->bind_param("iii",$adminpriviledgeId,$adminId,$priviledgeId);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     
     /**
      * Get all adminpriviledges 

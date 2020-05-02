@@ -12,7 +12,35 @@ class Ser_Pictures {
     function __destruct() {
         
     }
+
+    
+/**
+     * Storing new Picture
+     * returns Boolean
+     */
+    public function addPicture($name,$path,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddPicture(?,?,?)");
+		$stmt->bind_param("ssi",$name,$path,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
     	
+    /**
+     * Edit picture 
+     * @param pictureId, username, password
+     * returns Boolean
+     */
+    public function editPicture($pictureId,$name,$path,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditPicture(?,?,?,?)");
+		$stmt->bind_param("issi",$pictureId,$name,$path,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     /**
      * Get all Pictures 
      * returns json/Null
@@ -38,6 +66,7 @@ class Ser_Pictures {
         $stmt->bind_param("i",$pictureId);
         if ($stmt->execute()) {
             $pictures = $stmt->get_result()->fetch_assoc(); //fetch picture data and picture in array
+            print_r($pictures);
             $stmt->close();
             if ($pictures==true) {
                 return $pictures;

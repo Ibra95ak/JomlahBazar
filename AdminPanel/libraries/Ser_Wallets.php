@@ -27,7 +27,34 @@ class Ser_Wallets {
             }
         } else return NULL;
     }
+    /**
+     * Storing new Wallet
+     * returns Boolean
+     */
+    public function addWallet($type,$typeId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddWallet(?,?,?)");
+		$stmt->bind_param("sii",$type,$typeId,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful Wallet
+        if ($result) return true;
+        else return false;
+    } 
     
+    /**
+     * Edit wallet 
+     * @param walletId, username, password
+     * returns Boolean
+     */
+    public function editWallet($walletId,$type,$typeId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditWallet(?,?,?,?)");
+		$stmt->bind_param("isii",$walletId,$type,$typeId,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
+
     /**
      * Get all wallets 
      * params wallet Id

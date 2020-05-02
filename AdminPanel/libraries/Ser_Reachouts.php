@@ -45,6 +45,34 @@ class Ser_Reachouts {
         } else return NULL;
     }
 
+    
+    /**
+     * Storing new Reachout
+     * returns Boolean
+     */
+    public function addReachout($phone,$whatsapp,$telegram,$messenger,$skype,$sms) {
+        $stmt = $this->conn->prepare("CALL sp_AddReachout(?,?,?,?,?,?)");
+		$stmt->bind_param("ssssss",$phone,$whatsapp,$telegram,$messenger,$skype,$sms);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }  
+    
+    /**
+     * Edit reachout 
+     * @param reachoutId, username, password
+     * returns Boolean
+     */
+    public function editReachout($reachoutId,$phone,$whatsapp,$telegram,$messenger,$skype,$sms) {
+        $stmt = $this->conn->prepare("CALL sp_EditReachout(?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiisssi",$reachoutId,$phone,$whatsapp,$telegram,$messenger,$skype,$sms);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
         /**
      * Delete Reachout By Id 
      * params Reachout Id

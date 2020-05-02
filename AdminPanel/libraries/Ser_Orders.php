@@ -12,7 +12,37 @@ class Ser_Orders {
     function __destruct() {
         
     }
-    	
+        
+     
+/**
+     * Storing new Order
+     * returns Boolean
+     */
+    public function addOrder($userId,$productId,$supplierId,$ordernumber,$puchaseId,$order_date,
+    $statusId,$blockId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddOrder(?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiiiisiii",$userId,$productId,$supplierId,$ordernumber,$puchaseId,$order_date,
+        $statusId,$blockId,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
+
+    /**
+     * Edit order 
+     * @param orderId, username, password
+     * returns Boolean
+     */
+    public function editOrder($orderId,$ordernumber,$order_date,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditOrder(?,?,?,?)");
+		$stmt->bind_param("iisi",$orderId,$ordernumber,$order_date,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     /**
      * Get all orders 
      * returns json/Null

@@ -45,6 +45,33 @@ class Ser_Subscriptionplans {
         } else return NULL;
     }
 
+    /**
+     * Storing new Subscriptionplan
+     * returns Boolean
+     */
+    public function addSubscriptionplan($purchaseId,$name) {
+        $stmt = $this->conn->prepare("CALL sp_AddSubscriptionplan(?,?)");
+		$stmt->bind_param("is",$purchaseId,$name);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful Subscriptionplan
+        if ($result) return true;
+        else return false;
+    } 
+    
+    /**
+     * Edit Subscriptionplan 
+     * returns Boolean
+     */
+    public function editSubscriptionplan($subscriptionplanId,$name) {
+        $stmt = $this->conn->prepare("CALL sp_EditSubscriptionplan(?,?)");
+		$stmt->bind_param("is",$subscriptionplanId,$name);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
+
         /**
      * Delete Subscriptionplan By Id 
      * params Subscriptionplan Id

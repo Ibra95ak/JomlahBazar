@@ -27,6 +27,35 @@ class Ser_Addresses {
             }
         } else return NULL;
     }
+
+    /**
+     * Storing new Address
+     * @param username, password
+     * returns Boolean
+     */
+    public function addAddress($ipaddress,$address1,$address2,$city,$state,$postalcode,$country,$latitude,$longitude) {
+        $stmt = $this->conn->prepare("CALL sp_AddAddress(?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("sssssssii",$ipaddress,$address1,$address2,$city,$state,$postalcode,$country,$latitude,$longitude);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
+
+    /**
+     * Edit address 
+     * @param addressId, username, password
+     * returns Boolean
+     */
+    public function editAddress($addressId,$ipaddress,$address1,$address2,$city,$state,$postalcode,$country,$latitude,$longitude) {
+        $stmt = $this->conn->prepare("CALL sp_EditAddress(?,?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("isssssssii",$addressId,$ipaddress,$address1,$address2,$city,$state,$postalcode,$country,$latitude,$longitude);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     
     /**
      * Get all addresses 

@@ -45,6 +45,33 @@ class Ser_Shipperdetails {
         } else return NULL;
     }
 
+    /**
+     * Storing new Shipperdetail
+     * returns Boolean
+     */
+    public function addShipperdetail($name,$description) {
+        $stmt = $this->conn->prepare("CALL sp_AddShipperdetail(?,?)");
+		$stmt->bind_param("ss",$name,$description);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }  
+
+    /**
+     * Edit shipperdetail 
+     * @param shipperdetailId, username, password
+     * returns Boolean
+     */
+    public function editShipperdetail($shipperdetailId,$name,$description) {
+        $stmt = $this->conn->prepare("CALL sp_EditShipperdetail(?,?,?)");
+		$stmt->bind_param("iss",$shipperdetailId,$name,$description);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
         /**
      * Delete Shipperdetails By Id 
      * params Shipperdetails Id

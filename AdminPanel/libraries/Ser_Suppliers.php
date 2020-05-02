@@ -27,7 +27,33 @@ class Ser_Suppliers {
             }
         } else return NULL;
     }
+    /**
+     * Storing new Supplier
+     * returns Boolean
+     */
+    public function addSupplier($userId,$discount_type,$categoryId,$subplanId,$storeId,$registered_supId,$blockId) {
+        $stmt = $this->conn->prepare("CALL sp_AddSupplier(?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiiiiii",$userId,$discount_type,$categoryId,$subplanId,$storeId,$registered_supId,$blockId);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful Supplier
+        if ($result) return true;
+        else return false;
+    } 
     
+    /**
+     * Edit supplier 
+     * @param supplierId, username, password
+     * returns Boolean
+     */
+    public function editSupplier($supplierId,$discounttype) {
+        $stmt = $this->conn->prepare("CALL sp_EditSupplier(?,?)");
+		$stmt->bind_param("ii",$supplierId,$discounttype);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     /**
      * Get all suppliers 
      * params supplier Id

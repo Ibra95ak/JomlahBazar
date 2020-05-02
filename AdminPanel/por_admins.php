@@ -22,9 +22,9 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Admins.php');
                             Back
                         </a>
                         &nbsp;
-                            <button type="button" class="btn btn-brand btn-icon-sm" id="add">
-                                <i class="flaticon2-plus"></i> Add New
-                            </button>
+                        <button type="button" class="btn btn-brand btn-icon-sm" id="add">
+                            <i class="flaticon2-plus"></i> Add New
+                        </button>
                     </div>
                 </div>
             </div>
@@ -99,15 +99,16 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Admins.php');
         </div>
     </div>
     <!-- end:: Content -->
-       
+
     <?php include("footer.php");?>
     <script src="assets/js/pages/crud/metronic-datatable/advanced/row-details-admins.js" type="text/javascript">
     </script>
     <script>
-        $('#add').click(function(e) {
-            window.location="<?php echo DIR_ROOT.DIR_ADMINP."form_admins.php?adminId=0";?>";
-        });
+    $('#add').click(function(e) {
+        window.location = "<?php echo DIR_ROOT.DIR_ADMINP."form_admins.php ? adminId = 0 ";?>";
+    });
     </script>
-</body>
-<!-- end::Body -->
-</html>
+    </body>
+    <!-- end::Body -->
+
+    </html>

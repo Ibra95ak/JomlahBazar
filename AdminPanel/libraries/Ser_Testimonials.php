@@ -44,7 +44,34 @@ class Ser_Testimonials {
             }
         } else return NULL;
     }
+    /**
+     * Storing new Testimonial
+     * returns Boolean
+     */
+    public function addTestimonial($name,$description,$pictureId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddTestimonial(?,?,?,?)");
+		$stmt->bind_param("ssii",$name,$description,$pictureId,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful Testimonial
+        if ($result) return true;
+        else return false;
+    } 
 
+    
+    /**
+     * Edit testimonial 
+     * @param testimonialId, username, password
+     * returns Boolean
+     */
+    public function editTestimonial($testimonialId,$name,$description,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditTestimonial(?,?,?,?)");
+		$stmt->bind_param("issi",$testimonialId,$name,$description,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
         /**
      * Delete Testimonial By Id 
      * params Testimonial Id

@@ -27,7 +27,34 @@ class Ser_Subcategories {
             }
         } else return NULL;
     }
+
+    /**
+     * Storing new Subcategory
+     * returns Boolean
+     */
+    public function addSubcategory($categoryId,$productId,$brandId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddSubcategory(?,?,?,?)");
+		$stmt->bind_param("iii",$categoryId,$productId,$brandId,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful Subcategory
+        if ($result) return true;
+        else return false;
+    } 
     
+    /**
+     * Edit subcategory 
+     * @param subcategoryId, username, password
+     * returns Boolean
+     */
+    public function editSubcategory($subcategoryId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditSubcategory(?,?)");
+		$stmt->bind_param("ii",$subcategoryId,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     /**
      * Get all subcategories 
      * params subcategory Id

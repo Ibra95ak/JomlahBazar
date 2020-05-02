@@ -12,6 +12,34 @@ class Ser_Creditcards {
     function __destruct() {
         
     }
+
+    /**
+     * Storing new Creditcard
+     * @param type,active
+     * returns Boolean
+     */
+    public function addCreditcard($card_number,$card_expMO,$card_expYR,$creditcarddetailId) {
+        $stmt = $this->conn->prepare("CALL sp_AddCreditcard(?,?,?,?)");
+		$stmt->bind_param("ssii",$card_number,$card_expMO,$card_expYR,$creditcarddetailId);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
+
+    /**
+     * Edit Creditcard 
+     * returns Boolean
+     */
+    public function editCreditcard($creditcardId,$card_number,$card_expMO,$card_expYR,$creditcarddetailId) {
+        $stmt = $this->conn->prepare("CALL sp_EditCreditcard(?,?,?,?,?)");
+		$stmt->bind_param("isssi",$creditcardId,$card_number,$card_expMO,$card_expYR,$creditcarddetailId);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     	
     /**
      * Get all creditcards 

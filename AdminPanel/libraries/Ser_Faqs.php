@@ -12,6 +12,33 @@ class Ser_Faqs {
     function __destruct() {
         
     }
+/**
+     * Storing new Faq
+     * @param type,active
+     * returns Boolean
+     */
+    public function addFaq($question,$answer,$position,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddFaq(?,?,?,?)");
+		$stmt->bind_param("ssii",$question,$answer,$position,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
+    /**
+     * Edit faq 
+     * @param faqId, username, password
+     * returns Boolean
+     */
+    public function editFaq($faqId,$question,$answer,$position,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditFaq(?,?,?,?,?)");
+		$stmt->bind_param("issii",$faqId,$question,$answer,$position,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     	
     /**
      * Get all Faqs 

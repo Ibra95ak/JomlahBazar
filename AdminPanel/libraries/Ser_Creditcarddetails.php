@@ -28,6 +28,35 @@ class Ser_Creditcarddetails {
         } else return NULL;
     }
     
+   /**
+     * Storing new Creditcarddetail
+     * @param type,active
+     * returns Boolean
+     */
+    public function addCreditcarddetail($type,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddCreditcarddetail(?,?)");
+		$stmt->bind_param("si",$type,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
+
+/**
+ * 
+     * Edit creditcarddetail
+     * returns Boolean
+     */
+    public function editCreditcarddetail($creditcarddetailId,$type,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditCreditcarddetail(?,?,?)");
+		$stmt->bind_param("isi",$creditcarddetailId,$type,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
+
     /**
      * Get all creditcarddetails 
      * params creditcarddetails Id

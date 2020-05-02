@@ -45,6 +45,33 @@ class Ser_Stores {
         } else return NULL;
     }
 
+    /**
+     * Storing new Store
+     * returns Boolean
+     */
+    public function addStore($addressId,$reachoutId,$name,$description,$theme,$blockId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddStore(?,?,?,?,?,?,?)");
+		$stmt->bind_param("iissiii",$addressId,$reachoutId,$name,$description,$theme,$blockId,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }  
+
+    /**
+     * Edit store 
+     * @param storeId, username, password
+     * returns Boolean
+     */
+    public function editStore($storeId,$name,$description,$theme,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditStore(?,?,?,?,?)");
+		$stmt->bind_param("isssi",$storeId,$name,$description,$theme,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
         /**
      * Delete Store By Id 
      * params Store Id

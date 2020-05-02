@@ -27,6 +27,35 @@ class Ser_Brands {
             }
         } else return NULL;
     }
+
+    /**
+     * Storing new Brand
+     * @param productId, brand_name, pictureId, active
+     * returns Boolean
+     */
+    public function addBrand($productId,$brand_name,$pictureId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddBrand(?,?,?,?)");
+		$stmt->bind_param("isii",$productId,$brand_name,$pictureId,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
+
+    /**
+     * Edit brand 
+     * @param brandId, username, password
+     * returns Boolean
+     */
+    public function editBrand($brandId,$productId,$brand_name,$pictureId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditBrand(?,?,?,?,?)");
+		$stmt->bind_param("iisii",$brandId,$productId,$brand_name,$pictureId,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     
     /**
      * Get all brands 

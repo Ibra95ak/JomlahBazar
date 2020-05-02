@@ -12,7 +12,34 @@ class Ser_Products {
     function __destruct() {
         
     }
-    	
+    /**
+     * Storing new Product
+     * returns Boolean
+     */
+    public function addProduct($name,$quantity,$min_order,$unitprice,$discount,$ranking,$productdetailId,$brandId,$blockId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddProduct(?,?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("siiiisiiii",$name,$quantity,$min_order,$unitprice,$discount,$ranking,
+        $productdetailId,$brandId,$blockId,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }    
+    
+    /**
+     * Edit product 
+     * @param productId, username, password
+     * returns Boolean
+     */
+    public function editProduct($productId,$name,$quantity,$min_order,$unitprice,$description,$ranking,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditProduct(?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("isiiisii",$productId,$name,$quantity,$min_order,$unitprice,$description,$ranking,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     /**
      * Get all products 
      * returns json/Null

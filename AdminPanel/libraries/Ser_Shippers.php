@@ -44,7 +44,33 @@ class Ser_Shippers {
             }
         } else return NULL;
     }
+    /**
+     * Storing new Shipper
+     * returns Boolean
+     */
+    public function addShipper($addressId,$reachoutId,$shipperdetailsId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddShipper(?,?,?,?)");
+		$stmt->bind_param("iiii",$addressId,$reachoutId,$shipperdetailsId,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }  
 
+    /**
+     * Edit shipper 
+     * @param shipperId, username, password
+     * returns Boolean
+     */
+    public function editShipper($shipperId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditShipper(?,?)");
+		$stmt->bind_param("ii",$shipperId,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
         /**
      * Delete Shipper By Id 
      * params Shipper Id

@@ -12,7 +12,37 @@ class Ser_Orderdetails {
     function __destruct() {
         
     }
-    	
+        
+/**
+     * Storing new Orderdetail
+     * returns Boolean
+     */
+    public function addOrderdetail($orderId,$ordernumber,$discount,$totalprice,$productdetailsId,
+    $shipperId,$ship_date,$statusId,$blockId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddOrderdetail(?,?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiiiiisiii",$orderId,$ordernumber,$discount,$totalprice,$productdetailsId,
+        $shipperId,$ship_date,$statusId,$blockId,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
+
+    /**
+     * Edit orderdetail 
+     * @param orderdetailId, username, password
+     * returns Boolean
+     */
+    public function editOrderdetail($orderdetailId,$ordernumber,$discount,$totalprice,$ship_date,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditOrderdetail(?,?,?,?,?,?)");
+		$stmt->bind_param("iiiisi",$orderdetailId,$ordernumber,$discount,$totalprice,$ship_date,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
+
     /**
      * Get all orderdetails 
      * returns json/Null

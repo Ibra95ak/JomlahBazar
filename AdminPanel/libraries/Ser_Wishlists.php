@@ -45,6 +45,32 @@ class Ser_Wishlists {
         } else return NULL;
     }
 
+    /**
+     * Storing new Wishlist
+     * returns Boolean
+     */
+    public function addWishlist($userId,$productId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddWishlist(?,?,?)");
+		$stmt->bind_param("iii",$userId,$productId,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful Wishlist
+        if ($result) return true;
+        else return false;
+    } 
+    /**
+     * Edit wishlist 
+     * @param wishlistId, username, password
+     * returns Boolean
+     */
+    public function editWishlist($wishlistId,$created_date,$updated_date,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditWishlist(?,?,?,?)");
+		$stmt->bind_param("issi",$wishlistId,$created_date,$updated_date,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
 
         /**
      * Delete Wishlist By Id 

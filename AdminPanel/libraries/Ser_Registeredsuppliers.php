@@ -34,7 +34,7 @@ class Ser_Registeredsuppliers {
      * returns json/Null
      */
     public function GetregisteredsupplierById($registeredsupplierId) {
-        $stmt = $this->conn->prepare("CALL sp_GetStoreById(?)");
+        $stmt = $this->conn->prepare("CALL sp_GetRegisteredsupplierById(?)");
         $stmt->bind_param("i",$registeredsupplierId);
         if ($stmt->execute()) {
             $registeredsuppliers = $stmt->get_result()->fetch_assoc(); //fetch registeredsupplier data and registeredsupplier in array
@@ -44,7 +44,34 @@ class Ser_Registeredsuppliers {
             }
         } else return NULL;
     }
+  
+    /**
+     * Storing new Registeredsupplier
+     * returns Boolean
+     */
+    public function addRegisteredsupplier($registered_name,$creditcardId) {
+        $stmt = $this->conn->prepare("CALL sp_AddRegisteredsupplier(?,?)");
+		$stmt->bind_param("si",$registered_name,$creditcardId);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }  
 
+    /**
+     * Edit registeredsupplier 
+     * @param registeredsupplierId, username, password
+     * returns Boolean
+     */
+    public function editRegisteredsupplier($registeredsupplierId,$registered_name,$creditcardId) {
+        $stmt = $this->conn->prepare("CALL sp_EditRegisteredsupplier(?,?,?)");
+		$stmt->bind_param("isi",$registeredsupplierId,$registered_name,$creditcardId);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
         /**
      * Delete Registeredsupplier By Id 
      * params Registeredsupplier Id

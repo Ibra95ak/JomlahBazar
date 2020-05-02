@@ -27,6 +27,34 @@ class Ser_Carts {
             }
         } else return NULL;
     }
+
+    /**
+     * Storing new Cart
+     * @param userId, productId, created_date, updated_date, active
+     * returns Boolean
+     */
+    public function addCart($userId,$productId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddCart(?,?,?)");
+		$stmt->bind_param("iii",$userId,$productId,$active);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
+
+    /**
+     * Edit cart 
+     * returns Boolean
+     */
+    public function editCart($cartId,$userId,$productId,$created_date,$updated_date,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditCart(?,?,?,?,?,?)");
+		$stmt->bind_param("iiissi",$cartId,$userId,$productId,$created_date,$updated_date,$active);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     
     /**
      * Get all carts 

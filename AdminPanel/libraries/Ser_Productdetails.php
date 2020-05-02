@@ -12,7 +12,32 @@ class Ser_Productdetails {
     function __destruct() {
         
     }
+    /**
+     * Storing new Productdetail
+     * returns Boolean
+     */
+    public function addProductdetail($description,$size,$color,$weight,$barcode) {
+        $stmt = $this->conn->prepare("CALL sp_AddProductdetail(?,?,?,?,?)");
+		$stmt->bind_param("sssis",$description,$size,$color,$weight,$barcode);
+		$result = $stmt->execute();
+        $stmt->close();
+        // check for successful store
+        if ($result) return true;
+        else return false;
+    }
     	
+    /**
+     * Edit productdetail 
+     * returns Boolean
+     */
+    public function editProductdetail($productdetailId,$description,$size,$color,$weight,$barcode) {
+        $stmt = $this->conn->prepare("CALL sp_EditProductdetail(?,?,?,?,?,?)");
+		$stmt->bind_param("isisii",$productdetailId,$description,$size,$color,$weight,$barcode);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     /**
      * Get all Productdetails 
      * returns json/Null
