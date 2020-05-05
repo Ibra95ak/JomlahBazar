@@ -42,14 +42,48 @@ var KTDatatableAutoColumnHideDemo = (function () {
         {
           field: "testimonialId",
           title: "Testimonial ID",
+          width: "auto",
+        },
+        {
+          field: "picname",
+          title: "Picture Name",
+          width: "auto",
+        },
+        {
+          field: "path",
+          title: "Picture Path",
+          width: "auto",
         },
         {
           field: "name",
-          title: "Testimonial Name",
+          title: "Name",
+          width: "auto",
         },
         {
           field: "description",
-          title: "Testimonial description",
+          title: "Description",
+          width: "auto",
+        },
+        {
+          field: "active",
+          title: "Status",
+          autoHide: false,
+          // callback function support for column rendering
+          template: function (row) {
+            var status = {
+              0: { title: "Inactive", state: "danger" },
+              1: { title: "Active", state: "success" },
+            };
+            return (
+              '<span class="kt-badge kt-badge--' +
+              status[row.active].state +
+              ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' +
+              status[row.active].state +
+              '">' +
+              status[row.active].title +
+              "</span>"
+            );
+          },
         },
         {
           field: "Actions",
@@ -66,9 +100,9 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_pictures.php?pictureId=' +
+              row.pictureId +
+              '"><i class="la la-edit"></i> Picture</a>\
 							    </div>\
 							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_testimonials.php?testimonialId=' +

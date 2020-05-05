@@ -41,17 +41,44 @@ var KTDatatableAutoColumnHideDemo = (function () {
       columns: [
         {
           field: "subcategoryId",
-          title: "Subcategory ID",
-        },
-        {
-          field: "categoryId",
-          title: "Category ID",
+          title: "Sub-Category ID",
           width: "auto",
         },
         {
-          field: "productId",
-          title: "Product ID",
+          field: "category_name",
+          title: "Category Name",
           width: "auto",
+        },
+        {
+          field: "name",
+          title: "Name",
+          width: "auto",
+        },
+        {
+          field: "icon",
+          title: "Icon",
+          width: "auto",
+        },
+        {
+          field: "active",
+          title: "Status",
+          autoHide: false,
+          // callback function support for column rendering
+          template: function (row) {
+            var status = {
+              0: { title: "Inactive", state: "danger" },
+              1: { title: "Active", state: "success" },
+            };
+            return (
+              '<span class="kt-badge kt-badge--' +
+              status[row.active].state +
+              ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' +
+              status[row.active].state +
+              '">' +
+              status[row.active].title +
+              "</span>"
+            );
+          },
         },
         {
           field: "Actions",
@@ -68,9 +95,9 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_categories.php?categoryId=' +
+              row.categoryId +
+              '"><i class="la la-edit"></i> Category</a>\
 							    </div>\
 							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_subcategories.php?subcategoryId=' +

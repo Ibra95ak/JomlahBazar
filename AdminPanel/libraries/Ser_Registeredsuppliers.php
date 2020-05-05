@@ -51,7 +51,7 @@ class Ser_Registeredsuppliers {
      */
     public function addRegisteredsupplier($registered_name,$creditcardId) {
         $stmt = $this->conn->prepare("CALL sp_AddRegisteredsupplier(?,?)");
-		$stmt->bind_param("si",$registered_name,$creditcardId);
+		$stmt->bind_param("isi",$registered_name,$creditcardId);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store

@@ -4,12 +4,12 @@ require_once 'libraries/Ser_Creditcards.php';
 $db = new Ser_Creditcards();
 $err=-1;
 
-if(isset($_GET['typeId'])) $typeId=$_GET['typeId'];
-else $typeId=0;
+if(isset($_GET['creditcardId'])) $creditcardId=$_GET['creditcardId'];
+else $creditcardId=0;
 
-if($typeId>0){
+if($creditcardId>0){
     //Edit creditcard
-    $get_creditcard=$db->GetCreditcardById($typeId);
+    $get_creditcard=$db->GetCreditcardById($creditcardId);
     if($get_creditcard){
      $card_number=$get_creditcard['card_number'];
      $card_expMO=$get_creditcard['card_expMO'];
@@ -29,7 +29,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+            Edit Creditcard
             </h3>
         </div>
     </div>
@@ -107,9 +107,9 @@ include('header.php');
 <script>
 var url_string = window.location.href
 var url = new URL(url_string);
-var typeId = url.searchParams.get("typeId");
+var creditcardId = url.searchParams.get("creditcardId");
 // var div_edit = document.getElementById("edits");
-// if (typeId > 0) div_edit.style.display = "inline";
+// if (creditcardId > 0) div_edit.style.display = "inline";
 // else div_edit.style.display = "none";
 </script>
 <?php include("footer.php");?>
@@ -149,7 +149,7 @@ $('#btn_submit').click(function(e) {
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_creditcard.php",
         dataType: "json",
         data: {
-            typeId: typeId,
+            creditcardId: creditcardId,
             card_number: card_number,
             card_expMO: card_expMO,
             card_expYR: card_expYR,

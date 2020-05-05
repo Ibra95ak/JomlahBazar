@@ -11,23 +11,17 @@ if($orderId>0){
     //Edit order
     $get_order=$db->GetOrderById($orderId);
     if($get_order){
-$userId=$get_orderdetailId['userId'];
-$productId=$get_orderdetailId['productId'];
-$supplierId=$get_orderdetailId['supplierId'];
-$ordernumber=$get_orderdetailId['ordernumber'];
-$puchaseId=$get_orderdetailId['puchaseId'];
-$order_date=$get_orderdetailId['order_date'];
-$statusId=$get_orderdetailId['statusId'];
-$blockId=$get_orderdetailId['blockId'];
-$active=$get_orderdetailId['active'];
+$userId=$get_order['userId'];
+$ordernumber=$get_order['ordernumber'];
+$purchaseId=$get_order['purchaseId'];
+$statusId=$get_order['statusId'];
+$blockId=$get_order['blockId'];
+$active=$get_order['active'];
     }else{
         
         $userId='';
-        $productId='';
-        $supplierId='';
         $ordernumber='';
-        $puchaseId='';
-        $order_date='';
+        $purchaseId='';
         $statusId='';
         $blockId='';
         $active='';
@@ -40,7 +34,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+            Edit Order
             </h3>
         </div>
     </div>
@@ -62,30 +56,6 @@ include('header.php');
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>productId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="productId" id="productId"
-                            value="<?php if(isset($productId)) echo $productId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your productId</span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
-                    <label>supplierId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="supplierId" id="supplierId"
-                            value="<?php if(isset($supplierId)) echo $supplierId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your supplierId</span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
                     <label>ordernumber:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
@@ -98,26 +68,14 @@ include('header.php');
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>puchaseId:</label>
+                    <label>purchaseId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="puchaseId" id="puchaseId"
-                            value="<?php if(isset($puchaseId)) echo $puchaseId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="purchaseId" id="purchaseId"
+                            value="<?php if(isset($purchaseId)) echo $purchaseId;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your puchaseId</span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
-                    <label>order_date:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="order_date" id="order_date"
-                            value="<?php if(isset($order_date)) echo $order_date;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your order_date</span>
+                    <span class="form-text text-muted">Please enter your purchaseId</span>
                 </div>
             </div>
             <div class="form-group row">
@@ -144,7 +102,7 @@ include('header.php');
                     <span class="form-text text-muted">Please enter your blockId</span>
                 </div>
             </div>
-        </div>
+        
         <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
@@ -153,7 +111,7 @@ include('header.php');
                 <span></span>
             </label>
             <span class="form-text text-muted">Some help text goes here</span>
-        </div>
+        </div></div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
                 <div class="row">
@@ -187,12 +145,8 @@ $('#btn_submit').click(function(e) {
     var btn = $(this);
     var form = $(this).closest('form');
     var userId = $("#userId").val();
-    var productId = $("#productId").val();
-    var supplierId = $("#supplierId").val();
     var ordernumber = $("#ordernumber").val();
-    var puchaseId = $("#puchaseId").val();
-    var order_date = $("#order_date").val();
-    var shipperId = $("#shipperId").val();
+    var purchaseId = $("#purchaseId").val();
     var statusId = $("#statusId").val();
     var blockId = $("#blockId").val();
     var active = $("#active").val();
@@ -201,22 +155,10 @@ $('#btn_submit').click(function(e) {
             userId: {
                 required: true
             },
-            productId: {
-                required: true
-            },
-            supplierId: {
-                required: true
-            },
             ordernumber: {
                 required: true
             },
-            puchaseId: {
-                required: true
-            },
-            order_date: {
-                required: true
-            },
-            shipperId: {
+            purchaseId: {
                 required: true
             },
             statusId: {
@@ -240,12 +182,8 @@ $('#btn_submit').click(function(e) {
         data: {
             orderId: orderId,
             userId: userId,
-            productId: productId,
-            supplierId: supplierId,
             ordernumber: ordernumber,
-            puchaseId: puchaseId,
-            order_date: order_date,
-            shipperId: shipperId,
+            purchaseId: purchaseId,
             statusId: statusId,
             blockId: blockId,
             active: active

@@ -7,7 +7,7 @@ $db = new Ser_Stores();
 //results array
 $results=array();
 //get all leads details
-$getAll_stores = $db->GetStores();
+$getAll_stores = $db->Getstores();
 foreach($getAll_stores as $store){
     array_push($results,$store);
 }

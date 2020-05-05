@@ -31,9 +31,9 @@ class Ser_Suppliers {
      * Storing new Supplier
      * returns Boolean
      */
-    public function addSupplier($userId,$discount_type,$categoryId,$subplanId,$storeId,$registered_supId,$blockId) {
-        $stmt = $this->conn->prepare("CALL sp_AddSupplier(?,?,?,?,?,?,?)");
-		$stmt->bind_param("iiiiiii",$userId,$discount_type,$categoryId,$subplanId,$storeId,$registered_supId,$blockId);
+    public function addSupplier($aaaId,$subscriptionplanId,$discount_type,$registeredsupplierId,$blockId) {
+        $stmt = $this->conn->prepare("CALL sp_AddSupplier(?,?,?,?,?)");
+		$stmt->bind_param("iiiii",$aaaId,$subscriptionplanId,$discount_type,$registeredsupplierId,$blockId);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful Supplier
@@ -46,9 +46,9 @@ class Ser_Suppliers {
      * @param supplierId, username, password
      * returns Boolean
      */
-    public function editSupplier($supplierId,$discounttype) {
-        $stmt = $this->conn->prepare("CALL sp_EditSupplier(?,?)");
-		$stmt->bind_param("ii",$supplierId,$discounttype);
+    public function editSupplier($supplierId,$aaaId,$subscriptionplanId,$discount_type,$registeredsupplierId,$blockId) {
+        $stmt = $this->conn->prepare("CALL sp_EditSupplier(?,?,?,?,?,?)");
+		$stmt->bind_param("iiiiii",$supplierId,$aaaId,$subscriptionplanId,$discount_type,$registeredsupplierId,$blockId);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

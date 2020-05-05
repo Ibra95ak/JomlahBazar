@@ -10,7 +10,6 @@ else $testimonialId=0;
 if($testimonialId>0){
     //Edit testimonial
     $get_testimonial=$db->GetTestimonialById($testimonialId);
-    //print_r($get_testimonial);
     if($get_testimonial){
      $name=$get_testimonial['name'];
      $description=$get_testimonial['description'];
@@ -30,7 +29,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+                Edit Testimonial
             </h3>
         </div>
     </div>
@@ -74,7 +73,6 @@ include('header.php');
                     <span class="form-text text-muted">Please enter your pictureId</span>
                 </div>
             </div>
-        </div>
         <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
@@ -83,6 +81,7 @@ include('header.php');
                 <span></span>
             </label>
             <span class="form-text text-muted">Some help text goes here</span>
+        </div>
         </div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">

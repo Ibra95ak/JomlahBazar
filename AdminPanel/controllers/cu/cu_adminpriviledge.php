@@ -21,7 +21,7 @@ if($adminpriviledgeId>0){
 }else{
     //add adminpriviledge
     $add_adminpriviledge=$db->addAdminpriviledge($adminId,$priviledgeId);
-    if($add_brand) $err=0;
+    if($add_adminpriviledge) $err=0;
     else $err=1;
 }
 echo json_encode($err);

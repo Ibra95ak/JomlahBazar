@@ -50,9 +50,9 @@ class Ser_Reachouts {
      * Storing new Reachout
      * returns Boolean
      */
-    public function addReachout($phone,$whatsapp,$telegram,$messenger,$skype,$sms) {
-        $stmt = $this->conn->prepare("CALL sp_AddReachout(?,?,?,?,?,?)");
-		$stmt->bind_param("ssssss",$phone,$whatsapp,$telegram,$messenger,$skype,$sms);
+    public function addReachout($userId,$phone,$whatsapp,$telegram,$messenger,$skype,$sms) {
+        $stmt = $this->conn->prepare("CALL sp_AddReachout(?,?,?,?,?,?,?)");
+		$stmt->bind_param("issssss",$userId,$phone,$whatsapp,$telegram,$messenger,$skype,$sms);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store
@@ -65,9 +65,9 @@ class Ser_Reachouts {
      * @param reachoutId, username, password
      * returns Boolean
      */
-    public function editReachout($reachoutId,$phone,$whatsapp,$telegram,$messenger,$skype,$sms) {
-        $stmt = $this->conn->prepare("CALL sp_EditReachout(?,?,?,?,?,?,?)");
-		$stmt->bind_param("iiisssi",$reachoutId,$phone,$whatsapp,$telegram,$messenger,$skype,$sms);
+    public function editReachout($reachoutId,$userId,$phone,$whatsapp,$telegram,$messenger,$skype,$sms) {
+        $stmt = $this->conn->prepare("CALL sp_EditReachout(?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("iissssss",$reachoutId,$userId,$phone,$whatsapp,$telegram,$messenger,$skype,$sms);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

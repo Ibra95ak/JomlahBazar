@@ -12,7 +12,21 @@ class Ser_Priviledges {
     function __destruct() {
         
     }
-     
+        /**
+     * Get all priviledges by Admin 
+     * returns json/Null
+     */
+    public function GetAdminPrivledgespriv($AdminpriId) {
+        $stmt = $this->conn->prepare("CALL sp_GetAdminpriviledgespriv(?)");
+        $stmt->bind_param("i",$AdminpriId);
+        if ($stmt->execute()) {
+            $priviledges = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+            $stmt->close();
+            if ($priviledges==true) {
+                return $priviledges;
+            }
+        } else return NULL;
+    }
 /**
      * Storing new Priviledge
      * returns Boolean

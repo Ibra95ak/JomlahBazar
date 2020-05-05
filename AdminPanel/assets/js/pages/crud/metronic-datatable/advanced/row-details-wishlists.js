@@ -42,6 +42,17 @@ var KTDatatableAutoColumnHideDemo = (function () {
         {
           field: "wishlistId",
           title: "Wishlist ID",
+          width: "auto",
+        },
+        {
+          field: "userId",
+          title: "User ID",
+          width: "auto",
+        },
+        {
+          field: "productId",
+          title: "Product ID",
+          width: "auto",
         },
         {
           field: "created_date",
@@ -52,6 +63,27 @@ var KTDatatableAutoColumnHideDemo = (function () {
           field: "updated_date",
           title: "Wishlist Updated Date",
           width: "auto",
+        },
+        {
+          field: "active",
+          title: "Status",
+          autoHide: false,
+          // callback function support for column rendering
+          template: function (row) {
+            var status = {
+              0: { title: "Inactive", state: "danger" },
+              1: { title: "Active", state: "success" },
+            };
+            return (
+              '<span class="kt-badge kt-badge--' +
+              status[row.active].state +
+              ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' +
+              status[row.active].state +
+              '">' +
+              status[row.active].title +
+              "</span>"
+            );
+          },
         },
         {
           field: "Actions",

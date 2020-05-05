@@ -1,1 +1,1 @@
-[{"testimonialId":1,"name":"asdk","description":"asdklmn","pictureId":1,"active":1},{"testimonialId":2,"name":"rakesh","description":"google","pictureId":2,"active":1}]
+[{"testimonialId":1,"picname":"Googles","path":"www.google.com","name":"Google","active":1,"description":"Best engine ","pictureId":1},{"testimonialId":2,"picname":"Software Company","path":"www.google.com","name":"Software Company","active":1,"description":"Great","pictureId":2}]

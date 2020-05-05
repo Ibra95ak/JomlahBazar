@@ -11,24 +11,20 @@ else $orderId=0;
 
 //get data from form
 $userId=$_POST['userId'];
-$productId=$_POST['productId'];
-$supplierId=$_POST['supplierId'];
 $ordernumber=$_POST['ordernumber'];
-$puchaseId=$_POST['puchaseId'];
-$order_date=$_POST['order_date'];
+$purchaseId=$_POST['purchaseId'];
 $statusId=$_POST['statusId'];
 $blockId=$_POST['blockId'];
 $active=$_POST['active'];
 
 if($orderId>0){
     //Edit order
-    $edit_order=$db->editOrder($orderId,$ordernumber,$order_date,$active);
+    $edit_order=$db->editOrder($orderId,$userId,$ordernumber,$purchaseId,$statusId,$blockId,$active);
     if($edit_order) $err=0;
     else $err=1;
 }else{
     //add order
-    $add_order=$db->addOrder($userId,$productId,$supplierId,$ordernumber,$puchaseId,$order_date,
-    $statusId,$blockId,$active);
+    $add_order=$db->addOrder($userId,$ordernumber,$purchaseId,$statusId,$blockId,$active);
     if($add_order) $err=0;
     else $err=1;
 }

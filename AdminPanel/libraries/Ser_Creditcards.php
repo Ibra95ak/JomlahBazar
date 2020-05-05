@@ -20,7 +20,7 @@ class Ser_Creditcards {
      */
     public function addCreditcard($card_number,$card_expMO,$card_expYR,$creditcarddetailId) {
         $stmt = $this->conn->prepare("CALL sp_AddCreditcard(?,?,?,?)");
-		$stmt->bind_param("ssii",$card_number,$card_expMO,$card_expYR,$creditcarddetailId);
+		$stmt->bind_param("iiii",$card_number,$card_expMO,$card_expYR,$creditcarddetailId);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store
@@ -34,7 +34,7 @@ class Ser_Creditcards {
      */
     public function editCreditcard($creditcardId,$card_number,$card_expMO,$card_expYR,$creditcarddetailId) {
         $stmt = $this->conn->prepare("CALL sp_EditCreditcard(?,?,?,?,?)");
-		$stmt->bind_param("isssi",$creditcardId,$card_number,$card_expMO,$card_expYR,$creditcarddetailId);
+		$stmt->bind_param("iiiii",$creditcardId,$card_number,$card_expMO,$card_expYR,$creditcarddetailId);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

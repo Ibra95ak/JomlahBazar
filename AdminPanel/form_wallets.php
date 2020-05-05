@@ -11,12 +11,10 @@ if($walletId>0){
     //Edit wallet
     $get_wallet=$db->GetWalletById($walletId);
     if($get_wallet){
-    $type=$get_wallet['type'];
-    $typeId=$get_wallet['typeId'];
+    $wallettypeId=$get_wallet['wallettypeId'];
      $active=$get_wallet['active'];
     }else{
-        $type='';
-        $typeId='';
+        $wallettypeId='';
         $active='';
     }
 }
@@ -27,7 +25,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+                Edit Wallet
             </h3>
         </div>
     </div>
@@ -37,36 +35,25 @@ include('header.php');
         <div class="kt-portlet__body">
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>type:</label>
+                    <label>wallettypeId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="type" id="type"
-                            value="<?php if(isset($type)) echo $type;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="wallettypeId" id="wallettypeId"
+                            value="<?php if(isset($wallettypeId)) echo $wallettypeId;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your type</span>
+                    <span class="form-text text-muted">Please enter your wallettypeId</span>
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
-                    <label>typeId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="typeId" id="typeId"
-                            value="<?php if(isset($typeId)) echo $typeId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your typeId</span>
-                </div>
+            <div class="form-group" id="edits">
+                <label>Status</label>
+                <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
+                    <input id="active" type="checkbox" value="1"
+                        <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
+                    <span></span>
+                </label>
+                <span class="form-text text-muted">Some help text goes here</span>
             </div>
-        <div class="form-group" id="edits">
-            <label>Status</label>
-            <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
-                <input id="active" type="checkbox" value="1"
-                    <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
-                <span></span>
-            </label>
-            <span class="form-text text-muted">Some help text goes here</span>
         </div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
@@ -79,7 +66,6 @@ include('header.php');
                 </div>
             </div>
         </div>
-        </div>
     </form>
 
     <!--end::Form-->
@@ -91,9 +77,9 @@ include('header.php');
 var url_string = window.location.href
 var url = new URL(url_string);
 var walletId = url.searchParams.get("walletId");
-var div_edit = document.getElementById("edits");
-if (walletId > 0) div_edit.style.display = "inline";
-else div_edit.style.display = "none";
+// var div_edit = document.getElementById("edits");
+// if (walletId > 0) div_edit.style.display = "inline";
+// else div_edit.style.display = "none";
 </script>
 <?php include("footer.php");?>
 <script>
@@ -101,15 +87,11 @@ $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var type = $("#type").val();
-    var typeId = $("#typeId").val();
+    var wallettypeId = $("#wallettypeId").val();
     var active = $("#active").val();
     form.validate({
         rules: {
-            type: {
-                required: true
-            },
-            typeId: {
+            wallettypeId: {
                 required: true
             },
         }
@@ -125,8 +107,8 @@ $('#btn_submit').click(function(e) {
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_wallet.php",
         dataType: "json",
         data: {
-            type: type,
-            typeId: typeId,
+            walletId: walletId,
+            wallettypeId: wallettypeId,
             active: active
         },
         success: function(data) {

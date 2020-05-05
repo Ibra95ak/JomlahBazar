@@ -42,6 +42,22 @@ var KTDatatableAutoColumnHideDemo = (function () {
         {
           field: "addressId",
           title: "Address ID",
+          width: "auto",
+        },
+        {
+          field: "ipaddress",
+          title: "IP Address",
+          width: "auto",
+        },
+        {
+          field: "address1",
+          title: "Address 1",
+          width: "auto",
+        },
+        {
+          field: "address2",
+          title: "Address 2",
+          width: "auto",
         },
         {
           field: "city",
@@ -49,8 +65,28 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: "auto",
         },
         {
+          field: "state",
+          title: "State",
+          width: "auto",
+        },
+        {
+          field: "postalcode",
+          title: "Postalcode",
+          width: "auto",
+        },
+        {
           field: "country",
           title: "Country",
+          width: "auto",
+        },
+        {
+          field: "latitude",
+          title: "Latitude",
+          width: "auto",
+        },
+        {
+          field: "longitude",
+          title: "Longitude",
           width: "auto",
         },
         {

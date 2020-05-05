@@ -42,6 +42,17 @@ var KTDatatableAutoColumnHideDemo = (function () {
         {
           field: "productId",
           title: "Product ID",
+          width: "auto",
+        },
+        {
+          field: "productdetailId",
+          title: "ProductDetail ID",
+          width: "auto",
+        },
+        {
+          field: "inventoryId",
+          title: "Inventory ID",
+          width: "auto",
         },
         {
           field: "name",
@@ -52,6 +63,92 @@ var KTDatatableAutoColumnHideDemo = (function () {
           field: "quantity",
           title: "Product quantity",
           width: "auto",
+        },
+        {
+          field: "min_order",
+          title: "Minimum Order",
+          width: "auto",
+        },
+        {
+          field: "unitprice",
+          title: "Unit Price",
+          width: "auto",
+        },
+        {
+          field: "discount",
+          title: "Discount",
+          width: "auto",
+        },
+        {
+          field: "description",
+          title: "Description",
+          width: "auto",
+        },
+        {
+          field: "size",
+          title: "Size",
+          width: "auto",
+        },
+        {
+          field: "color",
+          title: "Color",
+          width: "auto",
+        },
+        {
+          field: "weight",
+          title: "Weight",
+          width: "auto",
+        },
+        {
+          field: "barcode",
+          title: "Barcode",
+          width: "auto",
+        },
+        {
+          field: "inventorynumber",
+          title: "Inventory Number",
+          width: "auto",
+        },
+        {
+          field: "brand_name",
+          title: "Brand Name",
+          width: "auto",
+        },
+        {
+          field: "ranking",
+          title: "Ranking",
+          width: "auto",
+        },
+        {
+          field: "brandId",
+          title: "Brand ID",
+          width: "auto",
+        },
+        {
+          field: "blockId",
+          title: "Block ID",
+          width: "auto",
+        },
+        {
+          field: "active",
+          title: "Status",
+          autoHide: false,
+          // callback function support for column rendering
+          template: function (row) {
+            var status = {
+              0: { title: "Inactive", state: "danger" },
+              1: { title: "Active", state: "success" },
+            };
+            return (
+              '<span class="kt-badge kt-badge--' +
+              status[row.active].state +
+              ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' +
+              status[row.active].state +
+              '">' +
+              status[row.active].title +
+              "</span>"
+            );
+          },
         },
         {
           field: "Actions",
@@ -68,9 +165,15 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_inventories.php?inventoryId=' +
+              row.inventoryId +
+              '"><i class="la la-edit"></i> Inventory</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_brands.php?brandId=' +
+              row.brandId +
+              '"><i class="la la-leaf"></i> Brand</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_productdetails.php?productdetailId=' +
+              row.productdetailId +
+              '"><i class="la la-print"></i> ProductDetail</a>\
 							    </div>\
 							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_products.php?productId=' +

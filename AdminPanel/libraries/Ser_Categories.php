@@ -17,9 +17,9 @@ class Ser_Categories {
      * Storing new Category
      * returns Boolean
      */
-    public function addCategory($name,$icon,$productId,$subcategoryId,$brandId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_AddCategory(?,?,?,?,?,?)");
-		$stmt->bind_param("ssiiii",$name,$icon,$productId,$subcategoryId,$brandId,$active);
+    public function addCategory($name,$icon,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddCategory(?,?,?)");
+		$stmt->bind_param("ssi",$name,$icon,$active);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store

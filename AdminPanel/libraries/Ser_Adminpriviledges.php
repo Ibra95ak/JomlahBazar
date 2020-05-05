@@ -38,7 +38,6 @@ class Ser_Adminpriviledges {
 		$stmt->bind_param("ii",$adminId,$priviledgeId);
 		$result = $stmt->execute();
         $stmt->close();
-        // check for successful store
         if ($result) return true;
         else return false;
     }

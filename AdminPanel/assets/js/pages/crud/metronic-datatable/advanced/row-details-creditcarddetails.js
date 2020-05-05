@@ -49,6 +49,27 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: "auto",
         },
         {
+          field: "active",
+          title: "Status",
+          autoHide: false,
+          // callback function support for column rendering
+          template: function (row) {
+            var status = {
+              0: { title: "Inactive", state: "danger" },
+              1: { title: "Active", state: "success" },
+            };
+            return (
+              '<span class="kt-badge kt-badge--' +
+              status[row.active].state +
+              ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' +
+              status[row.active].state +
+              '">' +
+              status[row.active].title +
+              "</span>"
+            );
+          },
+        },
+        {
           field: "Actions",
           title: "Actions",
           sortable: false,
@@ -58,16 +79,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<div class="dropdown">\
-								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
-	                                <i class="la la-ellipsis-h"></i>\
-	                            </a>\
-							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
-							    </div>\
-							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_creditcarddetails.php?creditcarddetailId=' +
               row.creditcarddetailId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\

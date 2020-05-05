@@ -10,6 +10,7 @@ if(isset($_POST['reachoutId'])) $reachoutId=$_POST['reachoutId'];
 else $reachoutId=0;
 
 //get data from form
+$userId=$_POST['userId'];
 $phone=$_POST['phone'];
 $whatsapp=$_POST['whatsapp'];
 $telegram=$_POST['telegram'];
@@ -19,12 +20,12 @@ $sms=$_POST['sms'];
 
 if($reachoutId>0){
     //Edit reachout
-    $edit_reachout=$db->editReachout($reachoutId,$phone,$whatsapp,$telegram,$messenger,$skype,$sms);
+    $edit_reachout=$db->editReachout($reachoutId,$userId,$phone,$whatsapp,$telegram,$messenger,$skype,$sms);
     if($edit_reachout) $err=0;
     else $err=1;
 }else{
     //add reachout
-    $add_reachout=$db->addReachout($phone,$whatsapp,$telegram,$messenger,$skype,$sms);
+    $add_reachout=$db->addReachout($userId,$phone,$whatsapp,$telegram,$messenger,$skype,$sms);
     if($add_reachout) $err=0;
     else $err=1;
 }

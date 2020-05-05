@@ -31,9 +31,9 @@ class Ser_Wallets {
      * Storing new Wallet
      * returns Boolean
      */
-    public function addWallet($type,$typeId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_AddWallet(?,?,?)");
-		$stmt->bind_param("sii",$type,$typeId,$active);
+    public function addWallet($wallettypeId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddWallet(?,?)");
+		$stmt->bind_param("ii",$wallettypeId,$active);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful Wallet
@@ -46,9 +46,9 @@ class Ser_Wallets {
      * @param walletId, username, password
      * returns Boolean
      */
-    public function editWallet($walletId,$type,$typeId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_EditWallet(?,?,?,?)");
-		$stmt->bind_param("isii",$walletId,$type,$typeId,$active);
+    public function editWallet($walletId,$wallettypeId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditWallet(?,?,?)");
+		$stmt->bind_param("iii",$walletId,$wallettypeId,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

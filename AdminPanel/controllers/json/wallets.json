@@ -1,1 +1,1 @@
-[{"walletId":1,"type":"visa","typeId":3,"active":1},{"walletId":6,"type":"were","typeId":5,"active":1},{"walletId":7,"type":"visa","typeId":6,"active":1},{"walletId":8,"type":"were","typeId":54,"active":1}]
+[{"walletId":1,"wallettype":"creditcard","active":1},{"walletId":7,"wallettype":"creditcard","active":1},{"walletId":9,"wallettype":"creditcard","active":1},{"walletId":11,"wallettype":"Bitcoin","active":1}]

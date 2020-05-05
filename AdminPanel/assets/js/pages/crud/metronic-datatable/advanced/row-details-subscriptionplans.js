@@ -41,16 +41,27 @@ var KTDatatableAutoColumnHideDemo = (function () {
       columns: [
         {
           field: "subscriptionplanId",
-          title: "Store ID",
-        },
-        {
-          field: "purchaseIs",
-          title: "Purchase ID",
+          title: "SubcriptionPlan ID",
           width: "auto",
         },
         {
           field: "name",
-          title: "Subcription-plan Name",
+          title: "SubcriptionPlan Name",
+          width: "auto",
+        },
+        {
+          field: "total_price",
+          title: "Total Price",
+          width: "auto",
+        },
+        {
+          field: "purchase_date",
+          title: "Purchase Date",
+          width: "auto",
+        },
+        {
+          field: "paid",
+          title: "Paid",
           width: "auto",
         },
         {
@@ -63,16 +74,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<div class="dropdown">\
-								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
-	                                <i class="la la-ellipsis-h"></i>\
-	                            </a>\
-							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
-							    </div>\
-							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_subscriptionplans.php?subscriptionplanId=' +
               row.subscriptionplanId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\

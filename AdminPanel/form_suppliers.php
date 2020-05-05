@@ -11,20 +11,16 @@ if($supplierId>0){
     //Edit supplier
     $get_supplier=$db->GetSupplierById($supplierId);
     if($get_supplier){
-     $orderId=$get_supplier['orderId'];
+     $aaaId=$get_supplier['aaaId'];
+     $subscriptionplanId=$get_supplier['subscriptionplanId'];
      $discount_type=$get_supplier['discount_type'];
-     $categoryId=$get_supplier['categoryId'];
-     $subplanId=$get_supplier['subplanId'];
-     $storeId=$get_supplier['storeId'];
-     $registered_supId=$get_supplier['registered_supId'];
+     $registeredsupplierId=$get_supplier['registeredsupplierId'];
      $blockId=$get_supplier['blockId'];
     }else{
-        $orderId='';
+        $aaaId='';
+        $subscriptionplanId='';
         $discount_type='';
-        $categoryId='';
-        $subplanId='';
-        $storeId='';
-        $registered_supId='';
+        $registeredsupplierId='';
         $blockId='';
     }
 }
@@ -35,7 +31,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+                Edit Supplier
             </h3>
         </div>
     </div>
@@ -45,14 +41,26 @@ include('header.php');
         <div class="kt-portlet__body">
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>orderId:</label>
+                    <label>aaaId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="orderId" id="orderId"
-                            value="<?php if(isset($orderId)) echo $orderId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="aaaId" id="aaaId"
+                            value="<?php if(isset($aaaId)) echo $aaaId;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your orderId</span>
+                    <span class="form-text text-muted">Please enter your aaaId</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>subscriptionplanId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="subscriptionplanId" id="subscriptionplanId"
+                            value="<?php if(isset($subscriptionplanId)) echo $subscriptionplanId;else echo '';?>">
+                    </div>
+                    <span class="form-text text-muted">Please enter your subscriptionplanId</span>
                 </div>
             </div>
             <div class="form-group row">
@@ -69,53 +77,16 @@ include('header.php');
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>categoryId:</label>
+                    <label>registeredsupplierId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="categoryId" id="categoryId"
-                            value="<?php if(isset($categoryId)) echo $categoryId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="registeredsupplierId" id="registeredsupplierId"
+                            value="<?php if(isset($registeredsupplierId)) echo $registeredsupplierId;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your categoryId</span>
+                    <span class="form-text text-muted">Please enter your registeredsupplierId</span>
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
-                    <label>subplanId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="subplanId" id="subplanId"
-                            value="<?php if(isset($subplanId)) echo $subplanId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your subplanId</span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
-                    <label>storeId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="storeId" id="storeId"
-                            value="<?php if(isset($storeId)) echo $storeId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your storeId</span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
-                    <label>registered_supId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="registered_supId" id="registered_supId"
-                            value="<?php if(isset($registered_supId)) echo $registered_supId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your registered_supId</span>
-                </div>
-            </div>
-           
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>blockId:</label>
@@ -149,7 +120,7 @@ include('header.php');
 <script>
 var url_string = window.location.href
 var url = new URL(url_string);
-var supplierID = url.searchParams.get("supplierID");
+var supplierId = url.searchParams.get("supplierId");
 // var div_edit = document.getElementById("edits");
 // if (supplier > 0) div_edit.style.display = "inline";
 // else div_edit.style.display = "none";
@@ -160,31 +131,23 @@ $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var orderId = $("#orderId").val();
+    var aaaId = $("#aaaId").val();
+    var subscriptionplanId = $("#subscriptionplanId").val();
     var discount_type = $("#discount_type").val();
-    var categoryId = $("#categoryId").val();
-    var subplanId = $("#subplanId").val();
-    var storeId = $("#storeId").val();
-    var registered_supId = $("#registered_supId").val();
+    var registeredsupplierId = $("#registeredsupplierId").val();
     var blockId = $("#blockId").val();
     form.validate({
         rules: {
-            orderId: {
+            aaaId: {
+                required: true
+            },
+            subscriptionplanId: {
                 required: true
             },
             discount_type: {
                 required: true
             },
-            categoryId: {
-                required: true
-            },
-            subplanId: {
-                required: true
-            },
-            storeId: {
-                required: true
-            },
-            registered_supId: {
+            registeredsupplierId: {
                 required: true
             },
             blockId: {
@@ -204,12 +167,10 @@ $('#btn_submit').click(function(e) {
         dataType: "json",
         data: {
             supplierId: supplierId,
-            orderId: orderId,
+            aaaId: aaaId,
+            subscriptionplanId: subscriptionplanId,
             discount_type: discount_type,
-            categoryId: categoryId,
-            subplanId: subplanId,
-            storeId: storeId,
-            registered_supId: registered_supId,
+            registeredsupplierId: registeredsupplierId,
             blockId: blockId,
         },
         success: function(data) {

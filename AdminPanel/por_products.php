@@ -1,5 +1,11 @@
 <?php include('header.php');
-require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Products.php');?>
+//filtering parameter
+if(isset($_GET['supplierId'])) $supplierId=$_GET['supplierId'];
+else $supplierId=0;
+if(isset($_GET['cartId'])) $cartId=$_GET['cartId'];
+else $cartId=0;
+require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Products.php?supplierId='.$supplierId.'&cartId='.$cartId);
+?>
 <!-- begin:: Content -->
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
     <div class="kt-portlet__body kt-portlet__body--fit">

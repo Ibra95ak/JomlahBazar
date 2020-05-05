@@ -6,8 +6,17 @@ require_once '../libraries/Ser_Products.php';
 $db = new Ser_Products();
 //results array
 $results=array();
-//get all leads details
-$getAll_products = $db->GetProducts();
+$supplierId=$_GET['supplierId'];
+$cartId=$_GET['cartId'];
+if($supplierId>0){
+    //get all products for supplier
+    $getAll_products = $db->GetSupplierProducts($supplierId);
+}else if($cartId>0){
+    $getAll_products = $db->GetCartProducts($cartId);
+} else {
+    //get all products 
+    $getAll_products = $db->GetProducts();
+}
 foreach($getAll_products as $product){
     array_push($results,$product);
 }

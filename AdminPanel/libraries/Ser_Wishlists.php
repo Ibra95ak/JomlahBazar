@@ -63,9 +63,9 @@ class Ser_Wishlists {
      * @param wishlistId, username, password
      * returns Boolean
      */
-    public function editWishlist($wishlistId,$created_date,$updated_date,$active) {
+    public function editWishlist($wishlistId,$userId,$productId,$active) {
         $stmt = $this->conn->prepare("CALL sp_EditWishlist(?,?,?,?)");
-		$stmt->bind_param("issi",$wishlistId,$created_date,$updated_date,$active);
+		$stmt->bind_param("iiii",$wishlistId,$userId,$productId,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

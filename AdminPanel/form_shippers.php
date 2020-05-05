@@ -1,21 +1,23 @@
 <?php 
-//Get ShipperId class
+//Get shipperId class
 require_once 'libraries/Ser_Shippers.php';
 $db = new Ser_Shippers();
 $err=-1;
 
-if(isset($_GET['ShipperId'])) $ShipperId=$_GET['ShipperId'];
-else $ShipperId=0;
+if(isset($_GET['shipperId'])) $shipperId=$_GET['shipperId'];
+else $shipperId=0;
 
-if($ShipperId>0){
-    //Edit ShipperId
-    $get_Shipper=$db->GetShipperById($ShipperId);
-    if($get_ShipperId){
-     $addressId=$get_ShipperId['addressId'];
-     $reachoutId=$get_ShipperId['reachoutId'];
-     $shipperdetailsId=$get_ShipperId['shipperdetailsId'];
-     $active=$get_ShipperId['active'];
+if($shipperId>0){
+    //Edit shipperId
+    $get_Shipper=$db->GetShipperById($shipperId);
+    if($get_Shipper){
+     $aaaId=$get_Shipper['aaaId'];
+     $addressId=$get_Shipper['addressId'];
+     $reachoutId=$get_Shipper['reachoutId'];
+     $shipperdetailsId=$get_Shipper['shipperdetailsId'];
+     $active=$get_Shipper['active'];
     }else{
+        $aaaId='';
         $addressId='';
         $reachoutId='';
         $shipperdetailsId='';
@@ -29,7 +31,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+            Shippers
             </h3>
         </div>
     </div>
@@ -37,6 +39,18 @@ include('header.php');
     <!--begin::Form-->
     <form class="kt-form kt-form--label-right">
         <div class="kt-portlet__body">
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>aaaId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="aaaId" id="aaaId"
+                            value="<?php if(isset($aaaId)) echo $aaaId;else echo '';?>">
+                    </div>
+                    <span class="form-text text-muted">Please enter your aaaId</span>
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>addressId:</label>
@@ -73,7 +87,7 @@ include('header.php');
                     <span class="form-text text-muted">Please enter your shipperdetailsId</span>
                 </div>
             </div>
-        <div class="form-group" id="edits">
+         <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
                 <input id="active" type="checkbox" value="1"
@@ -103,7 +117,7 @@ include('header.php');
 <script>
 var url_string = window.location.href
 var url = new URL(url_string);
-var ShipperID = url.searchParams.get("ShipperID");
+var shipperId = url.searchParams.get("shipperId");
 // var div_edit = document.getElementById("edits");
 // if (Shipper > 0) div_edit.style.display = "inline";
 // else div_edit.style.display = "none";
@@ -114,12 +128,16 @@ $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
+    var aaaId = $("#aaaId").val();
     var addressId = $("#addressId").val();
     var reachoutId = $("#reachoutId").val();
     var shipperdetailsId = $("#shipperdetailsId").val();
     var active = $("#active").val();
     form.validate({
         rules: {
+            aaaId: {
+                required: true
+            },
             addressId: {
                 required: true
             },
@@ -142,7 +160,8 @@ $('#btn_submit').click(function(e) {
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_Shipper.php",
         dataType: "json",
         data: {
-            ShipperId: ShipperId,
+            shipperId: shipperId,
+            aaaId: aaaId,
             addressId: addressId,
             reachoutId: reachoutId,
             shipperdetailsId: shipperdetailsId,

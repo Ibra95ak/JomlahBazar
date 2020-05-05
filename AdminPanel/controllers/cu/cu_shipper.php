@@ -10,6 +10,7 @@ if(isset($_POST['shipperId'])) $shipperId=$_POST['shipperId'];
 else $shipperId=0;
 
 //get data from form
+$aaaId=$_POST['aaaId'];
 $addressId=$_POST['addressId'];
 $reachoutId=$_POST['reachoutId'];
 $shipperdetailsId=$_POST['shipperdetailsId'];
@@ -17,12 +18,12 @@ $active=$_POST['active'];
 
 if($shipperId>0){
     //Edit shipper
-    $edit_shipper=$db->editShipper($shipperId,$active);
+    $edit_shipper=$db->editShipper($shipperId,$aaaId,$addressId,$reachoutId,$shipperdetailsId,$active);
     if($edit_shipper) $err=0;
     else $err=1;
 }else{
     //add shipper
-    $add_shipper=$db->addShipper($addressId,$reachoutId,$shipperdetailsId,$active);
+    $add_shipper=$db->addShipper($aaaId,$addressId,$reachoutId,$shipperdetailsId,$active);
     if($add_shipper) $err=0;
     else $err=1;
 }

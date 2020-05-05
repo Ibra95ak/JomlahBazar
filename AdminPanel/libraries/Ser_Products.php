@@ -16,10 +16,9 @@ class Ser_Products {
      * Storing new Product
      * returns Boolean
      */
-    public function addProduct($name,$quantity,$min_order,$unitprice,$discount,$ranking,$productdetailId,$brandId,$blockId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_AddProduct(?,?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("siiiisiiii",$name,$quantity,$min_order,$unitprice,$discount,$ranking,
-        $productdetailId,$brandId,$blockId,$active);
+    public function addProduct($supplierId,$productdetailId,$inventoryId,$name,$quantity,$min_order,$unitprice,$discount,$ranking,$brandId,$blockId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddProduct(?,?,?,?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiisiiiiiiii",$supplierId,$productdetailId,$inventoryId,$name,$quantity,$min_order,$unitprice,$discount,$ranking,$brandId,$blockId,$active);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store
@@ -32,9 +31,9 @@ class Ser_Products {
      * @param productId, username, password
      * returns Boolean
      */
-    public function editProduct($productId,$name,$quantity,$min_order,$unitprice,$description,$ranking,$active) {
-        $stmt = $this->conn->prepare("CALL sp_EditProduct(?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("isiiisii",$productId,$name,$quantity,$min_order,$unitprice,$description,$ranking,$active);
+    public function editProduct($productId,$supplierId,$productdetailId,$inventoryId,$name,$quantity,$min_order,$unitprice,$discount,$ranking,$brandId,$blockId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditProduct(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiiisiiiiiiii",$productId,$supplierId,$productdetailId,$inventoryId,$name,$quantity,$min_order,$unitprice,$discount,$ranking,$brandId,$blockId,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;
@@ -44,7 +43,7 @@ class Ser_Products {
      * Get all products 
      * returns json/Null
      */
-    public function Getproducts() {
+    public function GetProducts() {
         $stmt = $this->conn->prepare("CALL sp_GetProducts()");
         if ($stmt->execute()) {
             $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
@@ -54,7 +53,37 @@ class Ser_Products {
             }
         } else return NULL;
     }
-    
+
+    /**
+     * Get all products by supplier 
+     * returns json/Null
+     */
+    public function GetSupplierProducts($supplierId) {
+        $stmt = $this->conn->prepare("CALL sp_GetSupplierProducts(?)");
+        $stmt->bind_param("i",$supplierId);
+        if ($stmt->execute()) {
+            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+            $stmt->close();
+            if ($products==true) {
+                return $products;
+            }
+        } else return NULL;
+    }
+    /**
+     * Get all products by cart 
+     * returns json/Null
+     */
+    public function GetCartProducts($cartId) {
+        $stmt = $this->conn->prepare("CALL sp_GetCartProducts(?)");
+        $stmt->bind_param("i",$cartId);
+        if ($stmt->execute()) {
+            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+            $stmt->close();
+            if ($products==true) {
+                return $products;
+            }
+        } else return NULL;
+    }
     /**
      * Get all products 
      * params product Id

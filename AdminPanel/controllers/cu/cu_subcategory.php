@@ -11,20 +11,20 @@ else $subcategoryId=0;
 
 //get data from form
 $categoryId=$_POST['categoryId'];
-$productId=$_POST['productId'];
-$brandId=$_POST['brandId'];
+$name=$_POST['name'];
+$icon=$_POST['icon'];
 $active=$_POST['active'];
 
 if($subcategoryId>0){
     //Edit subcategory
-    $edit_subcategory=$db->editSubcategory($subcategoryId,$active);
+    $edit_subcategory=$db->editSubcategory($subcategoryId,$categoryId,$name,$icon,$active);
     if($edit_subcategory) $err=0;
-    else $err=1;
+    else $err=10;
 }else{
     //add subcategory
-    $add_subcategory=$db->addSubcategory($categoryId,$productId,$brandId,$active);
-    if($add_subcategory) $err=0;
-    else $err=1;
+    // $add_subcategory=$db->addSubcategory($categoryId,$name,$icon,$active);
+    // if($add_subcategory) $err=0;
+    // else $err=1;
 }
 echo json_encode($err);
 exit;

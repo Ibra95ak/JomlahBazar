@@ -25,7 +25,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+            Edit AdminPriviledge
             </h3>
         </div>
     </div>
@@ -118,6 +118,7 @@ $('#btn_submit').click(function(e) {
             priviledgeId: priviledgeId,
         },
         success: function(data) {
+            alert(data);
             switch (data) {
                 case 0:
                     // similate 2s delay

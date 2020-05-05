@@ -47,9 +47,9 @@ class Ser_Carts {
      * Edit cart 
      * returns Boolean
      */
-    public function editCart($cartId,$userId,$productId,$created_date,$updated_date,$active) {
-        $stmt = $this->conn->prepare("CALL sp_EditCart(?,?,?,?,?,?)");
-		$stmt->bind_param("iiissi",$cartId,$userId,$productId,$created_date,$updated_date,$active);
+    public function editCart($cartId,$userId,$productId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditCart(?,?,?,?)");
+		$stmt->bind_param("iiii",$cartId,$userId,$productId,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

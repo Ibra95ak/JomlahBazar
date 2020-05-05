@@ -1,5 +1,7 @@
 <?php include('header.php');
-require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Priviledges.php');?>
+if(isset($_GET['adminpriviledgeId'])) $adminpriviledgeId=$_GET['adminpriviledgeId'];
+else $adminpriviledgeId=0;
+require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Priviledges.php?adminpriviledgeId='.$adminpriviledgeId);?>
 <!-- begin:: Content -->
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
     <div class="kt-portlet__body kt-portlet__body--fit">

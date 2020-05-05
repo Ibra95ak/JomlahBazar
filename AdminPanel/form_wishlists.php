@@ -27,7 +27,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+                Edit Wishlist
             </h3>
         </div>
     </div>
@@ -58,9 +58,8 @@ include('header.php');
                     </div>
                     <span class="form-text text-muted">Please enter your productId</span>
                 </div>
-            </div>
-        </div>
-        <div class="form-group" id="edits">
+            </div>       
+             <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
                 <input id="active" type="checkbox" value="1"
@@ -68,6 +67,7 @@ include('header.php');
                 <span></span>
             </label>
             <span class="form-text text-muted">Some help text goes here</span>
+        </div>
         </div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
@@ -90,10 +90,10 @@ include('header.php');
 <script>
 var url_string = window.location.href
 var url = new URL(url_string);
-var WishlistId = url.searchParams.get("WishlistId");
-var div_edit = document.getElementById("edits");
-if (WishlistId > 0) div_edit.style.display = "inline";
-else div_edit.style.display = "none";
+var wishlistId = url.searchParams.get("wishlistId");
+// var div_edit = document.getElementById("edits");
+// if (wishlistId > 0) div_edit.style.display = "inline";
+// else div_edit.style.display = "none";
 </script>
 <?php include("footer.php");?>
 <script>
@@ -122,10 +122,10 @@ $('#btn_submit').click(function(e) {
     btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);
     $.ajax({
         type: "POST",
-        url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_Wishlist.php",
+        url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_wishlist.php",
         dataType: "json",
         data: {
-            WishlistId: WishlistId,
+            wishlistId: wishlistId,
             userId: userId,
             productId: productId,
             active: active

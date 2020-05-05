@@ -40,8 +40,14 @@ var KTDatatableAutoColumnHideDemo = (function () {
       // columns definition
       columns: [
         {
-          field: "typeId",
-          title: "Paypal Type ID",
+          field: "paypalId",
+          title: "Paypal ID",
+          width: "auto",
+        },
+        {
+          field: "walletId",
+          title: "Wallet ID",
+          width: "auto",
         },
         {
           field: "email",
@@ -58,23 +64,13 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<div class="dropdown">\
-								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
-	                                <i class="la la-ellipsis-h"></i>\
-	                            </a>\
-							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
-							    </div>\
-							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_paypals.php?paypalId=' +
-              row.typeId +
+              row.paypalId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 							<i class="la la-edit"></i>\
 							</a>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Paypal.php?paypalId=' +
-              row.typeId +
+              row.paypalId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
 								<i class="la la-trash"></i>\
 							</a>\

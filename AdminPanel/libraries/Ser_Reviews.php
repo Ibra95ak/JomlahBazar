@@ -48,10 +48,9 @@ class Ser_Reviews{
      * Storing new Review
      * returns Boolean
      */
-    public function addReview($productId,$customerId,$stars,$title,$description,$posted_date,$pictureId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_AddReview(?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("iiisssii",$productId,$customerId,$stars,$title,$description,$posted_date,
-        $pictureId,$active);
+    public function addReview($productId,$userId,$stars,$title,$description,$pictureId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddReview(?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiissii",$productId,$userId,$stars,$title,$description,$pictureId,$active);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store
@@ -64,9 +63,9 @@ class Ser_Reviews{
      * @param reviewId, username, password
      * returns Boolean
      */
-    public function editReview($reviewId,$stars,$title,$description,$posted_date,$active) {
-        $stmt = $this->conn->prepare("CALL sp_EditReview(?,?,?,?,?,?)");
-		$stmt->bind_param("iisssi",$reviewId,$stars,$title,$description,$posted_date,$active);
+    public function editReview($reviewId,$productId,$userId,$stars,$title,$description,$pictureId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditReview(?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiiissii",$reviewId,$productId,$userId,$stars,$title,$description,$pictureId,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

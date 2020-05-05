@@ -7,7 +7,15 @@ $db = new Ser_Priviledges();
 //results array
 $results=array();
 //get all leads details
-$getAll_priviledges = $db->GetPriviledges();
+$adminpriviledgeId=$_GET['adminpriviledgeId'];
+print_r($adminpriviledgeId);
+if($adminpriviledgeId>0){
+    //get all priviledges for supplier
+    $getAll_priviledges = $db->GetAdminPrivledgespriv($adminpriviledgeId);
+}else {
+    //get all priviledges 
+    $getAll_priviledges = $db->Getpriviledges();
+}
 foreach($getAll_priviledges as $priviledge){
     array_push($results,$priviledge);
 }

@@ -10,6 +10,7 @@ if(isset($_POST['storeId'])) $storeId=$_POST['storeId'];
 else $storeId=0;
 
 //get data from form
+$supplierId=$_POST['supplierId'];
 $addressId=$_POST['addressId'];
 $reachoutId=$_POST['reachoutId'];
 $name=$_POST['name'];
@@ -20,12 +21,12 @@ $active=$_POST['active'];
 
 if($storeId>0){
     //Edit store
-    $edit_store=$db->editStore($storeId,$name,$description,$theme,$active);
+    $edit_store=$db->editStore($storeId,$supplierId,$addressId,$reachoutId,$name,$description,$theme,$blockId,$active);
     if($edit_store) $err=0;
     else $err=1;
 }else{
     //add store
-    $add_store=$db->addStore($addressId,$reachoutId,$name,$description,$theme,$blockId,$active);
+    $add_store=$db->addStore($supplierId,$addressId,$reachoutId,$name,$description,$theme,$blockId,$active);
     if($add_store) $err=0;
     else $err=1;
 }

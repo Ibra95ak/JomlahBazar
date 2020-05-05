@@ -32,9 +32,9 @@ class Ser_Subcategories {
      * Storing new Subcategory
      * returns Boolean
      */
-    public function addSubcategory($categoryId,$productId,$brandId,$active) {
+    public function addSubcategory($categoryId,$name,$icon,$active) {
         $stmt = $this->conn->prepare("CALL sp_AddSubcategory(?,?,?,?)");
-		$stmt->bind_param("iii",$categoryId,$productId,$brandId,$active);
+		$stmt->bind_param("issi",$categoryId,$name,$icon,$active);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful Subcategory
@@ -47,9 +47,9 @@ class Ser_Subcategories {
      * @param subcategoryId, username, password
      * returns Boolean
      */
-    public function editSubcategory($subcategoryId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_EditSubcategory(?,?)");
-		$stmt->bind_param("ii",$subcategoryId,$active);
+    public function editSubcategory($subcategoryId,$categoryId,$name,$icon,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditSubcategory(?,?,?,?,?)");
+		$stmt->bind_param("iisii",$subcategoryId,$categoryId,$name,$icon,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;
@@ -61,7 +61,7 @@ class Ser_Subcategories {
      * returns json/Null
      */
     public function GetSubcategoryById($subcategoryId) {
-        $stmt = $this->conn->prepare("CALL sp_GetSubcategoryById(?)");
+        $stmt = $this->conn->prepare("CALL sp_GetSubcategoriesById(?)");
         $stmt->bind_param("i",$subcategoryId);
         if ($stmt->execute()) {
             $subcategories = $stmt->get_result()->fetch_assoc(); //fetch subcategory data and subcategory in array

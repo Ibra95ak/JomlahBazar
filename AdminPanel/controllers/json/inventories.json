@@ -1,1 +1,1 @@
-[{"inventoryId":1,"userId":2,"productId":2,"supplierId":2,"inventorynumber":"jl","order_date":"2020-04-30","statusId":2,"blockId":2,"active":1}]
+[{"inventoryId":1,"inventorynumber":"1","stat":"C","blockId":1,"active":1,"statusId":1},{"inventoryId":2,"inventorynumber":"3","stat":"pending","blockId":3,"active":1,"statusId":2}]

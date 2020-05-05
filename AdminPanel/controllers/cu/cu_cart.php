@@ -12,13 +12,11 @@ else $cartId=0;
 //get data from form
 $userId=$_POST['userId'];
 $productId=$_POST['productId'];
-$created_date=$_POST['created_date'];
-$updated_date=$_POST['updated_date'];
 $active=$_POST['active'];
 
 if($cartId>0){
     //Edit cart
-    $edit_cart=$db->editCart($cartId,$userId,$productId,$created_date,$updated_date,$active);
+    $edit_cart=$db->editCart($cartId,$userId,$productId,$active);
     if($edit_cart) $err=0;
     else $err=1;
 }else{

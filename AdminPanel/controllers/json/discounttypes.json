@@ -1,1 +1,1 @@
-[{"discounttypeId":1,"type":"visa","active":1},{"discounttypeId":2,"type":"visa","active":1},{"discounttypeId":3,"type":"paypal1","active":1}]
+[{"discounttypeId":1,"type":"Sales","active":1},{"discounttypeId":2,"type":"Free","active":1}]

@@ -11,22 +11,21 @@ else $reviewId=0;
 
 //get data from form
 $productId=$_POST['productId'];
-$customerId=$_POST['customerId'];
+$userId=$_POST['userId'];
 $title=$_POST['title'];
 $stars=$_POST['stars'];
 $description=$_POST['description'];
-$posted_date=$_POST['posted_date'];
 $pictureId=$_POST['pictureId'];
 $active=$_POST['active'];
 
 if($reviewId>0){
     //Edit review
-    $edit_review=$db->editReview($reviewId,$stars,$title,$description,$posted_date,$active) ;
+    $edit_review=$db->editReview($reviewId,$productId,$userId,$stars,$title,$description,$pictureId,$active) ;
     if($edit_review) $err=0;
     else $err=1;
 }else{
     //add review
-    $add_review=$db->addReview($productId,$customerId,$stars,$title,$description,$posted_date,$pictureId,$active);
+    $add_review=$db->addReview($productId,$userId,$stars,$title,$description,$pictureId,$active);
     if($add_review) $err=0;
     else $err=1;
 }

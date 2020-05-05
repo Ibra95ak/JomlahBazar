@@ -18,11 +18,9 @@ class Ser_Orders {
      * Storing new Order
      * returns Boolean
      */
-    public function addOrder($userId,$productId,$supplierId,$ordernumber,$puchaseId,$order_date,
-    $statusId,$blockId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_AddOrder(?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("iiiiisiii",$userId,$productId,$supplierId,$ordernumber,$puchaseId,$order_date,
-        $statusId,$blockId,$active);
+    public function addOrder($userId,$ordernumber,$purchaseId,$statusId,$blockId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddOrder(?,?,?,?,?,?)");
+		$stmt->bind_param("iiiiii",$userId,$ordernumber,$purchaseId,$statusId,$blockId,$active);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store
@@ -35,9 +33,9 @@ class Ser_Orders {
      * @param orderId, username, password
      * returns Boolean
      */
-    public function editOrder($orderId,$ordernumber,$order_date,$active) {
-        $stmt = $this->conn->prepare("CALL sp_EditOrder(?,?,?,?)");
-		$stmt->bind_param("iisi",$orderId,$ordernumber,$order_date,$active);
+    public function editOrder($orderId,$userId,$ordernumber,$purchaseId,$statusId,$blockId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditOrder(?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiiiiii",$orderId,$userId,$ordernumber,$purchaseId,$statusId,$blockId,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;
@@ -47,7 +45,7 @@ class Ser_Orders {
      * Get all orders 
      * returns json/Null
      */
-    public function Getorders() {
+    public function GetOrders() {
         $stmt = $this->conn->prepare("CALL sp_GetOrders()");
         if ($stmt->execute()) {
             $orders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch order data and store in array

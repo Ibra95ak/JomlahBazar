@@ -18,9 +18,9 @@ class Ser_Inventories {
      * @param type,active
      * returns Boolean
      */
-    public function addInventory($userId,$productId,$supplierId,$inventorynumber,$order_date,$statusId,$blockId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_AddInventory(?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("iiissiii",$userId,$productId,$supplierId,$inventorynumber,$order_date,$statusId,$blockId,$active);
+    public function addInventory($inventorynumber,$statusId,$blockId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddInventory(?,?,?,?)");
+		$stmt->bind_param("siii",$inventorynumber,$statusId,$blockId,$active);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store
@@ -32,9 +32,9 @@ class Ser_Inventories {
      * @param inventoryId, username, password
      * returns Boolean
      */
-    public function editInventory($inventoryId,$inventorynumber,$order_date,$active) {
+    public function editInventory($inventoryId,$inventorynumber,$statusId,$blockId,$active) {
         $stmt = $this->conn->prepare("CALL sp_EditInventory(?,?,?,?,?)");
-		$stmt->bind_param("iisi",$inventoryId,$inventorynumber,$order_date,$active);
+		$stmt->bind_param("iiiii",$inventoryId,$inventorynumber,$statusId,$blockId,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

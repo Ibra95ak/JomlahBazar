@@ -4,17 +4,17 @@ require_once 'libraries/Ser_Paypals.php';
 $db = new Ser_Paypals();
 $err=-1;
 
-if(isset($_GET['typeId'])) $typeId=$_GET['typeId'];
-else $typeId=0;
+if(isset($_GET['paypalId'])) $paypalId=$_GET['paypalId'];
+else $paypalId=0;
 
-if($typeId>0){
+if($paypalId>0){
     //Edit paypal
-    $typeId=$db->GetPaypalById($typeId);
-    if($typeId){
-     $typeId=$typeId['typeId'];
-     $email=$typeId['email'];
+    $get_type=$db->GetPaypalById($paypalId);
+    if($get_type){
+     $walletId=$get_type['walletId'];
+     $email=$get_type['email'];
     }else{
-        $typeId='';
+        $walletId='';
         $email='';
     }
 }
@@ -25,7 +25,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+            Edit Paypal
             </h3>
         </div>
     </div>
@@ -33,16 +33,16 @@ include('header.php');
     <!--begin::Form-->
     <form class="kt-form kt-form--label-right">
         <div class="kt-portlet__body">
-            <div class="form-group row">
+        <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>typeId:</label>
+                    <label>walletId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="typeId" id="typeId"
-                            value="<?php if(isset($typeId)) echo $typeId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="walletId" id="walletId"
+                            value="<?php if(isset($walletId)) echo $walletId;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your typeId</span>
+                    <span class="form-text text-muted">Please enter your walletId</span>
                 </div>
             </div>
             <div class="form-group row">
@@ -79,9 +79,9 @@ include('header.php');
 <script>
 var url_string = window.location.href;
 var url = new URL(url_string);
-var typeId = url.searchParams.get("typeId");
+var paypalId = url.searchParams.get("paypalId");
 // var div_edit = document.getElementById("edits");
-// if (typeId > 0) div_edit.style.display = "inline";
+// if (paypalId > 0) div_edit.style.display = "inline";
 // else div_edit.style.display = "none";
 </script>
 <?php include("footer.php");?>
@@ -90,11 +90,11 @@ $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var typeId = $("#typeId").val();
+    var walletId = $("#walletId").val();
     var email = $("#email").val();
     form.validate({
         rules: {
-            typeId: {
+            walletId: {
                 required: true
             },
             email: {
@@ -113,8 +113,9 @@ $('#btn_submit').click(function(e) {
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_paypal.php",
         dataType: "json",
         data: {
-            typeId: typeId,
-            email: email
+            paypalId: paypalId,
+            walletId: walletId,
+            email: email,
         },
        
         success: function(data) {

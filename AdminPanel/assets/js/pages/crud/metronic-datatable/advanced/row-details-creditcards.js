@@ -40,8 +40,14 @@ var KTDatatableAutoColumnHideDemo = (function () {
       // columns definition
       columns: [
         {
-          field: "typeId",
-          title: "Creditcard type ID",
+          field: "creditcardId",
+          title: "Creditcard ID",
+          width: "auto",
+        },
+        {
+          field: "card_number",
+          title: "Creditcard Number",
+          width: "auto",
         },
         {
           field: "card_expMO",
@@ -68,18 +74,18 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_creditcarddetails.php?creditcarddetailId=' +
+              row.creditcarddetailId +
+              '"><i class="la la-edit"></i> Creditcarddetail</a>\
 							    </div>\
 							</div>\
-							<a href="http://localhost/JomlahBazar/AdminPanel/form_creditcards.php?typeId=' +
-              row.typeId +
+							<a href="http://localhost/JomlahBazar/AdminPanel/form_creditcards.php?creditcardId=' +
+              row.creditcardId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\
 							</a>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Creditcard.php?creditcardId=' +
-              row.typeId +
+              row.creditcardId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
 								<i class="la la-trash"></i>\
 							</a>\

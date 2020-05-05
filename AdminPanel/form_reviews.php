@@ -12,20 +12,18 @@ if($reviewId>0){
     $get_review=$db->GetReviewById($reviewId);
     if($get_review){
      $productId=$get_review['productId'];
-     $customerId=$get_review['customerId'];
+     $userId=$get_review['userId'];
      $stars=$get_review['stars'];
      $title=$get_review['title'];
      $description=$get_review['description'];
-     $posted_date=$get_review['posted_date'];
      $pictureId=$get_review['pictureId'];
      $active=$get_review['active'];
     }else{
         $productId='';
-        $customerId='';
+        $userId='';
         $stars='';
         $title='';
         $description='';
-        $posted_date='';
         $pictureId='';
         $active='';
     }
@@ -37,7 +35,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+            Edit Reviews
             </h3>
         </div>
     </div>
@@ -59,14 +57,14 @@ include('header.php');
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>customerId:</label>
+                    <label>userId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="customerId" id="customerId"
-                            value="<?php if(isset($customerId)) echo $customerId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="userId" id="userId"
+                            value="<?php if(isset($userId)) echo $userId;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your customerId</span>
+                    <span class="form-text text-muted">Please enter your userId</span>
                 </div>
             </div>
             <div class="form-group row">
@@ -103,18 +101,6 @@ include('header.php');
                             value="<?php if(isset($description)) echo $description;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your description</span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
-                    <label>posted_date:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="posted_date" id="posted_date"
-                            value="<?php if(isset($posted_date)) echo $posted_date;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your posted_date</span>
                 </div>
             </div>
             <div class="form-group row">
@@ -159,7 +145,7 @@ include('header.php');
 <script>
 var url_string = window.location.href
 var url = new URL(url_string);
-var reviewID = url.searchParams.get("reviewID");
+var reviewId = url.searchParams.get("reviewId");
 // var div_edit = document.getElementById("edits");
 // if (review > 0) div_edit.style.display = "inline";
 // else div_edit.style.display = "none";
@@ -171,11 +157,10 @@ $('#btn_submit').click(function(e) {
     var btn = $(this);
     var form = $(this).closest('form');
     var productId = $("#productId").val();
-    var customerId = $("#customerId").val();
+    var userId = $("#userId").val();
     var stars = $("#stars").val();
     var title = $("#title").val();
     var description = $("#description").val();
-    var posted_date = $("#posted_date").val();
     var pictureId = $("#pictureId").val();
     var active = $("#active").val();
     form.validate({
@@ -183,7 +168,7 @@ $('#btn_submit').click(function(e) {
             productId: {
                 required: true
             },
-            customerId: {
+            userId: {
                 required: true
             },
             stars: {
@@ -193,9 +178,6 @@ $('#btn_submit').click(function(e) {
                 required: true
             },
             description: {
-                required: true
-            },
-            posted_date: {
                 required: true
             },
             pictureId: {
@@ -216,11 +198,10 @@ $('#btn_submit').click(function(e) {
         data: {
             reviewId: reviewId,
             productId: productId,
-            customerId: customerId,
+            userId: userId,
             stars: stars,
             title: title,
             description: description,
-            posted_date: posted_date,
             pictureId: pictureId,
             active: active
         },

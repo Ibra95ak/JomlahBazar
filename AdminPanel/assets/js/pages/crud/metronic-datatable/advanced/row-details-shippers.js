@@ -42,11 +42,88 @@ var KTDatatableAutoColumnHideDemo = (function () {
         {
           field: "shipperId",
           title: "Shipper ID",
+          width: "auto",
         },
         {
-          field: "addressId",
-          title: "Address ID",
+          field: "name",
+          title: "Shipper Name",
           width: "auto",
+        },
+        {
+          field: "email",
+          title: "AAA Email",
+          width: 170,
+        },
+        {
+          field: "address1",
+          title: "Address 1",
+          width: "auto",
+        },
+        {
+          field: "address2",
+          title: "Address 2",
+          width: "auto",
+        },
+        {
+          field: "city",
+          title: "City",
+          width: "auto",
+        },
+        {
+          field: "country",
+          title: "Country",
+          width: "auto",
+        },
+        {
+          field: "phone",
+          title: "Phone",
+          width: "auto",
+        },
+        {
+          field: "whatsapp",
+          title: "Whatsapp",
+          width: "auto",
+        },
+        {
+          field: "telegram",
+          title: "Telegram",
+          width: "auto",
+        },
+        {
+          field: "skype",
+          title: "Skype",
+          width: "auto",
+        },
+        {
+          field: "messenger",
+          title: "Messenger",
+          width: "auto",
+        },
+        {
+          field: "sms",
+          title: "Sms",
+          width: "auto",
+        },
+        {
+          field: "active",
+          title: "Status",
+          autoHide: false,
+          // callback function support for column rendering
+          template: function (row) {
+            var status = {
+              0: { title: "Inactive", state: "danger" },
+              1: { title: "Active", state: "success" },
+            };
+            return (
+              '<span class="kt-badge kt-badge--' +
+              status[row.active].state +
+              ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' +
+              status[row.active].state +
+              '">' +
+              status[row.active].title +
+              "</span>"
+            );
+          },
         },
         {
           field: "Actions",
@@ -63,12 +140,21 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_aaa.php?aaaId=' +
+              row.aaaId +
+              '"><i class="la la-edit"></i> AAA</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_address.php?addressId=' +
+              row.addressId +
+              '"><i class="la la-leaf"></i> Address</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_reachouts.php?reachoutId=' +
+              row.reachoutId +
+              '"><i class="la la-print"></i> Reachout</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_shipperdetails.php?shipperdetailId=' +
+              row.shipperdetailId +
+              '"><i class="la la-leaf"></i> ShipperDetail</a>\
 							    </div>\
 							</div>\
-							<a href="http://localhost/JomlahBazar/AdminPanel/form_shipperdetails.php?shipperId=' +
+							<a href="http://localhost/JomlahBazar/AdminPanel/form_shippers.php?shipperId=' +
               row.shipperId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\

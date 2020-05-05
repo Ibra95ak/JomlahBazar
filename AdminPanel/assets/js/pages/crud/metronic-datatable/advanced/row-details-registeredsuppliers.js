@@ -42,10 +42,16 @@ var KTDatatableAutoColumnHideDemo = (function () {
         {
           field: "registeredsupplierId",
           title: "Registered-Supplier ID",
+          width: "auto",
         },
         {
           field: "registered_name",
           title: "Registered Name",
+          width: "auto",
+        },
+        {
+          field: "creditcardId",
+          title: "CreditCard ID",
           width: "auto",
         },
         {
@@ -63,9 +69,9 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_creditcards.php?creditcardId=' +
+              row.creditcardId +
+              '"><i class="la la-leaf"></i> Credit Card</a>\
 							    </div>\
 							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_registeredsuppliers.php?registeredsupplierId=' +

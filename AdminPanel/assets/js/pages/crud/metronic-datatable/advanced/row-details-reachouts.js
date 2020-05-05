@@ -42,10 +42,36 @@ var KTDatatableAutoColumnHideDemo = (function () {
         {
           field: "reachoutId",
           title: "Reachout ID",
+          width: "auto",
+        },
+        {
+          field: "first_name",
+          title: "User Name",
+          width: "auto",
         },
         {
           field: "phone",
           title: "Phone Number",
+          width: "auto",
+        },
+        {
+          field: "whatsapp",
+          title: "Whatsapp Number",
+          width: "auto",
+        },
+        {
+          field: "telegram",
+          title: "Telegram Number",
+          width: "auto",
+        },
+        {
+          field: "messenger",
+          title: "Messenger",
+          width: "auto",
+        },
+        {
+          field: "skype",
+          title: "Skype",
           width: "auto",
         },
         {
@@ -68,9 +94,9 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_buyers.php?userId=' +
+              row.userId +
+              '"><i class="la la-edit"></i> Users</a>\
 							    </div>\
 							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_reachouts.php?reachoutId=' +

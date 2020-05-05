@@ -18,9 +18,9 @@ class Ser_Paypals {
      * Storing new Paypal
      * returns Boolean
      */
-    public function addPaypal($email) {
-        $stmt = $this->conn->prepare("CALL sp_AddPaypal(?)");
-		$stmt->bind_param("s",$email);
+    public function addPaypal($walletId,$email) {
+        $stmt = $this->conn->prepare("CALL sp_AddPaypal(?,?)");
+		$stmt->bind_param("is",$walletId,$email);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store
@@ -33,9 +33,9 @@ class Ser_Paypals {
      * @param typeId, username, password
      * returns Boolean
      */
-    public function editPaypal($typeId,$email) {
-        $stmt = $this->conn->prepare("CALL sp_EditPaypal(?,?)");
-		$stmt->bind_param("is",$typeId,$email);
+    public function editPaypal($paypalId,$walletId,$email) {
+        $stmt = $this->conn->prepare("CALL sp_EditPaypal(?,?,?)");
+		$stmt->bind_param("iis",$paypalId,$walletId,$email);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

@@ -48,9 +48,9 @@ class Ser_Shippers {
      * Storing new Shipper
      * returns Boolean
      */
-    public function addShipper($addressId,$reachoutId,$shipperdetailsId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_AddShipper(?,?,?,?)");
-		$stmt->bind_param("iiii",$addressId,$reachoutId,$shipperdetailsId,$active);
+    public function addShipper($aaaId,$addressId,$reachoutId,$shipperdetailsId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddShipper(?,?,?,?,?)");
+		$stmt->bind_param("iiiii",$aaaId,$addressId,$reachoutId,$shipperdetailsId,$active);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store
@@ -63,9 +63,9 @@ class Ser_Shippers {
      * @param shipperId, username, password
      * returns Boolean
      */
-    public function editShipper($shipperId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_EditShipper(?,?)");
-		$stmt->bind_param("ii",$shipperId,$active);
+    public function editShipper($shipperId,$aaaId,$addressId,$reachoutId,$shipperdetailsId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditShipper(?,?,?,?,?,?)");
+		$stmt->bind_param("iiiiii",$shipperId,$aaaId,$addressId,$reachoutId,$shipperdetailsId,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

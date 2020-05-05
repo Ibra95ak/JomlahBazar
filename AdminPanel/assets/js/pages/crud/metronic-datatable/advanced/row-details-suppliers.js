@@ -44,13 +44,28 @@ var KTDatatableAutoColumnHideDemo = (function () {
           title: "Supplier ID",
         },
         {
-          field: "userId",
-          title: "User ID",
+          field: "email",
+          title: "AAA Email",
+          width: 170,
+        },
+        {
+          field: "name",
+          title: "SubscriptionPlan Name",
           width: "auto",
         },
         {
-          field: "categoryId",
-          title: "Category ID",
+          field: "type",
+          title: "Discount Type",
+          width: "auto",
+        },
+        {
+          field: "registered_name",
+          title: "Registered-Supplier Name",
+          width: "auto",
+        },
+        {
+          field: "blockId",
+          title: "Block ID",
           width: "auto",
         },
         {
@@ -68,9 +83,18 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_aaa.php?aaaId=' +
+              row.aaaId +
+              '"><i class="la la-edit"></i> AAA</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_subscriptionplans.php?subscriptionplanId=' +
+              row.subscriptionplanId +
+              '"><i class="la la-leaf"></i> Subcscription-Plan</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_registeredsuppliers.php?registeredsupplierId=' +
+              row.registeredsupplierId +
+              '"><i class="la la-print"></i> Registered Supplier</a>\
+              <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/por_products.php?supplierId=' +
+              row.supplierId +
+              '"><i class="la la-edit"></i> Products</a>\
 							    </div>\
 							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_suppliers.php?supplierId=' +

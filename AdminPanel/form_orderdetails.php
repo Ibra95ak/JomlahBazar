@@ -1,35 +1,33 @@
 <?php 
-//Get orderdetailid class
+//Get orderdetailId class
 require_once 'libraries/Ser_Orderdetails.php';
 $db = new Ser_Orderdetails();
 $err=-1;
 
-if(isset($_GET['orderdetailid'])) $orderdetailid=$_GET['orderdetailid'];
-else $orderdetailid=0;
+if(isset($_GET['orderdetailId'])) $orderdetailId=$_GET['orderdetailId'];
+else $orderdetailId=0;
 
-if($orderdetailid>0){
-    //Edit orderdetailid
-    $get_orderdetail=$db->GetOrderdetailById($orderdetailid);
+if($orderdetailId>0){
+    //Edit orderdetailId
+    $get_orderdetail=$db->GetOrderdetailById($orderdetailId);
+    
     if($get_orderdetail){
-        print_r($get_orderdetail);
      $orderId=$get_orderdetail['orderId'];
+     $productId=$get_orderdetail['productId'];
      $ordernumber=$get_orderdetail['ordernumber'];
      $discount=$get_orderdetail['discount'];
      $totalprice=$get_orderdetail['totalprice'];
-     $productdetailsId=$get_orderdetail['productdetailsId'];
      $shipperId=$get_orderdetail['shipperId'];
-     $ship_date=$get_orderdetail['ship_date'];
      $statusId=$get_orderdetail['statusId'];
      $blockId=$get_orderdetail['blockId'];
      $active=$get_orderdetail['active'];
     }else{
         $orderId='';
+        $productId='';
         $ordernumber='';
         $discount='';
         $totalprice='';
-        $productdetailsId='';
         $shipperId='';
-        $ship_date='';
         $statusId='';
         $blockId='';
         $active='';
@@ -42,7 +40,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+            Edit Orderdetail
             </h3>
         </div>
     </div>
@@ -60,6 +58,18 @@ include('header.php');
                             value="<?php if(isset($orderId)) echo $orderId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your orderId</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>productId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="productId" id="productId"
+                            value="<?php if(isset($productId)) echo $productId;else echo '';?>">
+                    </div>
+                    <span class="form-text text-muted">Please enter your productId</span>
                 </div>
             </div>
             <div class="form-group row">
@@ -100,18 +110,6 @@ include('header.php');
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>productdetailsId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="productdetailsId" id="productdetailsId"
-                            value="<?php if(isset($productdetailsId)) echo $productdetailsId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your productdetailsId</span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
                     <label>shipperId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
@@ -120,18 +118,6 @@ include('header.php');
                             value="<?php if(isset($shipperId)) echo $shipperId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your shipperId</span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
-                    <label>ship_date:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="ship_date" id="ship_date"
-                            value="<?php if(isset($ship_date)) echo $ship_date;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your ship_date</span>
                 </div>
             </div>
             <div class="form-group row">
@@ -167,6 +153,7 @@ include('header.php');
             </label>
             <span class="form-text text-muted">Some help text goes here</span>
         </div>
+    </div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
                 <div class="row">
@@ -188,7 +175,7 @@ include('header.php');
 <script>
 var url_string = window.location.href
 var url = new URL(url_string);
-var orderdetailid = url.searchParams.get("orderdetailid");
+var orderdetailId = url.searchParams.get("orderdetailId");
 // var div_edit = document.getElementById("edits");
 // if (orderdetail > 0) div_edit.style.display = "inline";
 // else div_edit.style.display = "none";
@@ -200,18 +187,20 @@ $('#btn_submit').click(function(e) {
     var btn = $(this);
     var form = $(this).closest('form');
     var orderId = $("#orderId").val();
+    var productId = $("#productId").val();
     var ordernumber = $("#ordernumber").val();
     var discount = $("#discount").val();
     var totalprice = $("#totalprice").val();
-    var productdetailsId = $("#productdetailsId").val();
     var shipperId = $("#shipperId").val();
-    var ship_date = $("#ship_date").val();
     var statusId = $("#statusId").val();
     var blockId = $("#blockId").val();
     var active = $("#active").val();
     form.validate({
         rules: {
             orderId: {
+                required: true
+            },
+            productId: {
                 required: true
             },
             ordernumber: {
@@ -223,13 +212,7 @@ $('#btn_submit').click(function(e) {
             totalprice: {
                 required: true
             },
-            productdetailsId: {
-                required: true
-            },
             shipperId: {
-                required: true
-            },
-            ship_date: {
                 required: true
             },
             statusId: {
@@ -251,14 +234,13 @@ $('#btn_submit').click(function(e) {
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_orderdetail.php",
         dataType: "json",
         data: {
-            orderdetailid: orderdetailid,
+            orderdetailId: orderdetailId,
             orderId: orderId,
+            productId: productId,
             ordernumber: ordernumber,
             discount: discount,
             totalprice: totalprice,
-            productdetailsId: productdetailsId,
             shipperId: shipperId,
-            ship_date: ship_date,
             statusId: statusId,
             blockId: blockId,
             active: active

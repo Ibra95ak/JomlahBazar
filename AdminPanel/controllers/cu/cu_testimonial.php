@@ -17,7 +17,7 @@ $active=$_POST['active'];
 
 if($testimonialId>0){
     //Edit testimonial
-    $edit_testimonial=$db->editTestimonial($testimonialId,$name,$description,$active);
+    $edit_testimonial=$db->editTestimonial($testimonialId,$name,$description,$pictureId,$active);
     if($edit_testimonial) $err=0;
     else $err=1;
 }else{
@@ -27,6 +27,5 @@ if($testimonialId>0){
     else $err=1;
 }
 echo json_encode($err);
-alert($err);
 exit;
 ?>

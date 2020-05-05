@@ -13,16 +13,10 @@ if($categoryId>0){
     if($get_category){
      $name=$get_category['name'];
      $icon=$get_category['icon'];
-     $productId=$get_category['productId'];
-     $subcategoryId=$get_category['subcategoryId'];
-     $brandId=$get_category['brandId'];
      $active=$get_category['active'];
     }else{
         $name='';
         $icon='';
-        $productId='';
-        $subcategoryId='';
-        $brandId='';
         $active='';
     }
 }
@@ -33,13 +27,13 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+            Edit Category
             </h3>
         </div>
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" enctype="multipart/form-data">
         <div class="kt-portlet__body">
             <div class="form-group row">
                 <div class="col-lg-4">
@@ -53,52 +47,14 @@ include('header.php');
                     <span class="form-text text-muted">Please enter your name</span>
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
-                    <label>icon:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="icon" id="icon"
-                            value="<?php if(isset($icon)) echo $icon;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your icon</span>
-                </div>
-            </div><div class="form-group row">
-                <div class="col-lg-4">
-                    <label>productId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="productId" id="productId"
-                            value="<?php if(isset($productId)) echo $productId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your productId</span>
-                </div>
-            </div><div class="form-group row">
-                <div class="col-lg-4">
-                    <label>subcategoryId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="subcategoryId" id="subcategoryId"
-                            value="<?php if(isset($subcategoryId)) echo $subcategoryId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your subcategoryId</span>
-                </div>
-            </div><div class="form-group row">
-                <div class="col-lg-4">
-                    <label>brandId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="brandId" id="brandId"
-                            value="<?php if(isset($brandId)) echo $brandId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your brandId</span>
-                </div>
-            </div>
-        </div>
+            <div class="form-group">
+				<label>Choose Icon</label>
+				<div></div>
+				<div class="custom-file col-lg-4">
+				<input type="file" class="custom-file-input" id="icon" name="icon">
+				<label class="custom-file-label" for="icon"></label>
+				</div>
+			</div>    
         <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
@@ -142,9 +98,6 @@ $('#btn_submit').click(function(e) {
     var form = $(this).closest('form');
     var name = $("#name").val();
     var icon = $("#icon").val();
-    var productId = $("#productId").val();
-    var subcategoryId = $("#subcategoryId").val();
-    var brandId = $("#brandId").val();
     var active = $("#active").val();
     form.validate({
         rules: {
@@ -152,15 +105,6 @@ $('#btn_submit').click(function(e) {
                 required: true
             },
             icon: {
-                required: true
-            },
-            productId: {
-                required: true
-            },
-            subcategoryId: {
-                required: true
-            },
-            brandId: {
                 required: true
             },
         }
@@ -179,9 +123,6 @@ $('#btn_submit').click(function(e) {
             categoryId: categoryId,
             name: name,
             icon: icon,
-            productId: productId,
-            subcategoryId: subcategoryId,
-            brandId: brandId,
             active: active
         },
         success: function(data) {

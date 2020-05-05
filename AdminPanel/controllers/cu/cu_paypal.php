@@ -6,21 +6,22 @@ require_once '../../libraries/Ser_Paypals.php';
 $db = new Ser_Paypals();
 $err=-1;
 
-if(isset($_POST['typeId'])) $typeId=$_POST['typeId'];
-else $typeId=0;
+if(isset($_POST['paypalId'])) $paypalId=$_POST['paypalId'];
+else $paypalId=0;
 
 //get data from form
+$walletId=$_POST['walletId'];
 $email=$_POST['email'];
 
-if($typeId>0){
+if($paypalId>0){
     //Edit paypal
-    $edit_paypal=$db->editPaypal($typeId,$email);
+    $edit_paypal=$db->editPaypal($paypalId,$walletId,$email);
     if($edit_paypal) $err=0;
     else $err=1;
 }else{
     // add paypal
-    $add_paypal=$db->addPaypal($email);
-    if($add_Paypal) $err=0;
+    $add_paypal=$db->addPaypal($walletId,$email);
+    if($add_paypal) $err=0;
     else $err=1;
 }
 echo json_encode($err);

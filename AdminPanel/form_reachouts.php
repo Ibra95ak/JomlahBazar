@@ -5,19 +5,21 @@ $db = new Ser_Reachouts();
 $err=-1;
 
 if(isset($_GET['reachoutId'])) $reachoutId=$_GET['reachoutId'];
-else $reachoutId=0;
+else $reachoutId=1;
 
 if($reachoutId>0){
     //Edit reachoutId
-    $get_reachoutId=$db->GetReachoutById($reachoutId);
-    if($get_reachoutId){
-     $phone=$get_reachoutId['phone'];
-     $whatsapp=$get_reachoutId['whatsapp'];
-     $telegram=$get_reachoutId['telegram'];
-     $messenger=$get_reachoutId['messenger'];
-     $skype=$get_reachoutId['skype'];
-     $sms=$get_reachoutId['sms'];
+    $get_reachout=$db->GetReachoutById($reachoutId);
+    if($get_reachout){
+     $userId=$get_reachout['userId'];
+     $phone=$get_reachout['phone'];
+     $whatsapp=$get_reachout['whatsapp'];
+     $telegram=$get_reachout['telegram'];
+     $messenger=$get_reachout['messenger'];
+     $skype=$get_reachout['skype'];
+     $sms=$get_reachout['sms'];
     }else{
+        $userId='';
         $phone='';
         $whatsapp='';
         $telegram='';
@@ -33,7 +35,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+            Edit Reachout
             </h3>
         </div>
     </div>
@@ -41,6 +43,18 @@ include('header.php');
     <!--begin::Form-->
     <form class="kt-form kt-form--label-right">
         <div class="kt-portlet__body">
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>userId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="userId" id="userId"
+                            value="<?php if(isset($userId)) echo $userId;else echo '';?>">
+                    </div>
+                    <span class="form-text text-muted">Please enter your userId</span>
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>phone:</label>
@@ -134,7 +148,7 @@ include('header.php');
 <script>
 var url_string = window.location.href
 var url = new URL(url_string);
-var reachoutID = url.searchParams.get("reachoutID");
+var reachoutId = url.searchParams.get("reachoutId");
 // var div_edit = document.getElementById("edits");
 // if (reachout > 0) div_edit.style.display = "inline";
 // else div_edit.style.display = "none";
@@ -145,6 +159,7 @@ $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
+    var userId = $("#userId").val();
     var phone = $("#phone").val();
     var whatsapp = $("#whatsapp").val();
     var telegram = $("#telegram").val();
@@ -153,6 +168,9 @@ $('#btn_submit').click(function(e) {
     var sms = $("#sms").val();
     form.validate({
         rules: {
+            userId: {
+                required: true
+            },
             phone: {
                 required: true
             },
@@ -185,6 +203,7 @@ $('#btn_submit').click(function(e) {
         dataType: "json",
         data: {
             reachoutId: reachoutId,
+            userId: userId,
             phone: phone,
             whatsapp: whatsapp,
             telegram: telegram,

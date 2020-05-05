@@ -11,12 +11,12 @@ if($brandId>0){
     //Edit brand
     $get_brand=$db->GetBrandById($brandId);
     if($get_brand){
-     $productId=$get_brand['productId'];
+     $categoryId=$get_brand['categoryId'];
      $brand_name=$get_brand['brand_name'];
      $pictureId=$get_brand['pictureId'];
      $active=$get_brand['active'];
     }else{
-        $productId='';
+        $categoryId='';
         $brand_name='';
         $pictureId='';
         $active='';
@@ -29,7 +29,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+            Edit Brand
             </h3>
         </div>
     </div>
@@ -39,14 +39,14 @@ include('header.php');
         <div class="kt-portlet__body">
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>productId:</label>
+                    <label>categoryId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="productId" id="productId"
-                            value="<?php if(isset($productId)) echo $productId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="categoryId" id="categoryId"
+                            value="<?php if(isset($categoryId)) echo $categoryId;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your productId</span>
+                    <span class="form-text text-muted">Please enter your categoryId</span>
                 </div>
             </div>
             <div class="form-group row">
@@ -73,7 +73,6 @@ include('header.php');
                     <span class="form-text text-muted">Please enter your pictureId</span>
                 </div>
             </div>
-        </div>
         <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
@@ -82,6 +81,7 @@ include('header.php');
                 <span></span>
             </label>
             <span class="form-text text-muted">Some help text goes here</span>
+        </div>
         </div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
@@ -115,13 +115,13 @@ $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var productId = $("#productId").val();
+    var categoryId = $("#categoryId").val();
     var brand_name = $("#brand_name").val();
     var pictureId = $("#pictureId").val();
     var active = $("#active").val();
     form.validate({
         rules: {
-            productId: {
+            categoryId: {
                 required: true
             },
             brand_name: {
@@ -144,7 +144,7 @@ $('#btn_submit').click(function(e) {
         dataType: "json",
         data: {
             brandId: brandId,
-            productId: productId,
+            categoryId: categoryId,
             brand_name: brand_name,
             pictureId: pictureId,
             active: active

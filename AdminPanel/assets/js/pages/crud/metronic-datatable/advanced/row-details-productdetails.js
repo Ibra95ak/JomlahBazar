@@ -41,16 +41,32 @@ var KTDatatableAutoColumnHideDemo = (function () {
       columns: [
         {
           field: "productdetailId",
-          title: "Store ID",
-        },
-        {
-          field: "color",
-          title: "Product Color",
+          title: "ProductDetail ID",
           width: "auto",
         },
         {
           field: "description",
-          title: "Product Description",
+          title: "Description",
+          width: "auto",
+        },
+        {
+          field: "size",
+          title: "Size",
+          width: "auto",
+        },
+        {
+          field: "color",
+          title: "Color",
+          width: "auto",
+        },
+        {
+          field: "weight",
+          title: "Weight",
+          width: "auto",
+        },
+        {
+          field: "barcode",
+          title: "Barcode",
           width: "auto",
         },
         {
@@ -63,16 +79,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<div class="dropdown">\
-								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
-	                                <i class="la la-ellipsis-h"></i>\
-	                            </a>\
-							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
-							    </div>\
-							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_productdetails.php?productdetailId=' +
               row.productdetailId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\

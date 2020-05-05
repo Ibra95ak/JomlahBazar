@@ -11,24 +11,28 @@ if($productId>0){
     //Edit productId
     $get_productId=$db->GetProductById($productId);
     if($get_productId){
+     $supplierId=$get_productId['supplierId'];
+     $productdetailId=$get_productId['productdetailId'];
+     $inventoryId=$get_productId['inventoryId'];
      $name=$get_productId['name'];
      $quantity=$get_productId['quantity'];
      $min_order=$get_productId['min_order'];
      $unitprice=$get_productId['unitprice'];
      $discount=$get_productId['discount'];
      $ranking=$get_productId['ranking'];
-     $productdetailId=$get_productId['productdetailId'];
      $brandId=$get_productId['brandId'];
      $blockId=$get_productId['blockId'];
      $active=$get_productId['active'];
     }else{
+        $supplierId='';
+        $productdetailId='';
+        $inventoryId='';
         $name='';
         $quantity='';
         $min_order='';
         $unitprice='';
         $discount='';
         $ranking='';
-        $productdetailId='';
         $brandId='';
         $blockId='';
         $active='';
@@ -41,7 +45,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+            Edit Product
             </h3>
         </div>
     </div>
@@ -49,6 +53,42 @@ include('header.php');
     <!--begin::Form-->
     <form class="kt-form kt-form--label-right">
         <div class="kt-portlet__body">
+        <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>supplierId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="supplierId" id="supplierId"
+                            value="<?php if(isset($supplierId)) echo $supplierId;else echo '';?>">
+                    </div>
+                    <span class="form-text text-muted">Please enter your supplierId</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>productdetailId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="productdetailId" id="productdetailId"
+                            value="<?php if(isset($productdetailId)) echo $productdetailId;else echo '';?>">
+                    </div>
+                    <span class="form-text text-muted">Please enter your productdetailId</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>inventoryId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="inventoryId" id="inventoryId"
+                            value="<?php if(isset($inventoryId)) echo $inventoryId;else echo '';?>">
+                    </div>
+                    <span class="form-text text-muted">Please enter your inventoryId</span>
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>name:</label>
@@ -60,7 +100,7 @@ include('header.php');
                     </div>
                     <span class="form-text text-muted">Please enter your name</span>
                 </div>
-            </div>
+                </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>quantity:</label>
@@ -123,18 +163,6 @@ include('header.php');
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>productdetailId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="productdetailId" id="productdetailId"
-                            value="<?php if(isset($productdetailId)) echo $productdetailId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your productdetailId</span>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
                     <label>brandId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
@@ -165,6 +193,7 @@ include('header.php');
                 <span></span>
             </label>
             <span class="form-text text-muted">Some help text goes here</span>
+        </div>
         </div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
@@ -198,18 +227,29 @@ $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
+    var supplierId = $("#supplierId").val();
+    var productdetailId = $("#productdetailId").val();
+    var inventoryId = $("#inventoryId").val();
     var name = $("#name").val();
     var quantity = $("#quantity").val();
     var min_order = $("#min_order").val();
     var unitprice = $("#unitprice").val();
     var discount = $("#discount").val();
     var ranking = $("#ranking").val();
-    var productdetailId = $("#productdetailId").val();
     var brandId = $("#brandId").val();
     var blockId = $("#blockId").val();
     var active = $("#active").val();
     form.validate({
         rules: {
+            supplierId: {
+                required: true
+            },
+            productdetailId: {
+                required: true
+            },
+            inventoryId: {
+                required: true
+            },
             name: {
                 required: true
             },
@@ -226,9 +266,6 @@ $('#btn_submit').click(function(e) {
                 required: true
             },
             ranking: {
-                required: true
-            },
-            productdetailId: {
                 required: true
             },
             brandId: {
@@ -251,13 +288,15 @@ $('#btn_submit').click(function(e) {
         dataType: "json",
         data: {
             productId: productId,
+            supplierId: supplierId,
+            productdetailId: productdetailId,
+            inventoryId: inventoryId,
             name: name,
             quantity: quantity,
             min_order: min_order,
             unitprice: unitprice,
             discount: discount,
             ranking: ranking,
-            productdetailId: productdetailId,
             brandId: brandId,
             blockId: blockId,
             active: active

@@ -17,11 +17,9 @@ class Ser_Orderdetails {
      * Storing new Orderdetail
      * returns Boolean
      */
-    public function addOrderdetail($orderId,$ordernumber,$discount,$totalprice,$productdetailsId,
-    $shipperId,$ship_date,$statusId,$blockId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_AddOrderdetail(?,?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("iiiiiisiii",$orderId,$ordernumber,$discount,$totalprice,$productdetailsId,
-        $shipperId,$ship_date,$statusId,$blockId,$active);
+    public function addOrderdetail($orderId,$productId,$ordernumber,$discount,$totalprice,$shipperId,$statusId,$blockId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddOrderdetail(?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiiiiiiii",$orderId,$productId,$ordernumber,$discount,$totalprice,$shipperId,$statusId,$blockId,$active);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store
@@ -34,9 +32,9 @@ class Ser_Orderdetails {
      * @param orderdetailId, username, password
      * returns Boolean
      */
-    public function editOrderdetail($orderdetailId,$ordernumber,$discount,$totalprice,$ship_date,$active) {
-        $stmt = $this->conn->prepare("CALL sp_EditOrderdetail(?,?,?,?,?,?)");
-		$stmt->bind_param("iiiisi",$orderdetailId,$ordernumber,$discount,$totalprice,$ship_date,$active);
+    public function editOrderdetail($orderdetailId,$orderId,$productId,$ordernumber,$discount,$totalprice,$shipperId,$statusId,$blockId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditOrderdetail(?,?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiiiiiiiii",$orderdetailId,$orderId,$productId,$ordernumber,$discount,$totalprice,$shipperId,$statusId,$blockId,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

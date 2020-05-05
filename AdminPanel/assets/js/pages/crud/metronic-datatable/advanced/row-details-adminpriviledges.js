@@ -41,11 +41,37 @@ var KTDatatableAutoColumnHideDemo = (function () {
       columns: [
         {
           field: "adminpriviledgeId",
-          title: "Admin-Priviledge ID",
+          title: "AdminPriviledge ID",
+          width: "auto",
         },
         {
-          field: "adminId",
-          title: "Admin ID",
+          field: "username",
+          title: "Username",
+          width: "auto",
+        },
+        {
+          field: "name",
+          title: "Name",
+          width: "auto",
+        },
+        {
+          field: "c",
+          title: "Create",
+          width: "auto",
+        },
+        {
+          field: "r",
+          title: "Read",
+          width: "auto",
+        },
+        {
+          field: "u",
+          title: "Update",
+          width: "auto",
+        },
+        {
+          field: "d",
+          title: "Delete",
           width: "auto",
         },
         {
@@ -63,9 +89,9 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/por_priviledges.php?adminpriviledgeId=' +
+              row.priviledgeId +
+              '"><i class="la la-edit"></i> Priviledge</a>\
 							    </div>\
 							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_adminpriviledges.php?adminpriviledgeId=' +

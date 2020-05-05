@@ -11,6 +11,7 @@ if($storeId>0){
     //Edit storeId
     $get_store=$db->GetStoreById($storeId);
     if($get_store){
+     $supplierId=$get_store['supplierId'];
      $addressId=$get_store['addressId'];
      $reachoutId=$get_store['reachoutId'];
      $name=$get_store['name'];
@@ -19,6 +20,7 @@ if($storeId>0){
      $blockId=$get_store['blockId'];
      $active=$get_store['active'];
     }else{
+        $supplierId='';
         $addressId='';
         $reachoutId='';
         $name='';
@@ -35,7 +37,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                3 Columns Form Layout
+            Edit  Stores
             </h3>
         </div>
     </div>
@@ -43,6 +45,18 @@ include('header.php');
     <!--begin::Form-->
     <form class="kt-form kt-form--label-right">
         <div class="kt-portlet__body">
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>supplierId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="supplierId" id="supplierId"
+                            value="<?php if(isset($supplierId)) echo $supplierId;else echo '';?>">
+                    </div>
+                    <span class="form-text text-muted">Please enter your supplierId</span>
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>addressId:</label>
@@ -115,14 +129,15 @@ include('header.php');
                     <span class="form-text text-muted">Please enter your blockId</span>
                 </div>
             </div>
-        <div class="form-group" id="edits">
-            <label>Status</label>
-            <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
-                <input id="active" type="checkbox" value="1"
-                    <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
-                <span></span>
-            </label>
-            <span class="form-text text-muted">Some help text goes here</span>
+            <div class="form-group" id="edits">
+                <label>Status</label>
+                <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
+                    <input id="active" type="checkbox" value="1"
+                        <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
+                    <span></span>
+                </label>
+                <span class="form-text text-muted">Some help text goes here</span>
+            </div>
         </div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
@@ -145,7 +160,7 @@ include('header.php');
 <script>
 var url_string = window.location.href
 var url = new URL(url_string);
-var storeID = url.searchParams.get("storeID");
+var storeId = url.searchParams.get("storeId");
 // var div_edit = document.getElementById("edits");
 // if (store > 0) div_edit.style.display = "inline";
 // else div_edit.style.display = "none";
@@ -156,6 +171,7 @@ $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
+    var supplierId = $("#supplierId").val();
     var addressId = $("#addressId").val();
     var reachoutId = $("#reachoutId").val();
     var name = $("#name").val();
@@ -165,6 +181,9 @@ $('#btn_submit').click(function(e) {
     var active = $("#active").val();
     form.validate({
         rules: {
+            supplierId: {
+                required: true
+            },
             addressId: {
                 required: true
             },
@@ -197,11 +216,12 @@ $('#btn_submit').click(function(e) {
         dataType: "json",
         data: {
             storeId: storeId,
+            supplierId: supplierId,
             addressId: addressId,
             reachoutId: reachoutId,
             name: name,
             description: description,
-            theme: theme
+            theme: theme,
             blockId: blockId,
             active: active
         },

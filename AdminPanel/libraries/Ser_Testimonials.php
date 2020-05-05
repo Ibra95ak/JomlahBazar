@@ -64,9 +64,9 @@ class Ser_Testimonials {
      * @param testimonialId, username, password
      * returns Boolean
      */
-    public function editTestimonial($testimonialId,$name,$description,$active) {
-        $stmt = $this->conn->prepare("CALL sp_EditTestimonial(?,?,?,?)");
-		$stmt->bind_param("issi",$testimonialId,$name,$description,$active);
+    public function editTestimonial($testimonialId,$name,$description,$pictureId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_EditTestimonial(?,?,?,?,?)");
+		$stmt->bind_param("issii",$testimonialId,$name,$description,$pictureId,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;
