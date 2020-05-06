@@ -1,25 +1,23 @@
 <?php 
-//Get brand class
-require_once 'libraries/Ser_Brands.php';
-$db = new Ser_Brands();
+//Get aaaId class
+require_once 'libraries/Ser_AAA.php';
+$db = new Ser_AAA();
 $err=-1;
 
-if(isset($_GET['brandId'])) $brandId=$_GET['brandId'];
-else $brandId=0;
+if(isset($_GET['aaaId'])) $aaaId=$_GET['aaaId'];
+else $aaaId=1;
 
-if($brandId>0){
-    //Edit brand
-    $get_brand=$db->GetBrandById($brandId);
-    if($get_brand){
-     $brandcategoryId=$get_brand['brandcategoryId'];
-     $brand_name=$get_brand['brand_name'];
-     $pictureId=$get_brand['pictureId'];
-     $active=$get_brand['active'];
+if($aaaId>0){
+    //Edit aaaId
+    $get_aaa=$db->getBYId_aaa($aaaId);
+    if($get_aaa){
+     $email=$get_aaa['email'];
+     $otp=$get_aaa['otp'];
+     $addressId=$get_aaa['addressId'];
     }else{
-        $brandcategoryId='';
-        $brand_name='';
-        $pictureId='';
-        $active='';
+        $email='';
+        $otp='';
+        $addressId='';
     }
 }
 include('header.php');
@@ -29,7 +27,7 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-            Edit Brand
+            Edit aaa
             </h3>
         </div>
     </div>
@@ -39,50 +37,40 @@ include('header.php');
         <div class="kt-portlet__body">
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>brandcategoryId:</label>
+                    <label>email:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="brandcategoryId" id="brandcategoryId"
-                            value="<?php if(isset($brandcategoryId)) echo $brandcategoryId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="email" id="email"
+                            value="<?php if(isset($email)) echo $email;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your brandcategoryId</span>
+                    <span class="form-text text-muted">Please enter your email</span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>brand_name:</label>
+                    <label>otp:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="brand_name" id="brand_name"
-                            value="<?php if(isset($brand_name)) echo $brand_name;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="otp" id="otp"
+                            value="<?php if(isset($otp)) echo $otp;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your brand_name</span>
+                    <span class="form-text text-muted">Please enter your otp</span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>pictureId:</label>
+                    <label>addressId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="pictureId" id="pictureId"
-                            value="<?php if(isset($pictureId)) echo $pictureId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="addressId" id="addressId"
+                            value="<?php if(isset($addressId)) echo $addressId;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your pictureId</span>
+                    <span class="form-text text-muted">Please enter your addressId</span>
                 </div>
             </div>
-        <div class="form-group" id="edits">
-            <label>Status</label>
-            <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
-                <input id="active" type="checkbox" value="1"
-                    <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
-                <span></span>
-            </label>
-            <span class="form-text text-muted">Some help text goes here</span>
-        </div>
-        </div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
                 <div class="row">
@@ -104,9 +92,9 @@ include('header.php');
 <script>
 var url_string = window.location.href
 var url = new URL(url_string);
-var brandId = url.searchParams.get("brandId");
+var aaaId = url.searchParams.get("aaaId");
 // var div_edit = document.getElementById("edits");
-// if (brandId > 0) div_edit.style.display = "inline";
+// if (aaa > 0) div_edit.style.display = "inline";
 // else div_edit.style.display = "none";
 </script>
 <?php include("footer.php");?>
@@ -115,19 +103,18 @@ $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var brandcategoryId = $("#brandcategoryId").val();
-    var brand_name = $("#brand_name").val();
-    var pictureId = $("#pictureId").val();
-    var active = $("#active").val();
+    var email = $("#email").val();
+    var otp = $("#otp").val();
+    var addressId = $("#addressId").val();
     form.validate({
         rules: {
-            brandcategoryId: {
+            email: {
                 required: true
             },
-            brand_name: {
+            otp: {
                 required: true
             },
-            pictureId: {
+            addressId: {
                 required: true
             },
         }
@@ -140,14 +127,13 @@ $('#btn_submit').click(function(e) {
     btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);
     $.ajax({
         type: "POST",
-        url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_brand.php",
+        url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_aaa.php",
         dataType: "json",
         data: {
-            brandId: brandId,
-            brandcategoryId: brandcategoryId,
-            brand_name: brand_name,
-            pictureId: pictureId,
-            active: active
+            aaaId: aaaId,
+            email: email,
+            otp: otp,
+            addressId: addressId,
         },
         success: function(data) {
             switch (data) {
@@ -159,7 +145,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_brands.php"
+                            "http://localhost/JomlahBazar/AdminPanel/por_aaa.php"
                         );
                     }, 2000);
                     break;

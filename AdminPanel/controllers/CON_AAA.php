@@ -2,8 +2,8 @@
 //Get base class
 require_once '../libraries/Base.php';
 //Get AAA class
-require_once '../libraries/DB_AAA.php';
-$db = new DB_AAA();
+require_once '../libraries/Ser_AAA.php';
+$db = new Ser_AAA();
 //results array
 $results=array();
 //get all leads details

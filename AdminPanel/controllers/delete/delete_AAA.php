@@ -1,19 +1,19 @@
 <?php
 //Get base class
 require_once '../../libraries/Base.php';
-//Get adminpriviledge class
-require_once '../../libraries/Ser_Adminpriviledges.php';
-$db = new Ser_Adminpriviledges();
+//Get aaa class
+require_once '../../libraries/Ser_AAA.php';
+$db = new Ser_AAA();
 $err=-1;
-//delete Adminpriviledges
-if(isset($_GET['adminpriviledgeId'])){
-    $del_adminpriviledges = $db->DeleteAdminpriviledgeById($_GET['adminpriviledgeId']);
+//delete aaa
+if(isset($_GET['aaaId'])){
+    $del_aaa = $db->DeleteAAAById($_GET['aaaId']);
 }
-if($del_adminpriviledges){
+if($del_aaa){
     $err=0; 
 }else{
     $err=1;
 }
-header("Location:".DIR_ROOT.DIR_ADMINP."por_adminpriviledges.php?err=$err");
+header("Location:".DIR_ROOT.DIR_ADMINP."por_aaa.php?err=$err");
 exit;
 ?>

@@ -1,5 +1,5 @@
 <?php 
-class DB_AAA {
+class Ser_AAA {
     private $conn;
     // constructor
     function __construct() {
@@ -42,12 +42,12 @@ class DB_AAA {
      * @param aaaId, email, password, opt
      * returns Boolean
      */
-    public function editAAA($aaaId,$email,$password,$opt) {
+    public function editAAA($aaaId,$email,$password,$opt,$addressId) {
 		$hash = $this->hashSSHA($password);
         $encrypted_password = $hash["encrypted"];
         $salt = $hash["salt"];
-        $stmt = $this->conn->prepare("UPDATE aaa SET email=?, encrypted_password=?, salt=?, opt=? where aaaId=?");
-		$stmt->bind_param("ssssi",$email,$encrypted_password,$salt,$opt,$aaaId);
+        $stmt = $this->conn->prepare("CALL sp_EditAAA(?,?,?,?,?,?)");
+		$stmt->bind_param("ssssi",$aaaId,$email,$encrypted_password,$salt,$opt,$addressId);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;
@@ -59,7 +59,7 @@ class DB_AAA {
      * returns json array/Null
      */
     public function getAll_aaa() {
-        $stmt = $this->conn->prepare("CALL aaa()");
+        $stmt = $this->conn->prepare("CALL sp_GetAAA()");
         if ($stmt->execute()) {			
             $aaa = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
             $stmt->close();
@@ -74,7 +74,7 @@ class DB_AAA {
      * returns array/Null
      */
     public function getBYId_aaa($aaaId) {
-        $stmt = $this->conn->prepare("SELECT * FROM aaa where aaaId=?");
+        $stmt = $this->conn->prepare("sp_GetAAAById()");
         $stmt->bind_param("i",$aaaId);
         if ($stmt->execute()) {			
             $aaa = $stmt->get_result()->fetch_assoc();
@@ -109,6 +109,20 @@ class DB_AAA {
         $hash = base64_encode(sha1($password . $salt, true) . $salt);
 
         return $hash;
+    }
+
+                /**
+     * Delete aaa By Id 
+     * params aaa Id
+     * returns json/Null
+     */
+    public function DeleteAAAById($aaaId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteAAAbyId(?)");
+        $stmt->bind_param("i",$aaaId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
     }
 
 }

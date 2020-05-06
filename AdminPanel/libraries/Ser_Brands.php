@@ -33,9 +33,9 @@ class Ser_Brands {
      * @param productId, brand_name, pictureId, active
      * returns Boolean
      */
-    public function addBrand($categoryId,$brand_name,$pictureId,$active) {
+    public function addBrand($brandcategoryId,$brand_name,$pictureId,$active) {
         $stmt = $this->conn->prepare("CALL sp_AddBrand(?,?,?,?)");
-		$stmt->bind_param("isii",$categoryId,$brand_name,$pictureId,$active);
+		$stmt->bind_param("isii",$brandcategoryId,$brand_name,$pictureId,$active);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store
@@ -48,9 +48,9 @@ class Ser_Brands {
      * @param brandId, username, password
      * returns Boolean
      */
-    public function editBrand($brandId,$categoryId,$brand_name,$pictureId,$active) {
+    public function editBrand($brandId,$brandcategoryId,$brand_name,$pictureId,$active) {
         $stmt = $this->conn->prepare("CALL sp_EditBrand(?,?,?,?,?)");
-		$stmt->bind_param("iisii",$brandId,$categoryId,$brand_name,$pictureId,$active);
+		$stmt->bind_param("iisii",$brandId,$brandcategoryId,$brand_name,$pictureId,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

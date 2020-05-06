@@ -165,11 +165,11 @@
                                         <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
                                                 class="kt-menu__link"><span
                                                     class="kt-menu__link-text">USERS</span></span></li>
-                                        <!-- <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
+                                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                                             data-ktmenu-submenu-toggle="hover"><a href="por_aaa.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
                                                     class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span
-                                                    class="kt-menu__link-text">AAA</span></a></li> -->
+                                                    class="kt-menu__link-text">AAA</span></a></li>
                                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"
                                             data-ktmenu-submenu-toggle="hover"><a href="por_buyers.php"
                                                 class="kt-menu__link kt-menu__toggle"><i
