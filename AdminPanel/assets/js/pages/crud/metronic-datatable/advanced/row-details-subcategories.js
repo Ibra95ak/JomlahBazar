@@ -58,6 +58,15 @@ var KTDatatableAutoColumnHideDemo = (function () {
           field: "icon",
           title: "Icon",
           width: "auto",
+          template: function (row) {
+            return (
+              '<div class="kt-widget3__user-img">\
+            <img class="kt-widget3__img" src="' +
+              row.icon +
+              '" alt="" style="height: 100px;width: 100px;">\
+          </div>'
+            );
+          },
         },
         {
           field: "active",
@@ -66,17 +75,11 @@ var KTDatatableAutoColumnHideDemo = (function () {
           // callback function support for column rendering
           template: function (row) {
             var status = {
-              0: { title: "Inactive", state: "danger" },
               1: { title: "Active", state: "success" },
+              2: { title: "Inactive", state: "danger" },
             };
             return (
-              '<span class="kt-badge kt-badge--' +
-              status[row.active].state +
-              ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' +
-              status[row.active].state +
-              '">' +
-              status[row.active].title +
-              "</span>"
+              '<span class="kt-badge kt-badge--'+status[row.active].state+' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-'+status[row.active].state+'">'+status[row.active].title+"</span>"
             );
           },
         },

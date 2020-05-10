@@ -151,7 +151,6 @@ include('libraries/base.php');
                 var reg = url.searchParams.get("reg");
                  var div_signup = document.getElementById("kt-login__account");
                  if (reg) div_signup.style.display = "inline";
-                 //else div_signup.style.display = "none";
             });
         </script>
 		<!--end::Custom Scripts -->

@@ -27,13 +27,13 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-            Edit Category
+            Manage Category
             </h3>
         </div>
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right" enctype="multipart/form-data">
+    <form class="kt-form kt-form--label-right" id="formcat">
         <div class="kt-portlet__body">
         <div class="form-group row">
                 <div class="col-lg-4">
@@ -41,23 +41,31 @@ include('header.php');
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" disabled class="form-control" placeholder="" name="categoryId" id="categoryId"
-                            value="<?php if(isset($categoryId)) echo $categoryId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="categoryId" id="categoryId" value="<?php if(isset($categoryId)) echo $categoryId;else echo '';?>">
                     </div>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>name:</label>
+                    <label>Name:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
                         <input type="text" class="form-control" placeholder="" name="name" id="name"
                             value="<?php if(isset($name)) echo $name;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your name</span>
+                    <span class="form-text text-muted">Please enter category name</span>
                 </div>
             </div>
+              
+        <div class="form-group" id="edits">
+            <label>Status</label>
+            <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
+                <input name="active" id="active" type="checkbox" <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
+                <span></span>
+            </label>
+            <span class="form-text text-muted">Activate this category.</span>
+        </div>
             <div class="form-group row">
                 <div class="col-lg-4">
 						<label>Choose Icon</label>
@@ -67,16 +75,7 @@ include('header.php');
 							<label class="custom-file-label" for="icon">Choose file</label>
 						</div>
                 </div>
-            </div>    
-        <div class="form-group" id="edits">
-            <label>Status</label>
-            <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
-                <input id="active" type="checkbox" value="1"
-                    <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
-                <span></span>
-            </label>
-            <span class="form-text text-muted">Some help text goes here</span>
-        </div>
+            </div>  
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
                 <div class="row">
@@ -95,35 +94,18 @@ include('header.php');
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var categoryId = url.searchParams.get("categoryId");
-// var div_edit = document.getElementById("edits");
-// if (categoryId > 0) div_edit.style.display = "inline";
-// else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
 $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var name = $("#name").val();
-    var fakeicon = $("#icon").val();
-    var icon = fakeicon.substr(12);
-    var active = $("#active").val();
-    alert(icon);
-    var formData = new FormData($(this)[0]);
+    var formdata1 = new FormData($('#formcat')[0]);
     form.validate({
         rules: {
             name: {
                 required: true
-            },
-            icon: {
-                required: true
-            },
+            }
         }
     });
 
@@ -138,13 +120,8 @@ $('#btn_submit').click(function(e) {
         cache: false,
         contentType: false,
         processData: false,
+        data: formdata1,
         dataType: "json",
-        data: {
-            categoryId: categoryId,
-            name: name,
-            icon: data,
-            active: active
-        },
         success: function(data) {
             switch (data) {
                 case 0:

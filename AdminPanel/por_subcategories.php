@@ -1,7 +1,21 @@
-<?php include('header.php');
+<?php
+include('libraries/base.php');
+session_start();
+if(isset($_SESSION['adminId'])){
+    //Get admin class
+    require_once 'libraries/Ser_Admin.php';
+    $db = new Ser_Admin();
+    $checklogin= $db->islogin($_SESSION['adminId']);  
+}else{
+    //redirect to error page
+    header("location:".DIR_ROOT.DIR_ADMINP."error.php");
+}
+if($checklogin){
+include('header.php');
 require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Subcategories.php');
 require_once 'libraries/Ser_Categories.php';
-$db1 = new Ser_Categories();?>
+$db1 = new Ser_Categories();
+?>
 <!-- begin:: Content -->
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
     <div class="kt-portlet__body kt-portlet__body--fit">
@@ -48,12 +62,8 @@ $db1 = new Ser_Categories();?>
                                         <div class="kt-form__control">
                                             <select class="form-control bootstrap-select" id="kt_form_status">
                                                 <option value="">All</option>
-                                                <option value="1">Pending</option>
-                                                <option value="2">Delivered</option>
-                                                <option value="3">Canceled</option>
-                                                <option value="4">Success</option>
-                                                <option value="5">Info</option>
-                                                <option value="6">Danger</option>
+                                                <option value="1">Active</option>
+                                                <option value="2">Inactive</option>
                                             </select>
                                         </div>
                                     </div>
@@ -61,10 +71,11 @@ $db1 = new Ser_Categories();?>
                                 <div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
                                     <div class="kt-form__group kt-form__group--inline">
                                         <div class="kt-form__label">
-                                            <label>Type:</label>
+                                            <label>Category:</label>
                                         </div>
                                         <div class="kt-form__control">
                                             <select class="form-control bootstrap-select" id="kt_form_type">
+                                                <option value="">All</option>
                                             <?php
                                             //Get all categories
                                             $get_category=$db1->GetCategories();
@@ -114,3 +125,10 @@ $('#add').click(function(e) {
 <!-- end::Body -->
 
 </html>
+<?php 
+//end login if clause
+}else{
+    //redirect to error page
+    header("location:".DIR_ROOT.DIR_ADMINP."error.php");
+}
+?>

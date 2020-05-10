@@ -37,57 +37,63 @@ include('header.php');
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="formsubcat">
         <div class="kt-portlet__body">
-        <div class="form-group row">
-            <div class="col-lg-4">
-            <label for="exampleSelectd">Select Category</label>
-            <select class="form-control" id="categoryId" name="categoryId">
-                <?php
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>SubcategoryId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="subcategoryId" id="subcategoryId" value="<?php if(isset($subcategoryId)) echo $subcategoryId;else echo '';?>">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <label for="exampleSelectd">Select Category</label>
+                    <select class="form-control" id="categoryId" name="categoryId">
+                        <?php
                 //Get all categories
                 $get_category=$db1->GetCategories();
                 if($get_category){
                     foreach($get_category as $cat){
-                        echo "<option value='".$cat['categoryId']."'>".$cat['name']."</option>";
+                        if($categoryId==$cat['categoryId'])
+                        echo "<option value='".$cat['categoryId']."' selected>".$cat['name']."</option>";
+                        else echo "<option value='".$cat['categoryId']."'>".$cat['name']."</option>";
                     }
                 }
                 ?>
-            </select>
+                    </select>
+                </div>
             </div>
-        </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>name:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="name" id="name"
-                            value="<?php if(isset($name)) echo $name;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="name" id="name" value="<?php if(isset($name)) echo $name;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your name</span>
                 </div>
             </div>
+            <div class="form-group">
+                <label>Status</label>
+                <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
+                    <input name="active" id="active" type="checkbox" <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
+                    <span></span>
+                </label>
+                <span class="form-text text-muted">Activate this category.</span>
+            </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>icon:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="icon" id="icon"
-                            value="<?php if(isset($icon)) echo $icon;else echo '';?>">
+                    <label>Choose Icon</label>
+                    <div></div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="icon" name="icon">
+                        <label class="custom-file-label" for="icon">Choose file</label>
                     </div>
-                    <span class="form-text text-muted">Please enter your icon</span>
                 </div>
             </div>
-        <div class="form-group" id="edits">
-            <label>Status</label>
-            <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
-                <input id="active" type="checkbox" value="1"
-                    <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
-                <span></span>
-            </label>
-            <span class="form-text text-muted">Some help text goes here</span>
-        </div>
         </div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
@@ -106,95 +112,66 @@ include('header.php');
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var subcategoryId = url.searchParams.get("subcategoryId");
-var div_edit = document.getElementById("edits");
-if (subcategoryId > 0) div_edit.style.display = "inline";
-else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
-$('#btn_submit').click(function(e) {
-    e.preventDefault();
-    var btn = $(this);
-    var form = $(this).closest('form');
-    var categoryId = $("#categoryId").val();
-    var name = $("#name").val();
-    var icon = $("#icon").val();
-    var active = $("#active").val();
-    form.validate({
-        rules: {
-            categoryId: {
-                required: true
-            },
-            name: {
-                required: true
-            },
-            icon: {
-                required: true
-            },
-        }
-    });
-
-    if (!form.valid()) {
-        return;
-    }
-
-    btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);
-    $.ajax({
-        type: "POST",
-        url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_subcategory.php",
-        dataType: "json",
-        data: {
-            subcategoryId: subcategoryId,
-            categoryId: categoryId,
-            name: name,
-            icon: icon,
-            active: active,
-        },
-        success: function(data) {
-            alert(data);
-            switch (data) {
-                case 0:
-                    // similate 2s delay
-                    setTimeout(function() {
-                        btn.removeClass(
-                            'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
-                        ).attr('disabled', false);
-                        // Simulate an HTTP redirect:
-                        window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_subcategories.php"
-                        );
-                    }, 2000);
-                    break;
-                case 1:
-                    // similate 2s delay
-                    setTimeout(function() {
-                        btn.removeClass(
-                            'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
-                        ).attr('disabled', false);
-                        showErrorMsg(form, 'danger',
-                            'Incorrect username or password. Please try again.');
-                    }, 2000);
-                    break;
-                case 2:
-                    // similate 2s delay
-                    setTimeout(function() {
-                        btn.removeClass(
-                            'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
-                        ).attr('disabled', false);
-                        showErrorMsg(form, 'danger',
-                            'Missing required parameters. Please try again.');
-                    }, 2000);
-                    break;
-                default:
+    $('#btn_submit').click(function(e) {
+        e.preventDefault();
+        var btn = $(this);
+        var form = $(this).closest('form');
+        var formdata1 = new FormData($('#formsubcat')[0]);
+        form.validate({
+            rules: {
+                categoryId: {
+                    required: true
+                },
+                name: {
+                    required: true
+                }
             }
+        });
+
+        if (!form.valid()) {
+            return;
         }
+
+        btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_subcategory.php",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata1,
+            dataType: "json",
+            success: function(data) {
+                switch (data) {
+                    case 0:
+                        // similate 2s delay
+                        setTimeout(function() {
+                            btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
+                            // Simulate an HTTP redirect:
+                            window.location.replace("http://localhost/JomlahBazar/AdminPanel/por_subcategories.php");
+                        }, 2000);
+                        break;
+                    case 1:
+                        // similate 2s delay
+                        setTimeout(function() {
+                            btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
+                            showErrorMsg(form, 'danger','Incorrect username or password. Please try again.');
+                        }, 2000);
+                        break;
+                    case 2:
+                        // similate 2s delay
+                        setTimeout(function() {
+                            btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
+                            showErrorMsg(form, 'danger','Missing required parameters. Please try again.');
+                        }, 2000);
+                        break;
+                    default:
+                }
+            }
+        });
     });
-});
 </script>
 </body>
 <!-- end::Body -->

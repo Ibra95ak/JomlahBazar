@@ -49,7 +49,7 @@ class Ser_Subcategories {
      */
     public function editSubcategory($subcategoryId,$categoryId,$name,$icon,$active) {
         $stmt = $this->conn->prepare("CALL sp_EditSubcategory(?,?,?,?,?)");
-		$stmt->bind_param("iisii",$subcategoryId,$categoryId,$name,$icon,$active);
+		$stmt->bind_param("iissi",$subcategoryId,$categoryId,$name,$icon,$active);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

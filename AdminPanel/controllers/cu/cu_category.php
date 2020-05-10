@@ -11,19 +11,22 @@ else $categoryId=0;
 
 //get data from form
 $name=$_POST['name'];
-$icon=$_POST['icon'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 $target_dir = "../../pics/categories/";
 $target_file = $target_dir . basename($_FILES["icon"]["name"]);
-$uploadOk = 1;
+$icon=substr($target_file, 6);
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
   if (move_uploaded_file($_FILES["icon"]["tmp_name"], $target_file)) {
-    echo "The file ". basename( $_FILES["icon"]["name"]). " has been uploaded.";
+    $err=0;
   } else {
-    echo "Sorry, there was an error uploading your file.";
+    $err=1;
   }
 if($categoryId>0){
+    if($target_file==$target_dir){
+        //get old image path
+        $icon=$db->GetCategoryById($categoryId)['icon'];
+    }
     //Edit Category
     $edit_Category=$db->editCategory($categoryId,$name,$icon,$active);
     if($edit_Category) $err=0;
