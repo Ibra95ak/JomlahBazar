@@ -51,8 +51,17 @@ var KTDatatableAutoColumnHideDemo = (function () {
         },
         {
           field: "path",
-          title: "Picture Path",
+          title: "Picture",
           width: "auto",
+          template: function (row) {
+            return (
+              '<div class="kt-widget3__user-img">\
+            <img class="kt-widget3__img" src="' +
+              row.path +
+              '" alt="">\
+          </div>'
+            );
+          },
         },
         {
           field: "name",
@@ -95,16 +104,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<div class="dropdown">\
-								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
-	                                <i class="la la-ellipsis-h"></i>\
-	                            </a>\
-							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_pictures.php?pictureId=' +
-              row.pictureId +
-              '"><i class="la la-edit"></i> Picture</a>\
-							    </div>\
-							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_testimonials.php?testimonialId=' +
               row.testimonialId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\

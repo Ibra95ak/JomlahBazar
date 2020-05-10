@@ -9,7 +9,6 @@ else $shipperdetailId=0;
 
 if($shipperdetailId>0){
     //Edit shipperdetail
-    print_r($shipperdetailId);
     $get_shipperdetail=$db->GetshipperdetailById($shipperdetailId);
     if($get_shipperdetail){
      $name=$get_shipperdetail['name'];
@@ -34,6 +33,17 @@ include('header.php');
     <!--begin::Form-->
     <form class="kt-form kt-form--label-right">
         <div class="kt-portlet__body">
+        <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>shipperdetailId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" disabled class="form-control" placeholder="" name="shipperdetailId" id="shipperdetailId"
+                            value="<?php if(isset($shipperdetailId)) echo $shipperdetailId;else echo '';?>">
+                    </div>
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>name:</label>

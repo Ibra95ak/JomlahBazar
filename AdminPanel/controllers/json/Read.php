@@ -25,7 +25,7 @@ if (is_array($query)) {
 }
 
 $sort = !empty($datatable['sort']['sort']) ? $datatable['sort']['sort'] : 'DESC';
-$field = !empty($datatable['sort']['field']) ? $datatable['sort']['field'] : 'user_created_at';
+$field = !empty($datatable['sort']['field']) ? $datatable['sort']['field'] : 'active';
 
 $meta = array();
 $page = !empty($datatable['pagination']['page']) ? (int)$datatable['pagination']['page'] : 1;

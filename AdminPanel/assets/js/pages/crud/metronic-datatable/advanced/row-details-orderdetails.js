@@ -65,11 +65,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: "auto",
         },
         {
-          field: "shipperId",
-          title: "Shipper ID",
-          width: "auto",
-        },
-        {
           field: "ship_date",
           title: "Ship Date",
         },
@@ -119,19 +114,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<div class="dropdown">\
-								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
-	                                <i class="la la-ellipsis-h"></i>\
-	                            </a>\
-							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_orders.php?orderId=' +
-              row.orderId +
-              '"><i class="la la-dot-circle-o"></i> Order</a>\
-							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_products.php?productId=' +
-              row.productId +
-              '"><i class="la la-lemon-o"></i> Product</a>\
-							    </div>\
-							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_orderdetails.php?orderdetailId=' +
               row.orderdetailId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\

@@ -1,1 +1,1 @@
-[{"productId":1,"supplierId":1,"productdetailId":1,"inventoryId":1,"name":"Glosslip","quantity":10,"min_order":5,"unitprice":2,"discount":0,"ranking":"5","brandId":2,"blockId":2,"active":1}]
+[{"productId":1,"name":"Glosslip","quantity":10,"min_order":5,"unitprice":2,"discount":0,"ranking":"5","blockId":2,"active":1,"description":"Pinky","size":"12","color":"pink","weight":12,"barcode":"123","inventorynumber":"1","brand_name":"kateSpade","productdetailId":1,"inventoryId":1,"brandId":2}]

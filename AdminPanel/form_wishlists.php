@@ -1,7 +1,11 @@
 <?php
 //Get Wishlist class
 require_once 'libraries/Ser_Wishlists.php';
+require_once 'libraries/Ser_Buyers.php';
+require_once 'libraries/Ser_Products.php';
 $db = new Ser_Wishlists();
+$db1 = new Ser_Buyers();
+$db2 = new Ser_Products();
 $err=-1;
 
 if(isset($_GET['wishlistId'])) $wishlistId=$_GET['wishlistId'];
@@ -35,28 +39,49 @@ include('header.php');
     <!--begin::Form-->
     <form class="kt-form kt-form--label-right">
         <div class="kt-portlet__body">
-            <div class="form-group row">
+        <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>userId:</label>
+                    <label>wishlistId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="userId" id="userId"
-                            value="<?php if(isset($userId)) echo $userId;else echo '';?>">
+                        <input type="text" disabled class="form-control" placeholder="" name="wishlistId" id="wishlistId"
+                            value="<?php if(isset($wishlistId)) echo $wishlistId;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your userId</span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>productId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="productId" id="productId"
-                            value="<?php if(isset($productId)) echo $productId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your productId</span>
+                <label for="exampleSelectd">Select User</label>
+            <select class="form-control" id="userId" name="userId">
+                <?php
+                //Get all categories
+                $get_User=$db1->GetBuyers();
+                if($get_User){
+                    foreach($get_User as $cat){
+                        echo "<option value='".$cat['userId']."'>".$cat['first_name']."</option>";
+                    }
+                }
+                ?>
+            </select>
+                    <span class="form-text text-muted">Please enter your user</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-4">
+                <label for="exampleSelectd">Select Product</label>
+            <select class="form-control" id="productId" name="productId">
+                <?php
+                //Get all categories
+                $get_product=$db2->GetProducts();
+                if($get_product){
+                    foreach($get_product as $cat){
+                        echo "<option value='".$cat['productId']."'>".$cat['name']."</option>";
+                    }
+                }
+                ?>
+            </select>
+                    <span class="form-text text-muted">Please enter your product</span>
                 </div>
             </div>       
              <div class="form-group" id="edits">

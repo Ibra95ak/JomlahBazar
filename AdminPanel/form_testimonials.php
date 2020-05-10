@@ -37,6 +37,18 @@ include('header.php');
     <!--begin::Form-->
     <form class="kt-form kt-form--label-right">
         <div class="kt-portlet__body">
+        <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>testimonialId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" disabled class="form-control" placeholder="" testimonialId="testimonialId" id="testimonialId"
+                            value="<?php if(isset($testimonialId)) echo $testimonialId;else echo '';?>">
+                    </div>
+                    <span class="form-text text-muted">Please enter your testimonialId</span>
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>name:</label>

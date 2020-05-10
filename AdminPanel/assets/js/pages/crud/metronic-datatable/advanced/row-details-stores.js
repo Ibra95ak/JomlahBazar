@@ -45,21 +45,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: "auto",
         },
         {
-          field: "supplierId",
-          title: "Supplier ID",
-          width: "auto",
-        },
-        {
-          field: "addressId",
-          title: "Address ID",
-          width: "auto",
-        },
-        {
-          field: "reachoutId",
-          title: "Reachout ID",
-          width: "auto",
-        },
-        {
           field: "name",
           title: "Store Name",
           width: "auto",
@@ -70,13 +55,23 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: "auto",
         },
         {
-          field: "Theme",
-          title: "Theme",
+          field: "address1",
+          title: "Address ",
           width: "auto",
         },
         {
-          field: "blockId",
-          title: "Block ID",
+          field: "city",
+          title: "City",
+          width: "auto",
+        },
+        {
+          field: "country",
+          title: "Country",
+          width: "auto",
+        },
+        {
+          field: "phone",
+          title: "Phone",
           width: "auto",
         },
         {
@@ -115,9 +110,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_suppliers.php?supplierId=' +
-              row.supplierId +
-              '"><i class="la la-edit"></i> Supplier</a>\
 							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_addresss.php?addressId=' +
               row.addressId +
               '"><i class="la la-leaf"></i> Address</a>\

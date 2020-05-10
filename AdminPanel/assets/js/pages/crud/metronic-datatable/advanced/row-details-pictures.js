@@ -51,8 +51,17 @@ var KTDatatableAutoColumnHideDemo = (function () {
         },
         {
           field: "path",
-          title: "Path URL",
+          title: "Picture",
           width: "auto",
+          template: function (row) {
+            return (
+              '<div class="kt-widget3__user-img">\
+            <img class="kt-widget3__img" src="' +
+              row.path +
+              '" alt="">\
+          </div>'
+            );
+          },
         },
         {
           field: "active",

@@ -66,7 +66,6 @@ class Ser_Pictures {
         $stmt->bind_param("i",$pictureId);
         if ($stmt->execute()) {
             $pictures = $stmt->get_result()->fetch_assoc(); //fetch picture data and picture in array
-            print_r($pictures);
             $stmt->close();
             if ($pictures==true) {
                 return $pictures;

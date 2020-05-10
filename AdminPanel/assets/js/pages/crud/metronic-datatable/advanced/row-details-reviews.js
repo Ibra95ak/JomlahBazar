@@ -50,6 +50,20 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: "auto",
         },
         {
+          field: "path",
+          title: "Picture",
+          width: "auto",
+          template: function (row) {
+            return (
+              '<div class="kt-widget3__user-img">\
+            <img class="kt-widget3__img" src="' +
+              row.path +
+              '" alt="">\
+          </div>'
+            );
+          },
+        },
+        {
           field: "first_name",
           title: "User Name",
           width: "auto",
@@ -77,11 +91,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
         {
           field: "picname",
           title: "Picture name",
-          width: "auto",
-        },
-        {
-          field: "path",
-          title: "Picture Path",
           width: "auto",
         },
         {
@@ -115,22 +124,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<div class="dropdown">\
-								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
-	                                <i class="la la-ellipsis-h"></i>\
-	                            </a>\
-							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_products.php?productId=' +
-              row.productId +
-              '"><i class="la la-edit"></i> Product</a>\
-							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_buyers.php?userId=' +
-              row.userId +
-              '"><i class="la la-leaf"></i> Users</a>\
-              <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_buyers.php?buyerId=' +
-              row.userId +
-              '"><i class="la la-leaf"></i> AAA</a>\
-							    </div>\
-							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_reviews.php?reviewId=' +
               row.reviewId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\

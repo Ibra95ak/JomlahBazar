@@ -602,7 +602,7 @@
                     <!-- Uncomment this to display the close button of the panel
 <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
 -->
-                    <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
+                    <!-- <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
                         <div id="kt_header_menu"
                             class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
                             <ul class="kt-menu__nav ">
@@ -1173,7 +1173,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- end:: Header Menu -->
 
@@ -1186,7 +1186,7 @@
                         <div class="kt-header__topbar-item kt-header__topbar-item--search dropdown"
                             id="kt_quick_search_toggle">
                             <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
-                                <span class="kt-header__topbar-icon">
+                                <!-- <span class="kt-header__topbar-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
                                         class="kt-svg-icon">
@@ -1199,7 +1199,7 @@
                                                 d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z"
                                                 fill="#000000" fill-rule="nonzero" />
                                         </g>
-                                    </svg> </span>
+                                    </svg> </span> -->
                             </div>
                             <div
                                 class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-lg">
@@ -1230,7 +1230,7 @@
                         <div class="kt-header__topbar-item dropdown">
                             <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px,0px"
                                 aria-expanded="true">
-                                <span class="kt-header__topbar-icon kt-pulse kt-pulse--brand">
+                                <!-- <span class="kt-header__topbar-icon kt-pulse kt-pulse--brand">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
                                         class="kt-svg-icon">
@@ -1243,9 +1243,8 @@
                                                 d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z"
                                                 fill="#000000" />
                                         </g>
-                                    </svg> <span class="kt-pulse__ring"></span>
-                                </span>
-
+                                    </svg>
+                                </span> -->
                                 <!--
                 Use dot badge instead of animated pulse effect:
                 <span class="kt-badge kt-badge--dot kt-badge--notify kt-badge--sm kt-badge--brand"></span>
@@ -1655,7 +1654,7 @@
                         <div class="kt-header__topbar-item dropdown">
                             <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px,0px"
                                 aria-expanded="true">
-                                <span class="kt-header__topbar-icon">
+                                <!-- <span class="kt-header__topbar-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
                                         class="kt-svg-icon">
@@ -1667,7 +1666,7 @@
                                             <rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5" />
                                             <rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5" />
                                         </g>
-                                    </svg> </span>
+                                    </svg> </span> -->
                             </div>
                             <div
                                 class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
@@ -1689,7 +1688,7 @@
                                     <!--begin: Grid Nav -->
                                     <div class="kt-grid-nav kt-grid-nav--skin-light">
                                         <div class="kt-grid-nav__row">
-                                            <a href="#" class="kt-grid-nav__item">
+                                            <!-- <a href="#" class="kt-grid-nav__item">
                                                 <span class="kt-grid-nav__icon">
                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -1708,8 +1707,8 @@
                                                     </svg> </span>
                                                 <span class="kt-grid-nav__title">Accounting</span>
                                                 <span class="kt-grid-nav__desc">eCommerce</span>
-                                            </a>
-                                            <a href="#" class="kt-grid-nav__item">
+                                            </a> -->
+                                            <!-- <a href="#" class="kt-grid-nav__item">
                                                 <span class="kt-grid-nav__icon">
                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -1728,10 +1727,10 @@
                                                     </svg> </span>
                                                 <span class="kt-grid-nav__title">Administration</span>
                                                 <span class="kt-grid-nav__desc">Console</span>
-                                            </a>
+                                            </a> -->
                                         </div>
                                         <div class="kt-grid-nav__row">
-                                            <a href="#" class="kt-grid-nav__item">
+                                            <!-- <a href="#" class="kt-grid-nav__item">
                                                 <span class="kt-grid-nav__icon">
                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -1750,8 +1749,8 @@
                                                     </svg> </span>
                                                 <span class="kt-grid-nav__title">Projects</span>
                                                 <span class="kt-grid-nav__desc">Pending Tasks</span>
-                                            </a>
-                                            <a href="#" class="kt-grid-nav__item">
+                                            </a> -->
+                                            <!-- <a href="#" class="kt-grid-nav__item">
                                                 <span class="kt-grid-nav__icon">
                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -1770,7 +1769,7 @@
                                                     </svg> </span>
                                                 <span class="kt-grid-nav__title">Customers</span>
                                                 <span class="kt-grid-nav__desc">Latest cases</span>
-                                            </a>
+                                            </a> -->
                                         </div>
                                     </div>
 
@@ -1785,7 +1784,7 @@
                         <div class="kt-header__topbar-item dropdown">
                             <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px,0px"
                                 aria-expanded="true">
-                                <span class="kt-header__topbar-icon">
+                                <!-- <span class="kt-header__topbar-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                         width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
                                         class="kt-svg-icon">
@@ -1798,7 +1797,7 @@
                                                 d="M3.5,9 L20.5,9 C21.0522847,9 21.5,9.44771525 21.5,10 C21.5,10.132026 21.4738562,10.2627452 21.4230769,10.3846154 L17.7692308,19.1538462 C17.3034221,20.271787 16.2111026,21 15,21 L9,21 C7.78889745,21 6.6965779,20.271787 6.23076923,19.1538462 L2.57692308,10.3846154 C2.36450587,9.87481408 2.60558331,9.28934029 3.11538462,9.07692308 C3.23725479,9.02614384 3.36797398,9 3.5,9 Z M12,17 C13.1045695,17 14,16.1045695 14,15 C14,13.8954305 13.1045695,13 12,13 C10.8954305,13 10,13.8954305 10,15 C10,16.1045695 10.8954305,17 12,17 Z"
                                                 fill="#000000" />
                                         </g>
-                                    </svg> </span>
+                                    </svg> </span> -->
                             </div>
                             <div
                                 class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
@@ -1947,7 +1946,7 @@
                         <!--begin: Quick panel toggler -->
                         <div class="kt-header__topbar-item kt-header__topbar-item--quick-panel" data-toggle="kt-tooltip"
                             title="Quick panel" data-placement="right">
-                            <span class="kt-header__topbar-icon" id="kt_quick_panel_toggler_btn">
+                            <!-- <span class="kt-header__topbar-icon" id="kt_quick_panel_toggler_btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                     width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -1957,17 +1956,17 @@
                                             d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z"
                                             fill="#000000" opacity="0.3" />
                                     </g>
-                                </svg> </span>
+                                </svg> </span> -->
                         </div>
 
                         <!--end: Quick panel toggler -->
 
                         <!--begin: Language bar -->
                         <div class="kt-header__topbar-item kt-header__topbar-item--langs">
-                            <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
+                            <!-- <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,0px">
                                 <span class="kt-header__topbar-icon">
                                     <img class="" src="assets/media/flags/226-united-states.svg" alt="" />
-                                </span>
+                                </span> 
                             </div>
                             <div
                                 class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
@@ -1994,7 +1993,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
 
                         <!--end: Language bar -->

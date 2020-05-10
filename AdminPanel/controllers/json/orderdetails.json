@@ -1,1 +1,1 @@
-[{"orderdetailId":1,"orderId":1,"name":"Glosslip","ordernumber":1,"discount":1,"stat":"C","totalprice":1,"shipperId":1,"ship_date":"2020-05-04","blockId":1,"active":1,"statusId":1,"productId":1}]
+[{"orderdetailId":1,"orderId":1,"ordernumber":1,"discount":1,"totalprice":1,"name":"Glosslip","productId":1,"ship_date":"2020-05-04","stat":1,"blockId":1,"active":1}]

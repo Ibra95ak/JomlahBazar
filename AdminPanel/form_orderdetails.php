@@ -48,6 +48,18 @@ include('header.php');
     <!--begin::Form-->
     <form class="kt-form kt-form--label-right">
         <div class="kt-portlet__body">
+        <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>orderdetailId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" disabled class="form-control" placeholder="" name="orderdetailId" id="orderdetailId"
+                            value="<?php if(isset($orderdetailId)) echo $orderdetailId;else echo '';?>">
+                    </div>
+                    <span class="form-text text-muted">Please enter your orderdetailId</span>
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>orderId:</label>

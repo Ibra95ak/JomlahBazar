@@ -7,7 +7,14 @@ $db = new Ser_Orderdetails();
 //results array
 $results=array();
 //get all leads details
-$getAll_orderdetails = $db->GetOrderdetails();
+$orderId=$_GET['orderId'];
+if($orderId>0){
+    //get all priviledges for admin
+    $getAll_orderdetails = $db->GetOrderDe($orderId);
+}else {
+    //get all priviledges 
+    $getAll_orderdetails = $db->Getorderdetails();
+}
 foreach($getAll_orderdetails as $orderdetail){
     array_push($results,$orderdetail);
 }
