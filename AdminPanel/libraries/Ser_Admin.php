@@ -117,7 +117,64 @@ class Ser_Admin {
             return true;
         } else return false;
     }
+ 
+    /**
+     * activate admin 
+     * @param adminId
+     * returns Boolean
+     */
+    public function activateAdmin($adminId) {
+        $stmt = $this->conn->prepare("CALL sp_ActivateAdmin(?)");
+		$stmt->bind_param("i",$adminId);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     
+    /**
+     * logged admin 
+     * @param adminId
+     * returns Boolean
+     */
+    public function loggedAdmin($adminId) {
+        $stmt = $this->conn->prepare("CALL sp_LoginAdmin(?)");
+		$stmt->bind_param("i",$adminId);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
+    
+    /**
+     * check if admin is loggedin 
+     * @param adminId
+     * returns Boolean
+     */
+    public function islogin($adminId) {
+        $stmt = $this->conn->prepare("CALL sp_IsLoginAdmin(?)");
+		$stmt->bind_param("i",$adminId);
+		if ($stmt->execute()) {
+            $login = $stmt->get_result()->fetch_assoc(); //fetch admin data and store in array
+            $stmt->close();
+            if ($login) return true;
+            else return false;
+        }else return false;
+    }
+    
+    /**
+     * logout admin
+     * @param adminId
+     * returns Boolean
+     */
+    public function logoutAdmin($adminId) {
+        $stmt = $this->conn->prepare("CALL sp_LogoutAdmin(?)");
+		$stmt->bind_param("i",$adminId);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
     /**
      * Encrypting password
      * @param password

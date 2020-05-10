@@ -1,9 +1,7 @@
 <?php
-//Get base class
-require_once '../libraries/Base.php';
-//Get login class
-require_once '../libraries/DB_Admin.php';
-$db = new DB_Admin();
+//Get admin class
+require_once '../libraries/Ser_Admin.php';
+$db = new Ser_Admin();
 //start session
 session_start();
 $err=-1;
@@ -17,16 +15,22 @@ if ((isset($_POST['username']) && isset($_POST['password']))) {
     
     if ($admin != false) {
         // admin is found
-        // save adminId in sessions for security reasons
-        $_SESSION['adminId']=$admin["adminId"];
-        $err=0;
+        
+        //Check if admin is activated
+        if($admin['active']==1){
+            $err=0;
+            //set user as logged in
+            $logged = $db->loggedAdmin($admin['adminId']);
+            $_SESSION['adminId']=$admin['adminId'];
+        } 
+        else $err=1;
     } else {
         // admin is not found with the credentials
-        $err=1;
+        $err=2;
     }	
 } else {
     // required post params is missing
-    $err=2;
+    $err=3;
 }
 echo json_encode($err);
 ?>

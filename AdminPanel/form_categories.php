@@ -47,14 +47,16 @@ include('header.php');
                     <span class="form-text text-muted">Please enter your name</span>
                 </div>
             </div>
-            <div class="form-group">
-				<label>Choose Icon</label>
-				<div></div>
-				<div class="custom-file col-lg-4">
-				<input type="file" class="custom-file-input" id="icon" name="icon">
-				<label class="custom-file-label" for="icon"></label>
-				</div>
-			</div>    
+            <div class="form-group row">
+                <div class="col-lg-4">
+						<label>Choose Icon</label>
+						<div></div>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="icon" name="icon">
+							<label class="custom-file-label" for="icon">Choose file</label>
+						</div>
+                </div>
+            </div>    
         <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
@@ -74,6 +76,7 @@ include('header.php');
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </form>
 
@@ -97,8 +100,11 @@ $('#btn_submit').click(function(e) {
     var btn = $(this);
     var form = $(this).closest('form');
     var name = $("#name").val();
-    var icon = $("#icon").val();
+    var fakeicon = $("#icon").val();
+    var icon = fakeicon.substr(12);
     var active = $("#active").val();
+    alert(icon);
+    var formData = new FormData($(this)[0]);
     form.validate({
         rules: {
             name: {
@@ -118,11 +124,14 @@ $('#btn_submit').click(function(e) {
     $.ajax({
         type: "POST",
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_category.php",
+        cache: false,
+        contentType: false,
+        processData: false,
         dataType: "json",
         data: {
             categoryId: categoryId,
             name: name,
-            icon: icon,
+            icon: data,
             active: active
         },
         success: function(data) {

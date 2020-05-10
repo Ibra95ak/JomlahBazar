@@ -8,10 +8,11 @@ $db = new Ser_Categories();
 $results=array();
 //get all leads details
 $getAll_categories = $db->GetCategories();
-foreach($getAll_categories as $category){
-    array_push($results,$category);
+if($getAll_categories){
+    foreach($getAll_categories as $category){
+        array_push($results,$category);
+    }   
 }
-
 $fp = fopen('json/categories.json', 'w');
 fwrite($fp, json_encode($results));
 fclose($fp);

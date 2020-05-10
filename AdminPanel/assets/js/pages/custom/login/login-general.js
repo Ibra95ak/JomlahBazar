@@ -112,13 +112,20 @@ var KTLoginGeneral = function() {
                     }, 2000);
                     break;
                   case 1:
+                    // similate 2s delay
+                	setTimeout(function() {
+	                    btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
+	                    showErrorMsg(form, 'danger', 'Admin not activated! Please try again.');
+                    }, 2000);
+                    break;
+                  case 2:
                    // similate 2s delay
                 	setTimeout(function() {
 	                    btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
 	                    showErrorMsg(form, 'danger', 'Incorrect username or password. Please try again.');
                     }, 2000);
                     break;
-                  case 2:
+                  case 3:
                     // similate 2s delay
                 	setTimeout(function() {
 	                    btn.removeClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', false);
@@ -180,7 +187,7 @@ var KTLoginGeneral = function() {
 	                    signInForm.clearForm();
 	                    signInForm.validate().resetForm();
 
-	                    showErrorMsg(signInForm, 'success', 'Admin is added. Try to login.');
+	                    showErrorMsg(signInForm, 'success', 'Admin is added. Your account is in review.');
 	                }, 2000);
                     break;
                   case 1:

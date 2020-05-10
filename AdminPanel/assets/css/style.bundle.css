@@ -35481,7 +35481,10 @@ body {
       display: flex;
       -webkit-box-align: stretch;
       -ms-flex-align: stretch;
-      align-items: stretch; }
+      align-items: stretch;
+      position: absolute;
+      right: 0;
+      top: 10px;}
       .kt-header__topbar .kt-header__topbar-item .kt-header__topbar-wrapper .kt-badge.kt-badge--notify {
         position: absolute;
         left: 50%;

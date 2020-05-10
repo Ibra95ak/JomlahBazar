@@ -1,45 +1,44 @@
-<?php include('libraries/base.php');?>
+<?php 
+session_start();
+//logout admin
+if(isset($_GET['logout'])){
+   //Get admin class
+    require_once 'libraries/Ser_Admin.php';
+    $db = new Ser_Admin();
+    $logout= $db->logoutAdmin($_SESSION['adminId']);  
+}
+//call base paths
+include('libraries/base.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 	<!-- begin::Head -->
 	<head>
 		<base href="">
 		<meta charset="utf-8" />
 		<title>Jomlah Bazar | Admin Panel</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 		<!--begin::Fonts -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
-
 		<!--end::Fonts -->
-
 		<!--begin::Page Custom Styles(used by this page) -->
 		<link href="assets/css/pages/login/login-2.css" rel="stylesheet" type="text/css" />
-
 		<!--end::Page Custom Styles -->
-
 		<!--begin::Global Theme Styles(used by all pages) -->
 		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-
 		<!--end::Global Theme Styles -->
-
 		<!--begin::Layout Skins(used by all pages) -->
 		<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/skins/brand/dark.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/skins/aside/dark.css" rel="stylesheet" type="text/css" />
-
 		<!--end::Layout Skins -->
 		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 	</head>
-
 	<!-- end::Head -->
-
 	<!-- begin::Body -->
 	<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--fixed kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
-
 		<!-- begin:: Page -->
 		<div class="kt-grid kt-grid--ver kt-grid--root">
 			<div class="kt-grid kt-grid--hor kt-grid--root kt-login kt-login--v2 kt-login--signin" id="kt_login">
@@ -53,7 +52,7 @@
 							</div>
 							<div class="kt-login__signin">
 								<div class="kt-login__head">
-									<h3 class="kt-login__title">Sign In To Admin</h3>
+									<h3 class="kt-login__title">Admin Sign In</h3>
 								</div>
 								<form class="kt-form" action="<?php echo DIR_ROOT.DIR_ADMINP.DIR_CON."CON_Login.php";?>" method="post">
                                     <div class="input-group">
@@ -85,7 +84,7 @@
 									</div>
 								</form>
 							</div>
-							<div class="kt-login__account">
+							<div class="kt-login__account" id="kt-login__account">
 								<span class="kt-login__account-msg">
 									Don't have an account yet ?
 								</span>&nbsp;&nbsp;
@@ -143,6 +142,20 @@
 		<script src="assets/js/pages/custom/login/login-general.js" type="text/javascript"></script>
 
 		<!--end::Page Scripts -->
+        
+		<!--begin::Custom Scripts -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var url_string = window.location.href
+                var url = new URL(url_string);
+                var reg = url.searchParams.get("reg");
+                 var div_signup = document.getElementById("kt-login__account");
+                 if (reg) div_signup.style.display = "inline";
+                 //else div_signup.style.display = "none";
+            });
+        </script>
+		<!--end::Custom Scripts -->
+        
 	</body>
 
 	<!-- end::Body -->

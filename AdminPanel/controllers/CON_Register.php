@@ -1,9 +1,9 @@
 <?php
 //Get base class
 require_once '../libraries/Base.php';
-//Get login class
-require_once '../libraries/DB_Admin.php';
-$db = new DB_Admin();
+//Get admin class
+require_once '../libraries/Ser_Admin.php';
+$db = new Ser_Admin();
 //Check if all inputs are not empty
 if (isset($_POST['username']) && isset($_POST['password'])) {
     // receiving the post params

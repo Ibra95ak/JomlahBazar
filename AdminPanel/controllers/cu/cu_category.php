@@ -13,11 +13,16 @@ else $categoryId=0;
 $name=$_POST['name'];
 $icon=$_POST['icon'];
 $active=$_POST['active'];
-$target_dir = "caticon/";
+$target_dir = "../../pics/categories/";
 $target_file = $target_dir . basename($_FILES["icon"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-$upload_img=move_uploaded_file($_FILES["icon"]["tmp_name"], $target_file);
+
+  if (move_uploaded_file($_FILES["icon"]["tmp_name"], $target_file)) {
+    echo "The file ". basename( $_FILES["icon"]["name"]). " has been uploaded.";
+  } else {
+    echo "Sorry, there was an error uploading your file.";
+  }
 if($categoryId>0){
     //Edit Category
     $edit_Category=$db->editCategory($categoryId,$name,$icon,$active);

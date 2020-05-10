@@ -98,7 +98,8 @@
               border-color: #fff; }
       .kt-login.kt-login--v2 .kt-login__wrapper .kt-login__container .kt-login__account {
         text-align: center;
-        margin-top: 2rem; }
+        margin-top: 2rem;
+        display: none;}
         .kt-login.kt-login--v2 .kt-login__wrapper .kt-login__container .kt-login__account .kt-login__account-msg {
           font-size: 1.1rem;
           font-weight: 500;
