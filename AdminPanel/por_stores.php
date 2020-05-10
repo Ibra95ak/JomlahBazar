@@ -66,11 +66,10 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Stores.php');?>
                                             <label>Type:</label>
                                         </div>
                                         <div class="kt-form__control">
-                                            <select class="form-control bootstrap-select" id="kt_form_type">
+                                        <select class="form-control bootstrap-select" id="kt_form_status">
                                                 <option value="">All</option>
-                                                <option value="1">Online</option>
-                                                <option value="2">Retail</option>
-                                                <option value="3">Direct</option>
+                                                <option value="1">Active</option>
+                                                <option value="0">Inactive</option>
                                             </select>
                                         </div>
                                     </div>

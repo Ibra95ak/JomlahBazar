@@ -95,12 +95,9 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_categories.php?categoryId=' +
-              row.categoryId +
-              '"><i class="la la-edit"></i> Category</a>\
-							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_pictures.php?pictureId=' +
-              row.pictureId +
-              '"><i class="la la-leaf"></i> Picture</a>\
+                  <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/por_products.php?productId=' +
+              row.productId +
+              '"><i class="la la-edit"></i> Product</a>\
 							    </div>\
 							</div>\
               <a href="http://localhost/JomlahBazar/AdminPanel/form_brands.php?brandId=' +

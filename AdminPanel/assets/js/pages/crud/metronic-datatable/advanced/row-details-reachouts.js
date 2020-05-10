@@ -89,16 +89,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<div class="dropdown">\
-								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
-	                                <i class="la la-ellipsis-h"></i>\
-	                            </a>\
-							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_buyers.php?userId=' +
-              row.userId +
-              '"><i class="la la-edit"></i> Users</a>\
-							    </div>\
-							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_reachouts.php?reachoutId=' +
               row.reachoutId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\

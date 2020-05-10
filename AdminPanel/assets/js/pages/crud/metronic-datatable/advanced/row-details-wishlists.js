@@ -45,13 +45,18 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: "auto",
         },
         {
-          field: "userId",
-          title: "User ID",
+          field: "first_name",
+          title: "First Name",
           width: "auto",
         },
         {
-          field: "productId",
-          title: "Product ID",
+          field: "last_name",
+          title: "Last_name",
+          width: "auto",
+        },
+        {
+          field: "name",
+          title: "Product Name",
           width: "auto",
         },
         {
@@ -75,13 +80,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
               1: { title: "Active", state: "success" },
             };
             return (
-              '<span class="kt-badge kt-badge--' +
-              status[row.active].state +
-              ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' +
-              status[row.active].state +
-              '">' +
-              status[row.active].title +
-              "</span>"
+              '<span class="kt-badge kt-badge--' + status[row.active].state + ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' + status[row.active].state + '">' + status[row.active].title + "</span>"
             );
           },
         },
@@ -95,16 +94,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<div class="dropdown">\
-								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
-	                                <i class="la la-ellipsis-h"></i>\
-	                            </a>\
-							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
-							    </div>\
-							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_wishlists.php?wishlistId=' +
               row.wishlistId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\

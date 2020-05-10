@@ -55,6 +55,17 @@ include('header.php');
         <div class="kt-portlet__body">
         <div class="form-group row">
                 <div class="col-lg-4">
+                    <label>productId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" disabled class="form-control" placeholder="" name="productId" id="productId"
+                            value="<?php if(isset($productId)) echo $productId;else echo '';?>">
+                    </div>
+                </div>
+            </div>
+        <div class="form-group row">
+                <div class="col-lg-4">
                     <label>supplierId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i

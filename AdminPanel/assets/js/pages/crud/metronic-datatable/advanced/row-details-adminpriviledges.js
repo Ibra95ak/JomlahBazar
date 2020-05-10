@@ -90,7 +90,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
 							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/por_priviledges.php?adminpriviledgeId=' +
-              row.priviledgeId +
+              row.adminpriviledgeId +
               '"><i class="la la-edit"></i> Priviledge</a>\
 							    </div>\
 							</div>\

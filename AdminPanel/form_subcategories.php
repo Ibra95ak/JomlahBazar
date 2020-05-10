@@ -41,17 +41,17 @@ include('header.php');
         <div class="kt-portlet__body">
         <div class="form-group row">
             <div class="col-lg-4">
-            <label for="exampleSelectd">Default Select</label>
+            <label for="exampleSelectd">Select Category</label>
             <select class="form-control" id="categoryId" name="categoryId">
-<?php
-//Get all categories
-$get_category=$db1->GetCategories();
-if($get_category){
-    foreach($get_category as $cat){
-        echo "<option value='".$cat['categoryId']."'>".$cat['name']."</option>";
-    }
-}
-?>
+                <?php
+                //Get all categories
+                $get_category=$db1->GetCategories();
+                if($get_category){
+                    foreach($get_category as $cat){
+                        echo "<option value='".$cat['categoryId']."'>".$cat['name']."</option>";
+                    }
+                }
+                ?>
             </select>
             </div>
         </div>

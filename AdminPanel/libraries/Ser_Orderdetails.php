@@ -41,6 +41,22 @@ class Ser_Orderdetails {
 		else return false;
     }
 
+        /**
+     * Get all orderdetails by Admin 
+     * returns json/Null
+     */
+    public function GetOrderDe($orderId) {
+        $stmt = $this->conn->prepare("CALL sp_GetOrderDet(?)");
+        $stmt->bind_param("i",$orderId);
+        if ($stmt->execute()) {
+            $orderdetails = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+            $stmt->close();
+            if ($orderdetails==true) {
+                return $orderdetails;
+            }
+        } else return NULL;
+    }
+
     /**
      * Get all orderdetails 
      * returns json/Null

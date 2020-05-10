@@ -33,6 +33,17 @@ include('header.php');
     <!--begin::Form-->
     <form class="kt-form kt-form--label-right">
         <div class="kt-portlet__body">
+        <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>adminId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" disabled class="form-control" placeholder="" name="adminId" id="adminId"
+                            value="<?php if(isset($adminId)) echo $adminId;else echo '';?>">
+                    </div>
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>Username:</label>

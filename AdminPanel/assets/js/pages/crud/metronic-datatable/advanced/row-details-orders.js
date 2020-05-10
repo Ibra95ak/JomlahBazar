@@ -123,7 +123,12 @@ var KTDatatableAutoColumnHideDemo = (function () {
 							<div class="dropdown">\
 								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
 	                                <i class="la la-ellipsis-h"></i>\
-	                            </a>\
+                              </a>\
+                              <div class="dropdown-menu dropdown-menu-right">\
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/por_orderdetails.php?orderId=' +
+              row.orderId +
+              '"><i class="la la-edit"></i> OrderDetails</a>\
+							    </div>\
 							    <div class="dropdown-menu dropdown-menu-right">\
 							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_buyers.php?userId=' +
               row.userId +

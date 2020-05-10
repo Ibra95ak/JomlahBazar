@@ -1,7 +1,9 @@
 <?php
 //Get Wallet class
 require_once 'libraries/Ser_Wallets.php';
+require_once 'libraries/Ser_Wallettypes.php';
 $db = new Ser_Wallets();
+$db = new Ser_Wallettypes();
 $err=-1;
 
 if(isset($_GET['walletId'])) $walletId=$_GET['walletId'];
@@ -33,16 +35,31 @@ include('header.php');
     <!--begin::Form-->
     <form class="kt-form kt-form--label-right">
         <div class="kt-portlet__body">
-            <div class="form-group row">
+        <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>wallettypeId:</label>
+                    <label>walletId:</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="wallettypeId" id="wallettypeId"
-                            value="<?php if(isset($wallettypeId)) echo $wallettypeId;else echo '';?>">
+                        <input type="text" disabled class="form-control" placeholder="" name="walletId" id="walletId"
+                            value="<?php if(isset($walletId)) echo $walletId;else echo '';?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your wallettypeId</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-4">
+                <label for="exampleSelectd">Select Wallet Type</label>
+            <select class="form-control" id="wallettypeId" name="wallettypeId">
+                <?php
+                //Get all wallets
+                $get_wallettype=$db1->GetWallettypes();
+                if($get_wallettype){
+                    foreach($get_wallettype as $cat){
+                        echo "<option value='".$cat['wallettypeId']."'>".$cat['name']."</option>";
+                    }
+                }
+                ?>
+            </select>
                 </div>
             </div>
             <div class="form-group" id="edits">

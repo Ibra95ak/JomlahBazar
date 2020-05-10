@@ -89,11 +89,11 @@ var KTDatatableAutoColumnHideDemo = (function () {
 								<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
-							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href=""><i class="la la-edit"></i> Edit Details</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\
-							        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\
-							    </div>\
+                              <div class="dropdown-menu dropdown-menu-right">\
+                              <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/por_adminpriviledge.php?adminId=' +
+              row.adminId +
+              '"><i class="la la-edit"></i> AdminPriviledge</a>\
+                          </div>\
 							</div>\
 							<a href="http://localhost/JomlahBazar/AdminPanel/form_admins.php?adminId=' +
               row.adminId +

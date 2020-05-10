@@ -27,6 +27,21 @@ class Ser_Adminpriviledges {
             }
         } else return NULL;
     }
+        /**
+     * Get all Adminpriviledge by Admin 
+     * returns json/Null
+     */
+    public function GetAdminPriv($adminId) {
+        $stmt = $this->conn->prepare("CALL sp_GetAdminpriv(?)");
+        $stmt->bind_param("i",$adminId);
+        if ($stmt->execute()) {
+            $Adminpriviledge = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+            $stmt->close();
+            if ($Adminpriviledge==true) {
+                return $Adminpriviledge;
+            }
+        } else return NULL;
+    }
 
 /**
      * Storing new Adminpriviledge

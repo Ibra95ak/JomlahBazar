@@ -1,6 +1,7 @@
 <?php include('header.php');
-require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Orderdetails.php');?>
-<!-- begin:: Content -->
+if(isset($_GET['orderId'])) $orderId=$_GET['orderId'];
+else $orderId=0;
+require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Orderdetails.php?orderId='.$orderId);?>
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
     <div class="kt-portlet__body kt-portlet__body--fit">
         <div class="kt-portlet kt-portlet--mobile">
@@ -10,15 +11,11 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Orderdetails.php');?>
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                     <h3 class="kt-portlet__head-title">
-                        Row Details
+                        Orderdetails Datatable
                     </h3>
                 </div>
                 <div class="kt-portlet__head-toolbar">
                     <div class="kt-portlet__head-wrapper">
-                        <a href="#" class="btn btn-clean btn-icon-sm">
-                            <i class="la la-long-arrow-left"></i>
-                            Back
-                        </a>
                         &nbsp;
                         <button type="button" class="btn btn-brand btn-icon-sm" id="add">
                             <i class="flaticon2-plus"></i> Add New
@@ -48,29 +45,10 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Orderdetails.php');?>
                                             <label>Status:</label>
                                         </div>
                                         <div class="kt-form__control">
-                                            <select class="form-control bootstrap-select" id="kt_form_status">
+                                        <select class="form-control bootstrap-select" id="kt_form_status">
                                                 <option value="">All</option>
-                                                <option value="1">Pending</option>
-                                                <option value="2">Delivered</option>
-                                                <option value="3">Canceled</option>
-                                                <option value="4">Success</option>
-                                                <option value="5">Info</option>
-                                                <option value="6">Danger</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
-                                    <div class="kt-form__group kt-form__group--inline">
-                                        <div class="kt-form__label">
-                                            <label>Type:</label>
-                                        </div>
-                                        <div class="kt-form__control">
-                                            <select class="form-control bootstrap-select" id="kt_form_type">
-                                                <option value="">All</option>
-                                                <option value="1">Online</option>
-                                                <option value="2">Retail</option>
-                                                <option value="3">Direct</option>
+                                                <option value="1">Active</option>
+                                                <option value="0">Inactive</option>
                                             </select>
                                         </div>
                                     </div>
