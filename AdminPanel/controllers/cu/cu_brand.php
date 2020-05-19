@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get brand class
 require_once '../../libraries/Ser_Brands.php';
 $db = new Ser_Brands();
@@ -13,7 +13,8 @@ else $brandId=0;
 $brandcategoryId=$_POST['brandcategoryId'];
 $brand_name=$_POST['brand_name'];
 $pictureId=$_POST['pictureId'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($brandId>0){
     //Edit brand

@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get Wishlist class
 require_once '../../libraries/Ser_Wishlists.php';
 $db = new Ser_Wishlists();
@@ -12,7 +12,8 @@ else $wishlistId=0;
 //get data from form
 $userId=$_POST['userId'];
 $productId=$_POST['productId'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($wishlistId>0){
     //Edit wishlist

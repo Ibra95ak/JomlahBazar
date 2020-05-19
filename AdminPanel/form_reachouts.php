@@ -149,6 +149,7 @@ include('header.php');
                 </div>
             </div>
         </div>
+        </div>
     </form>
 
     <!--end::Form-->
@@ -232,7 +233,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_reachouts.php"
+                            "localhost/JomlahBazar/AdminPanel/por_reachouts.php"
                         );
                     }, 2000);
                     break;

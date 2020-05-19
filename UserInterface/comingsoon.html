@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head> 
+<title>Organic store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<link href="assets/coming-soon/css/style.css" rel='stylesheet' type='text/css' />
+<link href="assets/vendor/bootstrap/css/bootstrap.min2.css" rel='stylesheet' type='text/css' />
+</head>
+<body>
+<section class="coming-soon">
+  <div class="content-timer">
+    <h1 class="tittle-wthree-agileits">Stay tuned we're launching soon. </h1>
+    <div class="clock">
+      <div class="column days">
+        <div class="timer" id="days"></div>
+        <div class="text">DAYS</div>
+      </div>
+      <div class="timer days"></div>
+      <div class="column">
+        <div class="timer" id="hours"></div>
+        <div class="text">HOURS</div>
+      </div>
+      <div class="timer"></div>
+      <div class="column">
+        <div class="timer" id="minutes"></div>
+        <div class="text">MINUTES</div>
+      </div>
+      <div class="timer"></div>
+      <div class="column">
+        <div class="timer" id="seconds"></div>
+        <div class="text">SECONDS</div>
+      </div>
+      <div class="clear"> </div>
+    </div>
+  </div>
+  <div class="agileinfo">
+    <h2>Subscribe Now</h2>
+    <form action="/" method="post" id="comingForm" onSubmit="return ajaxmailcomingsoon();" >
+      <div class="input-group agileinfo">
+        <input type="email" name="comemail" id="comemail" class="form-control newsletter" placeholder="Enter your mail">
+        <span class="input-group-btn">
+        <button class="btn btn-theme submit" type="button" onClick="return ajaxmailcomingsoon();">Subscribe</button>
+        </span> </div>
+    </form>
+    <ul class="social_list1">
+      <li> <a href="#" class="facebook1"> <i class="fab fa-facebook-f"></i> </a> </li>
+      <li> <a href="#" class="twitter2"> <i class="fab fa-twitter"></i> </a> </li>
+      <li> <a href="#" class="dribble3"> <i class="fab fa-dribbble"></i> </a> </li>
+    </ul>
+  </div>
+  <div class="copy-w3layouts-agileits">
+    <p>Copyright © 2020 Organic Store - All Rights Reserved.</p>
+  </div>
+</section>
+<!--  Form Submission Popup -->
+ 
+ 
+<!--scripts-->
+<script src="assets/js/ajax.js"></script>
+<script src="assets/js/formValidation.js"></script>
+
+<script src="assets/coming-soon/js/jquery-2.1.4.min.js"></script>
+<link rel="stylesheet" href="assets/coming-soon/css/jquery.countdown.css" />
+<script src="assets/coming-soon/js/moment.js"></script>
+<script src="assets/coming-soon/js/moment-timezone-with-data.js"></script>
+<script src="assets/coming-soon/js/timer.js"></script>
+ 
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<!--bootstrap-->
+<script src="assets/vendor/bootstrap/js/popper.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--bootstrap-->
+ 
+
+<p data-toggle="modal" class="no-margin" data-target="#myModal" id="model2"></p>
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-dialog2">
+    <div class="modal-content text-center">
+      <div class="modal-body modal-body2">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <p><img src="assets/images/success.svg" width="50"></p>
+        <h3 class="modal-title">Thank you</h3>
+        <h4 class="thanks mt-2">Your submission is recevied and we will contact you soon.</h4>
+        <a href="https://themeforest.net/item/organic-store-multipurpose-ecommerce-bootstrap-html5-template/23986984" target="_blank" class="btn add-to-cart2 d-inline-block font-15 rounded">BUY THIS TEMPLATE NOW</a> <a href="index.html" class="back-to-home d-block small mt-2"><i class="fa fa-long-arrow-left"></i> BACK TO HOME</a> </div>
+    </div>
+  </div>
+</div> 
+ 
+</body>
+</html>

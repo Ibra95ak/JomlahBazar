@@ -14,12 +14,10 @@ if($creditcardId>0){
      $card_number=$get_creditcard['card_number'];
      $card_expMO=$get_creditcard['card_expMO'];
      $card_expYR=$get_creditcard['card_expYR'];
-     $creditcarddetailId=$get_creditcard['creditcarddetailId'];
     }else{
         $card_number='';
         $card_expMO='';
         $card_expYR='';
-        $creditcarddetailId='';
     }
 }
 include('header.php');
@@ -35,7 +33,7 @@ include('header.php');
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="jbform">
         <div class="kt-portlet__body">
         <div class="form-group row">
                 <div class="col-lg-4">
@@ -43,8 +41,17 @@ include('header.php');
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input creditcardId="text" disabled class="form-control" placeholder="" name="creditcardId" id="creditcardId"
-                            value="<?php if(isset($creditcardId)) echo $creditcardId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="creditcardId" id="creditcardId" value="<?php if(isset($creditcardId)) echo $creditcardId;else echo '';?>">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-lg-4">
+                    <label>walletId:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="walletId" id="walletId" value="<?php if(isset($creditcardId)) echo $creditcardId;else echo '';?>">
                     </div>
                 </div>
             </div>
@@ -84,18 +91,6 @@ include('header.php');
                     <span class="form-text text-muted">Please enter your card_expYR</span>
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="col-lg-4">
-                    <label>CreditCardDetailId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="creditcarddetailId" id="creditcarddetailId"
-                            value="<?php if(isset($creditcarddetailId)) echo $creditcarddetailId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your CreditCardDetailId</span>
-                </div>
-            </div>
         </div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
@@ -114,25 +109,13 @@ include('header.php');
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var creditcardId = url.searchParams.get("creditcardId");
-// var div_edit = document.getElementById("edits");
-// if (creditcardId > 0) div_edit.style.display = "inline";
-// else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
 $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var card_number = $("#card_number").val();
-    var card_expMO = $("#card_expMO").val();
-    var card_expYR = $("#card_expYR").val();
-    var creditcarddetailId = $("#creditcarddetailId").val();
+    var formdata1 = new FormData($('#jbform')[0]);
     form.validate({
         rules: {
             card_number: {
@@ -142,9 +125,6 @@ $('#btn_submit').click(function(e) {
                 required: true
             },
             card_expYR: {
-                required: true
-            },
-            creditcarddetailId: {
                 required: true
             },
         }
@@ -158,14 +138,10 @@ $('#btn_submit').click(function(e) {
     $.ajax({
         type: "POST",
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_creditcard.php",
+        contentType: false,
+        processData: false,
+        data: formdata1,
         dataType: "json",
-        data: {
-            creditcardId: creditcardId,
-            card_number: card_number,
-            card_expMO: card_expMO,
-            card_expYR: card_expYR,
-            creditcarddetailId: creditcarddetailId
-        },
         success: function(data) {
             switch (data) {
                 case 0:

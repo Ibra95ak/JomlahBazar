@@ -1,0 +1,30 @@
+﻿#example23_wrapper .dt-buttons { float:right}
+#example23_wrapper .dataTables_filter { display:none}
+#example23_wrapper .dt-buttons {display:inline-block;padding-top: 5px;margin-bottom: 15px;position: absolute;right:0;top: 20px; right: 20px;}
+
+#example23_wrapper .dt-buttons .dt-button {
+padding: 5px 15px;
+border-radius: 100px;
+color:#797989!important;
+margin-right: 3px;
+font-size: 14px;
+}
+
+#example23_wrapper .dt-buttons .dt-button {background:#fff!important;border:solid 1px #d5d7da!important;border-radius:0!important;margin-right:-1px!important; font-size:13px!important; padding: 5px 10px;}
+#example23_wrapper .dt-buttons .dt-button:hover {background:#0642b8!important;border:solid 1px #d5d7da!important; color:#fff!important}
+
+#example23_wrapper .dataTables_wrapper thead { padding-top:0!important; background:#0642b8; color:#fff;}
+table.dataTable thead .sorting:after {color:#fff!important}   
+
+#myTable thead {  padding-top:0!important; background:#0642b8; color:#fff;}
+#mainTable thead {  padding-top:0!important; background:#0642b8; color:#fff;}
+
+#example23 thead  { padding-top:0!important; background:#0642b8; color:#fff;}
+.jsgrid-table tr th {background:#0642b8; color:#fff;}
+
+#example23 .dataTables_length  {display:none!important}
+#example23 #editable-datatable_filter {display:none!important}
+
+
+#example23 .dataTables_length  {display:none!important}
+#example23 #editable-datatable_filter {display:none!important}

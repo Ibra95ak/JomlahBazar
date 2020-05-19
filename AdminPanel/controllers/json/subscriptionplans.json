@@ -1,1 +1,1 @@
-[{"subscriptionplanId":1,"purchaseId":1,"name":"Limit","paid":1,"purchase_date":"2020-05-04","total_price":1},{"subscriptionplanId":2,"purchaseId":2,"name":"Full","paid":2,"purchase_date":"2020-05-06","total_price":2},{"subscriptionplanId":3,"purchaseId":2,"name":"Great","paid":2,"purchase_date":"2020-05-06","total_price":2}]
+[{"subscriptionplanId":1,"purchaseId":1,"name":"sub1","paid":1,"purchase_date":"2020-05-04","total_price":258}]

@@ -1,0 +1,92 @@
+/*
+Template Name: Organic E-store Admin
+Author: SRGIT
+Email: 
+File: css
+*/
+/*Theme Colors*/
+/*bootstrap Color*/
+/*Light colors*/
+/*Normal Color*/
+/*Extra Variable*/
+/*******************
+Login register and recover password Page
+******************/
+.login-register {
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center center;
+height: 100%;
+width: 100%;
+padding: 10% 0;
+background:url(../../../assets/images/bg.jpg) repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
+
+
+.login-box {
+width: 400px;
+margin: 0 auto;
+}
+.login-box p {font-size:13px}
+
+.login-box .footer {
+width: 100%;
+left: 0px;
+right: 0px;
+}
+.login-box .social {
+display: block;
+margin-bottom: 30px;
+}
+#recoverform {
+display: none;
+}
+.login-sidebar {
+padding: 0px;
+margin-top: 0px;
+}
+.login-sidebar .login-box {
+right: 0px;
+position: absolute;
+height: 100%;
+}
+.btn-rounded2 {
+background: #f7899e;
+background: -moz-linear-gradient(left, #f7899e 0%, #fe978b 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, #f7899e), color-stop(100%, #fe978b));
+background: -webkit-linear-gradient(left, #f7899e 0%, #fe978b 100%);
+background: -o-linear-gradient(left, #f7899e 0%, #fe978b 100%);
+background: -ms-linear-gradient(left, #f7899e 0%, #fe978b 100%);
+background: linear-gradient(to right, #f7899e 0%, #fe978b 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7899e', endColorstr='#fe978b', GradientType=1 );
+border:0;
+color:#fff;
+font-size:14px;
+font-weight:bold;
+font-weight:600;
+border-radius:60px;
+padding:14px 0;
+cursor:pointer
+}
+.btn-rounded3 {
+background:#fff;
+color:#393939;
+font-size:14px;
+border:solid 1px #c1c1c1;
+font-weight:600;
+border-radius:60px;
+padding:14px 0;
+cursor:pointer
+}
+.btn-rounded2:hover, .btn-rounded3:hover {
+background:#2f2f2f;
+color:#fff
+}
+.card-no-border .card {
+border-radius:15px;
+}

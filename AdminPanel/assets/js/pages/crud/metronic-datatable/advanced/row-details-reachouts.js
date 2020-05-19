@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=reachouts.json",
+              "localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=reachouts.json",
           },
         },
         pageSize: 10,
@@ -89,12 +89,12 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<a href="http://localhost/JomlahBazar/AdminPanel/form_reachouts.php?reachoutId=' +
+							<a href="localhost/JomlahBazar/AdminPanel/form_reachouts.php?reachoutId=' +
               row.reachoutId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\
 							</a>\
-							<a href="http://localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Reachout.php?reachoutId=' +
+							<a href="localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Reachout.php?reachoutId=' +
               row.reachoutId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
 								<i class="la la-trash"></i>\

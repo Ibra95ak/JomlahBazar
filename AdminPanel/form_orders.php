@@ -40,7 +40,7 @@ include('header.php');
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="jbform">
         <div class="kt-portlet__body">
         <div class="form-group row">
                 <div class="col-lg-4">
@@ -48,7 +48,7 @@ include('header.php');
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" disabled class="form-control" placeholder="" name="orderId" id="orderId"
+                        <input type="text" class="form-control" placeholder="" name="orderId" id="orderId"
                             value="<?php if(isset($orderId)) echo $orderId;else echo '';?>">
                     </div>
                 </div>
@@ -117,11 +117,10 @@ include('header.php');
         <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
-                <input id="active" type="checkbox" value="1"
-                    <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
+                <input name="active" id="active" type="checkbox" <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
                 <span></span>
             </label>
-            <span class="form-text text-muted">Some help text goes here</span>
+            <span class="form-text text-muted">Activate</span>
         </div></div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
@@ -140,27 +139,13 @@ include('header.php');
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var orderId = url.searchParams.get("orderId");
-// var div_edit = document.getElementById("edits");
-// if (orderId > 0) div_edit.style.display = "inline";
-// else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
 $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var userId = $("#userId").val();
-    var ordernumber = $("#ordernumber").val();
-    var purchaseId = $("#purchaseId").val();
-    var statusId = $("#statusId").val();
-    var blockId = $("#blockId").val();
-    var active = $("#active").val();
+    var formdata1 = new FormData($('#jbform')[0]);
     form.validate({
         rules: {
             userId: {
@@ -189,16 +174,11 @@ $('#btn_submit').click(function(e) {
     $.ajax({
         type: "POST",
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_order.php",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formdata1,
         dataType: "json",
-        data: {
-            orderId: orderId,
-            userId: userId,
-            ordernumber: ordernumber,
-            purchaseId: purchaseId,
-            statusId: statusId,
-            blockId: blockId,
-            active: active
-        },
         success: function(data) {
             switch (data) {
                 case 0:
@@ -209,7 +189,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_orders.php"
+                            "localhost/JomlahBazar/AdminPanel/por_orders.php"
                         );
                     }, 2000);
                     break;

@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get brand class
 require_once '../../libraries/Ser_Inventories.php';
 $db = new Ser_Inventories();
@@ -13,7 +13,8 @@ else $inventoryId=0;
 $inventorynumber=$_POST['inventorynumber'];
 $statusId=$_POST['statusId'];
 $blockId=$_POST['blockId'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($inventoryId>0){
     //Edit inventory

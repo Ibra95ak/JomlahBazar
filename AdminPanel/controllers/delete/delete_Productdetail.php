@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get productdetail class
 require_once '../../libraries/Ser_Productdetails.php';
 $db = new Ser_Productdetails();

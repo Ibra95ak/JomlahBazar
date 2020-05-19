@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = function() {
 				type: 'remote',
 				source: {
 					read: {
-						url: 'http://localhost/JomlahBazar/AdminPanel/controllers/RD_AAA.php',
+						url: 'localhost/JomlahBazar/AdminPanel/controllers/RD_AAA.php',
 					},
 				},
 				pageSize: 10,

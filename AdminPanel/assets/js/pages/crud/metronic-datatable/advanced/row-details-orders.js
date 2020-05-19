@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=orders.json",
+              "localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=orders.json",
           },
         },
         pageSize: 10,
@@ -70,7 +70,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: "auto",
         },
         {
-          field: "stat",
+          field: "statusId",
           title: "Status",
           width: "auto",
         },
@@ -96,8 +96,8 @@ var KTDatatableAutoColumnHideDemo = (function () {
           // callback function support for column rendering
           template: function (row) {
             var status = {
-              0: { title: "Inactive", state: "danger" },
               1: { title: "Active", state: "success" },
+              2: { title: "Inactive", state: "danger" },
             };
             return (
               '<span class="kt-badge kt-badge--' +
@@ -125,22 +125,22 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
                               </a>\
                               <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/por_orderdetails.php?orderId=' +
+							        <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/por_orderdetails.php?orderId=' +
               row.orderId +
               '"><i class="la la-edit"></i> OrderDetails</a>\
 							    </div>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_buyers.php?userId=' +
+							        <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_buyers.php?userId=' +
               row.userId +
               '"><i class="la la-edit"></i> User</a>\
 							    </div>\
 							</div>\
-              <a href="http://localhost/JomlahBazar/AdminPanel/form_orders.php?orderId=' +
+              <a href="localhost/JomlahBazar/AdminPanel/form_orders.php?orderId=' +
               row.orderId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\
 							</a>\
-							<a href="http://localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Order.php?orderId=' +
+							<a href="localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Order.php?orderId=' +
               row.orderId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
 								<i class="la la-trash"></i>\
@@ -153,11 +153,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
     });
 
     $("#kt_form_status").on("change", function () {
-      datatable.search($(this).val().toLowerCase(), "Status");
-    });
-
-    $("#kt_form_type").on("change", function () {
-      datatable.search($(this).val().toLowerCase(), "Type");
+      datatable.search($(this).val().toLowerCase(), "active");
     });
 
     $("#kt_form_status,#kt_form_type").selectpicker();

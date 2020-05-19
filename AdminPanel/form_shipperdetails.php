@@ -25,22 +25,20 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-            Edit Shipperdetail
+            Manage Shipperdetail
             </h3>
         </div>
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="jbform">
         <div class="kt-portlet__body">
         <div class="form-group row">
                 <div class="col-lg-4">
                     <label>shipperdetailId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" disabled class="form-control" placeholder="" name="shipperdetailId" id="shipperdetailId"
-                            value="<?php if(isset($shipperdetailId)) echo $shipperdetailId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="shipperdetailId" id="shipperdetailId" value="<?php if(isset($shipperdetailId)) echo $shipperdetailId;else echo '';?>">
                     </div>
                 </div>
             </div>
@@ -48,10 +46,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>name:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="name" id="name"
-                            value="<?php if(isset($name)) echo $name;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="name" id="name" value="<?php if(isset($name)) echo $name;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your name</span>
                 </div>
@@ -60,10 +56,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>description:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="description" id="description"
-                            value="<?php if(isset($description)) echo $description;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="description" id="description" value="<?php if(isset($description)) echo $description;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your description</span>
                 </div>
@@ -88,23 +82,13 @@ include('header.php');
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var shipperdetailId = url.searchParams.get("shipperdetailId");
-// var div_edit = document.getElementById("edits");
-// if (shipperdetailId > 0) div_edit.style.display = "inline";
-// else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
 $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var name = $("#name").val();
-    var description = $("#description").val();
+    var formdata1 = new FormData($('#jbform')[0]);
     form.validate({
         rules: {
             name: {
@@ -124,12 +108,11 @@ $('#btn_submit').click(function(e) {
     $.ajax({
         type: "POST",
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_shipperdetail.php",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formdata1,
         dataType: "json",
-        data: {
-            shipperdetailId: shipperdetailId,
-            name: name,
-            description: description
-        },
         success: function(data) {
             switch (data) {
                 case 0:
@@ -140,7 +123,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_shipperdetails.php"
+                            "localhost/JomlahBazar/AdminPanel/por_shipperdetails.php"
                         );
                     }, 2000);
                     break;

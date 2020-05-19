@@ -33,7 +33,7 @@ include('header.php');
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="jbform">
         <div class="kt-portlet__body">
             <div class="form-group row">
                 <div class="col-lg-4">
@@ -60,24 +60,21 @@ include('header.php');
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
-                    <label>path:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="path" id="path"
-                            value="<?php if(isset($path)) echo $path;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your path</span>
+						<label>Choose Picture</label>
+						<div></div>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="path" name="path">
+							<label class="custom-file-label" for="icon">Choose file</label>
+						</div>
                 </div>
-            </div>
+            </div> 
         <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
-                <input id="active" type="checkbox" value="1"
-                    <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
+                <input name="active" id="active" type="checkbox" <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
                 <span></span>
             </label>
-            <span class="form-text text-muted">Some help text goes here</span>
+            <span class="form-text text-muted">Activate</span>
         </div>
         </div>
         <div class="kt-portlet__foot">
@@ -97,30 +94,16 @@ include('header.php');
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var pictureId = url.searchParams.get("pictureId");
-var div_edit = document.getElementById("edits");
-if (pictureId > 0) div_edit.style.display = "inline";
-else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
 $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var name = $("#name").val();
-    var path = $("#path").val();
-    var active = $("#active").val();
+    var formdata1 = new FormData($('#jbform')[0]);
     form.validate({
         rules: {
             name: {
-                required: true
-            },
-            path: {
                 required: true
             },
         }
@@ -134,13 +117,11 @@ $('#btn_submit').click(function(e) {
     $.ajax({
         type: "POST",
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_picture.php",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formdata1,
         dataType: "json",
-        data: {
-            pictureId: pictureId,
-            name: name,
-            path: path,
-            active: active
-        },
         success: function(data) {
             switch (data) {
                 case 0:
@@ -151,7 +132,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_pictures.php"
+                            "localhost/JomlahBazar/AdminPanel/por_pictures.php"
                         );
                     }, 2000);
                     break;

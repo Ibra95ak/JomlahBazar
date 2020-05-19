@@ -56,19 +56,30 @@ $db1 = new Ser_Reviews();?>
                                 <div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
                                     <div class="kt-form__group kt-form__group--inline">
                                         <div class="kt-form__label">
-                                            <label>Stars:</label>
+                                            <label>Status:</label>
                                         </div>
                                         <div class="kt-form__control">
                                             <select class="form-control bootstrap-select" id="kt_form_status">
-                                            <?php
-                                            //Get all reviews
-                                            $get_review=$db1->GetReviews();
-                                            if($get_review){
-                                                foreach($get_review as $cat){
-                                                    echo "<option value='".$cat['stars']."'>".$cat['stars']."</option>";
-                                                }
-                                            }
-                                            ?>
+                                                <option value="">All</option>
+                                                <option value="1">Active</option>
+                                                <option value="2">Inactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
+                                    <div class="kt-form__group kt-form__group--inline">
+                                        <div class="kt-form__label">
+                                            <label>Stars:</label>
+                                        </div>
+                                        <div class="kt-form__control">
+                                            <select class="form-control bootstrap-select" id="kt_form_stars">
+                                                <option value="">Choose rating</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
                                             </select>
                                         </div>
                                     </div>

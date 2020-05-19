@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get Testimonial class
 require_once '../../libraries/Ser_Testimonials.php';
 $db = new Ser_Testimonials();
@@ -8,12 +8,12 @@ $err=-1;
 
 if(isset($_POST['testimonialId'])) $testimonialId=$_POST['testimonialId'];
 else $testimonialId=0;
-
 //get data from form
 $name=$_POST['name'];
 $description=$_POST['description'];
 $pictureId=$_POST['pictureId'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($testimonialId>0){
     //Edit testimonial
@@ -27,5 +27,5 @@ if($testimonialId>0){
     else $err=1;
 }
 echo json_encode($err);
-exit;
+//exit;
 ?>

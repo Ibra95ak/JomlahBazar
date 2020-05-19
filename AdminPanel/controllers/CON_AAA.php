@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../libraries/Base.php';
+require_once '../libraries/base.php';
 //Get AAA class
 require_once '../libraries/Ser_AAA.php';
 $db = new Ser_AAA();

@@ -62,7 +62,7 @@ $db1 = new Ser_Categories();?>
                                         <select class="form-control bootstrap-select" id="kt_form_status">
                                                 <option value="">All</option>
                                                 <option value="1">Active</option>
-                                                <option value="0">Inactive</option>
+                                                <option value="2">Inactive</option>
                                             </select>
                                         </div>
                                     </div>
@@ -70,7 +70,7 @@ $db1 = new Ser_Categories();?>
                                 <div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
                                     <div class="kt-form__group kt-form__group--inline">
                                         <div class="kt-form__label">
-                                            <label>Type:</label>
+                                            <label>Category:</label>
                                         </div>
                                         <div class="kt-form__control">
                                             <select class="form-control bootstrap-select" id="kt_form_type">

@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get brand class
 require_once '../../libraries/Ser_Shippers.php';
 $db = new Ser_Shippers();
@@ -14,7 +14,8 @@ $aaaId=$_POST['aaaId'];
 $addressId=$_POST['addressId'];
 $reachoutId=$_POST['reachoutId'];
 $shipperdetailsId=$_POST['shipperdetailsId'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($shipperId>0){
     //Edit shipper

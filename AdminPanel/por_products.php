@@ -29,7 +29,7 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Products.php?supplierId='.$supplierId.'
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                     <h3 class="kt-portlet__head-title">
-                        Prioducts
+                        Products
                     </h3>
                 </div>
                 <div class="kt-portlet__head-toolbar">
@@ -66,7 +66,7 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Products.php?supplierId='.$supplierId.'
                                         <select class="form-control bootstrap-select" id="kt_form_status">
                                                 <option value="">All</option>
                                                 <option value="1">Active</option>
-                                                <option value="0">Inactive</option>
+                                                <option value="2">Inactive</option>
                                             </select>
                                         </div>
                                     </div>

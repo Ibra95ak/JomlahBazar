@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get brand class
 require_once '../../libraries/Ser_Reviews.php';
 $db = new Ser_Reviews();
@@ -16,7 +16,8 @@ $title=$_POST['title'];
 $stars=$_POST['stars'];
 $description=$_POST['description'];
 $pictureId=$_POST['pictureId'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($reviewId>0){
     //Edit review

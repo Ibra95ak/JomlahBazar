@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get brand class
 require_once '../../libraries/Ser_Priviledges.php';
 $db = new Ser_Priviledges();
@@ -11,12 +11,18 @@ else $priviledgeId=0;
 
 //get data from form
 $name=$_POST['name'];
-$c=$_POST['c'];
-$r=$_POST['r'];
-$u=$_POST['u'];
-$d=$_POST['d'];
-$extra=$_POST['extra'];
-$active=$_POST['active'];
+if(isset($_POST['c'])) $c=1;
+else $c=2;
+if(isset($_POST['r'])) $r=1;
+else $r=2;
+if(isset($_POST['u'])) $u=1;
+else $u=2;
+if(isset($_POST['d'])) $d=1;
+else $d=2;
+if(isset($_POST['extra'])) $extra=1;
+else $extra=2;
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($priviledgeId>0){
     //Edit priviledge

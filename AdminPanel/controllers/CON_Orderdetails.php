@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../libraries/Base.php';
+require_once '../libraries/base.php';
 //Get orderdetail class
 require_once '../libraries/Ser_Orderdetails.php';
 $db = new Ser_Orderdetails();
@@ -15,10 +15,12 @@ if($orderId>0){
     //get all priviledges 
     $getAll_orderdetails = $db->Getorderdetails();
 }
-foreach($getAll_orderdetails as $orderdetail){
-    array_push($results,$orderdetail);
+if($getAll_orderdetails){
+    foreach($getAll_orderdetails as $orderdetail){
+        array_push($results,$orderdetail);
+    }    
 }
-
+//fill result in json file
 $fp = fopen('json/orderdetails.json', 'w');
 fwrite($fp, json_encode($results));
 fclose($fp);

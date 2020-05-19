@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=wishlists.json",
+              "localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=wishlists.json",
           },
         },
         pageSize: 10,
@@ -50,11 +50,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: "auto",
         },
         {
-          field: "last_name",
-          title: "Last_name",
-          width: "auto",
-        },
-        {
           field: "name",
           title: "Product Name",
           width: "auto",
@@ -65,24 +60,30 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: "auto",
         },
         {
-          field: "updated_date",
-          title: "Wishlist Updated Date",
-          width: "auto",
-        },
-        {
           field: "active",
           title: "Status",
           autoHide: false,
           // callback function support for column rendering
           template: function (row) {
             var status = {
-              0: { title: "Inactive", state: "danger" },
               1: { title: "Active", state: "success" },
+              2: { title: "Inactive", state: "danger" },
             };
             return (
-              '<span class="kt-badge kt-badge--' + status[row.active].state + ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' + status[row.active].state + '">' + status[row.active].title + "</span>"
+              '<span class="kt-badge kt-badge--' +
+              status[row.active].state +
+              ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' +
+              status[row.active].state +
+              '">' +
+              status[row.active].title +
+              "</span>"
             );
           },
+        },
+        {
+          field: "updated_date",
+          title: "Wishlist Updated Date",
+          width: "auto",
         },
         {
           field: "Actions",
@@ -94,12 +95,12 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<a href="http://localhost/JomlahBazar/AdminPanel/form_wishlists.php?wishlistId=' +
+							<a href="localhost/JomlahBazar/AdminPanel/form_wishlists.php?wishlistId=' +
               row.wishlistId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\
 							</a>\
-							<a href="http://localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Wishlist.php?wishlistId=' +
+							<a href="localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Wishlist.php?wishlistId=' +
               row.wishlistId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
 								<i class="la la-trash"></i>\
@@ -112,11 +113,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
     });
 
     $("#kt_form_status").on("change", function () {
-      datatable.search($(this).val().toLowerCase(), "Status");
-    });
-
-    $("#kt_form_type").on("change", function () {
-      datatable.search($(this).val().toLowerCase(), "Type");
+      datatable.search($(this).val().toLowerCase(), "active");
     });
 
     $("#kt_form_status,#kt_form_type").selectpicker();

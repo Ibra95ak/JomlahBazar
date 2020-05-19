@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get brand class
 require_once '../../libraries/Ser_Creditcarddetails.php';
 $db = new Ser_Creditcarddetails();
@@ -11,7 +11,8 @@ else $creditcarddetailId=0;
 
 //get data from form
 $type=$_POST['type'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($creditcarddetailId>0){
     //Edit creditcarddetail

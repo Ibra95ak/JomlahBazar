@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=pictures.json",
+              "localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=pictures.json",
           },
         },
         pageSize: 10,
@@ -58,7 +58,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
               '<div class="kt-widget3__user-img">\
             <img class="kt-widget3__img" src="' +
               row.path +
-              '" alt="">\
+              '" alt="" style="height: 100px;width: 100px;">\
           </div>'
             );
           },
@@ -70,8 +70,8 @@ var KTDatatableAutoColumnHideDemo = (function () {
           // callback function support for column rendering
           template: function (row) {
             var status = {
-              0: { title: "Inactive", state: "danger" },
               1: { title: "Active", state: "success" },
+              2: { title: "Inactive", state: "danger" },
             };
             return (
               '<span class="kt-badge kt-badge--' +
@@ -94,12 +94,12 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<a href="http://localhost/JomlahBazar/AdminPanel/form_pictures.php?pictureId=' +
+							<a href="localhost/JomlahBazar/AdminPanel/form_pictures.php?pictureId=' +
               row.pictureId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\
 							</a>\
-							<a href="http://localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Picture.php?pictureId=' +
+							<a href="localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Picture.php?pictureId=' +
               row.pictureId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
 								<i class="la la-trash"></i>\
@@ -112,11 +112,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
     });
 
     $("#kt_form_status").on("change", function () {
-      datatable.search($(this).val().toLowerCase(), "Status");
-    });
-
-    $("#kt_form_type").on("change", function () {
-      datatable.search($(this).val().toLowerCase(), "Type");
+      datatable.search($(this).val().toLowerCase(), "active");
     });
 
     $("#kt_form_status,#kt_form_type").selectpicker();

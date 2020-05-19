@@ -37,16 +37,14 @@ include('header.php');
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="jbform">
         <div class="kt-portlet__body">
         <div class="form-group row">
                 <div class="col-lg-4">
                     <label>shipperId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" disabled class="form-control" placeholder="" name="shipperId" id="shipperId"
-                            value="<?php if(isset($shipperId)) echo $shipperId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="shipperId" id="shipperId" value="<?php if(isset($shipperId)) echo $shipperId;else echo '';?>">
                     </div>
                 </div>
             </div>
@@ -54,10 +52,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>aaaId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="aaaId" id="aaaId"
-                            value="<?php if(isset($aaaId)) echo $aaaId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="aaaId" id="aaaId" value="<?php if(isset($aaaId)) echo $aaaId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your aaaId</span>
                 </div>
@@ -66,10 +62,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>addressId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="addressId" id="addressId"
-                            value="<?php if(isset($addressId)) echo $addressId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="addressId" id="addressId" value="<?php if(isset($addressId)) echo $addressId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your addressId</span>
                 </div>
@@ -78,10 +72,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>reachoutId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="reachoutId" id="reachoutId"
-                            value="<?php if(isset($reachoutId)) echo $reachoutId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="reachoutId" id="reachoutId" value="<?php if(isset($reachoutId)) echo $reachoutId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your reachoutId</span>
                 </div>
@@ -90,10 +82,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>shipperdetailsId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="shipperdetailsId" id="shipperdetailsId"
-                            value="<?php if(isset($shipperdetailsId)) echo $shipperdetailsId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="shipperdetailsId" id="shipperdetailsId" value="<?php if(isset($shipperdetailsId)) echo $shipperdetailsId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your shipperdetailsId</span>
                 </div>
@@ -101,8 +91,7 @@ include('header.php');
          <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
-                <input id="active" type="checkbox" value="1"
-                    <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
+                <input name="active" id="active" type="checkbox" <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
                 <span></span>
             </label>
             <span class="form-text text-muted">Some help text goes here</span>
@@ -118,32 +107,20 @@ include('header.php');
                 </div>
             </div>
         </div>
+        </div>
     </form>
 
     <!--end::Form-->
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var shipperId = url.searchParams.get("shipperId");
-// var div_edit = document.getElementById("edits");
-// if (Shipper > 0) div_edit.style.display = "inline";
-// else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
 $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var aaaId = $("#aaaId").val();
-    var addressId = $("#addressId").val();
-    var reachoutId = $("#reachoutId").val();
-    var shipperdetailsId = $("#shipperdetailsId").val();
-    var active = $("#active").val();
+    var formdata1 = new FormData($('#jbform')[0]);
     form.validate({
         rules: {
             aaaId: {
@@ -168,16 +145,12 @@ $('#btn_submit').click(function(e) {
     btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);
     $.ajax({
         type: "POST",
-        url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_Shipper.php",
+        url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_shipper.php",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formdata1,
         dataType: "json",
-        data: {
-            shipperId: shipperId,
-            aaaId: aaaId,
-            addressId: addressId,
-            reachoutId: reachoutId,
-            shipperdetailsId: shipperdetailsId,
-            active: active
-        },
         success: function(data) {
             switch (data) {
                 case 0:
@@ -188,7 +161,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_shippers.php"
+                            "localhost/JomlahBazar/AdminPanel/por_shippers.php"
                         );
                     }, 2000);
                     break;

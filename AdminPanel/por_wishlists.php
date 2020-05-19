@@ -23,16 +23,11 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Wishlists.php');?>
                         <i class="kt-font-brand flaticon2-line-chart"></i>
                     </span>
                     <h3 class="kt-portlet__head-title">
-                        Row Details
+                        Wishlist Datatable
                     </h3>
                 </div>
                 <div class="kt-portlet__head-toolbar">
                     <div class="kt-portlet__head-wrapper">
-                        <a href="#" class="btn btn-clean btn-icon-sm">
-                            <i class="la la-long-arrow-left"></i>
-                            Back
-                        </a>
-                        &nbsp;
                         <button type="button" class="btn btn-brand btn-icon-sm" id="add">
                             <i class="flaticon2-plus"></i> Add New
                         </button>
@@ -64,7 +59,7 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Wishlists.php');?>
                                             <select class="form-control bootstrap-select" id="kt_form_status">
                                                 <option value="">All</option>
                                                 <option value="1">Active</option>
-                                                <option value="0">Inactive</option>
+                                                <option value="2">Inactive</option>
                                             </select>
                                         </div>
                                     </div>

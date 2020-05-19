@@ -37,7 +37,7 @@ include('header.php');
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="jbform">
         <div class="kt-portlet__body">
         <div class="form-group row">
                 <div class="col-lg-4">
@@ -45,8 +45,7 @@ include('header.php');
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" disabled class="form-control" placeholder="" name="productdetailId" id="productdetailId"
-                            value="<?php if(isset($productdetailId)) echo $productdetailId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="productdetailId" id="productdetailId" value="<?php if(isset($productdetailId)) echo $productdetailId;else echo '';?>">
                     </div>
                 </div>
             </div>
@@ -54,10 +53,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>description:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="description" id="description"
-                            value="<?php if(isset($description)) echo $description;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="description" id="description" value="<?php if(isset($description)) echo $description;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your description</span>
                 </div>
@@ -66,10 +63,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>size:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="size" id="size"
-                            value="<?php if(isset($size)) echo $size;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="size" id="size" value="<?php if(isset($size)) echo $size;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your size</span>
                 </div>
@@ -78,10 +73,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>color:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="color" id="color"
-                            value="<?php if(isset($color)) echo $color;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="color" id="color" value="<?php if(isset($color)) echo $color;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your color</span>
                 </div>
@@ -90,10 +83,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>weight:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="weight" id="weight"
-                            value="<?php if(isset($weight)) echo $weight;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="weight" id="weight" value="<?php if(isset($weight)) echo $weight;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your weight</span>
                 </div>
@@ -102,10 +93,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>barcode:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="barcode" id="barcode"
-                            value="<?php if(isset($barcode)) echo $barcode;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i  class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="barcode" id="barcode" value="<?php if(isset($barcode)) echo $barcode;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your barcode</span>
                 </div>
@@ -121,32 +110,20 @@ include('header.php');
                 </div>
             </div>
         </div>
+        </div>
     </form>
 
     <!--end::Form-->
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var productdetailId = url.searchParams.get("productdetailId");
-// var div_edit = document.getElementById("edits");
-// if (productdetail > 0) div_edit.style.display = "inline";
-// else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
 $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var description = $("#description").val();
-    var size = $("#size").val();
-    var color = $("#color").val();
-    var weight = $("#weight").val();
-    var barcode = $("#barcode").val();
+    var formdata1 = new FormData($('#jbform')[0]);
     form.validate({
         rules: {
             description: {
@@ -175,15 +152,11 @@ $('#btn_submit').click(function(e) {
     $.ajax({
         type: "POST",
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_productdetail.php",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formdata1,
         dataType: "json",
-        data: {
-            productdetailId: productdetailId,
-            description: description,
-            size: size,
-            color: color,
-            weight: weight,
-            barcode: barcode,
-        },
         success: function(data) {
             switch (data) {
                 case 0:
@@ -194,7 +167,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_productdetails.php"
+                            "localhost/JomlahBazar/AdminPanel/por_productdetails.php"
                         );
                     }, 2000);
                     break;

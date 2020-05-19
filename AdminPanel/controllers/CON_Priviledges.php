@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../libraries/Base.php';
+require_once '../libraries/base.php';
 //Get priviledge class
 require_once '../libraries/Ser_Priviledges.php';
 $db = new Ser_Priviledges();
@@ -15,10 +15,13 @@ if($adminpriviledgeId>0){
     //get all priviledges 
     $getAll_priviledges = $db->Getpriviledges();
 }
-foreach($getAll_priviledges as $priviledge){
-    array_push($results,$priviledge);
+if($getAll_priviledges){
+    foreach($getAll_priviledges as $priviledge){
+        array_push($results,$priviledge);
+    }    
 }
 
+//fill result injson file
 $fp = fopen('json/priviledges.json', 'w');
 fwrite($fp, json_encode($results));
 fclose($fp);

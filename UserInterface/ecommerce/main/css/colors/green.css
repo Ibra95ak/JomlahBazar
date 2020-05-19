@@ -1,0 +1,103 @@
+/*
+Template Name: Organic E-store Admin
+Author: SRGIT
+Email: 
+File: css
+*/
+/*Theme Colors*/
+/*bootstrap Color*/
+/*Light colors*/
+/*Normal Color*/
+/*Extra Variable*/
+/*******************
+/*Top bar
+*******************/
+.topbar {
+  background: #6772e5; }  
+.topbar .top-navbar .navbar-header .navbar-brand .light-logo {
+    display: none;
+    color: rgba(255, 255, 255, 0.8); }
+  .topbar .navbar-light .navbar-nav .nav-item > a.nav-link {
+    color: #ffffff !important; }
+    .topbar .navbar-light .navbar-nav .nav-item > a.nav-link:hover, .topbar .navbar-light .navbar-nav .nav-item > a.nav-link:focus {
+      color: rgba(255, 255, 255, 0.8) !important; }
+
+.hdr-nav-bar .navbar .navbar-nav > li.active > a {
+  border-color: #6772e5; }
+
+/*******************
+/*General Elements
+*******************/
+.lstick {
+  background: #6772e5; }
+
+a.link:hover, a.link:focus {
+  color: #6772e5 !important; }
+
+.bg-theme {
+  background-color: #6772e5 !important; }
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  background-color: #6772e5;
+  border-color: #6772e5; }
+
+.right-sidebar .rpanel-title {
+  background: #6772e5; }
+
+.stylish-table tbody tr:hover, .stylish-table tbody tr.active {
+  border-left: 4px solid #6772e5; }
+
+.text-themecolor {
+  color: #6772e5 !important; }
+
+.profile-tab li a.nav-link.active,
+.customtab li a.nav-link.active {
+  border-bottom: 2px solid #6772e5;
+  color: #6772e5; }
+
+.profile-tab li a.nav-link:hover,
+.customtab li a.nav-link:hover {
+  color: #6772e5; }
+
+/*******************
+/*Buttons
+*******************/
+.btn-themecolor,
+.btn-themecolor.disabled {
+  background: #6772e5;
+  color: #ffffff;
+  border: 1px solid #6772e5; }
+  .btn-themecolor:hover,
+  .btn-themecolor.disabled:hover {
+    background: #6772e5;
+    opacity: 0.7;
+    border: 1px solid #6772e5; }
+  .btn-themecolor.active, .btn-themecolor:focus,
+  .btn-themecolor.disabled.active,
+  .btn-themecolor.disabled:focus {
+    background: #028ee1; }
+
+/*******************
+/*sidebar navigation
+*******************/
+.label-themecolor {
+  background: #6772e5; }
+
+.sidebar-nav > ul > li.active > a {
+  color: #6772e5;
+  border-color: #6772e5; }
+  .sidebar-nav > ul > li.active > a i {
+    color: #6772e5; }
+
+.sidebar-nav ul li a.active, .sidebar-nav ul li a:hover {
+  color: #6772e5; }
+  .sidebar-nav ul li a.active i, .sidebar-nav ul li a:hover i {
+    color: #6772e5; }
+
+.sidebar-nav > ul > li > a i {
+  color: #a6b7bf; }

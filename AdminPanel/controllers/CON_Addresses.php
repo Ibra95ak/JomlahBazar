@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../libraries/Base.php';
+require_once '../libraries/base.php';
 //Get address class
 require_once '../libraries/Ser_Addresses.php';
 $db = new Ser_Addresses();
@@ -8,10 +8,12 @@ $db = new Ser_Addresses();
 $results=array();
 //get all leads details
 $getAll_addresses = $db->GetAddresses();
-foreach($getAll_addresses as $address){
-    array_push($results,$address);
+if($getAll_addresses){
+    foreach($getAll_addresses as $address){
+        array_push($results,$address);
+    }   
 }
-
+//fill result in json array
 $fp = fopen('json/addresses.json', 'w');
 fwrite($fp, json_encode($results));
 fclose($fp);

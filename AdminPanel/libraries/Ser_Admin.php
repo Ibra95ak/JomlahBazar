@@ -17,12 +17,12 @@ class Ser_Admin {
      * @param username, password
      * returns Boolean
      */
-    public function addAdmin($username,$password) {
+    public function addAdmin($username,$password,$active) {
         $hash = $this->hashSSHA($password); // encryption function
         $encrypted_password = $hash["encrypted"]; // encrypted password
         $salt = $hash["salt"]; // salt
-        $stmt = $this->conn->prepare("CALL sp_AddAdmin(?,?,?)");
-		$stmt->bind_param("sss",$username,$encrypted_password,$salt);
+        $stmt = $this->conn->prepare("CALL sp_AddAdmin(?,?,?,?)");
+		$stmt->bind_param("sssi",$username,$encrypted_password,$salt,$active);
 		$result = $stmt->execute();
         $stmt->close();
 

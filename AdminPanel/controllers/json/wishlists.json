@@ -1,1 +1,1 @@
-[{"wishlistId":1,"userId":1,"productId":1,"created_date":"2020-05-03","updated_date":"2020-05-04","active":0,"first_name":"ibrahim","last_name":"ak","name":"Glosslip"}]
+[{"wishlistId":1,"first_name":"Ibrahim","name":"product1","created_date":"2020-05-11","updated_date":"2020-05-11","active":2,"userId":1,"productId":1},{"wishlistId":2,"first_name":"Ibrahim","name":"product1","created_date":"2020-05-11","updated_date":"2020-05-11","active":1,"userId":1,"productId":1}]

@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get discounttype class
 require_once '../../libraries/Ser_Discounttypes.php';
 $db = new Ser_Discounttypes();
@@ -11,7 +11,8 @@ else $discounttypeId=0;
 
 //get data from form
 $type=$_POST['type'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($discounttypeId>0){
     //Edit discounttype

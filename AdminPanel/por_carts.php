@@ -50,6 +50,20 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Carts.php');?>
                                         </span>
                                     </div>
                                 </div>
+                                <div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
+                                    <div class="kt-form__group kt-form__group--inline">
+                                        <div class="kt-form__label">
+                                            <label>Status:</label>
+                                        </div>
+                                        <div class="kt-form__control">
+                                            <select class="form-control bootstrap-select" id="kt_form_status">
+                                                <option value="">All</option>
+                                                <option value="1">Active</option>
+                                                <option value="2">Inactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-xl-4 order-1 order-xl-2 kt-align-right">

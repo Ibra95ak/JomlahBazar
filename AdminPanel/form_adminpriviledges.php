@@ -31,7 +31,7 @@ include('header.php');
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="jbform">
         <div class="kt-portlet__body">
         <div class="form-group row">
                 <div class="col-lg-4">
@@ -39,8 +39,7 @@ include('header.php');
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" disabled class="form-control" placeholder="" name="adminpriviledgeId" id="adminpriviledgeId"
-                            value="<?php if(isset($adminpriviledgeId)) echo $adminpriviledgeId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="adminpriviledgeId" id="adminpriviledgeId" value="<?php if(isset($adminpriviledgeId)) echo $adminpriviledgeId;else echo '';?>">
                     </div>
                 </div>
             </div>
@@ -48,10 +47,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>AdminId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="adminId" id="adminId"
-                            value="<?php if(isset($adminId)) echo $adminId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="adminId" id="adminId" value="<?php if(isset($adminId)) echo $adminId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your adminId</span>
                 </div>
@@ -60,10 +57,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>PrivilidgeID:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="priviledgeId" id="priviledgeId"
-                            value="<?php if(isset($priviledgeId)) echo $priviledgeId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="priviledgeId" id="priviledgeId" value="<?php if(isset($priviledgeId)) echo $priviledgeId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your priviledgeId</span>
                 </div>
@@ -86,23 +81,13 @@ include('header.php');
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var adminpriviledgeId = url.searchParams.get("adminpriviledgeId");
-// var div_edit = document.getElementById("edits");
-// if (adminpriviledge > 0) div_edit.style.display = "inline";
-// else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
 $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var adminId = $("#adminId").val();
-    var priviledgeId = $("#priviledgeId").val();
+    var formdata1 = new FormData($('#jbform')[0]);
     form.validate({
         rules: {
             adminId: {
@@ -122,14 +107,12 @@ $('#btn_submit').click(function(e) {
     $.ajax({
         type: "POST",
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_adminpriviledge.php",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formdata1,
         dataType: "json",
-        data: {
-            adminpriviledgeId: adminpriviledgeId,
-            adminId: adminId,
-            priviledgeId: priviledgeId,
-        },
         success: function(data) {
-            alert(data);
             switch (data) {
                 case 0:
                     // similate 2s delay
@@ -139,7 +122,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_adminpriviledge.php"
+                            "localhost/JomlahBazar/AdminPanel/por_adminpriviledge.php"
                         );
                     }, 2000);
                     break;

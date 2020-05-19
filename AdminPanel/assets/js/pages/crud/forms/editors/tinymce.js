@@ -16,7 +16,7 @@ var KTTinymce = function () {
         });
         
         tinymce.init({
-            selector: '#kt-tinymce-3',
+            selector: '#answer',
             toolbar: 'advlist | autolink | link image | lists charmap | print preview', 
             plugins : 'advlist autolink link image lists charmap print preview'
         });

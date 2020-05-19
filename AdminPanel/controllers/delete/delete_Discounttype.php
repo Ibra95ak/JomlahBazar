@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get discounttype class
 require_once '../../libraries/Ser_Discounttypes.php';
 $db = new Ser_Discounttypes();

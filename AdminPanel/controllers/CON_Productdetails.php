@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../libraries/Base.php';
+require_once '../libraries/base.php';
 //Get productdetail class
 require_once '../libraries/Ser_Productdetails.php';
 $db = new Ser_Productdetails();
@@ -8,10 +8,12 @@ $db = new Ser_Productdetails();
 $results=array();
 //get all leads details
 $getAll_productdetails = $db->GetProductdetails();
-foreach($getAll_productdetails as $productdetail){
-    array_push($results,$productdetail);
+if($getAll_productdetails){
+    foreach($getAll_productdetails as $productdetail){
+        array_push($results,$productdetail);
+    }   
 }
-
+//fill result in json file
 $fp = fopen('json/productdetails.json', 'w');
 fwrite($fp, json_encode($results));
 fclose($fp);

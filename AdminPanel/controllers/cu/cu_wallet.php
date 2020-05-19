@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get Wallet class
 require_once '../../libraries/Ser_Wallets.php';
 $db = new Ser_Wallets();
@@ -11,7 +11,8 @@ else $walletId=0;
 
 //get data from form
 $wallettypeId=$_POST['wallettypeId'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($walletId>0){
     //Edit wallet

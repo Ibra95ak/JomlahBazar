@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../libraries/Base.php';
+require_once '../libraries/base.php';
 //Get product class
 require_once '../libraries/Ser_Products.php';
 $db = new Ser_Products();
@@ -17,10 +17,12 @@ if($supplierId>0){
     //get all products 
     $getAll_products = $db->GetProducts();
 }
-foreach($getAll_products as $product){
-    array_push($results,$product);
+if($getAll_products){
+    foreach($getAll_products as $product){
+        array_push($results,$product);
+    }   
 }
-
+//fill result in json file
 $fp = fopen('json/products.json', 'w');
 fwrite($fp, json_encode($results));
 fclose($fp);

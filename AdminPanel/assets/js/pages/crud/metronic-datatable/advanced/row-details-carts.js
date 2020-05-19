@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=carts.json",
+              "localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=carts.json",
           },
         },
         pageSize: 10,
@@ -65,6 +65,27 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: "auto",
         },
         {
+          field: "active",
+          title: "Status",
+          autoHide: false,
+          // callback function support for column rendering
+          template: function (row) {
+            var status = {
+              1: { title: "Active", state: "success" },
+              2: { title: "Inactive", state: "danger" },
+            };
+            return (
+              '<span class="kt-badge kt-badge--' +
+              status[row.active].state +
+              ' kt-badge--dot"></span>&nbsp;<span class="kt-font-bold kt-font-' +
+              status[row.active].state +
+              '">' +
+              status[row.active].title +
+              "</span>"
+            );
+          },
+        },
+        {
           field: "Actions",
           title: "Actions",
           sortable: false,
@@ -74,12 +95,12 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<a href="http://localhost/JomlahBazar/AdminPanel/form_carts.php?cartId=' +
+							<a href="localhost/JomlahBazar/AdminPanel/form_carts.php?cartId=' +
               row.cartId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\
 							</a>\
-							<a href="http://localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Cart.php?cartId=' +
+							<a href="localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Cart.php?cartId=' +
               row.cartId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
 								<i class="la la-trash"></i>\
@@ -92,11 +113,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
     });
 
     $("#kt_form_status").on("change", function () {
-      datatable.search($(this).val().toLowerCase(), "Status");
-    });
-
-    $("#kt_form_type").on("change", function () {
-      datatable.search($(this).val().toLowerCase(), "Type");
+      datatable.search($(this).val().toLowerCase(), "active");
     });
 
     $("#kt_form_status,#kt_form_type").selectpicker();

@@ -1,1 +1,1 @@
-[{"priviledgeId":1,"name":"Stores","c":1,"r":1,"u":1,"d":1,"extra":2,"active":1,"adminpriviledgeId":1},{"priviledgeId":2,"name":"Microsoft","c":2,"r":2,"u":2,"d":2,"extra":2,"active":1,"adminpriviledgeId":1},{"priviledgeId":3,"name":"Software","c":4,"r":4,"u":4,"d":4,"extra":4,"active":1,"adminpriviledgeId":0}]
+[{"priviledgeId":1,"name":"supplyier","c":1,"r":1,"u":1,"d":1,"extra":1,"active":1,"adminpriviledgeId":0}]

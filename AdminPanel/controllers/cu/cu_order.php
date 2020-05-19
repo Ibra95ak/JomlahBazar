@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get brand class
 require_once '../../libraries/Ser_Orders.php';
 $db = new Ser_Orders();
@@ -15,7 +15,8 @@ $ordernumber=$_POST['ordernumber'];
 $purchaseId=$_POST['purchaseId'];
 $statusId=$_POST['statusId'];
 $blockId=$_POST['blockId'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($orderId>0){
     //Edit order

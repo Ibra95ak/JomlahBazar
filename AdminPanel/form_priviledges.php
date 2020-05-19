@@ -42,7 +42,7 @@ include('header.php');
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="jbform">
         <div class="kt-portlet__body">
         <div class="form-group row">
                 <div class="col-lg-4">
@@ -50,8 +50,7 @@ include('header.php');
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" disabled class="form-control" placeholder="" name="priviledgeId" id="priviledgeId"
-                            value="<?php if(isset($priviledgeId)) echo $priviledgeId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="priviledgeId" id="priviledgeId" value="<?php if(isset($priviledgeId)) echo $priviledgeId;else echo '';?>">
                     </div>
                 </div>
             </div>
@@ -59,10 +58,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>name:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="name" id="name"
-                            value="<?php if(isset($name)) echo $name;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="name" id="name" value="<?php if(isset($name)) echo $name;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your name</span>
                 </div>
@@ -70,72 +67,61 @@ include('header.php');
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>c:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="c" id="c"
-                            value="<?php if(isset($c)) echo $c;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your c</span>
+                    <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
+                <input name="c" id="c" type="checkbox" <?php if(isset($c) && $c==1) echo "checked"; else echo '';?>> Create
+                <span></span>
+            </label>
+                    <span class="form-text text-muted">Create</span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>r:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="r" id="r"
-                            value="<?php if(isset($r)) echo $r;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your r</span>
+                    <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
+                <input name="r" id="r" type="checkbox" <?php if(isset($r) && $r==1) echo "checked"; else echo '';?>> Read
+                <span></span>
+            </label>
+                    <span class="form-text text-muted">Read</span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>u:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="u" id="u"
-                            value="<?php if(isset($u)) echo $u;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your u</span>
+                    <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
+                <input name="u" id="u" type="checkbox" <?php if(isset($u) && $u==1) echo "checked"; else echo '';?>> Update
+                <span></span>
+            </label>
+                    <span class="form-text text-muted">Update</span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>d:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="d" id="d"
-                            value="<?php if(isset($d)) echo $d;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your d</span>
+                    <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
+                <input name="d" id="d" type="checkbox" <?php if(isset($d) && $d==1) echo "checked"; else echo '';?>> Delete
+                <span></span>
+            </label>
+                    <span class="form-text text-muted">Delete</span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-lg-4">
                     <label>extra:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="extra" id="extra"
-                            value="<?php if(isset($extra)) echo $extra;else echo '';?>">
-                    </div>
+                    <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
+                <input name="extra" id="extra" type="checkbox" <?php if(isset($extra) && $extra==1) echo "checked"; else echo '';?>> Extra
+                <span></span>
+            </label>
                     <span class="form-text text-muted">Please enter your extra</span>
                 </div>
             </div>
         
-        <div class="form-group" id="edits">
+        <div class="form-group">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
-                <input id="active" type="checkbox" value="1"
-                    <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
+                <input name="active" id="active" type="checkbox" <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
                 <span></span>
             </label>
-            <span class="form-text text-muted">Some help text goes here</span>
+            <span class="form-text text-muted">Activate</span>
         </div></div>
         <div class="kt-portlet__foot">
             <div class="kt-form__actions">
@@ -154,46 +140,16 @@ include('header.php');
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var priviledgeId = url.searchParams.get("priviledgeId");
-// var div_edit = document.getElementById("edits");
-// if (priviledgeId > 0) div_edit.style.display = "inline";
-// else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
 $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var name = $("#name").val();
-    var c = $("#c").val();
-    var r = $("#r").val();
-    var u = $("#u").val();
-    var d = $("#d").val();
-    var extra = $("#extra").val();
-    var active = $("#active").val();
+    var formdata1 = new FormData($('#jbform')[0]);
     form.validate({
         rules: {
             name: {
-                required: true
-            },
-            c: {
-                required: true
-            },
-            r: {
-                required: true
-            },
-            u: {
-                required: true
-            },
-            d: {
-                required: true
-            },
-            extra: {
                 required: true
             },
         }
@@ -207,17 +163,11 @@ $('#btn_submit').click(function(e) {
     $.ajax({
         type: "POST",
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_priviledge.php",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formdata1,
         dataType: "json",
-        data: {
-            priviledgeId: priviledgeId,
-            name: name,
-            c: c,
-            r: r,
-            u: u,
-            d: d,
-            extra: extra,
-            active: active
-        },
         success: function(data) {
             switch (data) {
                 case 0:
@@ -228,7 +178,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_priviledges.php"
+                            "localhost/JomlahBazar/AdminPanel/por_priviledges.php"
                         );
                     }, 2000);
                     break;

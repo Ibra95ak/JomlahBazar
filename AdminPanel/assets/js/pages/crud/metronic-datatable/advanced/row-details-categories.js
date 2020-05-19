@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=categories.json",
+              "localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=categories.json",
           },
         },
         pageSize: 10,
@@ -94,12 +94,12 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<a href="http://localhost/JomlahBazar/AdminPanel/form_categories.php?categoryId=' +
+							<a href="localhost/JomlahBazar/AdminPanel/form_categories.php?categoryId=' +
               row.categoryId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\
 							</a>\
-							<a href="http://localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Category.php?categoryId=' +
+							<a href="localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Category.php?categoryId=' +
               row.categoryId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
 								<i class="la la-trash"></i>\

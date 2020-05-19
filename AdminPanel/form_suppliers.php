@@ -31,22 +31,20 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                Edit Supplier
+                Manage Supplier
             </h3>
         </div>
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="jbform">
         <div class="kt-portlet__body">
-        <div class="form-group row">
+            <div class="form-group row">
                 <div class="col-lg-4">
                     <label>supplierId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" disabled class="form-control" placeholder="" name="supplierId" id="supplierId"
-                            value="<?php if(isset($supplierId)) echo $supplierId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="supplierId" id="supplierId" value="<?php if(isset($supplierId)) echo $supplierId;else echo '';?>">
                     </div>
                 </div>
             </div>
@@ -54,10 +52,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>aaaId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="aaaId" id="aaaId"
-                            value="<?php if(isset($aaaId)) echo $aaaId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="aaaId" id="aaaId" value="<?php if(isset($aaaId)) echo $aaaId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your aaaId</span>
                 </div>
@@ -66,10 +62,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>subscriptionplanId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="subscriptionplanId" id="subscriptionplanId"
-                            value="<?php if(isset($subscriptionplanId)) echo $subscriptionplanId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="subscriptionplanId" id="subscriptionplanId" value="<?php if(isset($subscriptionplanId)) echo $subscriptionplanId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your subscriptionplanId</span>
                 </div>
@@ -78,10 +72,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>discount_type:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="discount_type" id="discount_type"
-                            value="<?php if(isset($discount_type)) echo $discount_type;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="discount_type" id="discount_type" value="<?php if(isset($discount_type)) echo $discount_type;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your discount_type</span>
                 </div>
@@ -90,10 +82,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>registeredsupplierId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="registeredsupplierId" id="registeredsupplierId"
-                            value="<?php if(isset($registeredsupplierId)) echo $registeredsupplierId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="registeredsupplierId" id="registeredsupplierId" value="<?php if(isset($registeredsupplierId)) echo $registeredsupplierId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your registeredsupplierId</span>
                 </div>
@@ -102,127 +92,109 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>blockId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="blockId" id="blockId"
-                            value="<?php if(isset($blockId)) echo $blockId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="blockId" id="blockId" value="<?php if(isset($blockId)) echo $blockId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your blockId</span>
                 </div>
             </div>
-        <div class="kt-portlet__foot">
-            <div class="kt-form__actions">
-                <div class="row">
-                    <div class="col-lg-4"></div>
-                    <div class="col-lg-8">
-                        <button type="reset" class="btn btn-primary" id="btn_submit">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Cancel</button>
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-8">
+                            <button type="reset" class="btn btn-primary" id="btn_submit">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
     </form>
 
     <!--end::Form-->
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var supplierId = url.searchParams.get("supplierId");
-// var div_edit = document.getElementById("edits");
-// if (supplier > 0) div_edit.style.display = "inline";
-// else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
-$('#btn_submit').click(function(e) {
-    e.preventDefault();
-    var btn = $(this);
-    var form = $(this).closest('form');
-    var aaaId = $("#aaaId").val();
-    var subscriptionplanId = $("#subscriptionplanId").val();
-    var discount_type = $("#discount_type").val();
-    var registeredsupplierId = $("#registeredsupplierId").val();
-    var blockId = $("#blockId").val();
-    form.validate({
-        rules: {
-            aaaId: {
-                required: true
-            },
-            subscriptionplanId: {
-                required: true
-            },
-            discount_type: {
-                required: true
-            },
-            registeredsupplierId: {
-                required: true
-            },
-            blockId: {
-                required: true
-            },
-        }
-    });
-
-    if (!form.valid()) {
-        return;
-    }
-
-    btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);
-    $.ajax({
-        type: "POST",
-        url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_supplier.php",
-        dataType: "json",
-        data: {
-            supplierId: supplierId,
-            aaaId: aaaId,
-            subscriptionplanId: subscriptionplanId,
-            discount_type: discount_type,
-            registeredsupplierId: registeredsupplierId,
-            blockId: blockId,
-        },
-        success: function(data) {
-            switch (data) {
-                case 0:
-                    // similate 2s delay
-                    setTimeout(function() {
-                        btn.removeClass(
-                            'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
-                        ).attr('disabled', false);
-                        // Simulate an HTTP redirect:
-                        window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_suppliers.php"
-                        );
-                    }, 2000);
-                    break;
-                case 1:
-                    // similate 2s delay
-                    setTimeout(function() {
-                        btn.removeClass(
-                            'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
-                        ).attr('disabled', false);
-                        showErrorMsg(form, 'danger',
-                            'Incorrect username or password. Please try again.');
-                    }, 2000);
-                    break;
-                case 2:
-                    // similate 2s delay
-                    setTimeout(function() {
-                        btn.removeClass(
-                            'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
-                        ).attr('disabled', false);
-                        showErrorMsg(form, 'danger',
-                            'Missing required parameters. Please try again.');
-                    }, 2000);
-                    break;
-                default:
+    $('#btn_submit').click(function(e) {
+        e.preventDefault();
+        var btn = $(this);
+        var form = $(this).closest('form');
+        var formdata1 = new FormData($('#jbform')[0]);
+        form.validate({
+            rules: {
+                aaaId: {
+                    required: true
+                },
+                subscriptionplanId: {
+                    required: true
+                },
+                discount_type: {
+                    required: true
+                },
+                registeredsupplierId: {
+                    required: true
+                },
+                blockId: {
+                    required: true
+                },
             }
+        });
+
+        if (!form.valid()) {
+            return;
         }
+
+        btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_supplier.php",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata1,
+            dataType: "json",
+            success: function(data) {
+                switch (data) {
+                    case 0:
+                        // similate 2s delay
+                        setTimeout(function() {
+                            btn.removeClass(
+                                'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
+                            ).attr('disabled', false);
+                            // Simulate an HTTP redirect:
+                            window.location.replace(
+                                "localhost/JomlahBazar/AdminPanel/por_suppliers.php"
+                            );
+                        }, 2000);
+                        break;
+                    case 1:
+                        // similate 2s delay
+                        setTimeout(function() {
+                            btn.removeClass(
+                                'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
+                            ).attr('disabled', false);
+                            showErrorMsg(form, 'danger',
+                                'Incorrect username or password. Please try again.');
+                        }, 2000);
+                        break;
+                    case 2:
+                        // similate 2s delay
+                        setTimeout(function() {
+                            btn.removeClass(
+                                'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
+                            ).attr('disabled', false);
+                            showErrorMsg(form, 'danger',
+                                'Missing required parameters. Please try again.');
+                        }, 2000);
+                        break;
+                    default:
+                }
+            }
+        });
     });
-});
 </script>
 </body>
 <!-- end::Body -->

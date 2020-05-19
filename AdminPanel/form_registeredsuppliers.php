@@ -25,22 +25,20 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-            Edit Registeredsupplier
+                Manage Registeredsupplier
             </h3>
         </div>
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="jbform">
         <div class="kt-portlet__body">
-        <div class="form-group row">
+            <div class="form-group row">
                 <div class="col-lg-4">
                     <label>registeredsupplierId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" disabled class="form-control" placeholder="" name="registeredsupplierId" id="registeredsupplierId"
-                            value="<?php if(isset($registeredsupplierId)) echo $registeredsupplierId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="registeredsupplierId" id="registeredsupplierId" value="<?php if(isset($registeredsupplierId)) echo $registeredsupplierId;else echo '';?>">
                     </div>
                 </div>
             </div>
@@ -48,10 +46,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>registered_name:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="registered_name" id="registered_name"
-                            value="<?php if(isset($registered_name)) echo $registered_name;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="registered_name" id="registered_name" value="<?php if(isset($registered_name)) echo $registered_name;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your registered_name</span>
                 </div>
@@ -60,10 +56,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>creditcardId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="creditcardId" id="creditcardId"
-                            value="<?php if(isset($creditcardId)) echo $creditcardId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="creditcardId" id="creditcardId" value="<?php if(isset($creditcardId)) echo $creditcardId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your creditcardId</span>
                 </div>
@@ -86,87 +80,76 @@ include('header.php');
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var registeredsupplierId = url.searchParams.get("registeredsupplierId");
-// var div_edit = document.getElementById("edits");
-// if (registeredsupplierId > 0) div_edit.style.display = "inline";
-// else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
-$('#btn_submit').click(function(e) {
-    e.preventDefault();
-    var btn = $(this);
-    var form = $(this).closest('form');
-    var registered_name = $("#registered_name").val();
-    var creditcardId = $("#creditcardId").val();
-    form.validate({
-        rules: {
-            registered_name: {
-                required: true
-            },
-            creditcardId: {
-                required: true
-            },
-        }
-    });
-
-    if (!form.valid()) {
-        return;
-    }
-
-    btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);
-    $.ajax({
-        type: "POST",
-        url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_registeredsupplier.php",
-        dataType: "json",
-        data: {
-            registeredsupplierId: registeredsupplierId,
-            registered_name: registered_name,
-            creditcardId: creditcardId,
-        },
-        success: function(data) {
-            switch (data) {
-                case 0:
-                    // similate 2s delay
-                    setTimeout(function() {
-                        btn.removeClass(
-                            'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
-                        ).attr('disabled', false);
-                        // Simulate an HTTP redirect:
-                        window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_registeredsuppliers.php"
-                        );
-                    }, 2000);
-                    break;
-                case 1:
-                    // similate 2s delay
-                    setTimeout(function() {
-                        btn.removeClass(
-                            'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
-                        ).attr('disabled', false);
-                        showErrorMsg(form, 'danger',
-                            'Incorrect username or password. Please try again.');
-                    }, 2000);
-                    break;
-                case 2:
-                    // similate 2s delay
-                    setTimeout(function() {
-                        btn.removeClass(
-                            'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
-                        ).attr('disabled', false);
-                        showErrorMsg(form, 'danger',
-                            'Missing required parameters. Please try again.');
-                    }, 2000);
-                    break;
-                default:
+    $('#btn_submit').click(function(e) {
+        e.preventDefault();
+        var btn = $(this);
+        var form = $(this).closest('form');
+        var formdata1 = new FormData($('#jbform')[0]);
+        form.validate({
+            rules: {
+                registered_name: {
+                    required: true
+                },
+                creditcardId: {
+                    required: true
+                },
             }
+        });
+
+        if (!form.valid()) {
+            return;
         }
+
+        btn.addClass('kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light').attr('disabled', true);
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_registeredsupplier.php",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata1,
+            dataType: "json",
+            success: function(data) {
+                switch (data) {
+                    case 0:
+                        // similate 2s delay
+                        setTimeout(function() {
+                            btn.removeClass(
+                                'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
+                            ).attr('disabled', false);
+                            // Simulate an HTTP redirect:
+                            window.location.replace(
+                                "localhost/JomlahBazar/AdminPanel/por_registeredsuppliers.php"
+                            );
+                        }, 2000);
+                        break;
+                    case 1:
+                        // similate 2s delay
+                        setTimeout(function() {
+                            btn.removeClass(
+                                'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
+                            ).attr('disabled', false);
+                            showErrorMsg(form, 'danger',
+                                'Incorrect username or password. Please try again.');
+                        }, 2000);
+                        break;
+                    case 2:
+                        // similate 2s delay
+                        setTimeout(function() {
+                            btn.removeClass(
+                                'kt-spinner kt-spinner--right kt-spinner--sm kt-spinner--light'
+                            ).attr('disabled', false);
+                            showErrorMsg(form, 'danger',
+                                'Missing required parameters. Please try again.');
+                        }, 2000);
+                        break;
+                    default:
+                }
+            }
+        });
     });
-});
 </script>
 </body>
 <!-- end::Body -->

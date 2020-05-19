@@ -29,13 +29,13 @@ include('header.php');
     <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
-                Edit Testimonial
+                Manage Testimonial
             </h3>
         </div>
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="jbform">
         <div class="kt-portlet__body">
         <div class="form-group row">
                 <div class="col-lg-4">
@@ -43,8 +43,7 @@ include('header.php');
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" disabled class="form-control" placeholder="" testimonialId="testimonialId" id="testimonialId"
-                            value="<?php if(isset($testimonialId)) echo $testimonialId;else echo '';?>">
+                        <input type="text" class="form-control" placeholder="" name="testimonialId" id="testimonialId" value="<?php if(isset($testimonialId)) echo $testimonialId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your testimonialId</span>
                 </div>
@@ -88,8 +87,7 @@ include('header.php');
         <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
-                <input id="active" type="checkbox" value="1"
-                    <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
+                <input name="active" id="active" type="checkbox" <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
                 <span></span>
             </label>
             <span class="form-text text-muted">Some help text goes here</span>
@@ -112,25 +110,13 @@ include('header.php');
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var testimonialId = url.searchParams.get("testimonialId");
-// var div_edit = document.getElementById("edits");
-// if (testimonialId > 0) div_edit.style.display = "inline";
-// else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
 $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var name = $("#name").val();
-    var description = $("#description").val();
-    var pictureId = $("#pictureId").val();
-    var active = $("#active").val();
+    var formdata1 = new FormData($('#jbform')[0]);
     form.validate({
         rules: {
             name: {
@@ -153,14 +139,11 @@ $('#btn_submit').click(function(e) {
     $.ajax({
         type: "POST",
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_testimonial.php",
+         cache: false,
+        contentType: false,
+        processData: false,
+        data: formdata1,
         dataType: "json",
-        data: {
-            testimonialId: testimonialId,
-            name: name,
-            description: description,
-            pictureId: pictureId,
-            active: active
-        },
         success: function(data) {
             switch (data) {
                 case 0:
@@ -171,7 +154,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_testimonials.php"
+                            "localhost/JomlahBazar/AdminPanel/por_testimonials.php"
                         );
                     }, 2000);
                     break;

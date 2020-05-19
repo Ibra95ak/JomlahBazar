@@ -61,7 +61,7 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Orderdetails.php?orderId='.$orderId);?>
                                         <select class="form-control bootstrap-select" id="kt_form_status">
                                                 <option value="">All</option>
                                                 <option value="1">Active</option>
-                                                <option value="0">Inactive</option>
+                                                <option value="2">Inactive</option>
                                             </select>
                                         </div>
                                     </div>

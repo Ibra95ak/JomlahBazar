@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get brand class
 require_once '../../libraries/Ser_Products.php';
 $db = new Ser_Products();
@@ -21,7 +21,8 @@ $discount=$_POST['discount'];
 $ranking=$_POST['ranking'];
 $brandId=$_POST['brandId'];
 $blockId=$_POST['blockId'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($productId>0){
     //Edit product

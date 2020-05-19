@@ -18,9 +18,9 @@ class Ser_Creditcards {
      * @param type,active
      * returns Boolean
      */
-    public function addCreditcard($card_number,$card_expMO,$card_expYR,$creditcarddetailId) {
+    public function addCreditcard($walletId,$card_number,$card_expMO,$card_expYR) {
         $stmt = $this->conn->prepare("CALL sp_AddCreditcard(?,?,?,?)");
-		$stmt->bind_param("iiii",$card_number,$card_expMO,$card_expYR,$creditcarddetailId);
+		$stmt->bind_param("iiii",$walletId,$card_number,$card_expMO,$card_expYR);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store
@@ -32,9 +32,9 @@ class Ser_Creditcards {
      * Edit Creditcard 
      * returns Boolean
      */
-    public function editCreditcard($creditcardId,$card_number,$card_expMO,$card_expYR,$creditcarddetailId) {
+    public function editCreditcard($creditcardId,$walletId,$card_number,$card_expMO,$card_expYR) {
         $stmt = $this->conn->prepare("CALL sp_EditCreditcard(?,?,?,?,?)");
-		$stmt->bind_param("iiiii",$creditcardId,$card_number,$card_expMO,$card_expYR,$creditcarddetailId);
+		$stmt->bind_param("iiiii",$creditcardId,$walletId,$card_number,$card_expMO,$card_expYR);
         $result = $stmt->execute();
         $stmt->close(); 
 		if($result) return true;

@@ -51,16 +51,14 @@ include('header.php');
     </div>
 
     <!--begin::Form-->
-    <form class="kt-form kt-form--label-right">
+    <form class="kt-form kt-form--label-right" id="jbform">
         <div class="kt-portlet__body">
         <div class="form-group row">
                 <div class="col-lg-4">
                     <label>productId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" disabled class="form-control" placeholder="" name="productId" id="productId"
-                            value="<?php if(isset($productId)) echo $productId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="productId" id="productId" value="<?php if(isset($productId)) echo $productId;else echo '';?>">
                     </div>
                 </div>
             </div>
@@ -68,10 +66,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>supplierId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="supplierId" id="supplierId"
-                            value="<?php if(isset($supplierId)) echo $supplierId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="supplierId" id="supplierId" value="<?php if(isset($supplierId)) echo $supplierId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your supplierId</span>
                 </div>
@@ -80,10 +76,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>productdetailId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="productdetailId" id="productdetailId"
-                            value="<?php if(isset($productdetailId)) echo $productdetailId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="productdetailId" id="productdetailId" value="<?php if(isset($productdetailId)) echo $productdetailId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your productdetailId</span>
                 </div>
@@ -92,10 +86,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>inventoryId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="inventoryId" id="inventoryId"
-                            value="<?php if(isset($inventoryId)) echo $inventoryId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i  class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="inventoryId" id="inventoryId" value="<?php if(isset($inventoryId)) echo $inventoryId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your inventoryId</span>
                 </div>
@@ -104,10 +96,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>name:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="name" id="name"
-                            value="<?php if(isset($name)) echo $name;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="name" id="name" value="<?php if(isset($name)) echo $name;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your name</span>
                 </div>
@@ -116,10 +106,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>quantity:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="quantity" id="quantity"
-                            value="<?php if(isset($quantity)) echo $quantity;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="quantity" id="quantity" value="<?php if(isset($quantity)) echo $quantity;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your quantity</span>
                 </div>
@@ -128,10 +116,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>min_order:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="min_order" id="min_order"
-                            value="<?php if(isset($min_order)) echo $min_order;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="min_order" id="min_order" value="<?php if(isset($min_order)) echo $min_order;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your min_order</span>
                 </div>
@@ -140,10 +126,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>unitprice:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="unitprice" id="unitprice"
-                            value="<?php if(isset($unitprice)) echo $unitprice;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="unitprice" id="unitprice" value="<?php if(isset($unitprice)) echo $unitprice;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your unitprice</span>
                 </div>
@@ -152,10 +136,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>discount:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="discount" id="discount"
-                            value="<?php if(isset($discount)) echo $discount;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="discount" id="discount" value="<?php if(isset($discount)) echo $discount;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your discount</span>
                 </div>
@@ -164,10 +146,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>ranking:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="ranking" id="ranking"
-                            value="<?php if(isset($ranking)) echo $ranking;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="ranking" id="ranking" value="<?php if(isset($ranking)) echo $ranking;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your ranking</span>
                 </div>
@@ -176,10 +156,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>brandId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="brandId" id="brandId"
-                            value="<?php if(isset($brandId)) echo $brandId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="brandId" id="brandId" value="<?php if(isset($brandId)) echo $brandId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your brandId</span>
                 </div>
@@ -188,10 +166,8 @@ include('header.php');
                 <div class="col-lg-4">
                     <label>blockId:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="blockId" id="blockId"
-                            value="<?php if(isset($blockId)) echo $blockId;else echo '';?>">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                        <input type="text" class="form-control" placeholder="" name="blockId" id="blockId" value="<?php if(isset($blockId)) echo $blockId;else echo '';?>">
                     </div>
                     <span class="form-text text-muted">Please enter your blockId</span>
                 </div>
@@ -199,11 +175,10 @@ include('header.php');
         <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
-                <input id="active" type="checkbox" value="1"
-                    <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
+                <input name="active" id="active" type="checkbox" <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
                 <span></span>
             </label>
-            <span class="form-text text-muted">Some help text goes here</span>
+            <span class="form-text text-muted">Activate</span>
         </div>
         </div>
         <div class="kt-portlet__foot">
@@ -223,33 +198,13 @@ include('header.php');
 </div>
 
 <!--end::Portlet-->
-<!--show/hide edit form inputs-->
-<script>
-var url_string = window.location.href
-var url = new URL(url_string);
-var productId = url.searchParams.get("productId");
-// var div_edit = document.getElementById("edits");
-// if (product > 0) div_edit.style.display = "inline";
-// else div_edit.style.display = "none";
-</script>
 <?php include("footer.php");?>
 <script>
 $('#btn_submit').click(function(e) {
     e.preventDefault();
     var btn = $(this);
     var form = $(this).closest('form');
-    var supplierId = $("#supplierId").val();
-    var productdetailId = $("#productdetailId").val();
-    var inventoryId = $("#inventoryId").val();
-    var name = $("#name").val();
-    var quantity = $("#quantity").val();
-    var min_order = $("#min_order").val();
-    var unitprice = $("#unitprice").val();
-    var discount = $("#discount").val();
-    var ranking = $("#ranking").val();
-    var brandId = $("#brandId").val();
-    var blockId = $("#blockId").val();
-    var active = $("#active").val();
+    var formdata1 = new FormData($('#jbform')[0]);
     form.validate({
         rules: {
             supplierId: {
@@ -296,22 +251,11 @@ $('#btn_submit').click(function(e) {
     $.ajax({
         type: "POST",
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/cu/cu_product.php",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formdata1,
         dataType: "json",
-        data: {
-            productId: productId,
-            supplierId: supplierId,
-            productdetailId: productdetailId,
-            inventoryId: inventoryId,
-            name: name,
-            quantity: quantity,
-            min_order: min_order,
-            unitprice: unitprice,
-            discount: discount,
-            ranking: ranking,
-            brandId: brandId,
-            blockId: blockId,
-            active: active
-        },
         success: function(data) {
             switch (data) {
                 case 0:
@@ -322,7 +266,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_products.php"
+                            "localhost/JomlahBazar/AdminPanel/por_products.php"
                         );
                     }, 2000);
                     break;

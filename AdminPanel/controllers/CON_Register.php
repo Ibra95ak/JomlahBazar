@@ -1,6 +1,4 @@
 <?php
-//Get base class
-require_once '../libraries/Base.php';
 //Get admin class
 require_once '../libraries/Ser_Admin.php';
 $db = new Ser_Admin();
@@ -11,7 +9,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	$password = $_POST['password'];
     $err=-1;
         // create a new user
-        $user = $db->addAdmin($username,$password);
+        $user = $db->addAdmin($username,$password,0);
          if ($user) {
             // user stored successfully
              $err=0;

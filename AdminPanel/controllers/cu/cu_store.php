@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get brand class
 require_once '../../libraries/Ser_Stores.php';
 $db = new Ser_Stores();
@@ -17,7 +17,8 @@ $name=$_POST['name'];
 $description=$_POST['description'];
 $theme=$_POST['theme'];
 $blockId=$_POST['blockId'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else $active=2;
 
 if($storeId>0){
     //Edit store

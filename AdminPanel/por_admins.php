@@ -12,7 +12,7 @@ if(isset($_SESSION['adminId'])){
 }
 if($checklogin){
 include('header.php');
-require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Admins.php');
+include(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Admins.php');
 ?>
 <!-- begin:: Content -->
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
@@ -61,7 +61,7 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Admins.php');
                                         <select class="form-control bootstrap-select" id="kt_form_status">
                                                 <option value="">All</option>
                                                 <option value="1">Active</option>
-                                                <option value="0">Inactive</option>
+                                                <option value="2">Inactive</option>
                                             </select>
                                         </div>
                                     </div>
@@ -95,7 +95,7 @@ require(DIR_ROOT.DIR_ADMINP.DIR_CON.'CON_Admins.php');
     </script>
     <script>
     $('#add').click(function(e) {
-        window.location = "<?php echo DIR_ROOT.DIR_ADMINP."form_admins.php ? adminId = 0 ";?>";
+        window.location = "<?php echo DIR_ROOT.DIR_ADMINP."form_admins.php?adminId=0";?>";
     });
     </script>
     </body>

@@ -132,7 +132,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "http://localhost/JomlahBazar/AdminPanel/por_Categories.php"
+                            "localhost/JomlahBazar/AdminPanel/por_Categories.php"
                         );
                     }, 2000);
                     break;

@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../../libraries/Base.php';
+require_once '../../libraries/base.php';
 //Get brand class
 require_once '../../libraries/Ser_Orderdetails.php';
 $db = new Ser_Orderdetails();
@@ -18,7 +18,8 @@ $totalprice=$_POST['totalprice'];
 $shipperId=$_POST['shipperId'];
 $statusId=$_POST['statusId'];
 $blockId=$_POST['blockId'];
-$active=$_POST['active'];
+if(isset($_POST['active'])) $active=1;
+else  $active=2;
 
 if($orderdetailId>0){
     //Edit orderdetail

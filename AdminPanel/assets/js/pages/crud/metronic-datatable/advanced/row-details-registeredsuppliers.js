@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=registeredsuppliers.json",
+              "localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=registeredsuppliers.json",
           },
         },
         pageSize: 10,
@@ -69,17 +69,17 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_creditcards.php?creditcardId=' +
+							        <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_creditcards.php?creditcardId=' +
               row.creditcardId +
               '"><i class="la la-leaf"></i> Credit Card</a>\
 							    </div>\
 							</div>\
-							<a href="http://localhost/JomlahBazar/AdminPanel/form_registeredsuppliers.php?registeredsupplierId=' +
+							<a href="localhost/JomlahBazar/AdminPanel/form_registeredsuppliers.php?registeredsupplierId=' +
               row.registeredsupplierId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\
 							</a>\
-							<a <a <a href="http://localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Registeredsupplier.php?registeredsupplierId=' +
+							<a <a <a href="localhost/JomlahBazar/AdminPanel/controllers/delete/delete_Registeredsupplier.php?registeredsupplierId=' +
               row.registeredsupplierId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Delete">\
 								<i class="la la-trash"></i>\
@@ -89,14 +89,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           },
         },
       ],
-    });
-
-    $("#kt_form_status").on("change", function () {
-      datatable.search($(this).val().toLowerCase(), "Status");
-    });
-
-    $("#kt_form_type").on("change", function () {
-      datatable.search($(this).val().toLowerCase(), "Type");
     });
 
     $("#kt_form_status,#kt_form_type").selectpicker();

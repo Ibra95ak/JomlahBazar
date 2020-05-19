@@ -1,6 +1,6 @@
 <?php
 //Get base class
-require_once '../libraries/Base.php';
+require_once '../libraries/base.php';
 //Get admin class
 require_once '../libraries/Ser_Admin.php';
 $db = new Ser_Admin();
@@ -9,10 +9,12 @@ $db = new Ser_Admin();
 $results=array();
 //get all leads details
 $getAll_admins = $db->GetAdmins();
-foreach($getAll_admins as $admin){
-    array_push($results,$admin);
+if($getAll_admins){
+    foreach($getAll_admins as $admin){
+        array_push($results,$admin);
+    }   
 }
-
+//fill result in json file
 $fp = fopen('json/admins.json', 'w');
 fwrite($fp, json_encode($results));
 fclose($fp);
