@@ -1,0 +1,160 @@
+/* navbar custom css */
+.input-group.filter-by,
+.btn.btn-default.search-bt {
+  height: 100%;
+}
+
+.navbar-brand {
+  display: flex;
+  margin: auto;
+  height: 100%;
+}
+
+.navbar-brand img {
+  margin: auto;
+}
+
+.navbar-search-bar {
+ z-index: 1000;
+}
+/* navbar custom css */
+
+
+
+/* filters custom checkbox design */
+.form-control {
+  border-radius: 4px 0px 0px 4px !important;
+}
+
+.input-group span {
+  border-radius: 0px 4px 4px 0px !important;
+  background-color: #f26d25;
+}
+
+.input-group input {
+  border: none;
+}
+
+.navbar-toggle-icon {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+}
+
+/* Hide the browser's default radio button */
+.checkmark-lable input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.checkmark-lable:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.checkmark-lable input:checked ~ .checkmark {
+  background-color: #f26d25;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.checkmark-lable input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.checkmark-lable .checkmark:after {
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.checkmark-lable {
+  color: black;
+  display: flex;
+  align-items: center;
+  margin-right: 2%;
+}
+
+.filter-lable-text {
+  margin-left: 18px;
+}
+/* filters custom checkbox design */
+
+
+
+
+
+
+
+
+
+/* Shop-col-4 css starts from here */
+.imghvr-push-right{
+    width: 100%;
+}
+
+
+/* Login page css starts from here  */
+.fb {
+    background-color: #3B5998;
+    color: white;
+    width: 100%;
+    margin: 5px 0;
+    border-radius: 4px 0px 0px 4px !important;
+  }
+  
+  .twitter {
+    background-color: #55ACEE;
+    color: white;
+    width: 100%;
+    margin: 5px 0;
+    border-radius: 4px 0px 0px 4px !important;
+  }
+  
+  .google {
+    background-color: #dd4b39;
+    color: white;
+    width: 100%;
+    margin: 5px 0;
+    border-radius: 4px 0px 0px 4px !important;
+  }
+  /* vertical line */
+.vl {
+    border: 2px solid #ddd;
+    height: 1px;
+    display: flex;
+    justify-content: center;
+    margin: 30px 15px 20px 15px;
+  }
+  
+  /* text inside the vertical line */
+  .vl-innertext {
+    position: absolute;
+    top: 50%;
+    transform: translate(-8%, -121%);
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    padding: 8px 10px;
+  }
