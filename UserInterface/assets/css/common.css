@@ -1,7 +1,21 @@
 /* navbar custom css */
+
+.bread-boder{
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 15px;
+}
 .input-group.filter-by,
 .btn.btn-default.search-bt {
   height: 100%;
+  background-color: #febd69;
+  color: #666666;
+}
+
+.input-group-btn button {
+  display: flex;
+}
+.input-group.filter-by {
+  border-radius: 0px 4px 4px 0px !important;
 }
 
 .navbar-brand {
@@ -10,96 +24,88 @@
   height: 100%;
 }
 
-.navbar-brand img {
+.navbar-brand h5 {
   margin: auto;
 }
 
 .navbar-search-bar {
- z-index: 1000;
+  z-index: 1000;
+}
+
+.navbar {
+  color: white;
+}
+
+.top-dropdown {
+  border-right: 1px solid white;
+}
+
+.custom-select2.sub-menu {
+  cursor: no-drop;
+}
+
+.all-cate:before {
+  color: #666666;
+  top: 13px;
+}
+
+.select-selected2 {
+  background-color: #f3f3f3;
+  color: #666666;
+  border-radius: 0px;
+}
+
+.select-selected2:after {
+  border-color: #212529 transparent transparent transparent;
+}
+
+.select-selected2.select-arrow-active:after {
+  border-color: transparent transparent #212529 transparent;
+  top: 7px;
+}
+
+li a {
+  color: white;
+}
+
+.breadcrumb-item a {
+  color: black;
+}
+
+.circle-2 {
+  background: #ed8308;
+}
+
+.all-cate .select-selected2 {
+  padding: 6px 16px 5px 37px;
+}
+
+#navbarResponsive {
+  margin: 8px 0 0 0;
+  height: 60%;
+}
+.input-group.filter-by input {
+  height: 100%;
 }
 /* navbar custom css */
 
 
 
-/* filters custom checkbox design */
-.form-control {
-  border-radius: 4px 0px 0px 4px !important;
+/* Filters */
+.price-filter-range div, .price-filter-range span{
+   background-color: #febd69 !important;
+   border: 1px solid #febd69 !important;
 }
 
-.input-group span {
-  border-radius: 0px 4px 4px 0px !important;
-  background-color: #f26d25;
+.btn-filter{
+    background-color: #febd69 !important;
+    color: black;
 }
 
-.input-group input {
-  border: none;
-}
 
-.navbar-toggle-icon {
-  color: white;
-  background-color: black;
-  border: 1px solid white;
-}
 
-/* Hide the browser's default radio button */
-.checkmark-lable input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
 
-/* Create a custom radio button */
-.checkmark {
-  position: absolute;
-  height: 15px;
-  width: 15px;
-  background-color: #eee;
-  border-radius: 50%;
-}
 
-/* On mouse-over, add a grey background color */
-.checkmark-lable:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the radio button is checked, add a blue background */
-.checkmark-lable input:checked ~ .checkmark {
-  background-color: #f26d25;
-}
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the indicator (dot/circle) when checked */
-.checkmark-lable input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the indicator (dot/circle) */
-.checkmark-lable .checkmark:after {
-  top: 4px;
-  left: 4px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: white;
-}
-
-.checkmark-lable {
-  color: black;
-  display: flex;
-  align-items: center;
-  margin-right: 2%;
-}
-
-.filter-lable-text {
-  margin-left: 18px;
-}
-/* filters custom checkbox design */
 
 
 
@@ -110,51 +116,190 @@
 
 
 /* Shop-col-4 css starts from here */
-.imghvr-push-right{
-    width: 100%;
+.imghvr-push-right {
+  width: 100%;
 }
+
+#bestsellers {
+  padding: 30px 0px;
+}
+/* Shop-col-4 css ends here */
+
+
 
 
 /* Login page css starts from here  */
 .fb {
-    background-color: #3B5998;
-    color: white;
-    width: 100%;
-    margin: 5px 0;
-    border-radius: 4px 0px 0px 4px !important;
-  }
-  
-  .twitter {
-    background-color: #55ACEE;
-    color: white;
-    width: 100%;
-    margin: 5px 0;
-    border-radius: 4px 0px 0px 4px !important;
-  }
-  
-  .google {
-    background-color: #dd4b39;
-    color: white;
-    width: 100%;
-    margin: 5px 0;
-    border-radius: 4px 0px 0px 4px !important;
-  }
-  /* vertical line */
+  background-color: #3b5998;
+  color: white;
+  width: 100%;
+  margin: 5px 0;
+  border-radius: 4px 0px 0px 4px !important;
+}
+
+.twitter {
+  background-color: #55acee;
+  color: white;
+  width: 100%;
+  margin: 5px 0;
+  border-radius: 4px 0px 0px 4px !important;
+}
+
+.google {
+  background-color: #dd4b39;
+  color: white;
+  width: 100%;
+  margin: 5px 0;
+  border-radius: 4px 0px 0px 4px !important;
+}
+/* vertical line */
 .vl {
-    border: 2px solid #ddd;
-    height: 1px;
-    display: flex;
-    justify-content: center;
-    margin: 30px 15px 20px 15px;
+  border: 2px solid #ddd;
+  height: 1px;
+  display: flex;
+  justify-content: center;
+  margin: 30px 15px 20px 15px;
+}
+
+/* text inside the vertical line */
+.vl-innertext {
+  position: absolute;
+  top: 50%;
+  transform: translate(-8%, -121%);
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 8px 10px;
+}
+
+
+
+
+/* Supplier page css start from here */
+
+.supplier-card{
+   min-height: auto !important;
+   height: auto !important;
+    border-bottom: 2px solid #ddd;
+    position: relative;
+    z-index: 6;
+    transition: 0.3s ease;
+    padding: 10px 0;
+    background: #fff;
+    position: relative;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.supplier-card:hover{
+    border: 0px solid transparent;
+    box-shadow: 0px 5px 5px 0 rgba(53, 78, 84, 0.15);
+    z-index: 20;
+    transition: 0.3s ease;
+}
+
+.supplier-card:hover .contact-supplier-btn{
+    visibility: visible;
+}
+
+.supplier-card .product-img img{
+    margin: 5% 0;
+}
+
+.supplier-card-details{
+    padding: 0 30px 20px 30px;
+}
+
+.supplier-card-title{
+    font-size: 20px;
+    line-height: 1.255;
+}
+
+.supplier-card-details p{
+    font-size: 14px;
+    line-height: 1.255;
+}
+
+.supplier-card-details .supplier-card-title:hover{
+   color: #ed8308;
+   cursor: pointer;
+}
+
+.product-select { 
+  text-align: center;
+}
+
+.contact-supplier-btn {
+    margin: 5px 0;
+    box-shadow: none;
+    border-radius: 4px;
+    border: none;
+    padding: 0px 10px;
+    width: auto;
+    visibility: hidden;
   }
   
-  /* text inside the vertical line */
-  .vl-innertext {
-    position: absolute;
-    top: 50%;
-    transform: translate(-8%, -121%);
-    background-color: #f1f1f1;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    padding: 8px 10px;
+  .contact-supplier-btn:hover {
+    filter: drop-shadow(1px, 1px, 1px, lightgray);
+    background-color: #febd69;
+    color: white;
   }
+
+  .star-rating {
+    line-height:32px;
+    font-size:1.25em;
+  }
+  
+  .star-rating .fa-star{color: #ed8308;}
+
+
+
+/* Product Page starts from here */
+
+.product-card{
+    min-height: 250px !important;
+    max-height: 335px;
+}
+
+.all-cate .select-selected2 {
+  padding: 6px 17px 6px 28px;
+}
+.all-cate .select-selected2::after {
+  right: 3px;
+}
+
+.all-cate .select-selected2::before {
+  right: 10px;
+}
+
+.select-items2 {
+  width: max-content;
+}
+
+.product-card:hover .contact-supplier-btn {
+  visibility: visible;
+  transition: 0.5s;
+}
+
+.product-card::after {
+  content: unset;
+}
+.product .product-type {
+  color: #e67a00;
+}
+
+.round-icon-btn:hover {
+    background-color: #febd69;
+}
+
+.right-heading::before{
+    background: #febd69;
+}
+.inner-left-menu h3:before {
+    background: #febd69;
+}
+
+.js-qty-down:hover,.js-qty-up:hover,.add2:hover {
+    background: #febd69 !important;
+}
+

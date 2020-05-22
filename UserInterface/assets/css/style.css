@@ -5070,7 +5070,7 @@ background-color:#f26d25; border-radius:0;color:#fff;
 .all-cate .select-items2 div:nth-child(11)  { background:url(../images/icon/bann.png) 5px center no-repeat}
 
 
-.all-cate .select-selected2::after {top:22px!important}
+.all-cate .select-selected2::after {top:17px!important}
 .all-cate .select-selected2.select-arrow-active:after {top:18px!important}
 .all-cate .select-items2 { background:#fefefe!important; color:#000!important}
 .all-cate .select-items2 {border:1px solid rgba(0,0,0,.15);}
