@@ -34,6 +34,7 @@
 
 .navbar {
   color: white;
+  background: #232f3e;
 }
 
 .top-dropdown {
@@ -57,6 +58,10 @@
 
 .select-selected2:after {
   border-color: #212529 transparent transparent transparent;
+  
+}
+.all-cate .select-selected2::after{
+    top: 13px !important
 }
 
 .select-selected2.select-arrow-active:after {
@@ -93,13 +98,12 @@ li a {
 
 /* Filters */
 .price-filter-range div, .price-filter-range span{
-   background-color: #febd69 !important;
-   border: 1px solid #febd69 !important;
+   background-color: #ed8308 !important;
+   border: 1px solid #ed8308 !important;
 }
 
 .btn-filter{
-    background-color: #febd69 !important;
-    color: black;
+    background-color:#ed8308!important;
 }
 
 
@@ -121,7 +125,9 @@ li a {
 }
 
 #bestsellers {
-  padding: 30px 0px;
+    padding: 30px 0px;
+    margin: 20px 15px;
+    width: calc(100% - 30px);
 }
 /* Shop-col-4 css ends here */
 
@@ -231,11 +237,15 @@ li a {
 
 .contact-supplier-btn {
     margin: 5px 0;
-    box-shadow: none;
-    border-radius: 4px;
-    border: none;
-    padding: 0px 10px;
-    width: auto;
+    background: #ed8308;
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    padding: 8px 20px 7px 20px;
+    border-radius: 100px!important;
+    display: inline-block;
+    border: 0;
+    min-width: 140px;
     visibility: hidden;
   }
   
@@ -254,22 +264,25 @@ li a {
 
 
 
+
+
+
 /* Product Page starts from here */
 
 .product-card{
     min-height: 250px !important;
-    max-height: 335px;
 }
 
 .all-cate .select-selected2 {
   padding: 6px 17px 6px 28px;
 }
 .all-cate .select-selected2::after {
-  right: 3px;
+  right: 3px;  
 }
 
 .all-cate .select-selected2::before {
   right: 10px;
+ 
 }
 
 .select-items2 {
@@ -303,3 +316,21 @@ li a {
     background: #febd69 !important;
 }
 
+
+.add-to-cart{
+    background: #febd69 !important;
+}
+
+
+
+/* Deal of the week */
+#deal-of-the-week{
+    width: 100%;
+}
+
+
+/* General */
+
+#newsletter{
+    background: rgba(246, 129, 35, 0.8);
+}
