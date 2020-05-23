@@ -51,7 +51,8 @@
 		CheckCardNumber(frmObj)
 */ 
 
-'use strict',
+'use strict'
+
 function checkTrim(txtString)
 {
 	txtString = LTrim(txtString);
@@ -64,7 +65,7 @@ function checkTrim(txtString)
 
 function LTrim(txtString) 
 {
-	ctr = 0;
+	var ctr = 0;
 	while( ctr < txtString.length && (txtString.substring(ctr,ctr+1) == " "))
 	{
 		ctr=ctr+1;
@@ -77,7 +78,7 @@ function LTrim(txtString)
 
 function RTrim(txtString) 
 {
-	ctr = txtString.length;
+	var ctr = txtString.length;
 	while( ctr > 0  && (txtString.substring(ctr,ctr-1) == " "))
 	{
 		ctr = ctr - 1;
@@ -513,8 +514,10 @@ function isDuplicate(firstValue, secondValue)
 {
 	if(firstValue == secondValue)
 		return true;
-	else
-		return false;
+	else{
+        alert("Confirm password doesn't match!");
+        return false;
+    }
 }
 
 //returns true if it is a valid phone Number
