@@ -1,8 +1,8 @@
 /* navbar custom css */
 
-.bread-boder{
-    padding: 5px 10px 5px 10px;
-    margin-bottom: 15px;
+.bread-boder {
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 15px;
 }
 .input-group.filter-by,
 .btn.btn-default.search-bt {
@@ -35,6 +35,8 @@
 .navbar {
   color: white;
   background: #232f3e;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
 }
 
 .top-dropdown {
@@ -45,9 +47,11 @@
   cursor: no-drop;
 }
 
-.all-cate:before {
-  color: #666666;
+.all-cate::before {
+  content: none !important;
   top: 13px;
+  color: #666666;
+
 }
 
 .select-selected2 {
@@ -58,10 +62,23 @@
 
 .select-selected2:after {
   border-color: #212529 transparent transparent transparent;
-  
 }
-.all-cate .select-selected2::after{
-    top: 13px !important
+.all-cate .select-selected2::after {
+  top: 13px !important;
+}
+.all-cate .select-selected2 {
+  padding: 6px 17px 6px 6px;
+}
+.all-cate .select-selected2::after {
+  right: 3px;
+}
+
+.all-cate .select-selected2::before {
+  right: 10px;
+}
+
+.select-items2 {
+  width: max-content;
 }
 
 .select-selected2.select-arrow-active:after {
@@ -81,10 +98,6 @@ li a {
   background: #ed8308;
 }
 
-.all-cate .select-selected2 {
-  padding: 6px 16px 5px 37px;
-}
-
 #navbarResponsive {
   margin: 8px 0 0 0;
   height: 60%;
@@ -94,30 +107,16 @@ li a {
 }
 /* navbar custom css */
 
-
-
 /* Filters */
-.price-filter-range div, .price-filter-range span{
-   background-color: #ed8308 !important;
-   border: 1px solid #ed8308 !important;
+.price-filter-range div,
+.price-filter-range span {
+  background-color: #ed8308 !important;
+  border: 1px solid #ed8308 !important;
 }
 
-.btn-filter{
-    background-color:#ed8308!important;
+.btn-filter {
+  background-color: #ed8308 !important;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Shop-col-4 css starts from here */
 .imghvr-push-right {
@@ -125,14 +124,11 @@ li a {
 }
 
 #bestsellers {
-    padding: 30px 0px;
-    margin: 20px 15px;
-    width: calc(100% - 30px);
+  padding: 30px 0px;
+  margin: 20px 15px;
+  width: calc(100% - 30px);
 }
 /* Shop-col-4 css ends here */
-
-
-
 
 /* Login page css starts from here  */
 .fb {
@@ -178,115 +174,100 @@ li a {
   padding: 8px 10px;
 }
 
-
-
-
 /* Supplier page css start from here */
 
-.supplier-card{
-   min-height: auto !important;
-   height: auto !important;
-    border-bottom: 2px solid #ddd;
-    position: relative;
-    z-index: 6;
-    transition: 0.3s ease;
-    padding: 10px 0;
-    background: #fff;
-    position: relative;
-    background-color: white;
-    margin-bottom: 10px;
+.supplier-card {
+  min-height: auto !important;
+  height: auto !important;
+  border-bottom: 2px solid #ddd;
+  position: relative;
+  z-index: 6;
+  transition: 0.3s ease;
+  padding: 10px 0;
+  background: #fff;
+  position: relative;
+  background-color: white;
+  margin-bottom: 10px;
+  
 }
 
-.supplier-card:hover{
-    border: 0px solid transparent;
-    box-shadow: 0px 5px 5px 0 rgba(53, 78, 84, 0.15);
-    z-index: 20;
-    transition: 0.3s ease;
+.supplier-card:hover {
+  border: 0px solid transparent;
+  box-shadow: 0px 5px 5px 0 rgba(53, 78, 84, 0.15);
+  z-index: 20;
+  transition: 0.3s ease;
 }
 
-.supplier-card:hover .contact-supplier-btn{
-    visibility: visible;
+.supplier-card:hover .contact-supplier-btn {
+  visibility: visible;
 }
 
-.supplier-card .product-img img{
-    margin: 5% 0;
+.supplier-card .product-img img {
+  margin: 5% 0;
 }
 
-.supplier-card-details{
-    padding: 0 30px 20px 30px;
+.supplier-card-details {
+  padding: 0 30px 20px 30px;
 }
 
-.supplier-card-title{
-    font-size: 20px;
-    line-height: 1.255;
+.supplier-card-title {
+  font-size: 20px;
+  line-height: 1.255;
 }
 
-.supplier-card-details p{
-    font-size: 14px;
-    line-height: 1.255;
+.supplier-card-details p {
+  font-size: 14px;
+  line-height: 1.255;
 }
 
-.supplier-card-details .supplier-card-title:hover{
-   color: #ed8308;
-   cursor: pointer;
+.supplier-card-details .supplier-card-title:hover {
+  color: #ed8308;
+  cursor: pointer;
 }
 
-.product-select { 
+.product-select {
   text-align: center;
 }
 
 .contact-supplier-btn {
-    margin: 5px 0;
-    background: #ed8308;
-    font-size: 14px;
-    font-weight: 400;
-    color: #fff;
-    padding: 8px 20px 7px 20px;
-    border-radius: 100px!important;
-    display: inline-block;
-    border: 0;
-    min-width: 140px;
-    visibility: hidden;
-  }
-  
-  .contact-supplier-btn:hover {
-    filter: drop-shadow(1px, 1px, 1px, lightgray);
-    background-color: #febd69;
-    color: white;
-  }
+  margin: 5px 0;
+  background: #ed8308;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+  padding: 8px 20px 7px 20px;
+  border-radius: 100px !important;
+  display: inline-block;
+  border: 0;
+  min-width: 140px;
+  visibility: hidden;
+}
 
-  .star-rating {
-    line-height:32px;
-    font-size:1.25em;
-  }
-  
-  .star-rating .fa-star{color: #ed8308;}
+.contact-supplier-btn:hover {
+  filter: drop-shadow(1px, 1px, 1px, lightgray);
+  background-color: #febd69;
+  color: white;
+}
 
+.star-rating {
+  line-height: 32px;
+  font-size: 1.25em;
+}
 
-
-
-
+.star-rating .fa-star {
+  color: #ed8308;
+}
 
 /* Product Page starts from here */
 
-.product-card{
-    min-height: 250px !important;
+.product-card {
+  min-height: 250px !important;
+  max-height: 270px !important;
+  margin-bottom: 15px !important;
 }
 
-.all-cate .select-selected2 {
-  padding: 6px 17px 6px 28px;
-}
-.all-cate .select-selected2::after {
-  right: 3px;  
-}
-
-.all-cate .select-selected2::before {
-  right: 10px;
- 
-}
-
-.select-items2 {
-  width: max-content;
+.stepper-widget{
+  margin: 0 !important;
 }
 
 .product-card:hover .contact-supplier-btn {
@@ -302,43 +283,41 @@ li a {
 }
 
 .round-icon-btn:hover {
-    background-color: #febd69;
+  background-color: #febd69;
 }
 
-.right-heading::before{
-    background: #febd69;
+.right-heading::before {
+  background: #febd69;
 }
 .inner-left-menu h3:before {
-    background: #febd69;
+  background: #febd69;
 }
 
-.js-qty-down:hover,.js-qty-up:hover,.add2:hover {
-    background: #febd69 !important;
+.js-qty-down:hover,
+.js-qty-up:hover,
+.add2:hover {
+  background: #febd69 !important;
 }
 
-
-.add-to-cart{
-    background: #febd69 !important;
+.add-to-cart {
+  background: #febd69 !important;
 }
-
-
 
 /* Buyer page css starts from here */
 
-.buyer-card{
-    min-height: 250px !important;
+.buyer-card {
+  min-height: 250px !important;
+  max-height: 270px !important;
+  margin-bottom: 15px !important;
 }
-
-
 
 /* Deal of the week */
-#deal-of-the-week{
-    width: 100%;
+#deal-of-the-week {
+  width: 100%;
 }
-
 
 /* General */
 
-#newsletter{
-    background: rgba(246, 129, 35, 0.8);
+#newsletter {
+  background: rgba(246, 129, 35, 0.8);
 }

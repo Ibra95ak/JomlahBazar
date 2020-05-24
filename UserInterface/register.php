@@ -119,9 +119,9 @@
                     <h2>New Account</h2>
                 </div>
             </div>
-            <form id="jbform">
+            <form id="jbform" class="d-flex justify-content-center">
                 <div class="col-lg-6 col-md-12 mb-5">
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-label">Email Address<small>Required</small></label>
@@ -141,18 +141,16 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="clearfix"></div>
+                            <div class="form-group text-center">
+                                <input name="btn_submit" id="btn_submit" type="button" class="add-to-cart2 btn mt-31" value="Create Account">
+                            </div>
                         </div>
                         <!--
                     <div class="col-md-4 col-12">
                         <div class="form-group"> <img src="assets/images/capta.jpg" class="img-fluid"> </div>
                     </div>
 -->
-                        <div class="col-md-8 col-12">
-                            <div class="form-group">
-                                <input name="btn_submit" id="btn_submit" type="button" class="add-to-cart2 btn mt-31" value="Create Account">
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </form>
