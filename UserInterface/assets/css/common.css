@@ -118,6 +118,10 @@ li a {
   background-color: #ed8308 !important;
 }
 
+
+
+
+
 /* Shop-col-4 css starts from here */
 .imghvr-push-right {
   width: 100%;
@@ -321,3 +325,20 @@ li a {
 #newsletter {
   background: rgba(246, 129, 35, 0.8);
 }
+
+
+
+/* Media queries */
+
+@media all and (max-width:991px){
+  .top-dropdown{
+    border: none;
+    width: 50%;
+    padding: 0 15px;
+  }
+
+  .dropdown-menu.show {
+    min-width: 130px;
+  }
+}
+

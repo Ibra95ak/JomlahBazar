@@ -188,8 +188,8 @@
 .product-dis p {font-size: 12px;line-height:20px;}
 .rate-price2 {display:block} 
 .social-network { display:none!important}
+.rate-price { display:flex; width:100%; justify-content: center;}
 .rate-price ul { margin:0 -25px 0 0}
-.nav-1 { display:none!important}
 
 
 .columns-5 .product {min-height:275px!important;}
@@ -373,7 +373,7 @@ textarea.form-control { height:100px; margin-bottom:20px}
 .products-section h2 {font-size:25px}
 #deal-of-the-week h2 {font-size:25px}
 .navbar-dark .navbar-nav .nav-link { font-size:15px}
-.rate-price { display:block; width:100%; float:left}
+.rate-price { display:flex; width:100%; justify-content: center;}
  
 
 .dropdown-menu {font-size:.9rem; margin-bottom:5px} 
