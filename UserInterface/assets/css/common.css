@@ -44,7 +44,6 @@ body{
   padding-top: 2px !important;
   padding-bottom: 2px !important;
   border: none;
-
 }
 
 #bottom-navbar{
@@ -119,6 +118,8 @@ option{
 .select-items2 div{
   font-size: 13px;
   background: none !important;
+  padding: 6px 16px !important;
+  margin: 0 !important;
 }
 
 .all-cate .select-selected2::after {
@@ -189,6 +190,22 @@ li a {
 .nav-a.nav-a-2:hover{
   border: 1px solid white;
   color: white !important;
+}
+
+.dropdown{
+  min-width: auto;
+}
+
+.dropdown-text{
+  font-size: 13px;
+    color: #444;
+    font-weight: 400;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.login-register-dropdown{
+  left: 21%;
 }
 /* navbar custom css */
 
@@ -484,8 +501,12 @@ a:hover{
     padding: 0 15px;
   }
 
+  .login-register-dropdown{
+    left: 17.5%;
+  }
+
   .dropdown-menu.show {
-    min-width: 130px;
+    min-width: auto;
   }
 }
 

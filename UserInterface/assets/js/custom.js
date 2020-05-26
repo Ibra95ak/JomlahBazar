@@ -1,16 +1,25 @@
-var $star_rating = $('.star-rating .fa');
+$('.login-register-toggle').hover(function(){
+  if($('.language-dropdown').hasClass('show')){
+    $(".language-dropdown").removeClass('show');
+  }
+$(".login-register-dropdown").addClass('show');
 
-var SetRatingStar = function() {
-  return $star_rating.each(function() {
-    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-      return $(this).removeClass('fa-star-o').addClass('fa-star');
-    } else {
-      return $(this).removeClass('fa-star').addClass('fa-star-o');
-    }
+})
+
+$('.language-toggle').hover(function(){
+  if($('.login-register-dropdown').hasClass('show')){
+    $(".login-register-dropdown").removeClass('show');
+  }
+  $(".language-dropdown").addClass('show');
+  })
+
+
+$(window).click(function() {
+  if($('.login-register-dropdown').hasClass('show')){
+    $(".login-register-dropdown").removeClass('show');
+  }
+  if($('.language-dropdown').hasClass('show')){
+    $(".language-dropdown").removeClass('show');
+  }
+
   });
-};
-
-SetRatingStar();
-$(document).ready(function() {
-
-});
