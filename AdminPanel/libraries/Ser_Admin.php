@@ -54,7 +54,7 @@ class Ser_Admin {
      * returns admin/Null
      */
     public function getAdminByUsernameAndPassword($username, $password) {
-        $stmt = $this->conn->prepare("CALL sp_GetAdminByUsername(?)");
+        $stmt = $this->conn->prepare("SELECT * FROM admins WHERE username = ?");
         $stmt->bind_param("s", $username);
 
         if ($stmt->execute()) {

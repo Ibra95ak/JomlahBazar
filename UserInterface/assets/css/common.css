@@ -1,3 +1,9 @@
+body{
+  font-family: 'Poppins', sans-serif !important;
+}
+
+
+
 /* navbar custom css */
 
 .bread-boder {
@@ -34,9 +40,36 @@
 
 .navbar {
   color: white;
-  background: #232f3e;
-  padding-top: 5px !important;
-  padding-bottom: 5px !important;
+  background: #131921;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  border: none;
+
+}
+
+#bottom-navbar{
+  background-color: #232f3e;
+}
+#bottom-navbar:first-child{
+  align-items: center;
+  padding: 5px 0;
+}
+
+.deliver-to-uae,.bottom-nav{
+  border: 1px solid transparent;
+}
+
+.deliver-to-uae:hover,.bottom-nav:hover{
+  border: 1px solid white;
+  color: white !important;
+}
+
+.nav-a.bottom-nav{
+  padding: 7px 9px 7px 8px;
+  color: #ccc;
+  float: left;
+  font-family: inherit;
+  font-size: 13px;
 }
 
 .top-dropdown {
@@ -60,15 +93,34 @@
   border-radius: 0px;
 }
 
+option{
+  font-size: 13.3px;
+}
+
 .select-selected2:after {
   border-color: #212529 transparent transparent transparent;
 }
 .all-cate .select-selected2::after {
-  top: 13px !important;
+  top: 23px !important;
 }
+
+.all-cate .select-selected:first-child{
+  border-radius: 4px 0 0 4px !important;
+}
+
+.all-cate.custom-select2:first-child{
+  border-radius: 4px 0 0 4px !important;
+}
+
 .all-cate .select-selected2 {
-  padding: 6px 17px 6px 6px;
+  padding: 12px 16px 12px 8px;
+  font-size: 13px;
 }
+.select-items2 div{
+  font-size: 13px;
+  background: none !important;
+}
+
 .all-cate .select-selected2::after {
   right: 3px;
 }
@@ -104,6 +156,39 @@ li a {
 }
 .input-group.filter-by input {
   height: 100%;
+}
+
+.nav-line-1{
+  font-size: 12px;
+    line-height: 14px;
+    height: 14px;
+    font-weight: 400;
+    display: inline-block;
+    color: white;
+    margin-top: 9px;
+}
+.nav-line-2{
+  font-size: 14px;
+    line-height: 15px;
+    font-weight: 700;
+    color: white;
+    display: block;
+    white-space: nowrap;
+}
+.nav-a.nav-a-2.nav-tool{
+    line-height: normal;
+    display: flex;
+    padding: 0 4px;
+    flex-direction: column;  
+}
+
+.nav-a.nav-a-2{
+  border: 1px solid transparent;
+}
+
+.nav-a.nav-a-2:hover{
+  border: 1px solid white;
+  color: white !important;
 }
 /* navbar custom css */
 
@@ -171,14 +256,15 @@ li a {
 .vl-innertext {
   position: absolute;
   top: 50%;
-  transform: translate(-8%, -121%);
+  transform: translate(-8%, -195%);
   background-color: #f1f1f1;
   border: 1px solid #ccc;
   border-radius: 50%;
-  padding: 8px 10px;
+  padding: 8px 13px;
 }
 
 /* Supplier page css start from here */
+
 
 .supplier-card {
   min-height: auto !important;
@@ -209,6 +295,8 @@ li a {
 .supplier-card .product-img img {
   margin: 5% 0;
 }
+
+
 
 .supplier-card-details {
   padding: 0 30px 20px 30px;
@@ -263,11 +351,63 @@ li a {
 }
 
 /* Product Page starts from here */
+.product .product-name{
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif !important;
+}
+a:hover{
+  cursor: pointer !important;
+  color: #c45500 !important;
+
+}
+
+.price-dollar{
+  top: -.5em;
+  font-size: 12px;
+  position: relative;
+}
+.price-digit{
+ font-size: 21px;
+}
+.price-fraction{
+  position: relative;
+  top: -.5em;
+  font-size: 12px;
+}
+.single-product-price{
+  text-align: left;
+}
+
+.product-card-col{
+  padding: 12px 12px;
+}
+.product-title{
+  font-size: 15px!important;
+  text-align: left;
+  line-height: 1.4!important;
+  font-weight: 400!important;
+  font-style: normal!important;
+  text-transform: none!important;
+  text-decoration: none!important;
+}
+.product-img{
+  width: 100%;
+  height: 260px;
+}
 
 .product-card {
-  min-height: 250px !important;
-  max-height: 270px !important;
-  margin-bottom: 15px !important;
+  min-height: 270px !important;
+  max-height: 445px !important;
+  margin-top: 0 !important;
+  border: none;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #ddd;
+}
+
+.product-card:hover{
+  box-shadow: none;
+  border-bottom: 2px solid #ddd;;
 }
 
 .stepper-widget{
@@ -318,6 +458,13 @@ li a {
 /* Deal of the week */
 #deal-of-the-week {
   width: 100%;
+}
+
+
+
+/* Single Product Page */
+.inner-page{
+  padding: 0 0 43px 0 !important;
 }
 
 /* General */

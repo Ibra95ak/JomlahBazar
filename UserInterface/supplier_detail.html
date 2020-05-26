@@ -15,43 +15,45 @@
 <link rel="stylesheet" href="assets/vendor/jquery/easyzoom.css">
 <!-- main css -->
 
- <!-- custom css -->
- <link rel="stylesheet" href="assets/css/common.css" />
- <!-- custom css -->
+<!-- custom css -->
+<link rel="stylesheet" href="assets/css/common.css" />
+<!-- custom css -->
 </head>
 <body>
 
-    <!-- Navigation with search bar-->
-    <nav
-    class="navbar navbar-expand-lg navbar-dark sticky-top navbar-search-bar"
-  >
-    <div class="container-fluid">
-      <div class="row" style="flex: auto; height: 100%; align-items: center;">
-        <div class="col-lg-2">
-          <a class="navbar-brand" href="index.html">
-            <h5>JomlaBazar</h5>
-          </a>
-        </div>
-  
-        <div class="col-lg-6">
-          <div class="row pt-lg-0 pt-2">
+<!-- Navigation with search bar-->
+<nav
+  class="navbar navbar-expand-lg navbar-dark sticky-top navbar-search-bar"
+>
+  <div class="container-fluid">
+    <div class="row" style="flex: auto;">
+      <div class="col-lg-2">
+        <a class="navbar-brand" href="index.html">
+          <h5>JomlaBazar</h5>
+        </a>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="row">
             <div class="top-dropdown">
               <div class="all-cate custom-select2">
                 <select>
-                  <option>All</option>
+                  <option>Categories</option>
                   <option>Brand</option>
                   <option>Products</option>
                   <option>Supplier</option>
                   <option>Buyer</option>
                   <option>Location</option>
+                  
                 </select>
-              </div>
+            
             </div>
-  
+          </div>
+
             <div class="top-dropdown">
               <div class="all-cate custom-select2 sub-menu">
                 <select disabled>
-                  <option>Sub All</option>
+                  <option >Sub Menu</option>
                   <option>Brand</option>
                   <option>Products</option>
                   <option>Supplier</option>
@@ -59,107 +61,211 @@
                   <option>Location</option>
                 </select>
               </div>
+            
+          </div>
+
+          <div class="col p-lg-0">
+            <div class="input-group filter-by">
+              <input
+                type="hidden"
+                name="search_param"
+                value="all"
+                id="search_param"
+              />
+              <input
+                type="text"
+                class="form-control"
+                name="x"
+                placeholder="What do you need?"
+              />
+              <span class="input-group-btn">
+                <button class="btn btn-default search-bt" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
             </div>
-  
-            <div class="col p-lg-0 pt-lg-0 pt-2">
-              <div class="input-group filter-by">
-                <input
-                  type="hidden"
-                  name="search_param"
-                  value="all"
-                  id="search_param"
-                />
-                <input
-                  type="text"
-                  class="form-control"
-                  name="x"
-                  placeholder="What do you need?"
-                />
-                <span class="input-group-btn">
-                  <button class="btn btn-default search-bt" type="button">
-                    <i class="fa fa-search"></i>
-                  </button>
-                </span>
-              </div>
-            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-2">
+        <button
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <div class="rate-price nav-1">
+            <ul>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="" data-toggle="dropdown">
+                  <i class="fa fa-user-circle-o" aria-hidden="true"></i
+                ></a>
+                <div
+                  class="dropdown-menu dropdown-menu-right animate slideIn"
+                >
+                  <a class="dropdown-item" href="login.html">Login</a>
+                  <a class="dropdown-item" href="my-account.html"
+                    >My Account</a
+                  >
+                  <a class="dropdown-item" href="register.html">Register</a>
+                  <a class="dropdown-item" href="forgot-password.html"
+                    >Forgot Password</a
+                  >
+                </div>
+              </li>
+              <li>
+                <a href="wishlist.html"
+                  ><i class="fa fa-heart-o" aria-hidden="true"></i
+                  ><span class="circle-2">1</span></a
+                >
+              </li>
+              <li class="dropdown">
+                <a
+                  class="dropdown-toggle link"
+                  href=""
+                  data-toggle="dropdown"
+                  ><i class="fa fa-shopping-bag" aria-hidden="true"></i
+                  ><span class="circle-2">1</span></a
+                >
+                <div
+                  class="dropdown-menu dropdown-menu2 dropdown-menu-right animate slideIn"
+                >
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <img
+                          src="./assets/images/fruits/img-1.jpg"
+                          alt=""
+                          title=""
+                          class="img-fluid"
+                        />
+                      </div>
+                      <div class="col-md-9">
+                        <p>
+                          1 x Product Name...
+                          <span class="price">$ 14.70</span>
+                        </p>
+                        <a href="" class="close">x</a>
+                      </div>
+                      <div class="col-md-12">
+                        <hr />
+                      </div>
+                      <div class="col-md-3">
+                        <img
+                          src="./assets/images/fruits/img-2.jpg"
+                          alt=""
+                          title=""
+                          class="img-fluid"
+                        />
+                      </div>
+                      <div class="col-md-9">
+                        <p>
+                          1 x Product Name...
+                          <span class="price">$ 14.70</span>
+                        </p>
+                        <a href="" class="close">x</a>
+                      </div>
+                      <div class="col-md-12">
+                        <hr />
+                      </div>
+                      <div class="col-md-3">
+                        <img
+                          src="assets/images/fruits/img-3.jpg"
+                          alt=""
+                          title=""
+                          class="img-fluid"
+                        />
+                      </div>
+                      <div class="col-md-9">
+                        <p>
+                          1 x Product Name...
+                          <span class="price">$ 14.70</span>
+                        </p>
+                        <a href="" class="close">x</a>
+                      </div>
+                      <div class="col-md-12">
+                        <hr />
+                      </div>
+                      <div class="col-md-3">
+                        <img
+                          src="assets/images/fruits/img-4.jpg"
+                          alt=""
+                          title=""
+                          class="img-fluid"
+                        />
+                      </div>
+                      <div class="col-md-9">
+                        <p>
+                          1 x Product Name...
+                          <span class="price">$ 14.70</span>
+                        </p>
+                        <a href="" class="close">x</a>
+                      </div>
+                      <div class="col-md-12">
+                        <hr />
+                      </div>
+                      <div class="col-md-3">
+                        <p class="font-15">Tax</p>
+                      </div>
+                      <div class="col-md-9 text-right">
+                        <span class="font-15">$ 2.80</span>
+                      </div>
+                      <div class="col-md-12">
+                        <hr />
+                      </div>
+                      <div class="col-md-3">
+                        <p class="font-15"><strong>Total</strong></p>
+                      </div>
+                      <div class="col-md-9 text-right">
+                        <span class="font-15"
+                          ><strong>$ 10.80</strong></span
+                        >
+                      </div>
+                      <div class="col-md-12">
+                        <hr />
+                      </div>
+                      <div class="col-md-12 text-center">
+                        <input
+                          type="button"
+                          value="Check out"
+                          class="btn check-out w-100"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
-  
-        <div class="col-lg-4">
-          <div class="row no-gutters flex-nowrap justify-content-around">
-            <a href="#" id="icp-nav-flyout" class="nav-a nav-a-2 icp-link-style-2">
-              <span class="icp-nav-link-inner">
-                <span class="nav-line-1">
-                  <span class="icp-nav-flag icp-nav-flag-us"></span>
-                </span>
-                <span class="nav-line-2">&nbsp;
-                  <span class="nav-icon nav-arrow" style="visibility: visible;"></span>
-                </span>
-              </span>
-            </a>
-            <a class="nav-a nav-a-2 nav-tool">
-              <span class="nav-line-1">Hello sigin</span>
-              <span class="nav-line-2 text-nowrap"
-                >Account & lists
-                <i class="fa fa-caret-down nav-icon nav-arrow"></i
-              ></span>
-            </a>
-  
-            <a class="nav-a nav-a-2 nav-tool">
-              <span class="nav-line-1">Returns</span>
-              <span class="nav-line-2 text-nowrap">& Orders </span>
-            </a>
-  
-            <a class="nav-a nav-a-2 text-center nav-tool">
-              <div style="display: flex;">
-                <div
-                  class="nav-line-2 text-nowrap"
-                  style="width: 60%; position: relative; float: left;"
-                >
-                  <span
-                    class="nav-line-1 nav-cart-count font-weight-bold"
-                    style="
-                      position: absolute;
-                      top: 0;
-                      left: 43%;
-                      color: #f08804;
-                      font-size: 16px;
-                      width: 19px;
-                    "
-                    >9</span
-                  >
-                  <img src="./assets/images/cart.png" />
-                </div>
-  
-                <div
-                  style="
-                    width: 40%;
-                    right: 8px;
-                    position: relative;
-                    top: 22px;
-                  "
-                >
-                  Cart
-                </div>
-              </div>
-            </a>
-          </div>
-         </div>
       </div>
     </div>
-  </nav>
-  <!-- Navigation with search bar-->
-  
+  </div>
+</nav>
+<!-- Navigation with search bar-->
+
 <div class="container">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb2 breadcrumb">
       <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-      <li class="breadcrumb-item">Single Product</li>
+      <li class="breadcrumb-item">Supplier Details</li>
     </ol>
   </nav>
   <div class="clearfix"></div>
 </div>
-
+<div class="inner-header2">
+  <h3>Orange</h3>
+</div>
 <div class="inner-page">
   <div class="container">
     <div class="row justify-content-md-center">
@@ -190,12 +296,12 @@
       <div class="col-lg-6  product-text">
         <div class="row">
           <div class="col-md-6 col-sm-6 col-6">
-            <h3>Hugo Boss</h3>
+            <h3>Guangzhou Yimei Cosmetic Ltd.</h3>
             <img src="assets/images/star.png" alt="" title=""> <img src="assets/images/star.png" alt="" title=""> <img src="assets/images/star.png" alt="" title=""> <img src="assets/images/star.png" alt="" title=""> <img src="assets/images/star.png" alt="" title=""> </div>
           <div class="col-md-6 col-sm-6 text-right col-6">
-            <div class="price-css"> <span>$35.00</span>
+            <div class="price-css"> $14.00/ Piece
               <div class="clearfix"></div>
-              $24.00 </div>
+            </div>
           </div>
           <div class="col-md-12">
             <div class="mt-3">
@@ -218,7 +324,18 @@
                       <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"><i class="fa fa-plus"></i> </button>
                       </span> </div>
                   </div>
-                  <div class="col-md-6 col-sm-6"> <a class="btn add-to-cart2" href="cart.html">Add To Cart</a> </div>
+                  <div class="col-md-6 col-sm-6"><button
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Contact Supplier"
+                    class="add-to-compare contact-supplier-btn"
+                    data-fancybox="gallery"
+                    data-src="#popup-1"
+                    style="visibility: visible;"
+                  >
+                    <i class="fa fa-contact" aria-hidden="true"></i
+                    >Contact Supplier
+                  </button></div>
                 </div>
               </div>
               <div class="clearfix"></div>
@@ -370,61 +487,76 @@
           <h2 class="icon-css">Related Products</h2>
           <div class="owl-carousel latest-products owl-theme wow fadeIn">
             <div class="item">
-              <div class="product">
-                <a class="product-img" href="single_product.html"
-                  ><img src="assets/images/737052041285.jpg" alt=""
-                /></a>
-                <h5 class="product-type">Perfume</h5>
-                <h3 class="product-name">HUGO BOSS</h3>
-                <h3 class="product-price">$10.00</h3>
+              <div class="product"><a class="product-img" href=""><img src="assets/images/product-img/product-img-1.jpg" alt=""></a>
+                <h5 class="product-type">Fruits</h5>
+                <h3 class="product-name">Green Apple</h3>
+                <h3 class="product-price">$14.00 </h3>
+                <div class="product-select">
+                  <button data-toggle="tooltip" data-placement="top" title="" class="add-to-compare round-icon-btn" data-fancybox="gallery" data-src="#popup-1" data-original-title="Quick view"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                  <button data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist round-icon-btn" onClick="window.location.href='wishlist.html'"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                  <button data-toggle="tooltip" data-placement="top" title="Add to cart" class="add-to-cart round-icon-btn" onClick="window.location.href='shop.html'"><i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
+                </div>
               </div>
             </div>
             <div class="item">
-              <div class="product">
-                <a class="product-img" href="single_product.html"
-                  ><img src="assets/images/737052041285.jpg" alt=""
-                /></a>
-                <h5 class="product-type">Perfume</h5>
-                <h3 class="product-name">HUGO BOSS</h3>
-                <h3 class="product-price">$10.00</h3>
+              <div class="product"><a class="product-img" href=""><img src="assets/images/product-img/product-img-2.jpg" alt=""></a>
+                <h5 class="product-type">Vegetables</h5>
+                <h3 class="product-name">Ingredients</h3>
+                <h3 class="product-price">$14.00</h3>
+                <div class="product-select">
+                  <button data-toggle="tooltip" data-placement="top" title="" class="add-to-compare round-icon-btn" data-fancybox="gallery" data-src="#popup-2" data-original-title="Quick view"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                  <button data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist round-icon-btn" onClick="window.location.href='wishlist.html'"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                  <button data-toggle="tooltip" data-placement="top" title="Add to cart" class="add-to-cart round-icon-btn" onClick="window.location.href='shop.html'"><i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
+                </div>
               </div>
             </div>
             <div class="item">
               <div class="sale-flag-side"> <span class="sale-text">Sale</span> </div>
-              <div class="product"><a class="product-img" href=""><img src="assets/images/730870120156.jpg" alt=""></a>
+              <div class="product"><a class="product-img" href=""><img src="assets/images/product-img/product-img-3.jpg" alt=""></a>
                 <h5 class="product-type">Spices</h5>
                 <h3 class="product-name">Ingredients</h3>
                 <h3 class="product-price">$14.00 <del>$35.00</del></h3>
+                <div class="product-select">
+                  <button data-toggle="tooltip" data-placement="top" title="" class="add-to-compare round-icon-btn" data-fancybox="gallery" data-src="#popup-3" data-original-title="Quick view"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                  <button data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist round-icon-btn" onClick="window.location.href='wishlist.html'"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                  <button data-toggle="tooltip" data-placement="top" title="Add to cart" class="add-to-cart round-icon-btn" onClick="window.location.href='shop.html'"><i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
+                </div>
               </div>
             </div>
             <div class="item">
-              <div class="product">
-                <a class="product-img" href="single_product.html"
-                  ><img src="assets/images/737052041285.jpg" alt=""
-                /></a>
-                <h5 class="product-type">Perfume</h5>
-                <h3 class="product-name">HUGO BOSS</h3>
-                <h3 class="product-price">$10.00</h3>
+              <div class="product"><a class="product-img" href=""><img src="assets/images/product-img/product-img-4.jpg" alt=""></a>
+                <h5 class="product-type">Spices</h5>
+                <h3 class="product-name">Ingredients</h3>
+                <h3 class="product-price">$14.00 <del>$35.00</del></h3>
+                <div class="product-select">
+                  <button data-toggle="tooltip" data-placement="top" title="" class="add-to-compare round-icon-btn" data-fancybox="gallery" data-src="#popup-4" data-original-title="Quick view"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                  <button data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist round-icon-btn" onClick="window.location.href='wishlist.html'"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                  <button data-toggle="tooltip" data-placement="top" title="Add to cart" class="add-to-cart round-icon-btn" onClick="window.location.href='shop.html'"><i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
+                </div>
               </div>
             </div>
             <div class="item">
-              <div class="product">
-                <a class="product-img" href="single_product.html"
-                  ><img src="assets/images/737052041285.jpg" alt=""
-                /></a>
-                <h5 class="product-type">Perfume</h5>
-                <h3 class="product-name">HUGO BOSS</h3>
-                <h3 class="product-price">$10.00</h3>
+              <div class="product"><a class="product-img" href=""><img src="assets/images/product-img/product-img-5.jpg" alt=""></a>
+                <h5 class="product-type">Spices</h5>
+                <h3 class="product-name">Ingredients</h3>
+                <h3 class="product-price">$14.00 <del>$35.00</del> </h3>
+                <div class="product-select">
+                  <button data-toggle="tooltip" data-placement="top" title="" class="add-to-compare round-icon-btn" data-fancybox="gallery" data-src="#popup-5" data-original-title="Quick view"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                  <button data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist round-icon-btn" onClick="window.location.href='wishlist.html'"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                  <button data-toggle="tooltip" data-placement="top" title="Add to cart" class="add-to-cart round-icon-btn" onClick="window.location.href='shop.html'"><i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
+                </div>
               </div>
             </div>
             <div class="item">
-              <div class="product">
-                <a class="product-img" href="single_product.html"
-                  ><img src="assets/images/737052041285.jpg" alt=""
-                /></a>
-                <h5 class="product-type">Perfume</h5>
-                <h3 class="product-name">HUGO BOSS</h3>
-                <h3 class="product-price">$10.00</h3>
+              <div class="product"><a class="product-img" href=""><img src="assets/images/product-img/product-img-5.jpg" alt=""></a>
+                <h5 class="product-type">Spices</h5>
+                <h3 class="product-name">Ingredients</h3>
+                <h3 class="product-price">$14.00 <del>$35.00</del> </h3>
+                <div class="product-select">
+                  <button data-toggle="tooltip" data-placement="top" title="" class="add-to-compare round-icon-btn" data-fancybox="gallery" data-src="#popup-6" data-original-title="Quick view"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                  <button data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist round-icon-btn" onClick="window.location.href='wishlist.html'"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                  <button data-toggle="tooltip" data-placement="top" title="Add to cart" class="add-to-cart round-icon-btn" onClick="window.location.href='shop.html'"><i class="fa fa-shopping-bag" aria-hidden="true"></i></button>
+                </div>
               </div>
             </div>
           </div>
