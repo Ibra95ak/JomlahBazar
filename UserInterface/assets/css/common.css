@@ -187,7 +187,7 @@ li a {
   border: 1px solid transparent;
 }
 
-.nav-a.nav-a-2:hover{
+.nav-a.nav-a-2:hover,.navbar-brand:hover{
   border: 1px solid white;
   color: white !important;
 }
