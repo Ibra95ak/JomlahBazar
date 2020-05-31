@@ -85,5 +85,22 @@ class Ser_Subcategories {
             return true;
         } else return false;
     }
+    
+    /**
+     * Get all subcategories for category
+     * params category Id
+     * returns json/Null
+     */
+    public function GetSubcategoryByCategoryId($categoryId) {
+        $stmt = $this->conn->prepare("CALL sp_GetSubcategoryByCategoryId(?)");
+        $stmt->bind_param("i",$categoryId);
+        if ($stmt->execute()) {
+            $subcategories = $stmt->get_result()->fetch_all(); //fetch subcategory data and subcategory in array
+            $stmt->close();
+            if ($subcategories==true) {
+                return $subcategories;
+            }
+        } else return NULL;
+    }
 }
 ?>

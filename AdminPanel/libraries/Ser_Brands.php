@@ -87,6 +87,21 @@ class Ser_Brands {
             return true;
         } else return false;
     }
+    
+        /**
+     * search all products 
+     * returns json/Null
+     */
+    public function SearchBrand($text) {
+        $stmt = $this->conn->prepare("CALL sp_SearchBrand('%$text%')");
+        if ($stmt->execute()) {
+            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+            $stmt->close();
+            if ($products==true) {
+                return $products;
+            }
+        } else return NULL;
+    }
 
 }
 ?>
