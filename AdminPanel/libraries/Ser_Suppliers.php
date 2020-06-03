@@ -70,6 +70,22 @@ class Ser_Suppliers {
             }
         } else return NULL;
     }
+    
+    /**
+     * Get all suppliers 
+     * params supplier Id
+     * returns json/Null
+     */
+    public function SearchSuppliers($text) {
+        $stmt = $this->conn->prepare("CALL sp_SearchSuppliers('%$text%')");
+        if ($stmt->execute()) {
+            $suppliers = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch supplier data and supplier in array
+            $stmt->close();
+            if ($suppliers==true) {
+                return $suppliers;
+            }
+        } else return NULL;
+    }
 
         /**
      * Delete Supplier By Id 

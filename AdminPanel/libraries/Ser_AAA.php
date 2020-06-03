@@ -1,10 +1,10 @@
 <?php 
 class Ser_AAA {
     private $conn;
-    // constructor
+    /*constructor*/
     function __construct() {
         require_once 'DB_Connect.php';
-        // connecting to database
+        /*connecting to database*/
         $db = new Db_Connect();
         $this->conn = $db->connect();
     }
@@ -19,22 +19,23 @@ class Ser_AAA {
      * returns Boolean
      */
     public function addAAA($email,$password) {
-        $hash = $this->hashSSHA($password); // encryption function
-        $encrypted_password = $hash["encrypted"]; // encrypted password
-        $salt = $hash["salt"]; // salt
-        //email activation code
-        $hash_act = $this->hashSSHA($emai.date("Y-m-d h:i:s")); // encryption function
-        $activation_code = $hash_act["encrypted"]; // encrypted password
-        $activation_salt = $hash_act["salt"]; // salt
+        $hash = $this->hashSSHA($password); /*encryption function*/
+        $encrypted_password = $hash["encrypted"]; /*encrypted password*/
+        $salt = $hash["salt"]; /*salt(Used for verifying password later)*/
+        /*email activation code*/
+        $hash_act = $this->hashSSHA($email.date("Y-m-d h:i:s")); /*encryption function*/
+        $activation_code = $hash_act["encrypted"]; /*encrypted Activation code*/
+        $activation_salt = $hash_act["salt"]; /*salt for activation code*/
         
-        $stmt = $this->conn->prepare("INSERT INTO aaa(aaaId, email, encrypted_password, salt, activation_code, activation_salt, otp, addressId) VALUES (NULL,?,?,?,?,?,0,0)");
+        $stmt = $this->conn->prepare("CALL sp_AddAAA(?,?,?,?,?)");
 		$stmt->bind_param("sssss",$email,$encrypted_password,$salt,$activation_code,$activation_salt);
-		$result = $stmt->execute();
-        $stmt->close();
-
-        // check for successful store
-        if ($result) return true;
-        else return false;
+        if ($stmt->execute()) {			
+            $aaa = $stmt->get_result()->fetch_assoc();
+            $stmt->close();
+			return $aaa; 
+        } else {
+            return NULL;
+        }
     }
 
 	/**
@@ -74,7 +75,7 @@ class Ser_AAA {
      * returns array/Null
      */
     public function getBYId_aaa($aaaId) {
-        $stmt = $this->conn->prepare("sp_GetAAAById()");
+        $stmt = $this->conn->prepare("CALL sp_GetAAAById(?)");
         $stmt->bind_param("i",$aaaId);
         if ($stmt->execute()) {			
             $aaa = $stmt->get_result()->fetch_assoc();
@@ -83,6 +84,85 @@ class Ser_AAA {
         } else {
             return NULL;
         }
+    }
+    
+    /**
+     * activate aaa 
+     * @param aaId
+     * returns Boolean
+     */
+    public function activateAAA($aaaId) {
+        $stmt = $this->conn->prepare("CALL sp_ActivateAAA(?)");
+		$stmt->bind_param("i",$aaaId);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
+    }
+    /**
+     * Get user by email and password
+     * @param email, password
+     * returns user/Null
+     */
+    public function getAAAByEmailAndPassword($email, $password) {
+        $stmt = $this->conn->prepare("CALL sp_GetAAAByEmail(?)");
+        $stmt->bind_param("s", $email);
+
+        if ($stmt->execute()) {
+            $user = $stmt->get_result()->fetch_assoc(); /*fetch aaa data and store in array*/
+            $stmt->close();
+            /*verifying user password*/
+            $salt = $user['salt'];
+            $encrypted_password = $user['encrypted_password'];
+            $hash = $this->checkhashSSHA($salt, $password); /*verify encryption function*/
+            /*check for password equality*/
+            if ($encrypted_password == $hash) {
+                /*user authentication details are correct*/
+                return $user;
+            }
+        } else return NULL;
+    }
+    
+    /**
+     * Check if email already exist
+     * returns array/Null
+     */
+    public function isExist_aaaEmail($email) {
+        $stmt = $this->conn->prepare("CALL sp_IsExistAAA(?)");
+        $stmt->bind_param("s",$email);
+        $result = $stmt->execute();
+        $aaa = $stmt->get_result()->fetch_assoc();
+        $stmt->close(); 
+		if($aaa) return true;
+		else return false;
+    }
+    
+    /**
+     * Delete aaa By Id 
+     * params aaa Id
+     * returns json/Null
+     */
+    public function DeleteAAAById($aaaId) {
+        $stmt = $this->conn->prepare("CALL sp_DeleteAAAbyId(?)");
+        $stmt->bind_param("i",$aaaId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else return false;
+    }
+    
+    /**
+     * logged aaa 
+     * @param aaaId
+     * returns Boolean
+     */
+    public function loggedAAA($aaaId) {
+        $stmt = $this->conn->prepare("CALL sp_LoginAAA(?)");
+		$stmt->bind_param("i",$aaaId);
+        $result = $stmt->execute();
+        $stmt->close(); 
+		if($result) return true;
+		else return false;
     }
     
     /**
@@ -110,20 +190,5 @@ class Ser_AAA {
 
         return $hash;
     }
-
-                /**
-     * Delete aaa By Id 
-     * params aaa Id
-     * returns json/Null
-     */
-    public function DeleteAAAById($aaaId) {
-        $stmt = $this->conn->prepare("CALL sp_DeleteAAAbyId(?)");
-        $stmt->bind_param("i",$aaaId);
-        if ($stmt->execute()) {
-            $stmt->close();
-            return true;
-        } else return false;
-    }
-
 }
 ?>

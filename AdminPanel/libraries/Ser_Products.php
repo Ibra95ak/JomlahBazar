@@ -114,6 +114,114 @@ class Ser_Products {
             return true;
         } else return false;
     }
-
+    /**
+     * Get product picture 
+     * params product Id
+     * returns json/Null
+     */
+    public function GetProductPicture($productId) {
+        $stmt = $this->conn->prepare("CALL sp_GetProductPic(?)");
+        $stmt->bind_param("i",$productId);
+        if ($stmt->execute()) {
+            $products = $stmt->get_result()->fetch_assoc(); //fetch product data and product in array
+            $stmt->close();
+            if ($products==true) {
+                return $products;
+            }
+        } else return NULL;
+    }
+    
+    /**
+     * Get product pictures 
+     * params product Id
+     * returns json/Null
+     */
+    public function GetProductPics($productId) {
+        $stmt = $this->conn->prepare("CALL sp_GetProductPic(?)");
+        $stmt->bind_param("i",$productId);
+        if ($stmt->execute()) {
+            $products = $stmt->get_result()->fetch_all(); //fetch product data and product in array
+            $stmt->close();
+            if ($products==true) {
+                return $products;
+            }
+        } else return NULL;
+    }
+    
+    /**
+     * Get Best seller products 
+     * returns json/Null
+     */
+    public function GetBestSellerProducts() {
+        $stmt = $this->conn->prepare("CALL sp_GetBestSellerProducts()");
+        if ($stmt->execute()) {
+            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+            $stmt->close();
+            if ($products==true) {
+                return $products;
+            }
+        } else return NULL;
+    }
+    
+    /**
+     * Get latest products 
+     * returns json/Null
+     */
+    public function GetLatestProducts() {
+        $stmt = $this->conn->prepare("CALL sp_GetLatestProducts()");
+        if ($stmt->execute()) {
+            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+            $stmt->close();
+            if ($products==true) {
+                return $products;
+            }
+        } else return NULL;
+    }
+    
+    /**
+     * Get featured products 
+     * returns json/Null
+     */
+    public function GetFeaturedProducts() {
+        $stmt = $this->conn->prepare("CALL sp_GetFeaturedProducts()");
+        if ($stmt->execute()) {
+            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+            $stmt->close();
+            if ($products==true) {
+                return $products;
+            }
+        } else return NULL;
+    }
+    
+    /**
+     * search all products 
+     * returns json/Null
+     */
+    public function SearchProducts($text) {
+        $stmt = $this->conn->prepare("CALL sp_SearchProducts('%$text%')");
+        if ($stmt->execute()) {
+            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+            $stmt->close();
+            if ($products==true) {
+                return $products;
+            }
+        } else return NULL;
+    }
+    
+    /**
+     * search all products 
+     * returns json/Null
+     */
+    public function SearchProductsByCategory($categoryId) {
+        $stmt = $this->conn->prepare("CALL sp_SearchProductsByCategory(?)");
+        $stmt->bind_param("i",$categoryId);
+        if ($stmt->execute()) {
+            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+            $stmt->close();
+            if ($products==true) {
+                return $products;
+            }
+        } else return NULL;
+    }
 }
 ?>

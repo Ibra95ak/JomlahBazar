@@ -1,160 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head> 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>Organic store</title>
-<!-- main css -->
-<!-- main css -->
-<link rel="stylesheet" href="assets/css/main.css">
-<!-- main css -->
-<link rel="stylesheet" href="assets/vendor/detail-page/style.css">
-<link rel="stylesheet" href="assets/vendor/jquery/easyzoom.css">
-<!-- main css -->
-
- <!-- custom css -->
- <link rel="stylesheet" href="assets/css/common.css" />
- <!-- custom css -->
-</head>
-<body>
-
-    <!-- Navigation with search bar-->
-    <nav
-    class="navbar navbar-expand-lg navbar-dark sticky-top navbar-search-bar"
-  >
-    <div class="container-fluid">
-      <div class="row" style="flex: auto; height: 100%; align-items: center;">
-        <div class="col-lg-2">
-          <a class="navbar-brand" href="index.html">
-            <h5>JomlaBazar</h5>
-          </a>
-        </div>
-  
-        <div class="col-lg-6">
-          <div class="row pt-lg-0 pt-2">
-            <div class="top-dropdown">
-              <div class="all-cate custom-select2">
-                <select>
-                  <option>All</option>
-                  <option>Brand</option>
-                  <option>Products</option>
-                  <option>Supplier</option>
-                  <option>Buyer</option>
-                  <option>Location</option>
-                </select>
-              </div>
-            </div>
-  
-            <div class="top-dropdown">
-              <div class="all-cate custom-select2 sub-menu">
-                <select disabled>
-                  <option>Sub All</option>
-                  <option>Brand</option>
-                  <option>Products</option>
-                  <option>Supplier</option>
-                  <option>Buyer</option>
-                  <option>Location</option>
-                </select>
-              </div>
-            </div>
-  
-            <div class="col p-lg-0 pt-lg-0 pt-2">
-              <div class="input-group filter-by">
-                <input
-                  type="hidden"
-                  name="search_param"
-                  value="all"
-                  id="search_param"
-                />
-                <input
-                  type="text"
-                  class="form-control"
-                  name="x"
-                  placeholder="What do you need?"
-                />
-                <span class="input-group-btn">
-                  <button class="btn btn-default search-bt" type="button">
-                    <i class="fa fa-search"></i>
-                  </button>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col-lg-4">
-          <div class="row no-gutters flex-nowrap justify-content-around">
-            <a href="#" id="icp-nav-flyout" class="nav-a nav-a-2 icp-link-style-2">
-              <span class="icp-nav-link-inner">
-                <span class="nav-line-1">
-                  <span class="icp-nav-flag icp-nav-flag-us"></span>
-                </span>
-                <span class="nav-line-2">&nbsp;
-                  <span class="nav-icon nav-arrow" style="visibility: visible;"></span>
-                </span>
-              </span>
-            </a>
-            <a class="nav-a nav-a-2 nav-tool">
-              <span class="nav-line-1">Hello sigin</span>
-              <span class="nav-line-2 text-nowrap"
-                >Account & lists
-                <i class="fa fa-caret-down nav-icon nav-arrow"></i
-              ></span>
-            </a>
-  
-            <a class="nav-a nav-a-2 nav-tool">
-              <span class="nav-line-1">Returns</span>
-              <span class="nav-line-2 text-nowrap">& Orders </span>
-            </a>
-  
-            <a class="nav-a nav-a-2 text-center nav-tool">
-              <div style="display: flex;">
-                <div
-                  class="nav-line-2 text-nowrap"
-                  style="width: 60%; position: relative; float: left;"
-                >
-                  <span
-                    class="nav-line-1 nav-cart-count font-weight-bold"
-                    style="
-                      position: absolute;
-                      top: 0;
-                      left: 43%;
-                      color: #f08804;
-                      font-size: 16px;
-                      width: 19px;
-                    "
-                    >9</span
-                  >
-                  <img src="./assets/images/cart.png" />
-                </div>
-  
-                <div
-                  style="
-                    width: 40%;
-                    right: 8px;
-                    position: relative;
-                    top: 22px;
-                  "
-                >
-                  Cart
-                </div>
-              </div>
-            </a>
-          </div>
-         </div>
-      </div>
-    </div>
-  </nav>
-  <!-- Navigation with search bar-->
-  
+<?php 
+include('../AdminPanel/libraries/base.php');
+include("header.php");
+require_once '../AdminPanel/libraries/Ser_Products.php';
+$db = new Ser_Products();
+require_once '../AdminPanel/libraries/Ser_Productdetails.php';
+$db1 = new Ser_Productdetails();
+require_once '../AdminPanel/libraries/Ser_Brands.php';
+$db2 = new Ser_Brands();
+$productId=$_GET['productId'];
+$product = $db->GetproductById($productId);
+$details = $db1->GetproductdetailById($productId);
+$brand = $db2->GetBrandById($product['brandId']);
+?>
 <div class="container">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb2 breadcrumb">
       <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-      <li class="breadcrumb-item">Single Product</li>
+      <li class="breadcrumb-item">Product details</li>
     </ol>
   </nav>
   <div class="clearfix"></div>
@@ -165,41 +27,35 @@
     <div class="row justify-content-md-center">
       <div class="col-lg-6"> <a href="wishlist.html" class="wish-list"><i class="fa fa-heart" aria-hidden="true"></i></a>
         <div id="sync1" class="owl-carousel owl-theme">
-          <div class="item easyzoom easyzoom--overlay"> <a href="assets/images/product-details/zoom-1.jpg"> <img src="assets/images/product-details/product-1.jpg" alt="" title="" /> </a> </div>
-          <div class="item">
-            <div class="item easyzoom easyzoom--overlay"> <a href="assets/images/product-details/zoom-2.jpg"> <img src="assets/images/product-details/product-2.jpg" alt="" title="" /> </a> </div>
-          </div>
-          <div class="item">
-            <div class="item easyzoom easyzoom--overlay"> <a href="assets/images/product-details/zoom-3.jpg"> <img src="assets/images/product-details/product-3.jpg" alt="" title="" /> </a> </div>
-          </div>
-          <div class="item">
-            <div class="item easyzoom easyzoom--overlay"> <a href="assets/images/product-details/zoom-4.jpg"> <img src="assets/images/product-details/product-4.jpg" alt="" title="" /> </a> </div>
-          </div>
-          <div class="item">
-            <div class="item easyzoom easyzoom--overlay"> <a href="assets/images/product-details/zoom-1.jpg"> <img src="assets/images/product-details/product-1.jpg" alt="" title="" /> </a> </div>
-          </div>
+<?php
+$product_pics = $db->GetProductPics($productId);
+            foreach($product_pics as $pic){
+                echo '<div class="item easyzoom easyzoom--overlay"> <a href="../AdminPanel/pics/'.$pic[0].'"> <img src="../AdminPanel/pics/'.$pic[0].'" alt="" title="" /> </a> </div>';
+            }
+?>
+          
         </div>
         <div id="sync2" class="owl-carousel owl-theme">
-          <div class="item"><img src="assets/images/product-details/product-1.jpg" alt="" title=""></div>
-          <div class="item"><img src="assets/images/product-details/product-2.jpg" alt="" title=""></div>
-          <div class="item"><img src="assets/images/product-details/product-3.jpg" alt="" title=""></div>
-          <div class="item"><img src="assets/images/product-details/product-4.jpg" alt="" title=""></div>
-          <div class="item"><img src="assets/images/product-details/product-1.jpg" alt="" title=""></div>
+<?php
+            foreach($product_pics as $pic){
+                echo '<div class="item"><img src="../AdminPanel/pics/'.$pic[0].'" alt="" title=""></div>';
+            }
+?>   
         </div>
       </div>
       <div class="col-lg-6  product-text">
         <div class="row">
           <div class="col-md-6 col-sm-6 col-6">
-            <h3>Hugo Boss</h3>
+            <h3><?php echo $product['name'];?></h3>
             <img src="assets/images/star.png" alt="" title=""> <img src="assets/images/star.png" alt="" title=""> <img src="assets/images/star.png" alt="" title=""> <img src="assets/images/star.png" alt="" title=""> <img src="assets/images/star.png" alt="" title=""> </div>
           <div class="col-md-6 col-sm-6 text-right col-6">
-            <div class="price-css"> <span>$35.00</span>
+            <div class="price-css"> <span>$<?php echo $product['unitprice'];?></span>
               <div class="clearfix"></div>
               $24.00 </div>
           </div>
           <div class="col-md-12">
             <div class="mt-3">
-              <p>The orange is the fruit of the citrus species Citrus × sinensis in the family Rutaceae. Orange trees are widely grown in tropical and subtropical climates for their sweet fruit. The fruit of the orange tree can be eaten fresh, or processed for its juice or fragrant peel.</p>
+              <p><?php echo $details['description'];?></p>
               <div class="mt-3 text-2">
                 <p><span>Availability</span>: &nbsp;&nbsp;<img src="assets/images/available.png" alt="" title="" > In Stock</p>
                 <p><span>Vendor</span>: &nbsp;&nbsp;organicfood store</p>
@@ -261,14 +117,7 @@
             </nav>
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active text-1" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <p class="p1"><strong>How to write product descriptions that sell <br>
-                  </strong>One of the best things you can do to make your store successful is invest some time in writing great product descriptions. You want to provide detailed yet concise information that will entice potential to buy.</p>
-                <p class="p2"><strong>Think like a consumer<br>
-                  </strong>Think about what you as a consumer would want to know, then include those features in your description. For clothes: materials and fit. For food: ingredients and how it was prepared. Bullets are your friends when listing features — try to limit each one to 5-8 words.</p>
-                <p class="p2"><strong>Find differentiators<br>
-                  </strong>Pepper your features with details that show how the product stands out against similar offerings. For clothes: is it vintage or hard to find? For art: is the artist well known? For home décor: is it a certain style like mid-century modern? Unique product descriptions not only help you stand out, they improve your SEO.</p>
-                <p class="p2"><strong>Keep it simple<br>
-                  </strong>Provide enough detail to help consumers make an informed decision, but don’t overwhelm with a laundry list of features or flowery language. Densely pack your descriptions with useful information and watch products fly off the shelf.</p>
+                <p class="p1"><?php echo $details['description'];?></p>
                 <!-- snippet location product_description -->
               </div>
               <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -276,23 +125,15 @@
                   <tbody>
                     <tr>
                       <th width="20%"><div align="left">Brand</div></th>
-                      <td>Orgain</td>
+                      <td><?php echo $brand['brand_name'];?></td>
                     </tr>
                     <tr>
-                      <th><div align="left">Calories Per Serving</div></th>
-                      <td>352 Calories</td>
+                      <th><div align="left">Size</div></th>
+                      <td><?php echo $details['size'];?></td>
                     </tr>
                     <tr>
-                      <th><div align="left">Nutrition Facts</div></th>
-                      <td>Low Sodium</td>
-                    </tr>
-                    <tr>
-                      <th><div align="left">Storage life</div></th>
-                      <td>1 month</td>
-                    </tr>
-                    <tr>
-                      <th><div align="left">Per Pack</div></th>
-                      <td>2, 4, 6</td>
+                      <th><div align="left">Barcode</div></th>
+                      <td><?php echo $details['barcode'];?></td>
                     </tr>
                   </tbody>
                 </table>

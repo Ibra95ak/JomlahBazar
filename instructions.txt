@@ -22,4 +22,5 @@ come with plan of version one for jomlahbazar (Follow Amazon Shopping App)
 
 
 search for service oriented architecture 
+what data we will show to the customer and what data
 
