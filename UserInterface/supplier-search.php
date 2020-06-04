@@ -1,8 +1,10 @@
 <?php 
 include('../AdminPanel/libraries/base.php');
 include("header.php");
-$search_category=$_GET['search_category'];
-$search=$_GET['search'];
+if(isset($_GET['search_category'])) $search_category=$_GET['search_category'];
+else $search_category='';
+if(isset($_GET['search'])) $search=$_GET['search'];
+else $search='';
 ?>
     <div class="container container-fluid">
       <nav aria-label="breadcrumb" class="bread-boder">
@@ -75,7 +77,7 @@ if($suppliers){
       echo '<h5 class="product-price">'.$supplier['name'].'</h5>';
       echo '<span class="">'.$supplier['type'].'</span>';
       echo '</div></div>';
-      echo '<div class=""><button data-toggle="tooltip" data-placement="top" title="Contact Supplier" class="add-to-compare contact-supplier-btn" data-fancybox="gallery" data-src="#popup-1"><i class="fa fa-contact" aria-hidden="true"></i>Contact Supplier</button></div></div></div></div></div>';
+      echo '<div class=""><button title="Contact Supplier" class="add-to-compare contact-supplier-btn" onclick=jbsupdtl('.$supplier['supplierId'].')><i class="fa fa-contact" aria-hidden="true"></i>Contact Supplier</button></div></div></div></div></div>';
       echo '';
       echo '';
   }
@@ -453,6 +455,11 @@ if($suppliers){
         </div>
       </div>
     </div>
+<script>
+function jbsupdtl(supId){
+    window.location.href="supplier-details.php?supplierId="+supId;
+}
+</script>
 <?php 
 include("footer.php");
 ?>

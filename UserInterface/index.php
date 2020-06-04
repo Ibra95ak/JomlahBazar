@@ -1,19 +1,13 @@
 <?php 
-include('header.php');
+/*Page header*/ 
+include('header.php'); 
 ?>
 <div class="clearfix"></div>
-
 <!-- hero slider -->
 <section class="hero-section overlay bg-cover position-relative home-2">
     <div class="hero-slider">
         <!-- slider 1 item -->
-        <div class="hero-slider-item" style="
-            background: url(https://wallpapersmug.com/download/1280x1024/0b0bc4/buildings-cityscape-city-lights.jpg) no-repeat center top;;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-          ">
+        <div class="hero-slider-item" style="background:url(../AdminPanel/pics/slider/slider1.jpeg) no-repeat center top;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
             <div class="container banner2">
                 <div class="caption-banner">
                     <h6 class="text-white" data-animation-out="fadeOutDown" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">
@@ -23,20 +17,13 @@ include('header.php');
                         Welcome to<br />
                         JomlahBazar
                     </h2>
-                    <a href="login.php" class="btn our-services" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".7">Our Services
+                    <a href="login.php" class="btn our-services" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".7">Sign IN
                         <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
         <!-- slider 2 item -->
-        <div class="hero-slider-item" style="
-            background: url(https://mobirise.com/extensions/storem4/assets/images/2.jpg)
-              no-repeat center top;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-          ">
+        <div class="hero-slider-item" style="background:url(../AdminPanel/pics/slider/slider2.jpeg) no-repeat center top;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;">
             <div class="container banner2">
                 <div class="caption-banner" style="position: relative; z-index: 999; text-align: center;">
                     <h6 class="text-white" data-animation-out="fadeOutDown" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">
@@ -54,49 +41,41 @@ include('header.php');
     <div class="clearfix"></div>
 </section>
 <div class="clearfix"></div>
-<!-- Page Content -->
+<!-- Start - Latest Products -->
 <div class="products-section">
     <div class="container">
         <h2 class="wow fadeInDown">Latest Products</h2>
         <div class="owl-carousel latest-products owl-theme wow fadeIn">
-            <?php
-require_once '../AdminPanel/libraries/Ser_Products.php';
-$db = new Ser_Products();  
-$latest_products = $db->GetLatestProducts();
-if($latest_products){
-  foreach($latest_products as $latest_product){
-    $latest_pic = $db->GetProductPicture($latest_product['productId']);
-    echo '<div class="item"><div class="product">';
-    echo '<a class="product-img" href="product-details?productId='.$latest_product['productId'].'"><img src="../AdminPanel/pics/'.$latest_pic['path'].'" alt="" /></a>';
-    echo '<h5 class="product-type">'.$latest_product['brand_name'].'</h5>';
-    echo '<h3 class="product-name">'.$latest_product['name'].'</h3>';
-    echo '<h3 class="product-price">$'.$latest_product['unitprice'].'</h3>';
-    echo '</div></div>';
-}  
-}
+<?php
+/*Fetch latest products through API*/
+$latest_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_LatestProducts.php");
+echo $latest_products;
 ?>
         </div>
     </div>
 </div>
+<!-- End - Latest Products -->
 <div id="featured-products">
     <div class="container">
         <h2 class="wow fadeInDown">Featured Products</h2>
         <div class="owl-carousel latest-products owl-theme wow fadeIn">
-            <?php
-$featured_products = $db->GetFeaturedProducts();
+<?php
+/*Fetch featured products through API*/
+$API_featured_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_FeaturedProducts.php");
+$featured_products = json_decode($API_featured_products);       
 if($featured_products){
   foreach($featured_products as $featured_product){
-    $featured_pic = $db->GetProductPicture($featured_product['productId']);
     echo '<div class="item"><div class="product">';
-    echo '<a class="product-img" href="product-details?productId='.$featured_product['productId'].'"><img src="../AdminPanel/pics/'.$featured_pic['path'].'" alt="" /></a>';
-    echo '<h5 class="product-type">'.$featured_product['brand_name'].'</h5>';
-    echo '<h3 class="product-name">'.$featured_product['name'].'</h3>';
-    echo '<h3 class="product-price">$'.$featured_product['unitprice'].'</h3>';
+    $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$featured_product->productId);
+    $product_img = json_decode($API_product_img); 
+    echo '<a class="product-img" href="single_product.php?productId='.$featured_product->productId.'"><img src="../AdminPanel/pics/'.$product_img[0].'" alt="" /></a>';
+    echo '<h5 class="product-type">'.$featured_product->brand_name.'</h5>';
+    echo '<h3 class="product-name">'.$featured_product->name.'</h3>';
+    echo '<h3 class="product-price">$'.$featured_product->unitprice.'</h3>';
     echo '</div></div>';
 }  
 }
-?>
-
+?>          
         </div>
     </div>
 </div>
@@ -105,29 +84,12 @@ if($featured_products){
     <div class="container">
         <h2 class="wow fadeInDown">Featured Category</h2>
         <div class="row justify-content-center">
-           
 <?php
-require_once '../AdminPanel/libraries/Ser_Categories.php';
-$db1 = new Ser_Categories(); 
-require_once '../AdminPanel/libraries/Ser_Subcategories.php';
-$db2 = new Ser_Subcategories();  
-$categories = $db1->GetCategories();
-if($categories){
-  foreach($categories as $category){
-      echo '<div class="col-lg-4 col-md-6 text-center wow fadeIn mb-3"><ul class="ch-grid"><li><div class="ch-item" style="background: url(assets/images/product/left-img.jpg) no-repeat center top;background-size: 100% 100%;"><div class="ch-info"><div class="img-text">';
-      echo '<h3>'.$category['name'].'</h3>';
-    $subcategories = $db2->GetSubcategoryByCategoryId($category['categoryId']);
-      if($subcategories){
-          foreach($subcategories as $subcategory){
-              echo '<p>'.$subcategory[2].'</p>';
-          }
-      }
-    echo ' <a href="#">view more</a>';
-    echo '</div></div></div></li></ul></div>';
-}  
-}
-?>         
- </div>
+/*Fetch featured categories through API*/
+$featured_categories = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_FeaturedCategories.php");
+echo $featured_categories;
+?>      
+        </div>
     </div>
 </div>
 <!--Three-images-->
@@ -136,19 +98,10 @@ if($categories){
         <h2 class="wow fadeInDown">Bestsellers</h2>
         <div class="owl-carousel latest-products owl-theme wow fadeIn">
 <?php
-$bestsellers = $db->GetBestSellerProducts();
-if($bestsellers){
-  foreach($bestsellers as $bestseller){
-    $bestseller_pic = $db->GetProductPicture($bestseller['productId']);
-    echo '<div class="item"><div class="product">';
-    echo '<a class="product-img" href="product-details?productId='.$bestseller['productId'].'"><img src="../AdminPanel/pics/'.$bestseller_pic['path'].'" alt="" /></a>';
-    echo '<h5 class="product-type">'.$bestseller['brand_name'].'</h5>';
-    echo '<h3 class="product-name">'.$bestseller['name'].'</h3>';
-    echo '<h3 class="product-price">$'.$bestseller['unitprice'].'</h3>';
-    echo '</div></div>';
-}  
-}
-?>
+/*Fetch best sellers products through API*/
+$bestsellers_products= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_BestSellerProducts.php");
+echo $bestsellers_products;
+?>  
         </div>
     </div>
 </div>
@@ -200,23 +153,96 @@ if($bestsellers){
         <div>
             <div class="owl-carousel latest-products owl-theme wow fadeIn">
 <?php
-$bestsellers = $db->GetBestSellerProducts();
-if($bestsellers){
-  foreach($bestsellers as $bestseller){
-    $bestseller_pic = $db->GetProductPicture($bestseller['productId']);
-    echo '<div class="item"><div class="product">';
-    echo '<a class="product-img" href="product-details?productId='.$bestseller['productId'].'"><img src="../AdminPanel/pics/'.$bestseller_pic['path'].'" alt="" /></a>';
-    echo '<h5 class="product-type">'.$bestseller['brand_name'].'</h5>';
-    echo '<h3 class="product-name">'.$bestseller['name'].'</h3>';
-    echo '<h3 class="product-price">$'.$bestseller['unitprice'].'</h3>';
-    echo '</div></div>';
-}  
-}
-?> </div>
+/*Fetch best sellers products through API*/
+$DOW= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_DealOfWeek.php");
+echo $DOW;
+?> 
+            </div>
         </div>
     </div>
 </div>
 <div class="clearfix"></div>
-<<?php 
+<div class="testimonial-area client-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
+        <div class="section-title section-title-cap text-center">
+          <div class="section-icon section1-icon"> <img src="assets/images/icon/icon6.png" alt=""> </div>
+          <h1>Client’s Words</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="client-active owl-carousel testimonial owl-loaded owl-drag">
+        <div class="owl-stage-outer">
+          <div class="owl-stage" style="width: 1600px; transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s;">
+            <div class="owl-item active" style="width: 320px;">
+              <div class="col-xl-12">
+                <div class="client-wrapper text-center">
+                  <div class="client-text">
+                    <div class="text-center"> <img src="assets/images/clint-images.jpg" alt="" title="" class="rounded-circle"> </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
+                      dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
+                    <h4>Johnny J. Stewart</h4>
+                    <span>Web Designer</span> </div>
+                </div>
+              </div>
+            </div>
+            <div class="owl-item active" style="width: 320px;">
+              <div class="col-xl-12">
+                <div class="client-wrapper text-center">
+                  <div class="client-text">
+                    <div class="text-center"> <img src="assets/images/clint-images-2.jpg" alt="" title="" class="rounded-circle"> </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
+                      dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
+                    <h4>Dr.Frank Harisk</h4>
+                    <span>Founder</span> </div>
+                </div>
+              </div>
+            </div>
+            <div class="owl-item active" style="width: 320px;">
+              <div class="col-xl-12">
+                <div class="client-wrapper text-center">
+                  <div class="client-text">
+                    <div class="text-center"> <img src="assets/images/clint-images-3.jpg" alt="" title="" class="rounded-circle"> </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
+                      dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
+                    <h4>Dr.Frank Harisk</h4>
+                    <span>Founder</span> </div>
+                </div>
+              </div>
+            </div>
+            <div class="owl-item" style="width: 320px;">
+              <div class="col-xl-12">
+                <div class="client-wrapper text-center">
+                  <div class="client-text">
+                    <div class="text-center"> <img src="assets/images/clint-images-2.jpg" alt="" title="" class="rounded-circle"> </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
+                      dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
+                    <h4>Dr.Frank Harisk</h4>
+                    <span>Founder</span> </div>
+                </div>
+              </div>
+            </div>
+            <div class="owl-item" style="width: 320px;">
+              <div class="col-xl-12">
+                <div class="client-wrapper text-center">
+                  <div class="client-text">
+                    <div class="text-center"> <img src="assets/images/clint-images.jpg" alt="" title="" class="rounded-circle"> </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
+                      dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
+                    <h4>Johnny J. Stewart</h4>
+                    <span>Web Designer</span> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous"><i class="fa fa-angle-left"></i></span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next"><i class="fa fa-angle-right"></i></span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<?php 
 include('footer.php');
 ?>

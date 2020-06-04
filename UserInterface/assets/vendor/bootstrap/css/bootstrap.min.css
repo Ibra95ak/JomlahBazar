@@ -47,8 +47,8 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	font-size: 1rem;
+	font-family: 'Calibri', sans-serif;
+	font-size: 24px;
 	font-weight: 400;
 	line-height: 1.5;
 	color: #212529;
@@ -119,7 +119,7 @@ sub {
 }
 sup {top: -.5em}
 a {color:#007bff;text-decoration:none;background-color:transparent}
-a:hover {color:#0056b3;text-decoration:none}
+a:hover {color:#fab400 !important;text-decoration:none}
 
 a:not([href]):not([tabindex]) {
 	color: inherit;
@@ -1540,7 +1540,7 @@ padding:.3rem
 	width: 100%;
 height:calc(1.5em + .75rem + 2px);
 padding:.375rem .75rem;
-	font-size: 1rem;
+	font-size: 20px;
 	font-weight: 400;
 	line-height: 1.5;
 	color: #495057;

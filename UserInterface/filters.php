@@ -1,5 +1,29 @@
-<div class="col-lg-2 col-md-12">
+<div class="col-lg-2 col-md-12" style="overflow-x: hidden;overflow-y: auto;max-height: 530px;">
     <div class="inner-left-menu">
+        <div class="list-css">
+            <ul>
+                <li>
+                    <div class="custom-select2">
+                        <select>
+                            <option>Default Sorting</option>
+                            <option value="A-Z">A to Z</option>
+                            <option value="Z-A">Z to A</option>
+                            <option value="High to low price">High to low price</option>
+                            <option value="Low to high price">Low to high</option>
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <div class="custom-select2">
+                        <select>
+                            <option value="A-Z">Show 10</option>
+                            <option value="Z-A">Show 20</option>
+                            <option value="High to low price">Show 30</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
+        </div>
         <h3>Categories</h3>
         <div class="list-css">
             <ul>
@@ -23,7 +47,6 @@ if($categories){
                     <button type="button" class="btn btn-filter">Filter</button>
                 </div>
             </div>
-            <br>
         </div>
         <h3>Popular Picks</h3>
         <div class="list-css">
@@ -102,8 +125,8 @@ if($brands){
                 <li>
                     <!-- Default unchecked -->
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked-1">
-                        <label class="custom-control-label" for="defaultUnchecked-1">Discount</label>
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked-5">
+                        <label class="custom-control-label" for="defaultUnchecked-5">Discount</label>
                     </div>
                 </li>
             </ul>

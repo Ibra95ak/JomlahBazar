@@ -99,169 +99,32 @@ if($brands){
                         </div>
 
                         <!--Three-images-->
-                        <div id="bestsellers">
-                            <div class="container-fluid">
-                                <h2 class="wow fadeInDown">Bestsellers</h2>
-                                <div class="owl-carousel latest-products owl-theme wow fadeIn">
-                                    <div class="item">
-                                        <div class="product">
-                                            <div id="carousel-2" class="carousel slide" data-ride="carousel">
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <div class="badge">
-                                                            <div class="text">Sale 14%</div>
-                                                            <a class="product-img" href="single_product.html"><img src="./assets/images/product-img/product-img-1.jpg" alt="" />
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <div class="badge">
-                                                            <div class="text">Sale 14%</div>
-                                                            <a class="product-img" href="single_product.html"><img src="./assets/images/product-img/product-img-2.jpg" alt="" /></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a class="carousel-control-prev" href="#carousel-2" role="button" data-slide="prev">
-                                                    <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>
-                                                </a>
-                                                <a class="carousel-control-next" href="#carousel-2" role="button" data-slide="next">
-                                                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                            <a class="fa fa-star-half-full checked"></a>
-                                            <a class="fa fa-star checked"></a> <a class="fa fa-star"></a>
-                                            <a class="fa fa-star"></a> <a class="fa fa-star"></a>
-                                            <h5 class="product-type">Fruits</h5>
-                                            <h3 class="product-name">Strawberry</h3>
-                                            <h3 class="product-price">$14.00 <del>$35.00</del></h3>
-                                            <div class="product-select">
-                                                <button data-toggle="tooltip" data-placement="top" title="Quick view" class="add-to-compare round-icon-btn" data-fancybox="gallery" data-src="#popup-11">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </button>
-                                                <button data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist round-icon-btn" onClick="window.location.href='wishlist.html'">
-                                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                                </button>
-                                                <button data-toggle="tooltip" data-placement="top" title="Add To Cart" onClick="window.location.href='cart.html'" class="add-to-cart round-icon-btn">
-                                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="product">
-                                            <a class="product-img" href="single_product.html"><img src="./assets/images/fruits/img-3.jpg" alt="" /></a>
-                                            <a class="fa fa-star checked"></a> <a class="fa fa-star"></a>
-                                            <a class="fa fa-star"></a> <a class="fa fa-star"></a>
-                                            <a class="fa fa-star"></a>
-                                            <h5 class="product-type">DRIED FRUITS</h5>
-                                            <h3 class="product-name">Fresh Walnut</h3>
-                                            <h3 class="product-price">$14.00</h3>
-                                            <div class="product-select">
-                                                <button data-toggle="tooltip" data-placement="top" title="Quick view" class="add-to-compare round-icon-btn" data-fancybox="gallery" data-src="#popup-12">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </button>
-                                                <button data-toggle="tooltip" data-placement="top" title="Add To Cart" onClick="window.location.href='cart.html'" class="add-to-cart round-icon-btn">
-                                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                                                </button>
-                                                <button data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist round-icon-btn" onClick="window.location.href='wishlist.html'">
-                                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="product">
-                                            <a class="product-img" href="single_product.html"><img src="./assets/images/fruits/img-4.jpg" alt="" /></a>
-                                            <a class="fa fa-star fa-star-half-full checked"></a>
-                                            <a class="fa fa-star checked"></a> <a class="fa fa-star"></a>
-                                            <a class="fa fa-star"></a> <a class="fa fa-star"></a>
-                                            <h5 class="product-type">Fruits</h5>
-                                            <h3 class="product-name">Black Cherries</h3>
-                                            <h3 class="product-price">$14.00</h3>
-                                            <div class="product-select">
-                                                <button data-toggle="tooltip" data-placement="top" title="Quick view" class="add-to-compare round-icon-btn" data-fancybox="gallery" data-src="#popup-13">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </button>
-                                                <button data-toggle="tooltip" data-placement="top" title="Add To Cart" onClick="window.location.href='cart.html'" class="add-to-cart round-icon-btn">
-                                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                                                </button>
-                                                <button data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist round-icon-btn" onClick="window.location.href='wishlist.html'">
-                                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="product">
-                                            <a class="product-img" href="single_product.html"><img src="./assets/images/fruits/img-5.jpg" alt="" /></a>
-                                            <a class="fa fa-star checked"></a>
-                                            <a class="fa fa-star checked"></a>
-                                            <a class="fa fa-star checked"></a> <a class="fa fa-star"></a>
-                                            <a class="fa fa-star"></a>
-                                            <h5 class="product-type">Juice</h5>
-                                            <h3 class="product-name">Strawberry Juices</h3>
-                                            <h3 class="product-price">$14.00</h3>
-                                            <div class="product-select">
-                                                <button data-toggle="tooltip" data-placement="top" title="Quick view" class="add-to-compare round-icon-btn" data-fancybox="gallery" data-src="#popup-14">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </button>
-                                                <button data-toggle="tooltip" data-placement="top" title="Add To Cart" onClick="window.location.href='cart.html'" class="add-to-cart round-icon-btn">
-                                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                                                </button>
-                                                <button data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist round-icon-btn" onClick="window.location.href='wishlist.html'">
-                                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="product">
-                                            <a class="product-img" href="single_product.html"><img src="./assets/images/fruits/img-1.jpg" alt="" /></a>
-                                            <a class="fa fa-star checked"></a> <a class="fa fa-star"></a>
-                                            <a class="fa fa-star"></a> <a class="fa fa-star"></a>
-                                            <a class="fa fa-star"></a>
-                                            <h5 class="product-type">DRIED FRUITS</h5>
-                                            <h3 class="product-name">Fresh Walnut</h3>
-                                            <h3 class="product-price">$14.00</h3>
-                                            <div class="product-select">
-                                                <button data-toggle="tooltip" data-placement="top" title="Quick view" class="add-to-compare round-icon-btn" data-fancybox="gallery" data-src="#popup-15">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </button>
-                                                <button data-toggle="tooltip" data-placement="top" title="Add To Cart" onClick="window.location.href='cart.html'" class="add-to-cart round-icon-btn">
-                                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                                                </button>
-                                                <button data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist round-icon-btn" onClick="window.location.href='wishlist.html'">
-                                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="product">
-                                            <a class="product-img" href="single_product.html"><img src="./assets/images/fruits/img-4.jpg" alt="" /></a>
-                                            <a class="fa fa-star fa-star-half-full checked"></a>
-                                            <a class="fa fa-star checked"></a> <a class="fa fa-star"></a>
-                                            <a class="fa fa-star"></a> <a class="fa fa-star"></a>
-                                            <h5 class="product-type">Fruits</h5>
-                                            <h3 class="product-name">Black Cherries</h3>
-                                            <h3 class="product-price">$14.00</h3>
-                                            <div class="product-select">
-                                                <button data-toggle="tooltip" data-placement="top" title="Quick view" class="add-to-compare round-icon-btn" data-fancybox="gallery" data-src="#popup-13">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                </button>
-                                                <button data-toggle="tooltip" data-placement="top" title="Add To Cart" onClick="window.location.href='cart.html'" class="add-to-cart round-icon-btn">
-                                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                                                </button>
-                                                <button data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist round-icon-btn" onClick="window.location.href='wishlist.html'">
-                                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Three-images-->
+                       <!--Three-images-->
+<div id="bestsellers">
+    <div class="container">
+        <h2 class="wow fadeInDown">Bestsellers</h2>
+        <div class="owl-carousel latest-products owl-theme wow fadeIn">
+<?php
+//Get brand class
+require_once '../AdminPanel/libraries/Ser_Products.php';
+$db = new Ser_Products();  
+$bestsellers = $db->GetBestSellerProducts();
+if($bestsellers){
+  foreach($bestsellers as $bestseller){
+    $bestseller_pic = $db->GetProductPicture($bestseller['productId']);
+    echo '<div class="item"><div class="product">';
+    echo '<a class="product-img" href="product-details?productId='.$bestseller['productId'].'"><img src="../AdminPanel/pics/'.$bestseller_pic['path'].'" alt="" /></a>';
+    echo '<h5 class="product-type">'.$bestseller['brand_name'].'</h5>';
+    echo '<h3 class="product-name">'.$bestseller['name'].'</h3>';
+    echo '<h3 class="product-price">$'.$bestseller['unitprice'].'</h3>';
+    echo '</div></div>';
+}  
+}
+?>
+        </div>
+    </div>
+</div>
+<!--Three-images-->
 
                         <!-- Advertisement -->
                         <div id="deal-of-the-week">
