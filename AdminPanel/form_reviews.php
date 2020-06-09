@@ -227,7 +227,7 @@ $('#btn_submit').click(function(e) {
                         ).attr('disabled', false);
                         // Simulate an HTTP redirect:
                         window.location.replace(
-                            "localhost/JomlahBazar/AdminPanel/por_reviews.php"
+                            "http://localhost/JomlahBazar/AdminPanel/por_reviews.php"
                         );
                     }, 2000);
                     break;

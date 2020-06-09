@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=priviledges.json",
+              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=priviledges.json",
           },
         },
         pageSize: 10,
@@ -155,7 +155,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
           template: function (row) {
             return (
               '\
-							<a href="localhost/JomlahBazar/AdminPanel/form_priviledges.php?priviledgeId=' +
+							<a href="http://localhost/JomlahBazar/AdminPanel/form_priviledges.php?priviledgeId=' +
               row.priviledgeId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\

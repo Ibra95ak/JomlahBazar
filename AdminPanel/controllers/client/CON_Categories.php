@@ -1,6 +1,4 @@
 <?php
-/*Get base class*/
-require_once '../../libraries/base.php';
 /*Get Categories class*/
 require_once '../../libraries/Ser_Categories.php';
 $db = new Ser_Categories();

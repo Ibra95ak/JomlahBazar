@@ -42,7 +42,7 @@ font-style: normal;
 
 body {padding-top:0;font-family: 'Roboto', sans-serif; line-height:1.8}
 
-a {color: #fff;}
+a {color: #000;}
 a:hover {color:#f46f23;text-decoration: none}
 .carousel-item {min-height:inherit;
 background: no-repeat center center scroll;
@@ -1319,7 +1319,7 @@ margin:0 5px 0 0;
 padding:0; font-weight:700
 }
 .nav-tabs .active {
-color: #f57b23
+color: #fab400
 }
 .description {
 border: solid 1px #e5e5e5;
@@ -1438,7 +1438,7 @@ padding: 0 0 5px 0;
 margin: 0 0 30px 0;
 }
 
-.icon-css {background:url(../images/icon/icon9.png) no-repeat center bottom; padding:0 0 40px 0!important}
+/*.icon-css {background:url(../images/icon/icon9.png) no-repeat center bottom; padding:0 0 40px 0!important}*/
 
 .list-3 {
 border: solid 1px #e4e4e4;

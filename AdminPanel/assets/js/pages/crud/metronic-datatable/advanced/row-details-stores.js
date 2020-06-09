@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=stores.json",
+              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=stores.json",
           },
         },
         pageSize: 10,
@@ -110,15 +110,15 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_address.php?addressId=' +
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_address.php?addressId=' +
               row.addressId +
               '"><i class="la la-leaf"></i> Address</a>\
-							        <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_reachouts.php?reachoutId=' +
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_reachouts.php?reachoutId=' +
               row.reachoutId +
               '"><i class="la la-print"></i> Reachout</a>\
 							    </div>\
 							</div>\
-							<a href="localhost/JomlahBazar/AdminPanel/form_stores.php?storeId=' +
+							<a href="http://localhost/JomlahBazar/AdminPanel/form_stores.php?storeId=' +
               row.storeId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\

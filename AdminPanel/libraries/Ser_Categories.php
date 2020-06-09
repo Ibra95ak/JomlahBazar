@@ -102,5 +102,21 @@ class Ser_Categories {
             return true;
         } else return false;
     }
+    
+    /**
+     * Get categories of products' search result 
+     * params text
+     * returns json/Null
+     */
+    public function FilterSearchProductsCategories($text) {
+        $stmt = $this->conn->prepare("CALL sp_FilterSearchProductsCategories('%$text%')");
+        if ($stmt->execute()) {
+            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+            $stmt->close();
+            if ($products==true) {
+                return $products;
+            }
+        } else return NULL;
+    }
 }
 ?>

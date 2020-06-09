@@ -85,5 +85,22 @@ class Ser_Stores {
             return true;
         } else return false;
     }
+    
+    /**
+     * Get stores by supplierId 
+     * params store Id
+     * returns json/Null
+     */
+    public function GetStoreBySupplierId($supplierId) {
+        $stmt = $this->conn->prepare("CALL sp_GetStoreBySupplierId(?)");
+        $stmt->bind_param("i",$supplierId);
+        if ($stmt->execute()) {
+            $stores = $stmt->get_result()->fetch_all(); //fetch store data and store in array
+            $stmt->close();
+            if ($stores==true) {
+                return $stores;
+            }
+        } else return NULL;
+    }
 }
 ?>
