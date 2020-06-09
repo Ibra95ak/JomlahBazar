@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+<!--    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">-->
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Jomlah Bazar</title>
@@ -252,7 +252,7 @@
                                 setTimeout(function() {
                                     /*Simulate an HTTP redirect:*/
                                     window.location.replace(
-                                        "http://localhost/JomlahBazar/UserInterface/main.php"
+                                        "http://localhost/JomlahBazar/UserInterface/search.php"
                                     );
                                 }, 2000);
                                 break;

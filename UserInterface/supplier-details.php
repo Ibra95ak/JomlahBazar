@@ -1,263 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head> 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>Organic store</title>
-<!-- main css -->
-<link rel="stylesheet" href="assets/css/main.css">
-<!-- main css -->
-
- <!-- custom css -->
- <link rel="stylesheet" href="assets/css/common.css" />
- <!-- custom css -->
-</head>
-<body>
-<!-- Navigation with search bar-->
-<nav
-  class="navbar navbar-expand-lg navbar-dark sticky-top navbar-search-bar"
->
-  <div class="container-fluid">
-    <div class="row" style="flex: auto;">
-      <div class="col-lg-2">
-        <a class="navbar-brand" href="index.html">
-          <h5>JomlaBazar</h5>
-        </a>
-      </div>
-
-      <div class="col-lg-8">
-        <div class="row">
-            <div class="top-dropdown">
-              <div class="all-cate custom-select2">
-                <select>
-                  <option>Categories</option>
-                  <option>Brand</option>
-                  <option>Products</option>
-                  <option>Supplier</option>
-                  <option>Buyer</option>
-                  <option>Location</option>
-                  
-                </select>
-            
-            </div>
-          </div>
-
-            <div class="top-dropdown">
-              <div class="all-cate custom-select2 sub-menu">
-                <select disabled>
-                  <option >Sub Menu</option>
-                  <option>Brand</option>
-                  <option>Products</option>
-                  <option>Supplier</option>
-                  <option>Buyer</option>
-                  <option>Location</option>
-                </select>
-              </div>
-            
-          </div>
-
-          <div class="col p-lg-0">
-            <div class="input-group filter-by">
-              <input
-                type="hidden"
-                name="search_param"
-                value="all"
-                id="search_param"
-              />
-              <input
-                type="text"
-                class="form-control"
-                name="x"
-                placeholder="What do you need?"
-              />
-              <span class="input-group-btn">
-                <button class="btn btn-default search-bt" type="button">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="col-lg-2">
-        <button
-          class="navbar-toggler navbar-toggler-right"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-          <span class="navbar-toggler-icon"></span>
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <div class="rate-price nav-1">
-            <ul>
-              <li class="dropdown">
-                <a class="dropdown-toggle" href="" data-toggle="dropdown">
-                  <i class="fa fa-user-circle-o" aria-hidden="true"></i
-                ></a>
-                <div
-                  class="dropdown-menu dropdown-menu-right animate slideIn"
-                >
-                  <a class="dropdown-item" href="login.html">Login</a>
-                  <a class="dropdown-item" href="my-account.html"
-                    >My Account</a
-                  >
-                  <a class="dropdown-item" href="register.html">Register</a>
-                  <a class="dropdown-item" href="forgot-password.html"
-                    >Forgot Password</a
-                  >
-                </div>
-              </li>
-              <li>
-                <a href="wishlist.html"
-                  ><i class="fa fa-heart-o" aria-hidden="true"></i
-                  ><span class="circle-2">1</span></a
-                >
-              </li>
-              <li class="dropdown">
-                <a
-                  class="dropdown-toggle link"
-                  href=""
-                  data-toggle="dropdown"
-                  ><i class="fa fa-shopping-bag" aria-hidden="true"></i
-                  ><span class="circle-2">1</span></a
-                >
-                <div
-                  class="dropdown-menu dropdown-menu2 dropdown-menu-right animate slideIn"
-                >
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <img
-                          src="./assets/images/fruits/img-1.jpg"
-                          alt=""
-                          title=""
-                          class="img-fluid"
-                        />
-                      </div>
-                      <div class="col-md-9">
-                        <p>
-                          1 x Product Name...
-                          <span class="price">$ 14.70</span>
-                        </p>
-                        <a href="" class="close">x</a>
-                      </div>
-                      <div class="col-md-12">
-                        <hr />
-                      </div>
-                      <div class="col-md-3">
-                        <img
-                          src="./assets/images/fruits/img-2.jpg"
-                          alt=""
-                          title=""
-                          class="img-fluid"
-                        />
-                      </div>
-                      <div class="col-md-9">
-                        <p>
-                          1 x Product Name...
-                          <span class="price">$ 14.70</span>
-                        </p>
-                        <a href="" class="close">x</a>
-                      </div>
-                      <div class="col-md-12">
-                        <hr />
-                      </div>
-                      <div class="col-md-3">
-                        <img
-                          src="assets/images/fruits/img-3.jpg"
-                          alt=""
-                          title=""
-                          class="img-fluid"
-                        />
-                      </div>
-                      <div class="col-md-9">
-                        <p>
-                          1 x Product Name...
-                          <span class="price">$ 14.70</span>
-                        </p>
-                        <a href="" class="close">x</a>
-                      </div>
-                      <div class="col-md-12">
-                        <hr />
-                      </div>
-                      <div class="col-md-3">
-                        <img
-                          src="assets/images/fruits/img-4.jpg"
-                          alt=""
-                          title=""
-                          class="img-fluid"
-                        />
-                      </div>
-                      <div class="col-md-9">
-                        <p>
-                          1 x Product Name...
-                          <span class="price">$ 14.70</span>
-                        </p>
-                        <a href="" class="close">x</a>
-                      </div>
-                      <div class="col-md-12">
-                        <hr />
-                      </div>
-                      <div class="col-md-3">
-                        <p class="font-15">Tax</p>
-                      </div>
-                      <div class="col-md-9 text-right">
-                        <span class="font-15">$ 2.80</span>
-                      </div>
-                      <div class="col-md-12">
-                        <hr />
-                      </div>
-                      <div class="col-md-3">
-                        <p class="font-15"><strong>Total</strong></p>
-                      </div>
-                      <div class="col-md-9 text-right">
-                        <span class="font-15"
-                          ><strong>$ 10.80</strong></span
-                        >
-                      </div>
-                      <div class="col-md-12">
-                        <hr />
-                      </div>
-                      <div class="col-md-12 text-center">
-                        <input
-                          type="button"
-                          value="Check out"
-                          class="btn check-out w-100"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-<!-- Navigation with search bar-->
-
+<?php
+include("header.php");
+?>
 <div class="container mb-5">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb breadcrumb2">
       <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-      <li class="breadcrumb-item">My Account</li>
+      <li class="breadcrumb-item">Supplier</li>
     </ol>
   </nav>
   <div >
     <div class="account-dashboard">
+<!--
       <div class="dashboard-upper-info">
         <div class="row align-items-center justify-content-center">
           <div class="col-lg-3 col-md-6">
@@ -292,7 +45,9 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      -->
+        <div class="row">
+
         <div class="col-md-12 col-lg-2">
           <!-- Nav tabs -->
           <ul role="tablist" class="nav flex-column dashboard-list">
@@ -502,11 +257,8 @@
     </div>
   </div>
 </div>
-</div>
-</div>
-</div>
-<div class="clearfix"></div>
-</div>
+
+
 <div class="clearfix"></div>
 <div id="newsletter">
   <div class="container">

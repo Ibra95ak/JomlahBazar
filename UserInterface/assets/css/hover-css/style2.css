@@ -33,18 +33,18 @@ position: relative;
 letter-spacing:3px;
 font-size:25px;
 margin:0;
-padding:30px 0 20px 0;     font-family: 'Roboto', sans-serif;
+padding:30px 0 20px 0;     font-family: 'Calibri', sans-serif;
 text-shadow: 0 0 1px #fff,  0 1px 2px rgba(0, 0, 0, 0.3); font-weight:500;
 }
 .ch-info p {
 color: #fff;
 font-style: italic;
 margin: 0 30px;
-font-size: 12px;
+font-size: 16px;
 border-bottom: 1px solid rgba(255, 255, 255, 0.5); display:block;
 }
 
-.ch-info a { text-align:center; margin:20px auto; padding:5px 10px; background:#f47a25; display:inline-block; text-decoration:none!important; font-size:12px;}
+.ch-info a { text-align:center; margin:20px auto; padding:5px 10px; background:#f47a25; display:inline-block; text-decoration:none!important; font-size:18px;}
 .ch-info a:hover  { text-decoration:none!important; background:#fff; color:#2c2c2c}  
 
 
@@ -58,7 +58,7 @@ text-transform: uppercase;
 font-size: 9px;
 letter-spacing: 1px;
 padding-top: 4px;
-font-family: 'Open Sans', Arial, sans-serif;
+font-family: 'Calibri', Arial, sans-serif;
 }
 .ch-info p a:hover {
 color: #fff222;

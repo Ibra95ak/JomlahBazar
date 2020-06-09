@@ -13,9 +13,11 @@ $db3 = new Ser_Suppliers();
 require_once '../AdminPanel/libraries/Ser_Pictures.php';
 $db4 = new Ser_Pictures();
 require_once '../AdminPanel/libraries/Ser_Buyers.php';
-$db5 = new Ser_Buyers(); 
-$search_category=$_GET['search_category'];
-$search=$_GET['search'];
+$db5 = new Ser_Buyers();
+if(isset($_GET['search_category'])) $search_category=$_GET['search_category'];
+else $search_category='';
+if(isset($_GET['search'])) $search=$_GET['search'];
+else $search='';
 
 ?>
 <!-- Bread Crumbs and Filters and products -->
