@@ -18,7 +18,7 @@ $search=$_GET['search'];
                 <div class="col-12">
                     <div class="clearfix"></div>
                     <div class="row">
-<div id="googleMap" style="width:100%;height:400px;"></div>
+<div id="googleMap" style="width:100%;height:550px;"></div>
 
                         <div class="clearfix"></div>
                     </div>
@@ -44,24 +44,26 @@ var mapProp= {
 var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 var marker;
 var myLatLng;
+var i;
+var infowindow = new google.maps.InfoWindow();
 $.ajax({
         type: "POST",
         url: "http://localhost/JomlahBazar/AdminPanel/controllers/client/CON_Addresses.php",
         dataType: "json",
         success: function(data) {
-            for($i=0;$i<data.length;i++){
-                myLatLng = {lat: 25.068607, lng: 55.145040};
-                
+            for(var i=0;i<data.length;i++){
+                myLatLng = {lat: parseFloat(data[i]['latitude']), lng: parseFloat(data[i]['longitude'])};
+                marker = new google.maps.Marker({position: myLatLng,icon:'http://localhost/JomlahBazar/AdminPanel/pics/markers/marker-supplier.png'});
+                marker.setMap(map);  
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                      infowindow.setContent(data[i]['city']);
+                      infowindow.open(map, marker);
+                    }
+                  })(marker, i));
             }
         }
     });
-marker = new google.maps.Marker({position: myLatLng,icon:'http://localhost/JomlahBazar/AdminPanel/pics/markers/marker-supplier.png',map:map});
-var infowindow = new google.maps.InfoWindow({
-  content:"Hello World!"
-});
-google.maps.event.addListener(marker, 'click', function() {
-  infowindow.open(map,marker);
-}); 
 }
 </script>
 

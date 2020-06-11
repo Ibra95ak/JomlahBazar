@@ -1,3 +1,6 @@
+<?php
+
+?>
 <div class="col-lg-2 col-md-12" style="overflow-x: hidden;overflow-y: auto;max-height: 530px;">
     <div class="inner-left-menu">
         <div class="list-css">
@@ -52,12 +55,9 @@ if($productscategories){
         <h3>Filter By Price</h3>
         <div class="price-range-block">
             <div class="row">
-                <div class="col-9 p-0">
-                    <input type="number" min=0 max="9900" oninput="validity.valid||(value='0');" id="min_price" class="price-range-field" placeholder="MIN" />
-                    <input type="number" min=0 max="10000" oninput="validity.valid||(value='10000');" id="max_price" class="price-range-field" placeholder="MAX" />
-                </div>
-                <div class="col-3 p-0">
-                    <button type="button" class="btn btn-filter">Filter</button>
+                <div class="col-12 p-0">
+                    <input type="number" id="min_price" name="min_price" class="price-range-field" placeholder="MIN" />
+                    <input type="number" id="max_price" name="max_price" class="price-range-field" placeholder="MAX" />
                 </div>
             </div>
         </div>
@@ -65,28 +65,27 @@ if($productscategories){
         <div class="list-css">
             <ul>
                 <li>
-                    <!-- Default unchecked -->
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked-1">
-                        <label class="custom-control-label" for="defaultUnchecked-1">Top Sales</label>
+                        <input type="checkbox" class="custom-control-input" id="latest_products" name="latest_products">
+                        <label class="custom-control-label" for="latest_products">New Products</label>
                     </div>
                 </li>
                 <li>
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked-2">
-                        <label class="custom-control-label" for="defaultUnchecked-2">New Products</label>
+                        <input type="checkbox" class="custom-control-input" id="featured_products" name="featured_products">
+                        <label class="custom-control-label" for="featured_products">Featured Products</label>
                     </div>
                 </li>
                 <li>
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked-3">
-                        <label class="custom-control-label" for="defaultUnchecked-3">Featured Products</label>
+                        <input type="checkbox" class="custom-control-input" id="bestseller_products" name="bestseller_products">
+                        <label class="custom-control-label" for="bestseller_products">Best seller</label>
                     </div>
                 </li>
                 <li>
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked-4">
-                        <label class="custom-control-label" for="defaultUnchecked-4">Bestsellers</label>
+                        <input type="checkbox" class="custom-control-input" id="discount_products" name="discount_products">
+                        <label class="custom-control-label" for="discount_products">Discount</label>
                     </div>
                 </li>
             </ul>
@@ -132,17 +131,29 @@ if($brands){
                 <li><a href="">location2</a></li>
             </ul>
         </div>
-        <h3>Discout</h3>
-        <div class="list-css">
-            <ul>
-                <li>
-                    <!-- Default unchecked -->
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked-5">
-                        <label class="custom-control-label" for="defaultUnchecked-5">Discount</label>
-                    </div>
-                </li>
-            </ul>
-        </div>
     </div>
+    <div class="sticky" id="filter">Filter</div>
 </div>
+<script>
+    document.getElementById("filter").onclick = function() {
+        var filter = "";
+        var min_price = document.getElementById("min_price").value;
+        var max_price = document.getElementById("max_price").value;
+        var latest_products = document.getElementById("latest_products");
+        var featured_products = document.getElementById("featured_products");
+        var bestseller_products = document.getElementById("bestseller_products");
+        var discount_products = document.getElementById("discount_products");
+        if ((min_price >= max_price) && (min_price != null) && (max_price != null)) alert("fix prices");
+        else {
+            if (min_price) filter += "&min_price=" + min_price;
+            else filter += "&min_price=0";
+            if (max_price) filter += "&max_price=" + max_price;
+            else filter += "&max_price=0";
+        }
+        if (latest_products.checked) filter+="&lp=1";
+        if (featured_products.checked) filter+="&fp=1";
+        if (bestseller_products.checked) filter+="&bp=1";
+        if (discount_products.checked) filter+="&dp=1";
+location.href= window.location+filter;
+    };
+</script>

@@ -1,270 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head> 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>Organic store</title>
-<!-- main css -->
-<link rel="stylesheet" href="assets/css/main.css">
-<!-- main css -->
-</head>
-<body>
-<!-- Navigation -->
-<div class="top-bg">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-5 col-md-12 top-div top1">
-        <ul>
-          <li><a href="mailto:info.organicstore@gmail.com"><i class="fa fa-envelope"></i> &nbsp;info.organicstore@gmail.com</a></li>
-          <li>|</li>
-          <li><i class="fa fa-phone" aria-hidden="true"></i> +12 345 6789</li>
-        </ul>
-      </div>
-      <div class="col-lg-7 col-md-6 col-md-12 position-relative">
-        <div class="right-div">
-          <ul>
-            <li>
-              <ul class="social-network">
-                <li><a href="#" class="icoRss" title=""><i class="fa fa-rss"></i></a></li>
-                <li><a href="#" class="icoFacebook" title=""><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#" class="icoTwitter" title=""><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#" class="icoGoogle" title=""><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#" class="icoLinkedin" title=""><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-            </li>
-            <li>
-              <ul class="top-ul">
-                <li>
-                  <div class="dropdown"> <a class="dropdown-toggle" href="" data-toggle="dropdown"><img src="assets/images/flag.jpg" alt="" title=""> English <i class="fa fa-angle-down"></i></a>
-                    <div class="dropdown-menu flag-css dropdown-menu-right"> <a href="#">English</a> <a href="#"><span class="flag-icon flag-icon-fr"> </span>French</a> <a href="#"><span class="flag-icon flag-icon-it"> </span>Italian</a> <a href="#"><span class="flag-icon flag-icon-ru"> </span>Russian</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="dropdown"> <a class="dropdown-toggle currency" href="" data-toggle="dropdown"> <i class="fa fa-angle-down"></i></a>
-                    <ul class="dropdown-menu drop1 dropdown-menu-right">
-                      <li class="dropdown-item"><a href="#"> US Dollar</a></li>
-                      <li class="dropdown-item"><a href="#"> British Pound</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <div class="rate-price rate-price2">
-                <ul>
-                  <li class="dropdown"> <a class="dropdown-toggle" href="" data-toggle="dropdown"> <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right animate slideIn"> <a class="dropdown-item" href="login.html">Login</a> <a class="dropdown-item" href="my-account.html">My Account</a> <a class="dropdown-item" href="register.html">Register</a> <a class="dropdown-item" href="forgot-password.html">Forgot Password</a> </div>
-                  </li>
-                  <li><a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i><span class="circle-2">1</span></a></li>
-                  <li class="dropdown"> <a class="dropdown-toggle link" href="" data-toggle="dropdown"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="circle-2">1</span></a>
-                    <div class="dropdown-menu dropdown-menu2 dropdown-menu-right  animate slideIn">
-                      <div class="container">
-                        <div class="row">
-                          <div class="col-3"><img src="assets/images/fruits/img-1.jpg" alt="" title="" class="img-fluid"></div>
-                          <div class="col-9">
-                            <p>1 x Product Name... <span class="price">$ 14.70</span></p>
-                            <a href="" class="close">x</a> </div>
-                          <div class="col-md-12">
-                            <hr>
-                          </div>
-                          <div class="col-3"><img src="assets/images/fruits/img-2.jpg" alt="" title="" class="img-fluid"></div>
-                          <div class="col-9">
-                            <p>1 x Product Name... <span class="price">$ 14.70</span></p>
-                            <a href="" class="close">x</a> </div>
-                          <div class="col-md-12">
-                            <hr>
-                          </div>
-                          <div class="col-3"><img src="assets/images/fruits/img-3.jpg" alt="" title="" class="img-fluid"></div>
-                          <div class="col-9">
-                            <p>1 x Product Name... <span class="price">$ 14.70</span></p>
-                            <a href="" class="close">x</a> </div>
-                          <div class="col-md-12">
-                            <hr>
-                          </div>
-                          <div class="col-3"><img src="assets/images/fruits/img-4.jpg" alt="" title="" class="img-fluid"></div>
-                          <div class="col-9">
-                            <p>1 x Product Name... <span class="price">$ 14.70</span></p>
-                            <a href="" class="close">x</a> </div>
-                          <div class="col-md-12">
-                            <hr>
-                          </div>
-                          <div class="col-3">
-                            <p class="font-15">Tax </p>
-                          </div>
-                          <div class="col-9 text-right"> <span class="font-15">$ 2.80</span> </div>
-                          <div class="col-md-12">
-                            <hr>
-                          </div>
-                          <div class="col-3">
-                            <p class="font-15"><strong>Total</strong></p>
-                          </div>
-                          <div class="col-9 text-right"> <span class="font-15"><strong>$ 10.80</strong></span> </div>
-                          <div class="col-md-12">
-                            <hr>
-                          </div>
-                          <div class="col-md-12 text-center">
-                            <input type="button" value="Check out" class="btn check-out w-100">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="clearfix"></div>
-<nav class="navbar navbar-expand-lg navbar-dark bg-white">
-  <div class="container"> <a class="navbar-brand" href="index.html"> <img src="assets/images/logo.png" alt="" title="" class="img-fluid"> </a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> <span class="navbar-toggler-icon"></span> <span class="navbar-toggler-icon"></span> </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="Dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Home </a>
-          <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="Dropdown1"> <a class="dropdown-item" href="index.html">Home</a> <a class="dropdown-item" href="home2.html">Home v2</a> <a class="dropdown-item" href="home-v3.html">Home v3</a> <a class="dropdown-item" href="left-side-menu.html">left Side Menu</a> <a class="dropdown-item" href="menu-2.html">Mega Menu</a> </div>
-        </li>
-        <li class="nav-item dropdown megamenu-li"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> SHOP </a>
-          <div class="dropdown-menu megamenu animate slideIn">
-            <div class="row">
-              <div class="col-sm-6 col-lg-4">
-                <h5>With sidebar</h5>
-                <a class="dropdown-item" href="shop.html">Shop Grid</a> <a class="dropdown-item" href="shop-col-3.html">Shop 3 columns</a> <a class="dropdown-item" href="shop-col-4.html">Shop 4 columns</a> <a class="dropdown-item" href="shop-col-5.html">Shop 5 columns</a> <a class="dropdown-item" href="shop-col-6.html">Shop 6 columns</a> </div>
-              <div class="col-sm-6 col-lg-4">
-                <h5>Without sidebar</h5>
-                <a class="dropdown-item" href="shop-w-o-sidebar.html">Shop Grid</a> <a class="dropdown-item" href="shop-w-o-sidebar-col-3.html">Shop 3 columns</a> <a class="dropdown-item" href="shop-w-o-sidebar-col-4.html">Shop 4 columns</a> <a class="dropdown-item" href="shop-w-o-sidebar-col-5.html">Shop 5 columns</a> <a class="dropdown-item" href="shop-w-o-sidebar-col-6.html">Shop 6 columns</a> </div>
-              <div class="col-sm-6 col-lg-4">
-                <h5>Shop</h5>
-                <a class="dropdown-item"  href="shop-filter.html">Shop Top filter</a> <a class="dropdown-item" href="single_product.html">Product Detail</a> <a class="dropdown-item" href="single_product-2.html">Product Detail V2</a> </div>
-              <div class="clearfix"></div>
-              <div class="col-md-12">
-                <hr>
-              </div>
-              <div class="col-md-6"><img src="assets/images/page-img/menu-img.jpg" alt="" title="" class="img-fluid"></div>
-              <div class="col-md-6"><img src="assets/images/page-img/menu2-img.jpg" alt="" title="" class="img-fluid"></div>
-            </div>
-          </div>
-        </li>
-        <li class="nav-item dropdown megamenu-li"> <a class="nav-link dropdown-toggle" href="#" id="Dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Category </a>
-          <div class="dropdown-menu megamenu animate slideIn" aria-labelledby="navbarDropdownBlog">
-            <div class="row">
-              <div class="col-sm-6 col-lg-3">
-                <h5>Dried Fruits</h5>
-                <a class="dropdown-item" href="shop.html">Almond</a> <a class="dropdown-item" href="shop.html">Apricot</a> <a class="dropdown-item" href="shop.html">Arrowroot</a> <a class="dropdown-item" href="shop.html">Cantaloupe </a> <a class="dropdown-item" href="shop.html">Cashew</a> </div>
-              <div class="col-sm-6 col-lg-3">
-                <h5>Fruits</h5>
-                <a class="dropdown-item" href="shop.html">Apples</a> <a class="dropdown-item" href="shop.html">Apricots</a> <a class="dropdown-item" href="shop.html">Bananas</a> <a class="dropdown-item" href="shop.html">Cantaloupe</a> <a class="dropdown-item" href="shop.html">Cherry</a> </div>
-              <div class="col-sm-6 col-lg-3">
-                <h5>Juice</h5>
-                <a class="dropdown-item" href="shop.html">Sugarcane </a> <a class="dropdown-item" href="shop.html">Wheatgrass</a> <a class="dropdown-item" href="shop.html">Arrowroot</a> <a class="dropdown-item" href="shop.html">Grapefruit</a> <a class="dropdown-item" href="shop.html">Otai</a> </div>
-              <div class="col-sm-6 col-lg-3">
-                <p><img src="assets/images/page-img/menu3-img.jpg" alt="" title="" class="img-fluid"></p>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-        </li>
-        <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="Dropdown3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Blog </a>
-          <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="Dropdown3">
-            <h5>Blog Pages</h5>
-            <a class="dropdown-item" href="blog-left-sidebar.html">Blog Left Sidebar</a> <a class="dropdown-item" href="blog-right-sidebar.html">Blog Right Sidebar</a> <a class="dropdown-item" href="blog-w-o-sidebar.html">Blog Without Sidebar</a> <a class="dropdown-item" href="blog-details.html">Blog Details</a> </div>
-        </li>
-        <li class="nav-item dropdown megamenu-li"> <a class="nav-link dropdown-toggle" href="#" id="Dropdown4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Pages </a>
-          <div class="dropdown-menu megamenu animate slideIn">
-            <div class="row">
-              <div class="col-sm-6 col-lg-4">
-                <h5>My Account</h5>
-                <a class="dropdown-item" href="login.html">Login</a> <a class="dropdown-item" href="my-account.html">My Account</a> <a class="dropdown-item" href="register.html">Register</a> <a class="dropdown-item" href="forgot-password.html">Forgot Password</a> </div>
-              <div class="col-sm-6 col-lg-4">
-                <h5>Page Link</h5>
-                <a class="dropdown-item" href="cart.html">Cart</a> <a class="dropdown-item" href="cart-2.html">Cart v2</a> <a class="dropdown-item" href="gift-card.html">Gift Card</a> <a class="dropdown-item" href="wishlist.html">Wishlist</a> <a class="dropdown-item" href="checkout.html">Checkout</a> <a class="dropdown-item" href="contact.html">Contact</a> <a class="dropdown-item" href="404.html">404 Error</a> <a class="dropdown-item" href="comingsoon.html">Coming soon</a> </div>
-              <div class="col-sm-6 col-lg-4">
-
-                <a class="dropdown-item" href="about-us.html">About Us</a> <a class="dropdown-item" href="terms-conditions.html">Terms Conditions</a> <a class="dropdown-item" href="faq.html">FAQ</a> </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <div class="rate-price nav-1">
-        <ul>
-          <li class="dropdown"> <a class="dropdown-toggle" href="" data-toggle="dropdown"> <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-            <div class="dropdown-menu dropdown-menu-right animate slideIn"> <a class="dropdown-item" href="login.html">Login</a> <a class="dropdown-item" href="my-account.html">My Account</a> <a class="dropdown-item" href="register.html">Register</a> <a class="dropdown-item" href="forgot-password.html">Forgot Password</a> </div>
-          </li>
-          <li><a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i><span class="circle-2">1</span></a></li>
-          <li class="dropdown"> <a class="dropdown-toggle link" href="" data-toggle="dropdown"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="circle-2">1</span></a>
-            <div class="dropdown-menu dropdown-menu2 dropdown-menu-right animate slideIn">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-3"><img src="assets/images/fruits/img-1.jpg" alt="" title="" class="img-fluid"></div>
-                  <div class="col-md-9">
-                    <p>1 x Product Name... <span class="price">$ 14.70</span></p>
-                    <a href="" class="close">x</a> </div>
-                  <div class="col-md-12">
-                    <hr>
-                  </div>
-                  <div class="col-md-3"><img src="assets/images/fruits/img-2.jpg" alt="" title="" class="img-fluid"></div>
-                  <div class="col-md-9">
-                    <p>1 x Product Name... <span class="price">$ 14.70</span></p>
-                    <a href="" class="close">x</a> </div>
-                  <div class="col-md-12">
-                    <hr>
-                  </div>
-                  <div class="col-md-3"><img src="assets/images/fruits/img-3.jpg" alt="" title="" class="img-fluid"></div>
-                  <div class="col-md-9">
-                    <p>1 x Product Name... <span class="price">$ 14.70</span></p>
-                    <a href="" class="close">x</a> </div>
-                  <div class="col-md-12">
-                    <hr>
-                  </div>
-                  <div class="col-md-3"><img src="assets/images/fruits/img-4.jpg" alt="" title="" class="img-fluid"></div>
-                  <div class="col-md-9">
-                    <p>1 x Product Name... <span class="price">$ 14.70</span></p>
-                    <a href="" class="close">x</a> </div>
-                  <div class="col-md-12">
-                    <hr>
-                  </div>
-                  <div class="col-md-3">
-                    <p class="font-15">Tax </p>
-                  </div>
-                  <div class="col-md-9 text-right"> <span class="font-15">$ 2.80</span> </div>
-                  <div class="col-md-12">
-                    <hr>
-                  </div>
-                  <div class="col-md-3">
-                    <p class="font-15"><strong>Total</strong></p>
-                  </div>
-                  <div class="col-md-9 text-right"> <span class="font-15"><strong>$ 10.80</strong></span> </div>
-                  <div class="col-md-12">
-                    <hr>
-                  </div>
-                  <div class="col-md-12 text-center">
-                    <input type="button" value="Check out" class="btn check-out w-100">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="clearfix"></div>
-  </div>
-  <div class="clearfix"></div>
-</nav>
-<!-- Navigation -->
+<?php
+include('../AdminPanel/libraries/base.php');
+include("header.php");
+?>
 <div class="container">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb breadcrumb2">
-      <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-      <li class="breadcrumb-item">Cart</li>
-    </ol>
-  </nav>
   <div class="row">
     <div class="col-12 col-xl-8 mb-4">
       <div class="table-responsive cart-table table-borderless">
@@ -280,66 +18,33 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td  class="product-thumbnail text-center"><a href=""><img  src="assets/images/product-img/product-img-1.jpg" class="" alt=""></a></td>
-              <td><div class="cart-detail">Lorem Ipsum is simply dummy.</div></td>
-              <td class="text-center"><div style="width:80px">$10.9 </div></td>
-              <td class="product-quantity" data-title="Quantity"><div class="input-group"> <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"> <i class="fa fa-minus"></i> </button>
-                  </span>
-                  <input type="text" name="quant[1]" class="form-control input-number" value="4" min="0" max="10">
-                  <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"> <i class="fa fa-plus"></i> </button>
-                  </span> </div></td>
-              <td><div style="width:100px">
-                $30.9</td>
-              <td><a href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-              <td  class="product-thumbnail text-center"><a href=""><img  src="assets/images/product-img/product-img-1.jpg" class="" alt=""></a></td>
-              <td>Lorem Ipsum is simply dummy.</td>
-              <td class="text-center">$10.9 </td>
-              <td class="product-quantity" data-title="Quantity"><div class="input-group"> <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[3]"> <i class="fa fa-minus"></i> </button>
-                  </span>
-                  <input type="text" name="quant[3]" class="form-control input-number" value="1" min="0" max="10">
-                  <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[3]"> <i class="fa fa-plus"></i> </button>
-                  </span> </div></td>
-              <td>$ 30.9</td>
-              <td><a href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-              <td  class="product-thumbnail text-center"><a href=""><img  src="assets/images/product-img/product-img-1.jpg" class="" alt=""></a></td>
-              <td>Lorem Ipsum is simply dummy.</td>
-              <td class="text-center">$10.9 </td>
-              <td class="product-quantity" data-title="Quantity"><div class="input-group"> <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[4]"> <i class="fa fa-minus"></i> </button>
-                  </span>
-                  <input type="text" name="quant[4]" class="form-control input-number" value="2" min="0" max="10">
-                  <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[4]"> <i class="fa fa-plus"></i> </button>
-                  </span> </div></td>
-              <td>$ 30.9</td>
-              <td><a href=""><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-              <td colspan="6"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="coupon">
-                  <tbody>
-                    <tr>
-                      <td><div class="row">
-                          <div class="col-md-6 pr-0">
-                            <input type="text" name="coupon_code" class="input-text form-control coupon_code mb-1 mt-1" id="" value="" placeholder="Coupon code">
-                          </div>
-                          <div class="col-md-6"> <a href="" class="btn cart mb-1 mt-1" value="Apply coupon">Apply coupon</a> </div>
-                        </div></td>
-                      <td>&nbsp;</td>
-                      <td valign="top" class="text-right"><a href="" class="btn cart" value="Update cart">Update cart</a></td>
-                    </tr>
-                  </tbody>
-                </table></td>
-            </tr>
-          </tbody>
+<?php
+/*Fetch latest products through API*/
+$API_cart = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Cart.php?userId=1");
+$cart = json_decode($API_cart);  
+if($cart){
+    foreach($cart as $product){
+        echo '<tr>';
+        echo '<td align="left"><input  type="checkbox"></td>';
+        $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$product->productId);
+        $product_img = json_decode($API_product_img);
+        foreach($product_img as $img){
+            echo '<td class="product-thumbnail"><a href=""><img  width="100" src="../AdminPanel/pics/'.$img[0].'" class="" alt=""></a></td>';
+        }
+        echo '<td><a href="single_product.php?productId='.$product->productId.'">'.$product->name.'</a></td>';
+        echo '<td class="text-center">'.$product->unitprice.'</td>';
+        echo '<td class="product-quantity" data-title="Quantity"><div class="input-group">';
+        echo '<span class="input-group-btn"><button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[3]"> <i class="fa fa-minus"></i> </button></span>';
+        echo '<input type="text" name="quant[3]" class="form-control input-number" value="1" min="0" max="10">';
+        echo '<span class="input-group-btn"><button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[3]"> <i class="fa fa-plus"></i> </button></span>';
+        echo '</div></td>';
+        echo '<td>Total</td>';
+        echo '<td><a href="#" onclick="deletecart('.$product->cartId.')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>';
+        echo '</tr>';
+    }
+}
+?>
+         </tbody>
         </table>
       </div>
     </div>
@@ -473,5 +178,27 @@
 <script src="assets/vendor/wow/page.js"></script>
 <script src="assets/vendor/jquery/number-plsu-min.js" type="text/javascript"></script>
 <script src="assets/vendor/jquery/custom-select.js"></script>
+<script>
+function deletecart(cartId){
+  $.ajax({
+        type: "GET",
+        url: "http://localhost/JomlahBazar/AdminPanel/controllers/client/CON_Delete_Cart.php?cartId="+cartId,
+        dataType: "json",
+        success: function(data) {
+            switch(data) {
+              case 0:
+               alert("Product is Removed from Cart.");
+                break;
+              case 1:
+                alert("Error deleting.");
+                break;
+              default:
+                alert("Error");
+            }
+            location.reload(); 
+        }
+    });
+}
+</script>
 </body>
 </html>

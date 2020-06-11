@@ -1,6 +1,8 @@
 <?php
 include("header.php");
 $supplierId=$_GET['supplierId'];
+$API_reachout = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Supplier_Reachout.php?supplierId=$supplierId");
+$reachout = json_decode($API_reachout);
 ?>
 <div class="container mb-5">
   <nav aria-label="breadcrumb">
@@ -107,9 +109,9 @@ if($supplieraddresses){
               <div class="login m-0">
                 <div class="login-form-container">
                   <div class="account-login-form">
-                    <a class="dropdown-toggle link" href="" data-toggle="dropdown"><i class="fa fa-phone" aria-hidden="true"></i></a>
-                    <a class="dropdown-toggle link" href="" data-toggle="dropdown"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
-                    <a class="dropdown-toggle link" href="" data-toggle="dropdown"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a class="dropdown-toggle link" href="tel:00971509692636"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                    <a class="dropdown-toggle link" href="https://wa.me/1XXXXXXXXXX?text=I'm%20interested%20in%20your%20products"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                    <a class="dropdown-toggle link" href="m.me/ibrahim.abokhalil.7" data-toggle="dropdown"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                     <a class="dropdown-toggle link" href="" data-toggle="dropdown"><i class="fa fa-telegram" aria-hidden="true"></i></a>
                   </div>
                 </div>
