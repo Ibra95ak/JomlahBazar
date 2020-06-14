@@ -20,6 +20,14 @@ font-weight: normal;
 font-style: normal;
 }
 
+@font-face {
+font-family: "Konnect";
+src: url("../fonts/Konnect/CustomFont.eot");
+src: url("../fonts/Konnect/CustomFont.woff") format("woff"),
+url("../fonts/Konnect/CustomFont.otf") format("opentype"),
+url("../fonts/Konnect/CustomFont.svg#filename") format("svg");
+} 
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 @font-face {
 font-family: "Flaticon";
@@ -37,6 +45,7 @@ font-style: normal;
 .flaticon-grapes:before { content: "\f100"; }
 .flaticon-harvest:before { content: "\f101"; }
 .flaticon-fruit:before { content: "\f102"; }
+
 
 
 

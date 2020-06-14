@@ -1,11 +1,18 @@
 <?php 
 include('../AdminPanel/libraries/base.php');
 include("header.php");
-$search_category=$_GET['search_category'];
-$search=$_GET['search'];
 $filter="";
+if(isset($_GET['search_by'])) $filter.="&search_by=".$_GET['search_by'];
+if(isset($_GET['filter_category'])) $filter.="&filter_category=".$_GET['filter_category'];
+if(isset($_GET['search'])) $filter.="&search=".$_GET['search'];
+if(isset($_GET['order_by'])) $filter.="&order_by=".$_GET['order_by'];
 if(isset($_GET['min_price'])) $filter.="&min_price=".$_GET['min_price'];
 if(isset($_GET['max_price'])) $filter.="&max_price=".$_GET['max_price'];
+if(isset($_GET['fp'])) $filter.="&fp=".$_GET['fp'];
+if(isset($_GET['bp'])) $filter.="&bp=".$_GET['bp'];
+if(isset($_GET['dp'])) $filter.="&dp=".$_GET['dp'];
+if(isset($_GET['filter_brand'])) $filter.="&filter_brand=".$_GET['filter_brand'];
+if(isset($_GET['filter_rank'])) $filter.="&filter_rank=".$_GET['filter_rank'];
 ?>
 <!-- Bread Crumbs and Filters and products -->
 <div class="container container-fluid">
@@ -23,7 +30,7 @@ if(isset($_GET['max_price'])) $filter.="&max_price=".$_GET['max_price'];
                     <div class="row">
                         <?php
 /*Fetch latest products through API*/
-$API_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Products.php?search_category=$search_category&search=".urlencode($search).$filter);
+$API_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Products.php?".$filter);
 $products = json_decode($API_products); 
 if($products){
   foreach($products as $product){

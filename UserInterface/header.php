@@ -46,26 +46,25 @@ $wishlist_count = json_decode($API_wishlist_count);
     <script>
         function searchjb() {
             var search_by = document.getElementById('search_by').value;
-            var search_category = document.getElementById('search_category').value;
             var search = document.getElementById('search').value;
             switch (search_by) {
                 case "1":
-                    window.location.href = "brand-search.php?search_by=" + search_by + "&search_category=" + search_category + "&search=" + search;
+                    window.location.href = "brand-search.php?search_by=" + search_by + "&search=" + search;
                     break;
                 case "2":
-                    window.location = "product-search.php?search_by=" + search_by + "&search_category=" + search_category + "&search=" + search;
+                    window.location = "product-search.php?search_by=" + search_by + "&search=" + search;
                     break;
                 case "3":
-                    window.location = "supplier-search.php?search_by=" + search_by + "&search_category=" + search_category + "&search=" + search;
+                    window.location = "supplier-search.php?search_by=" + search_by + "&search=" + search;
                     break;
                 case "4":
-                    window.location = "buyer-search.php?search_by=" + search_by + "&search_category=" + search_category + "&search=" + search;
+                    window.location = "buyer-search.php?search_by=" + search_by + "&search=" + search;
                     break;
                 case "5":
-                    window.location = "location-search.php?search_by=" + search_by + "&search_category=" + search_category + "&search=" + search;
+                    window.location = "location-search.php?search_by=" + search_by + "&search=" + search;
                     break;
                 default:
-                    window.location = "search.php?search_by=" + search_by + "&search_category=" + search_category + "&search=" + search;
+                    window.location = "search.php?search_by=" + search_by +  "&search=" + search;
             }
         }
     </script>
@@ -93,23 +92,6 @@ $wishlist_count = json_decode($API_wishlist_count);
                                     <option value="3" <?php if(isset($search_by) && $search_by==3) echo "selected"; else echo ""; ?>>Supplier</option>
                                     <option value="4" <?php if(isset($search_by) && $search_by==4) echo "selected"; else echo ""; ?>>Buyer</option>
                                     <option value="5" <?php if(isset($search_by) && $search_by==5) echo "selected"; else echo ""; ?>>Location</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="top-dropdown">
-                            <div class="all-cate custom-select2 sub-menu">
-                                <select id="search_category" name="search_category">
-                                    <option value="0">All</option>
-                                    <?php
-/*Fetch categories through API*/
-$API_categories= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Categories.php");
-$categories = json_decode($API_categories);
-if($categories){
-    foreach($categories as $category){
-        echo '<option value="'.$category->categoryId.'">'.$category->name.'</option>';
-    }
-}
-?>
                                 </select>
                             </div>
                         </div>
