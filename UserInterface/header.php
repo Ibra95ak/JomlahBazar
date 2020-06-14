@@ -16,6 +16,12 @@ curl_close($ch);
 $api_result = json_decode($json, true);
 /*Fetch the "country_code" object*/
 $location=$api_result['country_code'];
+/*Fetch cart products count through API*/
+$API_cart_count = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Count_Cart.php?userId=1");
+$cart_count = json_decode($API_cart_count); 
+/*Fetch wishlist products count through API*/
+$API_wishlist_count = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Count_Wishlist.php?userId=1");
+$wishlist_count = json_decode($API_wishlist_count); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +40,8 @@ $location=$api_result['country_code'];
     <!-- custom css -->
     <link rel="stylesheet" href="assets/css/common.css" />
     <!-- custom css -->
+    <link rel="stylesheet" href="assets/vendor/detail-page/style.css">
+    <link rel="stylesheet" href="assets/vendor/jquery/easyzoom.css">
     <!-- Search bar redirection -->
     <script>
         function searchjb() {
@@ -130,24 +138,38 @@ if($categories){
                             </li>
                         </ul>
                         <ul class="navbar-nav">
-                            <li class="dropdown"> <a class="dropdown-toggle link" href="" data-toggle="dropdown"><i class="fa fa-cart-plus" aria-hidden="true"></i><span class="circle-2">5</span></a>
+                            <li class="dropdown"> <a class="dropdown-toggle link" href="" data-toggle="dropdown"><i class="fa fa-cart-plus" aria-hidden="true"></i><span class="circle-2"><?php echo $cart_count[0]->countc;?></span></a>
                                 <div class="dropdown-menu dropdown-menu2 dropdown-menu-right animate slideIn">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-md-3"><img src="assets/images/fruits/img-1.jpg" alt="" title="" class="img-fluid"></div>
-                                            <div class="col-md-9">
-                                                <p>1 x Product Name... <span class="price">$ 14.70</span></p>
-                                                <a href="" class="close">x</a>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <hr>
-                                            </div>
+<?php
+/*Fetch latest products through API*/
+$API_cart = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Cart.php?userId=1");
+$cart = json_decode($API_cart);  
+if($cart){
+    foreach($cart as $product){
+        echo '<div class="col-md-3">';
+        $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$product->productId);
+        $product_img = json_decode($API_product_img);
+        foreach($product_img as $img){
+            echo '<img src="../AdminPanel/pics/'.$img[0].'" alt="" title="" class="img-fluid">';
+        }
+        echo '</div>';
+        echo '<div class="col-md-9"><p>'.$product->name.' <span class="price">$ '.$product->unitprice.'</span></p><a href="" class="close">x</a></div>';
+    }
+}
+?>
+<div class="col-md-12"><hr></div>
                                             <div class="col-md-12 text-center">
-                                                <input type="button" value="Check out" class="btn check-out w-100" onclick="window.location.hrerf='cart.php'">
+                                                <input type="button" value="Check cart" class="btn check-out w-100" onclick="window.location.href='cart.php'">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="dropdown"> <a class="link" href="wishlist.php"><i class="fa fa-heart" aria-hidden="true"></i><span class="circle-2"><?php echo $wishlist_count[0]->countw;?></span></a>
                             </li>
                         </ul>
                     </div>

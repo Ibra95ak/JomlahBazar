@@ -533,3 +533,16 @@ li a {
 .inner-left-menu {
     padding: 10px 15px;
 }
+.sticky{
+      position: sticky;
+  position: -webkit-sticky;
+  background: #fab400;
+  width: 100%;
+  height: 50px;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 6px #000;
+  color: #fff;
+}

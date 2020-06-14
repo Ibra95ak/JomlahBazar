@@ -87,5 +87,52 @@ class Ser_Carts {
         } else return false;
     }
 
+            /**
+     * Get all wishlists 
+     * params wishlist Id
+     * returns json/Null
+     */
+    public function GetCartByUserId($userId) {
+        $stmt = $this->conn->prepare("CALL sp_GetCartByUserId(?)");
+        $stmt->bind_param("i",$userId);
+        if ($stmt->execute()) {
+            $cart = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch wishlist data and wishlist in array
+            $stmt->close();
+            if ($cart==true) {
+                return $cart;
+            }
+        } else return NULL;
+    }
+    
+    /**
+     * Check if email already exist
+     * returns array/Null
+     */
+    public function isExist_Cart($userId,$productId) {
+        $stmt = $this->conn->prepare("CALL sp_IsExistCart(?,?)");
+        $stmt->bind_param("ii",$userId,$productId);
+        $result = $stmt->execute();
+        $wishlist = $stmt->get_result()->fetch_assoc();
+        $stmt->close(); 
+		if($wishlist) return true;
+		else return false;
+    }
+    
+                /**
+     * Get all wishlists 
+     * params wishlist Id
+     * returns json/Null
+     */
+    public function GetCartCount($userId) {
+        $stmt = $this->conn->prepare("CALL sp_GetCartCount(?)");
+        $stmt->bind_param("i",$userId);
+        if ($stmt->execute()) {
+            $cart = $stmt->get_result()->fetch_assoc(); //fetch wishlist data and wishlist in array
+            $stmt->close();
+            if ($cart==true) {
+                return $cart;
+            }
+        } else return NULL;
+    }
 }
 ?>

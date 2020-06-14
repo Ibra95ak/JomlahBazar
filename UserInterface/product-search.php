@@ -3,6 +3,9 @@ include('../AdminPanel/libraries/base.php');
 include("header.php");
 $search_category=$_GET['search_category'];
 $search=$_GET['search'];
+$filter="";
+if(isset($_GET['min_price'])) $filter.="&min_price=".$_GET['min_price'];
+if(isset($_GET['max_price'])) $filter.="&max_price=".$_GET['max_price'];
 ?>
 <!-- Bread Crumbs and Filters and products -->
 <div class="container container-fluid">
@@ -20,7 +23,7 @@ $search=$_GET['search'];
                     <div class="row">
                         <?php
 /*Fetch latest products through API*/
-$API_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Products.php?search_category=$search_category&search=".urlencode($search));
+$API_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Products.php?search_category=$search_category&search=".urlencode($search).$filter);
 $products = json_decode($API_products); 
 if($products){
   foreach($products as $product){
