@@ -26,11 +26,24 @@
         </div>
         <h3>Categories</h3>
         <div class="list-css">
-            <ul>
+            <ul class="list-unstyled components">
                 <?php
-if($categories){
-    foreach($categories as $category){
-        echo '<li><a href="product-search.php?search_category='.$category['categoryId'].'&search=">'.$category['name'].'</a></li>';
+$API_productscategories = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Filter_Categories.php?search=".urlencode($search));
+$productscategories = json_decode($API_productscategories); 
+if($productscategories){
+    $count=0;
+    foreach($productscategories as $category){
+        $count++;
+        echo '<li class="active"><a href="#homeSubmenu'.$count.'" data-toggle="collapse" aria-expanded="false" class="collapsed">'.$category->name.'<i class="fa fa-angle-down" aria-hidden="true"></i></a>';
+        echo '<ul class="list-unstyled collapse" id="homeSubmenu'.$count.'" style="">';
+        $API_productssubcategories = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_FeaturedSubCategories.php?categoryId=".$category->categoryId);
+      $productssubcategories = json_decode($API_productssubcategories); 
+      if($productssubcategories){
+          foreach($productssubcategories as $productssubcategory){
+              echo '<li><a href="product-search.php?search_by=2&search_category='.$category->categoryId.'&search_subcategory='.$productssubcategory[0].'&search=">'.$productssubcategory[2].'</a></li>';
+          }
+      }
+        echo '</ul></li>';
     }
 }                        
 ?>

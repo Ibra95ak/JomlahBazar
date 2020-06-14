@@ -1,6 +1,4 @@
 <?php
-/*Get base class*/
-require_once '../../libraries/base.php';
 /*Call Products class*/
 require_once '../../libraries/Ser_Products.php';
 /*Create Product Instance*/
@@ -10,7 +8,7 @@ $results=array();
 /*Get productId*/
 $productId=$_GET['productId'];
 /*Fetch featured products*/
-$featured_pic = $db->GetProductPicture($productId);
+$featured_pic = $db->GetProductPictures($productId);
 if($featured_pic){
     foreach($featured_pic as $pic){
         array_push($results,$pic);

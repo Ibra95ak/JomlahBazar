@@ -5,54 +5,11 @@ $search_category=$_GET['search_category'];
 $search=$_GET['search'];
 ?>
 <div class="container container-fluid">
-    <nav aria-label="breadcrumb" class="bread-boder">
-        <div class="row">
-            <div class="col-lg-8 col-md-6">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                    <li class="breadcrumb-item">Brands</li>
-                </ol>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="custom-select2">
-                            <select>
-                                <option>Default Sorting</option>
-                                <option value="A-Z">A to Z</option>
-                                <option value="Z-A">Z to A</option>
-                                <option value="High to low price">High to low price</option>
-                                <option value="Low to high price">Low to high</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="custom-select2">
-                            <select>
-                                <option value="A-Z">Show 10</option>
-                                <option value="Z-A">Show 20</option>
-                                <option value="High to low price">Show 30</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="clearfix"></div>
-    </nav>
     <div class="row">
  <?php include("filters.php");?>
         <div class="col-lg-10 col-md-12">
             <div class="row">
                 <div class="col-12">
-                    <div class="right-heading">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>Brands</h3>
-                            </div>
-                        </div>
-                    </div>
                     <div class="clearfix"></div>
                     <div class="row">
                         <?php
@@ -105,18 +62,20 @@ if($brands){
         <h2 class="wow fadeInDown">Bestsellers</h2>
         <div class="owl-carousel latest-products owl-theme wow fadeIn">
 <?php
-//Get brand class
-require_once '../AdminPanel/libraries/Ser_Products.php';
-$db = new Ser_Products();  
-$bestsellers = $db->GetBestSellerProducts();
-if($bestsellers){
-  foreach($bestsellers as $bestseller){
-    $bestseller_pic = $db->GetProductPicture($bestseller['productId']);
+/*Fetch best sellers products through API*/
+$API_bestsellers_products= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_BestSellerProducts.php");
+$bestsellers_products = json_decode($API_bestsellers_products);
+if($bestsellers_products){
+  foreach($bestsellers_products as $bestseller){
+    $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$bestseller->productId);
+    $product_img = json_decode($API_product_img); 
     echo '<div class="item"><div class="product">';
-    echo '<a class="product-img" href="product-details?productId='.$bestseller['productId'].'"><img src="../AdminPanel/pics/'.$bestseller_pic['path'].'" alt="" /></a>';
-    echo '<h5 class="product-type">'.$bestseller['brand_name'].'</h5>';
-    echo '<h3 class="product-name">'.$bestseller['name'].'</h3>';
-    echo '<h3 class="product-price">$'.$bestseller['unitprice'].'</h3>';
+    foreach($product_img as $img){
+        echo '<a class="product-img" href="single_product.php?productId='.$bestseller->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';    
+    }
+    echo '<h5 class="product-type">'.$bestseller->brand_name.'</h5>';
+    echo '<h3 class="product-name">'.$bestseller->name.'</h3>';
+    echo '<h3 class="product-price">$'.$bestseller->unitprice.'</h3>';
     echo '</div></div>';
 }  
 }

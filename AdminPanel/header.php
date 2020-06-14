@@ -583,6 +583,7 @@
                                     </ul>
                                 </div>
                             </li>
+                            <li class="kt-menu__item " aria-haspopup="true"><a href="form_aboutus.php" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-home"></i><span class="kt-menu__link-text">About Us</span></a></li>
                         </ul>
                     </div>
                 </div>

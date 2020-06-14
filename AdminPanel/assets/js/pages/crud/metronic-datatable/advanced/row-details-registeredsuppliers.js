@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=registeredsuppliers.json",
+              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=registeredsuppliers.json",
           },
         },
         pageSize: 10,
@@ -69,12 +69,12 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_creditcards.php?creditcardId=' +
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_creditcards.php?creditcardId=' +
               row.creditcardId +
               '"><i class="la la-leaf"></i> Credit Card</a>\
 							    </div>\
 							</div>\
-							<a href="localhost/JomlahBazar/AdminPanel/form_registeredsuppliers.php?registeredsupplierId=' +
+							<a href="http://localhost/JomlahBazar/AdminPanel/form_registeredsuppliers.php?registeredsupplierId=' +
               row.registeredsupplierId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\

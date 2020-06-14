@@ -19,22 +19,23 @@ $search=$_GET['search'];
                     <div class="clearfix"></div>
                     <div class="row">
                         <?php
-require_once '../AdminPanel/libraries/Ser_Products.php';
-$db = new Ser_Products(); 
-
-if($search!=NULL) $products = $db->SearchProducts($search);
-else $products = $db->GetProducts();
+/*Fetch latest products through API*/
+$API_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Products.php?search_category=$search_category&search=".urlencode($search));
+$products = json_decode($API_products); 
 if($products){
   foreach($products as $product){
-    $product_pic = $db->GetProductPicture($product['productId']);
+    $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$product->productId);
+    $product_img = json_decode($API_product_img);
     echo '<div class="col-lg-3 col-md-4 col-sm-6 product-card-col">';
     echo '<div class="product product-card">';
-    echo '<a class="product-img" href="single_product.php?productId='.$product['productId'].'"><img src="../AdminPanel/pics/'.$product_pic['path'].'" alt=""></a>';
-    echo '<h2><a><span class="product-title">'.$product['name'].'</span></a></h2>';
+    foreach($product_img as $img){
+        echo '<a class="product-img" href="single_product.php?productId='.$product->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';    
+    }
+    echo '<h2><a><span class="product-title">'.$product->name.'</span></a></h2>';
     echo '<div class="row m-0 list-n">';
     echo '<div class="col-lg-12 p-0">';
     echo '<div class="single-product-price">';
-    echo '<span class="a-price" data-a-size="l" data-a-color="base"><span class="price-dollar">$</span><span class="price-digit">'.$product['unitprice'].'</span><span class="price-fraction"></span></span>';
+    echo '<span class="a-price" data-a-size="l" data-a-color="base"><span class="price-dollar">$</span><span class="price-digit">'.$product->unitprice.'</span><span class="price-fraction"></span></span>';
     echo '</div></div></div></div></div>';
 }  
 }
@@ -58,17 +59,20 @@ if($products){
                                 <h2 class="wow fadeInDown">Bestsellers</h2>
                                 <div class="owl-carousel latest-products owl-theme wow fadeIn">
                                     <?php
-require_once '../AdminPanel/libraries/Ser_Products.php';
-$db = new Ser_Products();  
-$bestsellers = $db->GetBestSellerProducts();
-if($bestsellers){
-  foreach($bestsellers as $bestseller){
-    $bestseller_pic = $db->GetProductPicture($bestseller['productId']);
+/*Fetch best sellers products through API*/
+$API_bestsellers_products= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_BestSellerProducts.php");
+$bestsellers_products = json_decode($API_bestsellers_products);
+if($bestsellers_products){
+  foreach($bestsellers_products as $bestseller){
+    $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$bestseller->productId);
+    $product_img = json_decode($API_product_img); 
     echo '<div class="item"><div class="product">';
-    echo '<a class="product-img" href="product-details?productId='.$bestseller['productId'].'"><img src="../AdminPanel/pics/'.$bestseller_pic['path'].'" alt="" /></a>';
-    echo '<h5 class="product-type">'.$bestseller['brand_name'].'</h5>';
-    echo '<h3 class="product-name">'.$bestseller['name'].'</h3>';
-    echo '<h3 class="product-price">$'.$bestseller['unitprice'].'</h3>';
+    foreach($product_img as $img){
+        echo '<a class="product-img" href="single_product.php?productId='.$bestseller->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';    
+    }
+    echo '<h5 class="product-type">'.$bestseller->brand_name.'</h5>';
+    echo '<h3 class="product-name">'.$bestseller->name.'</h3>';
+    echo '<h3 class="product-price">$'.$bestseller->unitprice.'</h3>';
     echo '</div></div>';
 }  
 }

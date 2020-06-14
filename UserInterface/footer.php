@@ -67,7 +67,7 @@
         <div class="col-lg-3 col-md-6 col-sm-6 footer-link wow fadeInLeft">
             <h3>Information</h3>
             <ul>
-                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="about-us.php">About Us</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="shop.html">Shop</a></li>

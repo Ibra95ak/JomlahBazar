@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=products.json",
+              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=products.json",
           },
         },
         pageSize: 10,
@@ -165,18 +165,18 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_inventories.php?inventoryId=' +
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_inventories.php?inventoryId=' +
               row.inventoryId +
               '"><i class="la la-edit"></i> Inventory</a>\
-							        <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_brands.php?brandId=' +
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_brands.php?brandId=' +
               row.brandId +
               '"><i class="la la-leaf"></i> Brand</a>\
-							        <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_productdetails.php?productdetailId=' +
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_productdetails.php?productdetailId=' +
               row.productdetailId +
               '"><i class="la la-print"></i> ProductDetail</a>\
 							    </div>\
 							</div>\
-							<a href="localhost/JomlahBazar/AdminPanel/form_products.php?productId=' +
+							<a href="http://localhost/JomlahBazar/AdminPanel/form_products.php?productId=' +
               row.productId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\

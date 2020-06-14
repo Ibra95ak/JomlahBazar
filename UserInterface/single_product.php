@@ -1,16 +1,22 @@
 <?php 
-include('../AdminPanel/libraries/base.php');
 include("header.php");
-require_once '../AdminPanel/libraries/Ser_Products.php';
-$db = new Ser_Products();
-require_once '../AdminPanel/libraries/Ser_Productdetails.php';
-$db1 = new Ser_Productdetails();
-require_once '../AdminPanel/libraries/Ser_Brands.php';
-$db2 = new Ser_Brands();
-$productId=$_GET['productId'];
-$product = $db->GetproductById($productId);
-$details = $db1->GetproductdetailById($productId);
-$brand = $db2->GetBrandById($product['brandId']);
+/*Parameters*/
+$productId = $_GET['productId'];
+/*Fetch product by Id through API*/
+$API_product = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Product.php?productId=".$productId);
+$product = json_decode($API_product);
+/*Fetch product details by Id through API*/
+$API_product_details = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Product_Details.php?productId=".$productId);
+$product_details = json_decode($API_product_details);
+/*Fetch supplier by Id through API*/
+$API_supplier = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Supplier.php?supplierId=".$product[3]);
+$supplier = json_decode($API_supplier);
+/*Fetch category by Id through API*/
+$API_category = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Category.php?categoryId=".$product[1]);
+$category = json_decode($API_category);
+/*Fetch brand by Id through API*/
+$API_brand = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Brand.php?brandId=".$product[12]);
+$brand = json_decode($API_brand);
 ?>
 <div class="container">
   <nav aria-label="breadcrumb">
@@ -28,44 +34,49 @@ $brand = $db2->GetBrandById($product['brandId']);
       <div class="col-lg-6"> <a href="wishlist.html" class="wish-list"><i class="fa fa-heart" aria-hidden="true"></i></a>
         <div id="sync1" class="owl-carousel owl-theme">
 <?php
-$product_pics = $db->GetProductPics($productId);
-            foreach($product_pics as $pic){
-                echo '<div class="item easyzoom easyzoom--overlay"> <a href="../AdminPanel/pics/'.$pic[0].'"> <img src="../AdminPanel/pics/'.$pic[0].'" alt="" title="" /> </a> </div>';
+$API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$productId);
+$product_img = json_decode($API_product_img);
+            foreach($product_img as $img){
+                echo '<div class="item easyzoom easyzoom--overlay"> <a href="../AdminPanel/pics/'.$img[0].'"> <img src="../AdminPanel/pics/'.$img[0].'" alt="" title="" /> </a> </div>';
             }
 ?>
           
         </div>
         <div id="sync2" class="owl-carousel owl-theme">
 <?php
-            foreach($product_pics as $pic){
-                echo '<div class="item"><img src="../AdminPanel/pics/'.$pic[0].'" alt="" title=""></div>';
+            foreach($product_img as $img){
+                echo '<div class="item"><img src="../AdminPanel/pics/'.$img[0].'" alt="" title=""></div>';
             }
 ?>   
         </div>
       </div>
       <div class="col-lg-6  product-text">
         <div class="row">
-          <div class="col-md-6 col-sm-6 col-6">
-            <h3><?php echo $product['name'];?></h3>
-            <img src="assets/images/star.png" alt="" title=""> <img src="assets/images/star.png" alt="" title=""> <img src="assets/images/star.png" alt="" title=""> <img src="assets/images/star.png" alt="" title=""> <img src="assets/images/star.png" alt="" title=""> </div>
-          <div class="col-md-6 col-sm-6 text-right col-6">
-            <div class="price-css"> <span>$<?php echo $product['unitprice'];?></span>
+          <div class="col-md-10 col-sm-10 col-10">
+            <h3><?php echo $product[6];?></h3>
+<?php
+for($i=0;$i<$product[11];$i++) echo '<img src="assets/images/star.png" alt="" title="">';         
+?>
+            </div>
+          <div class="col-md-2 col-sm-2 text-right col-2">
+            <div class="price-css"> <!--<span>$<?php //echo $product[9];?></span>-->
               <div class="clearfix"></div>
-              $24.00 </div>
+              $<?php echo $product[9];?> </div>
           </div>
           <div class="col-md-12">
             <div class="mt-3">
-              <p><?php echo $details['description'];?></p>
+              <p><?php echo $product_details[1];?></p>
               <div class="mt-3 text-2">
                 <p><span>Availability</span>: &nbsp;&nbsp;<img src="assets/images/available.png" alt="" title="" > In Stock</p>
-                <p><span>Vendor</span>: &nbsp;&nbsp;Beauty store</p>
-                <p><span>Product Type</span>: &nbsp;&nbsp;Cosmetics </p>
+                <p><span>Supplier</span>: <?php echo $supplier[4];?></p>
+                <p><span>Category</span>: <?php echo $category[1];?></p>
+                <p><span>Brand</span>: <?php echo $brand[2];?></p>
               </div>
               <div class="quality">
                 <div class="row">
                   <div class="col-md-6 col-sm-6">
                     <div class="input-group">
-                      <h4>Quality :</h4>
+                      <h4>Quantity :</h4>
                       <span class="input-group-btn">
                       <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"> <i class="fa fa-minus"></i> </button>
                       </span>
@@ -91,12 +102,6 @@ $product_pics = $db->GetProductPics($productId);
               </div>
               <div class="clearfix"></div>
               <div class="row categories">
-                <div class="col-md-7">
-                  <h3 class="pull-left"> Categories : <span>&nbsp;Beauty, Healthy</span></h3>
-                </div>
-                <div class="col-md-5">
-                  <h3 class="pull-left"> Tags : <span>&nbsp;Healthy, care</span></h3>
-                </div>
                 <div class="clearfix"></div>
                 <div class="list-3 row">
                   <div class="col-lg-4"><img src="assets/images/shield.png" alt=""> 10 days return</div>
@@ -117,23 +122,27 @@ $product_pics = $db->GetProductPics($productId);
             </nav>
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active text-1" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <p class="p1"><?php echo $details['description'];?></p>
+                <p class="p1"><?php echo $product_details[1];?></p>
                 <!-- snippet location product_description -->
               </div>
               <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <table class="table">
                   <tbody>
                     <tr>
-                      <th width="20%"><div align="left">Brand</div></th>
-                      <td><?php echo $brand['brand_name'];?></td>
-                    </tr>
-                    <tr>
                       <th><div align="left">Size</div></th>
-                      <td><?php echo $details['size'];?></td>
+                      <td><?php echo $product_details[2];?></td>
+                    </tr>
+                      <tr>
+                      <th><div align="left">Color</div></th>
+                      <td><?php echo $product_details[3];?></td>
+                    </tr>
+                      <tr>
+                      <th><div align="left">Weight</div></th>
+                      <td><?php echo $product_details[4];?></td>
                     </tr>
                     <tr>
                       <th><div align="left">Barcode</div></th>
-                      <td><?php echo $details['barcode'];?></td>
+                      <td><?php echo $product_details[5];?></td>
                     </tr>
                   </tbody>
                 </table>

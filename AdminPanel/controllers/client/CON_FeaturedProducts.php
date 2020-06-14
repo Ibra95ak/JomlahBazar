@@ -1,6 +1,4 @@
 <?php
-/*Get base class*/
-require_once '../../libraries/base.php';
 /*Call Products class*/
 require_once '../../libraries/Ser_Products.php';
 /*Create Product Instance*/

@@ -46,10 +46,24 @@ include('header.php');
     <div class="container">
         <h2 class="wow fadeInDown">Latest Products</h2>
         <div class="owl-carousel latest-products owl-theme wow fadeIn">
-<?php
+            <?php
 /*Fetch latest products through API*/
-$latest_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_LatestProducts.php");
-echo $latest_products;
+$API_latest_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_LatestProducts.php");
+$latest_products = json_decode($API_latest_products); 
+if($latest_products){
+      foreach($latest_products as $latest_product){
+        $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$latest_product->productId);
+        $product_img = json_decode($API_product_img);
+        echo '<div class="item"><div class="product">';
+        foreach($product_img as $img){
+        echo '<a class="product-img" href="single_product.php?productId='.$latest_product->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';    
+    }
+        echo '<h5 class="product-type">'.$latest_product->brand_name.'</h5>';
+        echo '<h3 class="product-name">'.$latest_product->name.'</h3>';
+        echo '<h3 class="product-price">$'.$latest_product->unitprice.'</h3>';
+        echo '</div></div>';
+      } 
+}
 ?>
         </div>
     </div>
@@ -59,7 +73,7 @@ echo $latest_products;
     <div class="container">
         <h2 class="wow fadeInDown">Featured Products</h2>
         <div class="owl-carousel latest-products owl-theme wow fadeIn">
-<?php
+            <?php
 /*Fetch featured products through API*/
 $API_featured_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_FeaturedProducts.php");
 $featured_products = json_decode($API_featured_products);       
@@ -68,14 +82,16 @@ if($featured_products){
     echo '<div class="item"><div class="product">';
     $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$featured_product->productId);
     $product_img = json_decode($API_product_img); 
-    echo '<a class="product-img" href="single_product.php?productId='.$featured_product->productId.'"><img src="../AdminPanel/pics/'.$product_img[0].'" alt="" /></a>';
+    foreach($product_img as $img){
+        echo '<a class="product-img" href="single_product.php?productId='.$featured_product->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';    
+    }
     echo '<h5 class="product-type">'.$featured_product->brand_name.'</h5>';
     echo '<h3 class="product-name">'.$featured_product->name.'</h3>';
     echo '<h3 class="product-price">$'.$featured_product->unitprice.'</h3>';
     echo '</div></div>';
 }  
 }
-?>          
+?>
         </div>
     </div>
 </div>
@@ -84,11 +100,27 @@ if($featured_products){
     <div class="container">
         <h2 class="wow fadeInDown">Featured Category</h2>
         <div class="row justify-content-center">
-<?php
+            <?php
 /*Fetch featured categories through API*/
-$featured_categories = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_FeaturedCategories.php");
-echo $featured_categories;
-?>      
+$API_featured_categories = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_FeaturedCategories.php");
+$featured_categories = json_decode($API_featured_categories); 
+if($featured_categories){
+  foreach($featured_categories as $featured_category){
+      echo '<div class="col-lg-4 col-md-6 text-center wow fadeIn mb-3"><ul class="ch-grid"><li><div class="ch-item" style="background: url(assets/images/product/left-img.jpg) no-repeat center top;background-size: 100% 100%;"><div class="ch-info"><div class="img-text">';
+      echo '<h3>'.$featured_category->name.'</h3>';
+      /*Fetch subcategories */
+      $API_featured_subcategories = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_FeaturedSubCategories.php?categoryId=".$featured_category->categoryId);
+      $featured_subcategories = json_decode($API_featured_subcategories); 
+      if($featured_subcategories){
+          foreach($featured_subcategories as $featured_subcategory){
+              echo '<p>'.$featured_subcategory[2].'</p>';
+          }
+      }
+    echo ' <a href="#">view more</a>';
+    echo '</div></div></div></li></ul></div>';
+}  
+}
+?>
         </div>
     </div>
 </div>
@@ -97,11 +129,25 @@ echo $featured_categories;
     <div class="container">
         <h2 class="wow fadeInDown">Bestsellers</h2>
         <div class="owl-carousel latest-products owl-theme wow fadeIn">
-<?php
+            <?php
 /*Fetch best sellers products through API*/
-$bestsellers_products= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_BestSellerProducts.php");
-echo $bestsellers_products;
-?>  
+$API_bestsellers_products= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_BestSellerProducts.php");
+$bestsellers_products = json_decode($API_bestsellers_products);
+if($bestsellers_products){
+  foreach($bestsellers_products as $bestseller){
+    $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$bestseller->productId);
+    $product_img = json_decode($API_product_img); 
+    echo '<div class="item"><div class="product">';
+    foreach($product_img as $img){
+        echo '<a class="product-img" href="single_product.php?productId='.$bestseller->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';    
+    }
+    echo '<h5 class="product-type">'.$bestseller->brand_name.'</h5>';
+    echo '<h3 class="product-name">'.$bestseller->name.'</h3>';
+    echo '<h3 class="product-price">$'.$bestseller->unitprice.'</h3>';
+    echo '</div></div>';
+}  
+}
+?>
         </div>
     </div>
 </div>
@@ -152,95 +198,116 @@ echo $bestsellers_products;
         </div>
         <div>
             <div class="owl-carousel latest-products owl-theme wow fadeIn">
-<?php
+            <?php
 /*Fetch best sellers products through API*/
-$DOW= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_DealOfWeek.php");
-echo $DOW;
-?> 
+$API_DOW= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_DealOfWeek.php");
+$DOW = json_decode($API_DOW);
+if($DOW){
+  foreach($DOW as $DOWproduct){
+    $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$DOWproduct->productId);
+    $product_img = json_decode($API_product_img); 
+    echo '<div class="item"><div class="product">';
+    foreach($product_img as $img){
+        echo '<a class="product-img" href="single_product.php?productId='.$DOWproduct->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';    
+    }
+    echo '<h5 class="product-type">'.$DOWproduct->brand_name.'</h5>';
+    echo '<h3 class="product-name">'.$DOWproduct->name.'</h3>';
+    echo '<h3 class="product-price">$'.$DOWproduct->unitprice.'</h3>';
+    echo '</div></div>';
+}  
+}
+?>
             </div>
         </div>
     </div>
 </div>
 <div class="clearfix"></div>
 <div class="testimonial-area client-area">
-  <div class="container">
-    <div class="row">
-      <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
-        <div class="section-title section-title-cap text-center">
-          <div class="section-icon section1-icon"> <img src="assets/images/icon/icon6.png" alt=""> </div>
-          <h1>Client’s Words</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 offset-lg-3 offset-xl-3">
+                <div class="section-title section-title-cap text-center">
+                    <div class="section-icon section1-icon"> <img src="assets/images/icon/icon6.png" alt=""> </div>
+                    <h1>Client’s Words</h1>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="client-active owl-carousel testimonial owl-loaded owl-drag">
-        <div class="owl-stage-outer">
-          <div class="owl-stage" style="width: 1600px; transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s;">
-            <div class="owl-item active" style="width: 320px;">
-              <div class="col-xl-12">
-                <div class="client-wrapper text-center">
-                  <div class="client-text">
-                    <div class="text-center"> <img src="assets/images/clint-images.jpg" alt="" title="" class="rounded-circle"> </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
-                      dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
-                    <h4>Johnny J. Stewart</h4>
-                    <span>Web Designer</span> </div>
+        <div class="row">
+            <div class="client-active owl-carousel testimonial owl-loaded owl-drag">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage" style="width: 1600px; transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s;">
+                        <div class="owl-item active" style="width: 320px;">
+                            <div class="col-xl-12">
+                                <div class="client-wrapper text-center">
+                                    <div class="client-text">
+                                        <div class="text-center"> <img src="assets/images/clint-images.jpg" alt="" title="" class="rounded-circle"> </div>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
+                                            dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
+                                        <h4>Johnny J. Stewart</h4>
+                                        <span>Web Designer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item active" style="width: 320px;">
+                            <div class="col-xl-12">
+                                <div class="client-wrapper text-center">
+                                    <div class="client-text">
+                                        <div class="text-center"> <img src="assets/images/clint-images-2.jpg" alt="" title="" class="rounded-circle"> </div>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
+                                            dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
+                                        <h4>Dr.Frank Harisk</h4>
+                                        <span>Founder</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item active" style="width: 320px;">
+                            <div class="col-xl-12">
+                                <div class="client-wrapper text-center">
+                                    <div class="client-text">
+                                        <div class="text-center"> <img src="assets/images/clint-images-3.jpg" alt="" title="" class="rounded-circle"> </div>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
+                                            dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
+                                        <h4>Dr.Frank Harisk</h4>
+                                        <span>Founder</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 320px;">
+                            <div class="col-xl-12">
+                                <div class="client-wrapper text-center">
+                                    <div class="client-text">
+                                        <div class="text-center"> <img src="assets/images/clint-images-2.jpg" alt="" title="" class="rounded-circle"> </div>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
+                                            dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
+                                        <h4>Dr.Frank Harisk</h4>
+                                        <span>Founder</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 320px;">
+                            <div class="col-xl-12">
+                                <div class="client-wrapper text-center">
+                                    <div class="client-text">
+                                        <div class="text-center"> <img src="assets/images/clint-images.jpg" alt="" title="" class="rounded-circle"> </div>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
+                                            dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
+                                        <h4>Johnny J. Stewart</h4>
+                                        <span>Web Designer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous"><i class="fa fa-angle-left"></i></span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next"><i class="fa fa-angle-right"></i></span></button></div>
+                <div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div>
             </div>
-            <div class="owl-item active" style="width: 320px;">
-              <div class="col-xl-12">
-                <div class="client-wrapper text-center">
-                  <div class="client-text">
-                    <div class="text-center"> <img src="assets/images/clint-images-2.jpg" alt="" title="" class="rounded-circle"> </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
-                      dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
-                    <h4>Dr.Frank Harisk</h4>
-                    <span>Founder</span> </div>
-                </div>
-              </div>
-            </div>
-            <div class="owl-item active" style="width: 320px;">
-              <div class="col-xl-12">
-                <div class="client-wrapper text-center">
-                  <div class="client-text">
-                    <div class="text-center"> <img src="assets/images/clint-images-3.jpg" alt="" title="" class="rounded-circle"> </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
-                      dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
-                    <h4>Dr.Frank Harisk</h4>
-                    <span>Founder</span> </div>
-                </div>
-              </div>
-            </div>
-            <div class="owl-item" style="width: 320px;">
-              <div class="col-xl-12">
-                <div class="client-wrapper text-center">
-                  <div class="client-text">
-                    <div class="text-center"> <img src="assets/images/clint-images-2.jpg" alt="" title="" class="rounded-circle"> </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
-                      dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
-                    <h4>Dr.Frank Harisk</h4>
-                    <span>Founder</span> </div>
-                </div>
-              </div>
-            </div>
-            <div class="owl-item" style="width: 320px;">
-              <div class="col-xl-12">
-                <div class="client-wrapper text-center">
-                  <div class="client-text">
-                    <div class="text-center"> <img src="assets/images/clint-images.jpg" alt="" title="" class="rounded-circle"> </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et
-                      dolore magna aliqua. Uts enim ad minim veniam quis see nostrudexercitatiac.</p>
-                    <h4>Johnny J. Stewart</h4>
-                    <span>Web Designer</span> </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous"><i class="fa fa-angle-left"></i></span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next"><i class="fa fa-angle-right"></i></span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
     </div>
-  </div>
 </div>
 <div class="clearfix"></div>
 <?php 

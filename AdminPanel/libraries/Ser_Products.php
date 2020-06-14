@@ -119,11 +119,11 @@ class Ser_Products {
      * params product Id
      * returns json/Null
      */
-    public function GetProductPicture($productId) {
+    public function GetProductPictures($productId) {
         $stmt = $this->conn->prepare("CALL sp_GetProductPic(?)");
         $stmt->bind_param("i",$productId);
         if ($stmt->execute()) {
-            $products = $stmt->get_result()->fetch_assoc(); //fetch product data and product in array
+            $products = $stmt->get_result()->fetch_all(); //fetch product data and product in array
             $stmt->close();
             if ($products==true) {
                 return $products;

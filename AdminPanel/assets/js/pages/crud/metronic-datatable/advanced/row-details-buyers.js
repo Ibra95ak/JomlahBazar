@@ -13,7 +13,7 @@ var KTDatatableAutoColumnHideDemo = (function () {
         source: {
           read: {
             url:
-              "localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=buyers.json",
+              "http://localhost/JomlahBazar/AdminPanel/controllers/json/Read.php?jsonname=buyers.json",
           },
         },
         pageSize: 10,
@@ -134,23 +134,23 @@ var KTDatatableAutoColumnHideDemo = (function () {
 	                                <i class="la la-ellipsis-h"></i>\
 	                            </a>\
 							    <div class="dropdown-menu dropdown-menu-right">\
-							        <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_buyers.php?buyerId=' +
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_buyers.php?buyerId=' +
               row.userId +
               '""><i class="la la-edit"></i> AAA</a>\
-							        <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_address.php?buyerId=' +
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_address.php?buyerId=' +
               row.userId +
               '""><i class="la la-leaf"></i> Address</a>\
-                      <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_reachouts.php?buyerId=' +
+                      <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_reachouts.php?buyerId=' +
               row.userId +
               '""><i class="la la-print"></i> Reachout</a>\
-                      <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_wallets.php?buyerId=' +
+                      <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_wallets.php?buyerId=' +
               row.userId +
               '""><i class="la la-edit"></i> Wallet</a>\
-							        <a class="dropdown-item" href="localhost/JomlahBazar/AdminPanel/form_address.php?userId=' +
+							        <a class="dropdown-item" href="http://localhost/JomlahBazar/AdminPanel/form_address.php?userId=' +
               row.userId +
               '""><i class="la la-leaf"></i> Identity</a>\
 							</div>\
-              <a href="localhost/JomlahBazar/AdminPanel/form_buyers.php?userId=' +
+              <a href="http://localhost/JomlahBazar/AdminPanel/form_buyers.php?userId=' +
               row.userId +
               '" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Edit details">\
 								<i class="la la-edit"></i>\

@@ -121,7 +121,7 @@ include('header.php');
                             ).attr('disabled', false);
                             // Simulate an HTTP redirect:
                             window.location.replace(
-                                "localhost/JomlahBazar/AdminPanel/por_registeredsuppliers.php"
+                                "http://localhost/JomlahBazar/AdminPanel/por_registeredsuppliers.php"
                             );
                         }, 2000);
                         break;

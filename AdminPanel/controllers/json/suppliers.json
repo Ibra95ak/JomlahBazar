@@ -1,1 +1,1 @@
-[{"supplierId":1,"aaaId":1,"email":"ibra@iak.com","name":"sub1","type":"discount 1","registered_name":"reg sup 1","blockId":1,"subscriptionplanId":1,"registeredsupplierId":1}]
+[{"supplierId":1,"aaaId":1,"email":"ibrahim@gmail.com","name":"subp1","type":"distype1","registered_name":"regsub1","blockId":1,"subscriptionplanId":1,"registeredsupplierId":1},{"supplierId":2,"aaaId":2,"email":"ibra@test.com","name":"subplan2","type":"distype2","registered_name":"regsub2","blockId":2,"subscriptionplanId":2,"registeredsupplierId":2}]

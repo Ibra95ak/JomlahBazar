@@ -87,6 +87,23 @@ class Ser_Addresses {
             return true;
         } else return false;
     }
+    
+    /**
+     * Get address by supplierId 
+     * params supplier Id
+     * returns json/Null
+     */
+    public function GetAddressBySupplierId($supplierId) {
+        $stmt = $this->conn->prepare("CALL sp_GetAddressBySupplierId(?)");
+        $stmt->bind_param("i",$supplierId);
+        if ($stmt->execute()) {
+            $addresses = $stmt->get_result()->fetch_assoc(); //fetch address data and address in array
+            $stmt->close();
+            if ($addresses==true) {
+                return $addresses;
+            }
+        } else return NULL;
+    }
 
 }
 ?>
