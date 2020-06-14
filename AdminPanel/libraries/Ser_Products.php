@@ -43,8 +43,8 @@ class Ser_Products {
      * Get all products 
      * returns json/Null
      */
-    public function GetProducts() {
-        $stmt = $this->conn->prepare("CALL sp_GetProducts()");
+    public function GetProducts($sql) {
+        $stmt = $this->conn->prepare($sql);
         if ($stmt->execute()) {
             $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
             $stmt->close();
