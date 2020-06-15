@@ -1,4 +1,5 @@
 <?php
+ header("Access-Control-Allow-Origin: *");
 /*Get base class*/
 require_once '../AdminPanel/libraries/base.php';
 /*Search bar parameters*/
@@ -18,10 +19,10 @@ $api_result = json_decode($json, true);
 $location=$api_result['country_code'];
 /*Fetch cart products count through API*/
 $API_cart_count = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Count_Cart.php?userId=1");
-$cart_count = json_decode($API_cart_count); 
+$cart_count = json_decode($API_cart_count);
 /*Fetch wishlist products count through API*/
 $API_wishlist_count = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Count_Wishlist.php?userId=1");
-$wishlist_count = json_decode($API_wishlist_count); 
+$wishlist_count = json_decode($API_wishlist_count);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,7 +128,7 @@ $wishlist_count = json_decode($API_wishlist_count);
 <?php
 /*Fetch latest products through API*/
 $API_cart = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Cart.php?userId=1");
-$cart = json_decode($API_cart);  
+$cart = json_decode($API_cart);
 if($cart){
     foreach($cart as $product){
         echo '<div class="col-md-3">';
