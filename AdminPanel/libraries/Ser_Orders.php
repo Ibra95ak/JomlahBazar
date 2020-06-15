@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Ser_Orders {
     private $conn;
     // constructor
@@ -10,10 +10,10 @@ class Ser_Orders {
     }
     // destructor
     function __destruct() {
-        
+
     }
-        
-     
+
+
 /**
      * Storing new Order
      * returns Boolean
@@ -21,15 +21,17 @@ class Ser_Orders {
     public function addOrder($userId,$ordernumber,$purchaseId,$statusId,$blockId,$active) {
         $stmt = $this->conn->prepare("CALL sp_AddOrder(?,?,?,?,?,?)");
 		$stmt->bind_param("iiiiii",$userId,$ordernumber,$purchaseId,$statusId,$blockId,$active);
-		$result = $stmt->execute();
+    if ($stmt->execute()) {
+        $order = $stmt->get_result()->fetch_assoc();
         $stmt->close();
-        // check for successful store
-        if ($result) return true;
-        else return false;
+  return $order; 
+    } else {
+        return NULL;
+    }
     }
 
     /**
-     * Edit order 
+     * Edit order
      * @param orderId, username, password
      * returns Boolean
      */
@@ -37,12 +39,12 @@ class Ser_Orders {
         $stmt = $this->conn->prepare("CALL sp_EditOrder(?,?,?,?,?,?,?)");
 		$stmt->bind_param("iiiiiii",$orderId,$userId,$ordernumber,$purchaseId,$statusId,$blockId,$active);
         $result = $stmt->execute();
-        $stmt->close(); 
+        $stmt->close();
 		if($result) return true;
 		else return false;
     }
     /**
-     * Get all orders 
+     * Get all orders
      * returns json/Null
      */
     public function GetOrders() {
@@ -55,9 +57,9 @@ class Ser_Orders {
             }
         } else return NULL;
     }
-    
+
     /**
-     * Get all orders 
+     * Get all orders
      * params order Id
      * returns json/Null
      */
@@ -73,8 +75,24 @@ class Ser_Orders {
         } else return NULL;
     }
 
+    /**
+     * Get all orders
+     * params order Id
+     * returns json/Null
+     */
+    public function GetOrderByUserId($userId) {
+        $stmt = $this->conn->prepare("CALL sp_GetOrderByUserId(?)");
+        $stmt->bind_param("i",$userId);
+        if ($stmt->execute()) {
+            $orders = $stmt->get_result()->fetch_assoc(); //fetch order data and store in array
+            $stmt->close();
+            if ($orders==true) {
+                return $orders;
+            }
+        } else return NULL;
+    }
         /**
-     * Delete order By Id 
+     * Delete order By Id
      * params order Id
      * returns json/Null
      */

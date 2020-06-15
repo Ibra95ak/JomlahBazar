@@ -21,8 +21,9 @@ include("header.php");
 <?php
 /*Fetch latest products through API*/
 $API_cart = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Cart.php?userId=1");
-$cart = json_decode($API_cart);  
+$cart = json_decode($API_cart);
 if($cart){
+  $totalprice=0;
     foreach($cart as $product){
         echo '<tr>';
         echo '<td align="left"><input  type="checkbox"></td>';
@@ -34,13 +35,14 @@ if($cart){
         echo '<td><a href="single_product.php?productId='.$product->productId.'">'.$product->name.'</a></td>';
         echo '<td class="text-center">'.$product->unitprice.'</td>';
         echo '<td class="product-quantity" data-title="Quantity"><div class="input-group">';
-        echo '<span class="input-group-btn"><button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[3]"> <i class="fa fa-minus"></i> </button></span>';
-        echo '<input type="text" name="quant[3]" class="form-control input-number" value="1" min="0" max="10">';
-        echo '<span class="input-group-btn"><button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[3]"> <i class="fa fa-plus"></i> </button></span>';
+        echo '<span class="input-group-btn"><button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quantity"> <i class="fa fa-minus"></i> </button></span>';
+        echo '<input type="text" name="quantity" class="form-control input-number" value="'.$product->quantity.'" min="0" max="10">';
+        echo '<span class="input-group-btn"><button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quantity"> <i class="fa fa-plus"></i> </button></span>';
         echo '</div></td>';
-        echo '<td>Total</td>';
+        echo '<td>'.$product->unitprice*$product->quantity.'</td>';
         echo '<td><a href="#" onclick="deletecart('.$product->cartId.')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>';
         echo '</tr>';
+        $totalprice+=$product->unitprice*$product->quantity;
     }
 }
 ?>
@@ -66,7 +68,7 @@ if($cart){
               </tr>
               <tr class="order-total">
                 <td><h5>Total</h5></td>
-                <td align="right">$40.00</td>
+                <td align="right">$<?php echo $totalprice;?></td>
               </tr>
             </tbody>
           </table>
@@ -195,7 +197,7 @@ function deletecart(cartId){
               default:
                 alert("Error");
             }
-            location.reload(); 
+            location.reload();
         }
     });
 }

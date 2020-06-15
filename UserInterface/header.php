@@ -70,6 +70,7 @@ $wishlist_count = json_decode($API_wishlist_count);
         }
     </script>
     <!-- Search bar redirection -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
 </head>
 
 <body>

@@ -1,8 +1,19 @@
-<?php 
+<?php
 include('../AdminPanel/libraries/base.php');
 include("header.php");
-$search_category=$_GET['search_category'];
-$search=$_GET['search'];
+$filter="";
+if(isset($_GET['search_by'])) $filter.="&search_by=".$_GET['search_by'];
+if(isset($_GET['filter_category'])) $filter.="&filter_category=".$_GET['filter_category'];
+if(isset($_GET['search'])) $filter.="&search=".$_GET['search'];
+if(isset($_GET['order_by'])) $filter.="&order_by=".$_GET['order_by'];
+if(isset($_GET['min_price'])) $filter.="&min_price=".$_GET['min_price'];
+if(isset($_GET['max_price'])) $filter.="&max_price=".$_GET['max_price'];
+if(isset($_GET['fp'])) $filter.="&fp=".$_GET['fp'];
+if(isset($_GET['bp'])) $filter.="&bp=".$_GET['bp'];
+if(isset($_GET['dp'])) $filter.="&dp=".$_GET['dp'];
+if(isset($_GET['filter_brand'])) $filter.="&filter_brand=".$_GET['filter_brand'];
+if(isset($_GET['filter_rank'])) $filter.="&filter_rank=".$_GET['filter_rank'];
+if(isset($_GET['filter_location'])) $filter.="&filter_location=".$_GET['filter_location'];
 ?>
 <div class="container container-fluid">
     <div class="row">
@@ -13,33 +24,21 @@ $search=$_GET['search'];
                     <div class="clearfix"></div>
                     <div class="row">
                         <?php
-//Get brand class
-require_once '../AdminPanel/libraries/Ser_Brands.php';
-$db = new Ser_Brands();
-require_once '../AdminPanel/libraries/Ser_Pictures.php';
-$db1 = new Ser_Pictures();
-//get all leads details
-if($search!=NULL) $brands = $db->SearchBrand($search);
-else $brands = $db->Getbrands();
+/*Fetch latest products through API*/
+$API_brands = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Brands.php?".$filter);
+$brands = json_decode($API_brands);
 if($brands){
     foreach($brands as $brand){
-    $brand_pic = $db1->GetPictureById($brand['brandId']);  
     echo '<div class="col-lg-3 col-md-4 col-sm-6">';
     echo '<div class="product product-card">';
-    echo '<a class="product-img" href="product-details?productId='.$brand['brandId'].'"><img src="../AdminPanel/pics/'.$brand_pic['path'].'" alt=""></a>';
-    echo '<h5 class="product-type">'.$brand['name'].' / '.$brand['brand_name'].'</h5>';
-    echo '<div class="row m-0 list-n">';
-    echo '<div class="col-lg-12 p-0">';
-    echo '<div class="product-price">';
-    echo '<form class="form-inline">';
-    echo '<div class="stepper-widget">';
-    echo '<button type="button" class="js-qty-down">-</button>';
-    echo '<input type="text" class="js-qty-input" value="1">';
-    echo '<button type="button" class="js-qty-up">+</button>';
-    echo '<button onClick="window.location.href="cart.html"" class="add2"><i class="fa fa-heart" aria-hidden="true"></i></button>';
-    echo '<button onClick="window.location.href="cart.html"" class="add2"><i class="fa fa-shopping-bag" aria-hidden="true"></i></button>';
-    echo '</div></form></div></div></div></div></div>';
-    }   
+    $API_brand_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$brand->brandId);
+    $brand_img = json_decode($API_brand_img);
+    foreach($brand_img as $img){
+    echo '<a class="product-img" href="product-search?search=&filter_brand='.$brand->brandId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';
+  }
+    echo '<h5 class="product-type">'.$brand->name.' / '.$brand->brand_name.'</h5>';
+    echo '</div></div>';
+    }
 }
 ?>
                         <div class="clearfix"></div>
@@ -68,16 +67,16 @@ $bestsellers_products = json_decode($API_bestsellers_products);
 if($bestsellers_products){
   foreach($bestsellers_products as $bestseller){
     $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$bestseller->productId);
-    $product_img = json_decode($API_product_img); 
+    $product_img = json_decode($API_product_img);
     echo '<div class="item"><div class="product">';
     foreach($product_img as $img){
-        echo '<a class="product-img" href="single_product.php?productId='.$bestseller->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';    
+        echo '<a class="product-img" href="single_product.php?productId='.$bestseller->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';
     }
     echo '<h5 class="product-type">'.$bestseller->brand_name.'</h5>';
     echo '<h3 class="product-name">'.$bestseller->name.'</h3>';
     echo '<h3 class="product-price">$'.$bestseller->unitprice.'</h3>';
     echo '</div></div>';
-}  
+}
 }
 ?>
         </div>
@@ -123,6 +122,6 @@ if($bestsellers_products){
 </div>
 <div class="clearfix"></div>
 
-<?php 
+<?php
 include("footer.php");
 ?>

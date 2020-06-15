@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Ser_Orderdetails {
     private $conn;
     // constructor
@@ -10,16 +10,16 @@ class Ser_Orderdetails {
     }
     // destructor
     function __destruct() {
-        
+
     }
-        
+
 /**
      * Storing new Orderdetail
      * returns Boolean
      */
-    public function addOrderdetail($orderId,$productId,$ordernumber,$discount,$totalprice,$shipperId,$statusId,$blockId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_AddOrderdetail(?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("iiiiiiiii",$orderId,$productId,$ordernumber,$discount,$totalprice,$shipperId,$statusId,$blockId,$active);
+    public function addOrderdetail($orderId,$productId,$ordernumber,$discount,$quantity,$totalprice,$shipperId,$statusId,$blockId,$active) {
+        $stmt = $this->conn->prepare("CALL sp_AddOrderdetail(?,?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiiiiiiiii",$orderId,$productId,$ordernumber,$discount,$quantity,$totalprice,$shipperId,$statusId,$blockId,$active);
 		$result = $stmt->execute();
         $stmt->close();
         // check for successful store
@@ -28,7 +28,7 @@ class Ser_Orderdetails {
     }
 
     /**
-     * Edit orderdetail 
+     * Edit orderdetail
      * @param orderdetailId, username, password
      * returns Boolean
      */
@@ -36,13 +36,13 @@ class Ser_Orderdetails {
         $stmt = $this->conn->prepare("CALL sp_EditOrderdetail(?,?,?,?,?,?,?,?,?,?)");
 		$stmt->bind_param("iiiiiiiiii",$orderdetailId,$orderId,$productId,$ordernumber,$discount,$totalprice,$shipperId,$statusId,$blockId,$active);
         $result = $stmt->execute();
-        $stmt->close(); 
+        $stmt->close();
 		if($result) return true;
 		else return false;
     }
 
         /**
-     * Get all orderdetails by Admin 
+     * Get all orderdetails by Admin
      * returns json/Null
      */
     public function GetOrderDe($orderId) {
@@ -58,7 +58,7 @@ class Ser_Orderdetails {
     }
 
     /**
-     * Get all orderdetails 
+     * Get all orderdetails
      * returns json/Null
      */
     public function Getorderdetails() {
@@ -71,9 +71,9 @@ class Ser_Orderdetails {
             }
         } else return NULL;
     }
-    
+
     /**
-     * Get all orderdetails 
+     * Get all orderdetails
      * params Orderdetail Id
      * returns json/Null
      */
@@ -90,7 +90,7 @@ class Ser_Orderdetails {
     }
 
         /**
-     * Delete orderdetail By Id 
+     * Delete orderdetail By Id
      * params orderdetail Id
      * returns json/Null
      */

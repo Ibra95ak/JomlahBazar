@@ -27,6 +27,17 @@ if(isset($_GET['filter_location'])) $filter.="&filter_location=".$_GET['filter_l
         <div class="col-lg-10 col-md-12">
             <div class="row">
                 <div class="col-12">
+                  <div class="col text-center">
+                      <nav aria-label="Page navigation example">
+                          <ul class="pagination pagination-template d-flex justify-content-center float-none">
+                              <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                              <li class="page-item"><a href="#" class="page-link active">1</a></li>
+                              <li class="page-item"><a href="#" class="page-link">2</a></li>
+                              <li class="page-item"><a href="#" class="page-link">3</a></li>
+                              <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+                          </ul>
+                      </nav>
+                  </div>
                     <div class="clearfix"></div>
                     <div class="row">
                         <?php
@@ -52,17 +63,6 @@ if($products){
 }
 ?>
                         <div class="clearfix"></div>
-                        <div class="col text-center">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination pagination-template d-flex justify-content-center float-none">
-                                    <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
-                                    <li class="page-item"><a href="#" class="page-link active">1</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                    <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
-                                </ul>
-                            </nav>
-                        </div>
 
                         <!--Three-images-->
                         <div id="bestsellers">

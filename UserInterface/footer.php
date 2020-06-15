@@ -107,7 +107,7 @@
 <script src="assets/js/ajax.js"></script>
 <script src="assets/js/formValidation.js"></script>
 
-<script src="assets/vendor/jquery/jquery.min.js"></script>
+
 <!--wow-->
 <script src="assets/vendor/wow/wow.js"></script>
 <script src="assets/vendor/wow/page.js"></script>
