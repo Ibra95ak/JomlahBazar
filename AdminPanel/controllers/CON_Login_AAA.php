@@ -7,7 +7,7 @@ $db = new Ser_AAA();
 session_start();
 /*flag for errors*/
 $err=-1;
-
+$response=[];
 /*Check if inputs are empty before submission*/
 if ((isset($_POST['aaa_email']) && isset($_POST['aaa_password']))) {
     /*Get input values*/
@@ -24,6 +24,7 @@ if ((isset($_POST['aaa_email']) && isset($_POST['aaa_password']))) {
             /*set user as logged in*/
             $logged = $db->loggedAAA($aaa_user['aaaId']);
             $_SESSION['aaaId']=$aaa_user['aaaId'];
+            $response['uid'] = $aaa_user['aaaId'];
         } 
         else $err=1;
     } else {
@@ -34,5 +35,6 @@ if ((isset($_POST['aaa_email']) && isset($_POST['aaa_password']))) {
     /*required post params is missing*/
     $err=3;
 }
-echo json_encode($err);
+$response['err'] = $err;
+echo json_encode($response);
 ?>
