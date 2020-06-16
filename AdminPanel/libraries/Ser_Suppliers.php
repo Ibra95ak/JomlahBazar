@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Ser_Suppliers {
     private $conn;
     // constructor
@@ -10,15 +10,15 @@ class Ser_Suppliers {
     }
     // destructor
     function __destruct() {
-        
+
     }
-    	
+
     /**
-     * Get all suppliers 
+     * Get all suppliers
      * returns json/Null
      */
-    public function Getsuppliers() {
-        $stmt = $this->conn->prepare("CALL sp_Getsuppliers()");
+    public function Getsuppliers($sql) {
+        $stmt = $this->conn->prepare($sql);
         if ($stmt->execute()) {
             $suppliers = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch supplier data and supplier in array
             $stmt->close();
@@ -39,10 +39,10 @@ class Ser_Suppliers {
         // check for successful Supplier
         if ($result) return true;
         else return false;
-    } 
-    
+    }
+
     /**
-     * Edit supplier 
+     * Edit supplier
      * @param supplierId, username, password
      * returns Boolean
      */
@@ -50,12 +50,12 @@ class Ser_Suppliers {
         $stmt = $this->conn->prepare("CALL sp_EditSupplier(?,?,?,?,?,?)");
 		$stmt->bind_param("iiiiii",$supplierId,$aaaId,$subscriptionplanId,$discount_type,$registeredsupplierId,$blockId);
         $result = $stmt->execute();
-        $stmt->close(); 
+        $stmt->close();
 		if($result) return true;
 		else return false;
     }
     /**
-     * Get all suppliers 
+     * Get all suppliers
      * params supplier Id
      * returns json/Null
      */
@@ -70,9 +70,9 @@ class Ser_Suppliers {
             }
         } else return NULL;
     }
-    
+
     /**
-     * Get all suppliers 
+     * Get all suppliers
      * params supplier Id
      * returns json/Null
      */
@@ -88,7 +88,7 @@ class Ser_Suppliers {
     }
 
         /**
-     * Delete Supplier By Id 
+     * Delete Supplier By Id
      * params Supplier Id
      * returns json/Null
      */

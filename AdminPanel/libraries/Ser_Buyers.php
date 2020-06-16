@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Ser_Buyers {
     private $conn;
     // constructor
@@ -10,15 +10,15 @@ class Ser_Buyers {
     }
     // destructor
     function __destruct() {
-        
+
     }
-    	
+
     /**
-     * Get all Buyers 
+     * Get all Buyers
      * returns json/Null
      */
-    public function Getbuyers() {
-        $stmt = $this->conn->prepare("CALL sp_GetBuyers()");
+    public function Getbuyers($sql) {
+        $stmt = $this->conn->prepare($sql);
         if ($stmt->execute()) {
             $buyers = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch buyer data and buyer in array
             $stmt->close();
@@ -44,7 +44,7 @@ class Ser_Buyers {
     }
 
     /**
-     * Edit Buyer 
+     * Edit Buyer
      * @param BuyerId, username, password
      * returns Boolean
      */
@@ -52,13 +52,13 @@ class Ser_Buyers {
         $stmt = $this->conn->prepare("CALL sp_EditBuyer(?,?,?,?,?,?,?,?,?)");
 		$stmt->bind_param("iissiiiii",$userId,$aaaId,$first_name,$last_name,$addressId,$reachoutId,$walletId,$identityId,$blockId);
         $result = $stmt->execute();
-        $stmt->close(); 
+        $stmt->close();
 		if($result) return true;
 		else return false;
     }
-    
+
     /**
-     * Get all buyers 
+     * Get all buyers
      * params buyer Id
      * returns json/Null
      */
@@ -75,7 +75,7 @@ class Ser_Buyers {
     }
 
         /**
-     * Delete buyer By Id 
+     * Delete buyer By Id
      * params buyer Id
      * returns json/Null
      */

@@ -10,7 +10,7 @@ $search=$_GET['search'];
 $query="SELECT products.productId, products.name, products.unitprice FROM products";
 $where="";
 $orderby="";
-if(isset($_GET['order_by'])){ 
+if(isset($_GET['order_by'])){
     switch ($_GET['order_by']) {
       case 1:
         $orderby.=" ORDER BY products.name ASC";
@@ -26,17 +26,17 @@ if(isset($_GET['order_by'])){
         break;
       default:
         $orderby.="";
-    } 
+    }
 }
 if(isset($_GET['filter_category']) && $_GET['filter_category']!=0){
     if($where=="") $where.=" WHERE products.categoryId=".$_GET['filter_category'];
     else $where.=" AND products.categoryId=".$_GET['filter_category'];
-} 
+}
 if(isset($_GET['min_price']) && isset($_GET['max_price'])){
     if($_GET['min_price']==0 and $_GET['max_price']==0) $where.="";
     else{
        if($where=="") $where.=" WHERE unitprice BETWEEN ".$_GET['min_price']." AND ".$_GET['max_price'];
-       else $where.=" AND unitprice BETWEEN ".$_GET['min_price']." AND ".$_GET['max_price']; 
+       else $where.=" AND unitprice BETWEEN ".$_GET['min_price']." AND ".$_GET['max_price'];
     }
 }
 if(isset($_GET['fp'])){
@@ -59,6 +59,11 @@ if(isset($_GET['filter_rank']) && $_GET['filter_rank']!=0){
     if($where=="") $where.=" WHERE products.ranking =".$_GET['filter_rank'];
     else $where.=" AND products.ranking=".$_GET['filter_rank'];
 }
+if(isset($_GET['filter_location']) && $_GET['filter_location']!='0'){
+    $query.= " INNER JOIN suppliers ON products.supplierId=suppliers.supplierId INNER JOIN aaa ON aaa.aaaId=suppliers.aaaId INNER JOIN address ON aaa.addressId=address.addressId";
+    if($where=="") $where.=" WHERE address.city='".$_GET['filter_location']."'";
+    else $where.=" AND address.city=".$_GET['filter_category'];
+}
 /*get all products */
 
 //if($search!=NULL) $getAll_products = $db->SearchProducts($search);
@@ -69,7 +74,7 @@ $getAll_products = $db->GetProducts($sql);
 if($getAll_products){
     foreach($getAll_products as $product){
         array_push($results,$product);
-    }   
+    }
 }
 echo json_encode($results);
 ?>

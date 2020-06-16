@@ -107,7 +107,7 @@
 <script src="assets/js/ajax.js"></script>
 <script src="assets/js/formValidation.js"></script>
 
-<script src="assets/vendor/jquery/jquery.min.js"></script>
+
 <!--wow-->
 <script src="assets/vendor/wow/wow.js"></script>
 <script src="assets/vendor/wow/page.js"></script>
@@ -119,8 +119,6 @@
 
 <!--price_range-->
 <link rel="stylesheet" href="assets/vendor/price_range/jquery-ui.css" type="text/css" media="all" />
-<script src="assets/vendor/price_range/jquery-ui.min.js"></script>
-<script src="assets/vendor/price_range/price_range_script.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/vendor/price_range/price_range_style.css" />
 <!--price_range-->
 

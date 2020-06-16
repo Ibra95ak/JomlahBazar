@@ -1,52 +1,16 @@
-<?php 
+<?php
 include('../AdminPanel/libraries/base.php');
 include("header.php");
-if(isset($_GET['search_category'])) $search_category=$_GET['search_category'];
-else $search_category='';
-if(isset($_GET['search'])) $search=$_GET['search'];
-else $search='';
+$filter="";
+if(isset($_GET['search_by'])) $filter.="&search_by=".$_GET['search_by'];
+if(isset($_GET['filter_category'])) $filter.="&filter_category=".$_GET['filter_category'];
+if(isset($_GET['search'])) $filter.="&search=".$_GET['search'];
+if(isset($_GET['order_by'])) $filter.="&order_by=".$_GET['order_by'];
+if(isset($_GET['filter_brand'])) $filter.="&filter_brand=".$_GET['filter_brand'];
+if(isset($_GET['filter_rank'])) $filter.="&filter_rank=".$_GET['filter_rank'];
+if(isset($_GET['filter_location'])) $filter.="&filter_location=".$_GET['filter_location'];
 ?>
     <div class="container container-fluid">
-      <nav aria-label="breadcrumb" class="bread-boder">
-        <div class="row">
-          <div class="col-lg-8 col-md-6">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a href="index.html"
-                  ><i class="fa fa-home" aria-hidden="true"></i> Home</a
-                >
-              </li>
-              <li class="breadcrumb-item">Suppliers</li>
-            </ol>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="custom-select2">
-                  <select>
-                    <option>Default Sorting</option>
-                    <option value="A-Z">A to Z</option>
-                    <option value="Z-A">Z to A</option>
-                    <option value="High to low price">High to low price</option>
-                    <option value="Low to high price">Low to high</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="custom-select2">
-                  <select>
-                    <option value="A-Z">Show 10</option>
-                    <option value="Z-A">Show 20</option>
-                    <option value="High to low price">Show 30</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-        <div class="clearfix"></div>
-      </nav>
       <div class="row">
 <?php include("filters.php");?>
           <div class="col-lg-10 col-md-12">
@@ -56,10 +20,8 @@ else $search='';
 
               <div class="row">
 <?php
-require_once '../AdminPanel/libraries/Ser_Suppliers.php';
-$db = new Ser_Suppliers();
-if($search!=NULL) $suppliers = $db->SearchSuppliers($search);
-else $suppliers = $db->Getsuppliers(); 
+$API_suppliers = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Suppliers.php?".$filter);
+$suppliers = json_decode($API_suppliers);
 
 if($suppliers){
   foreach($suppliers as $supplier){
@@ -67,19 +29,15 @@ if($suppliers){
       echo '<div class="supplier-card">';
       echo '<div class="row flex-lg-row flex-md-row flex-sm-row flex-column">';
       echo '<div class="col-lg-4 col-md-4 col-sm-4 col-12">';
-      echo '<a class="product-img" href="supplier-details.php?supplierId='.$supplier['supplierId'].'"><img src="assets/images/product-img/product-img-1.jpg" alt="" /></a>';
+      echo '<a class="product-img" href="supplier-details.php?supplierId='.$supplier->supplierId.'"><img src="assets/images/product-img/product-img-1.jpg" alt="" /></a>';
       echo '</div>';
       echo '<div class="col-lg-8 col-md-8 col-sm-8 col-12 supplier-card-details">';
-      echo '<h5 class="supplier-card-title text-left">'.$supplier['email'].'</h5>';
+      echo '<h5 class="supplier-card-title text-left">'.$supplier->first_name.'</h5>';
       echo '<div class="row m-0">';
       echo '<div class="col-lg-12 p-0">';
       echo '<span class="fa fa-star-o checked " data-rating="1"></span><span class="fa fa-star-o" data-rating="2"></span><span class="fa fa-star-o" data-rating="3"></span><span class="fa fa-star-o" data-rating="4"></span><span class="fa fa-star-o" data-rating="5"></span><input type="hidden" name="whatever1" class="rating-value" value="2.56">';
-      echo '<h5 class="product-price">'.$supplier['name'].'</h5>';
-      echo '<span class="">'.$supplier['type'].'</span>';
       echo '</div></div>';
-      echo '<div class=""><button title="Contact Supplier" class="add-to-compare contact-supplier-btn" onclick=jbsupdtl('.$supplier['supplierId'].')><i class="fa fa-contact" aria-hidden="true"></i>Contact Supplier</button></div></div></div></div></div>';
-      echo '';
-      echo '';
+      echo '<div class=""><button title="Contact Supplier" class="add-to-compare contact-supplier-btn" onclick=jbsupdtl('.$supplier->supplierId.')><i class="fa fa-contact" aria-hidden="true"></i>Contact Supplier</button></div></div></div></div></div>';
   }
 }
 ?>
@@ -451,7 +409,7 @@ if($suppliers){
               </div>
             </div>
           </div>
-      
+
         </div>
       </div>
     </div>
@@ -460,6 +418,6 @@ function jbsupdtl(supId){
     window.location.href="supplier-details.php?supplierId="+supId;
 }
 </script>
-<?php 
+<?php
 include("footer.php");
 ?>

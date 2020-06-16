@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 /*Get brand class*/
 require_once '../../libraries/Ser_Addresses.php';
 /*Create brand Instance*/

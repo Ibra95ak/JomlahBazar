@@ -1,9 +1,11 @@
 body{
-  font-family: 'Calibri', sans-serif !important;
+  font-family: 'Konnect' !important;
 }
-
-
-
+@font-face {
+  font-family: 'Konnect';
+  src: url('../fonts/Konnect/Konnect-Black.otf') format('opentype');
+  src: url('../fonts/Konnect/Konnect-Black.ttf') format('truetype');
+}
 /* navbar custom css */
 
 .bread-boder {
@@ -181,7 +183,7 @@ li a {
     line-height: normal;
     display: flex;
     padding: 0 4px;
-    flex-direction: column;  
+    flex-direction: column;
 }
 
 .nav-a.nav-a-2{
@@ -296,7 +298,7 @@ li a {
   position: relative;
   background-color: white;
   margin-bottom: 10px;
-  
+
 }
 
 .supplier-card:hover {

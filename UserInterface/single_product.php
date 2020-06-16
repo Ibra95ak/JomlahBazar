@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("header.php");
 /*Parameters*/
 $productId = $_GET['productId'];
@@ -51,7 +51,7 @@ $count=0;
             foreach($product_img as $img){
                 echo '<div class="item"><img src="../AdminPanel/pics/'.$img[0].'" alt="" title=""></div>';
             }
-?> 
+?>
         </div>
       </div>
       <div class="col-lg-6  product-text">
@@ -59,7 +59,7 @@ $count=0;
           <div class="col-md-10 col-sm-10 col-10">
             <h3><?php echo $product[6];?></h3>
 <?php
-for($i=0;$i<$product[11];$i++) echo '<img src="assets/images/star.png" alt="" title="">';         
+for($i=0;$i<$product[11];$i++) echo '<img src="assets/images/star.png" alt="" title="">';
 ?>
             </div>
           <div class="col-md-2 col-sm-2 text-right col-2">
@@ -82,11 +82,11 @@ for($i=0;$i<$product[11];$i++) echo '<img src="assets/images/star.png" alt="" ti
                     <div class="input-group">
                       <h4>Quantity :</h4>
                       <span class="input-group-btn">
-                      <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]"> <i class="fa fa-minus"></i> </button>
+                      <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quantity"> <i class="fa fa-minus"></i> </button>
                       </span>
-                      <input type="text" name="quant[1]" class="input-number" value="1" min="1" max="10">
+                      <input type="text" name="quantity" id="quantity" class="input-number" value="1" min="1" max="10">
                       <span class="input-group-btn">
-                      <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]"><i class="fa fa-plus"></i> </button>
+                      <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quantity"><i class="fa fa-plus"></i> </button>
                       </span> </div>
                   </div>
                   <div class="col-md-6 col-sm-6"> <a class="btn add-to-cart2" href="#" id="cart" data-productid="<?php echo $productId?>">Add To Cart</a> </div>
@@ -452,16 +452,17 @@ $("#wishlist").click(function(){
                 break;
               default:
                 alert("Error");
-            } 
+            }
         }
     });
-}); 
+});
 $("#cart").click(function(){
     var userId =1;
     var productId =$(this).data("productid");
+    var quantity = document.getElementById("quantity").value;
   $.ajax({
         type: "GET",
-        url: "http://localhost/JomlahBazar/AdminPanel/controllers/client/CON_Add_Cart.php?userId="+userId+"&productId="+productId,
+        url: "http://localhost/JomlahBazar/AdminPanel/controllers/client/CON_Add_Cart.php?userId="+userId+"&productId="+productId+"&quantity="+quantity,
         dataType: "json",
         success: function(data) {
             switch(data) {
@@ -476,10 +477,10 @@ $("#cart").click(function(){
                 break;
               default:
                 alert("Error");
-            } 
+            }
         }
     });
-}); 
+});
 </script>
 </body>
 </html>

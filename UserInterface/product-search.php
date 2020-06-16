@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('../AdminPanel/libraries/base.php');
 include("header.php");
 $filter="";
@@ -13,6 +13,7 @@ if(isset($_GET['bp'])) $filter.="&bp=".$_GET['bp'];
 if(isset($_GET['dp'])) $filter.="&dp=".$_GET['dp'];
 if(isset($_GET['filter_brand'])) $filter.="&filter_brand=".$_GET['filter_brand'];
 if(isset($_GET['filter_rank'])) $filter.="&filter_rank=".$_GET['filter_rank'];
+if(isset($_GET['filter_location'])) $filter.="&filter_location=".$_GET['filter_location'];
 ?>
 <!-- Bread Crumbs and Filters and products -->
 <div class="container container-fluid">
@@ -26,12 +27,23 @@ if(isset($_GET['filter_rank'])) $filter.="&filter_rank=".$_GET['filter_rank'];
         <div class="col-lg-10 col-md-12">
             <div class="row">
                 <div class="col-12">
+                  <div class="col text-center">
+                      <nav aria-label="Page navigation example">
+                          <ul class="pagination pagination-template d-flex justify-content-center float-none">
+                              <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                              <li class="page-item"><a href="#" class="page-link active">1</a></li>
+                              <li class="page-item"><a href="#" class="page-link">2</a></li>
+                              <li class="page-item"><a href="#" class="page-link">3</a></li>
+                              <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+                          </ul>
+                      </nav>
+                  </div>
                     <div class="clearfix"></div>
                     <div class="row">
                         <?php
 /*Fetch latest products through API*/
 $API_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Products.php?".$filter);
-$products = json_decode($API_products); 
+$products = json_decode($API_products);
 if($products){
   foreach($products as $product){
     $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$product->productId);
@@ -39,7 +51,7 @@ if($products){
     echo '<div class="col-lg-3 col-md-4 col-sm-6 product-card-col">';
     echo '<div class="product product-card">';
     foreach($product_img as $img){
-        echo '<a class="product-img" href="single_product.php?productId='.$product->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';    
+        echo '<a class="product-img" href="single_product.php?productId='.$product->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';
     }
     echo '<h2><a><span class="product-title">'.$product->name.'</span></a></h2>';
     echo '<div class="row m-0 list-n">';
@@ -47,21 +59,10 @@ if($products){
     echo '<div class="single-product-price">';
     echo '<span class="a-price" data-a-size="l" data-a-color="base"><span class="price-dollar">$</span><span class="price-digit">'.$product->unitprice.'</span><span class="price-fraction"></span></span>';
     echo '</div></div></div></div></div>';
-}  
+}
 }
 ?>
                         <div class="clearfix"></div>
-                        <div class="col text-center">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination pagination-template d-flex justify-content-center float-none">
-                                    <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
-                                    <li class="page-item"><a href="#" class="page-link active">1</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                    <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
-                                </ul>
-                            </nav>
-                        </div>
 
                         <!--Three-images-->
                         <div id="bestsellers">
@@ -75,16 +76,16 @@ $bestsellers_products = json_decode($API_bestsellers_products);
 if($bestsellers_products){
   foreach($bestsellers_products as $bestseller){
     $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$bestseller->productId);
-    $product_img = json_decode($API_product_img); 
+    $product_img = json_decode($API_product_img);
     echo '<div class="item"><div class="product">';
     foreach($product_img as $img){
-        echo '<a class="product-img" href="single_product.php?productId='.$bestseller->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';    
+        echo '<a class="product-img" href="single_product.php?productId='.$bestseller->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';
     }
     echo '<h5 class="product-type">'.$bestseller->brand_name.'</h5>';
     echo '<h3 class="product-name">'.$bestseller->name.'</h3>';
     echo '<h3 class="product-price">$'.$bestseller->unitprice.'</h3>';
     echo '</div></div>';
-}  
+}
 }
 ?>
                                 </div>

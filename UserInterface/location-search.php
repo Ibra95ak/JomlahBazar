@@ -1,8 +1,14 @@
-<?php 
+<?php
 include('../AdminPanel/libraries/base.php');
 include("header.php");
-$search_category=$_GET['search_category'];
-$search=$_GET['search'];
+$filter="";
+if(isset($_GET['search_by'])) $filter.="&search_by=".$_GET['search_by'];
+if(isset($_GET['filter_category'])) $filter.="&filter_category=".$_GET['filter_category'];
+if(isset($_GET['search'])) $filter.="&search=".$_GET['search'];
+if(isset($_GET['order_by'])) $filter.="&order_by=".$_GET['order_by'];
+if(isset($_GET['filter_brand'])) $filter.="&filter_brand=".$_GET['filter_brand'];
+if(isset($_GET['filter_rank'])) $filter.="&filter_rank=".$_GET['filter_rank'];
+if(isset($_GET['filter_location'])) $filter.="&filter_location=".$_GET['filter_location'];
 ?>
 <!-- Bread Crumbs and Filters and products -->
 <div class="container container-fluid">
@@ -15,16 +21,44 @@ $search=$_GET['search'];
         <!-- Products Grid -->
         <div class="col-lg-10 col-md-12">
             <div class="row">
-                <div class="col-12">
-                    <div class="clearfix"></div>
-                    <div class="row">
-<div id="googleMap" style="width:100%;height:550px;"></div>
+                <div class="col-6">
+                <div id="products" class="row view-group">
+<?php
+$API_addresses = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Addresses.php?".$filter);
+$addresses = json_decode($API_addresses);
+if($addresses){
+  foreach($addresses as $address){
+    echo '<div class="item col-lg-4 col-md-4 mb-4 mb-4 list-group-item"><div class="thumbnail card product"><div class="caption card-body">';
+    echo '<h5 class="product-type">'.$address->address1.'</h5>';
+    echo '<h3 class="product-name">'.$address->address2.'</h3>';
+    echo '</div></div></div>';
+  }
+}
+?>
+            <div class="clearfix"></div>
+            <!-- Pagination -->
+            <div class="text-center col">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination pagination-template d-flex justify-content-center float-none">
+                  <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                  <li class="page-item"><a href="#" class="page-link active">1</a></li>
+                  <li class="page-item"><a href="#" class="page-link">2</a></li>
+                  <li class="page-item"><a href="#" class="page-link">3</a></li>
+                  <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          </div>
+          <div class="col-6">
+              <div class="clearfix"></div>
+              <div class="row">
+          <div id="googleMap" style="width:100%;height:550px;"></div>
 
-                        <div class="clearfix"></div>
-                    </div>
+                  <div class="clearfix"></div>
+              </div>
 
-                </div>
-
+          </div>
 
             </div>
         </div>
@@ -54,7 +88,7 @@ $.ajax({
             for(var i=0;i<data.length;i++){
                 myLatLng = {lat: parseFloat(data[i]['latitude']), lng: parseFloat(data[i]['longitude'])};
                 marker = new google.maps.Marker({position: myLatLng,icon:'http://localhost/JomlahBazar/AdminPanel/pics/markers/marker-supplier.png'});
-                marker.setMap(map);  
+                marker.setMap(map);
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
                       infowindow.setContent(data[i]['city']);
