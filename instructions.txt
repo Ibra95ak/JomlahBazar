@@ -1,0 +1,26 @@
+amazone seller (forms and layout, a lot of features).
+food panda(intract with user, start like food panda).
+
+come with plan of version one for jomlahbazar (Follow Amazon Shopping App)
+
+
+1.  SignIn/Signup pages
+2.  Landing Page (Navbar with basic search, Left side Menu Drawer, slider,
+	 best sellings, top collections, or catagory wise display diferent grids). => based on location and user choice dynamic  
+3.  Shop With catagories
+4.  Product Detail page
+5.  cart page and buy now
+6.  Checkout / Contact Supplier (Restricted to signin/signup first)
+7.  Comments and reviews (optional for first version)
+8.  User Orders Page
+9.  User Dashboard page
+8.  Footer
+9.  Few child pages to add into these main pages (Optional)
+10. 
+
+
+
+
+search for service oriented architecture 
+what data we will show to the customer and what data
+
