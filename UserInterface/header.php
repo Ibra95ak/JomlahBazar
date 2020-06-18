@@ -2,8 +2,11 @@
  header("Access-Control-Allow-Origin: *");
 /*Get base class*/
 require_once '../AdminPanel/libraries/base.php';
-/*Search bar parameters*/
+/*parameters*/
 if(isset($_GET['search_by'])) $search_by=$_GET['search_by'];
+else $search_by=0;
+if(isset($_GET['search'])) $search=$_GET['search'];
+else $search="";
 /*Geolocation from IP address*/
 $ip ="91.74.36.249";
 $access_key = 'b2371fd9df5c66211f9d821177c6b601';
@@ -23,10 +26,12 @@ $cart_count = json_decode($API_cart_count);
 /*Fetch wishlist products count through API*/
 $API_wishlist_count = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Count_Wishlist.php?userId=1");
 $wishlist_count = json_decode($API_wishlist_count);
+/*Fetch latest products through API*/
+$API_cart = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Cart.php?userId=1");
+$cart = json_decode($API_cart);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -50,22 +55,22 @@ $wishlist_count = json_decode($API_wishlist_count);
             var search = document.getElementById('search').value;
             switch (search_by) {
                 case "1":
-                    window.location.href = "brand-search.php?search_by=" + search_by + "&search=" + search;
+                    window.location.href = "brand-search.php?page=1&search_by="+search_by+"&search="+search;
                     break;
                 case "2":
-                    window.location = "product-search.php?search_by=" + search_by + "&search=" + search;
+                    window.location = "product-search.php?page=1&search_by="+search_by+"&search="+search;
                     break;
                 case "3":
-                    window.location = "supplier-search.php?search_by=" + search_by + "&search=" + search;
+                    window.location = "supplier-search.php?page=1&search_by="+search_by+"&search="+search;
                     break;
                 case "4":
-                    window.location = "buyer-search.php?search_by=" + search_by + "&search=" + search;
+                    window.location = "buyer-search.php?page=1&search_by="+search_by+"&search="+search;
                     break;
                 case "5":
-                    window.location = "location-search.php?search_by=" + search_by + "&search=" + search;
+                    window.location = "location-search.php?search_by="+search_by+"&search="+search;
                     break;
                 default:
-                    window.location = "search.php?search_by=" + search_by +  "&search=" + search;
+                    window.location = "search.php?search_by="+search_by+"&search="+search;
             }
         }
     </script>
@@ -99,7 +104,7 @@ $wishlist_count = json_decode($API_wishlist_count);
                         </div>
                         <div class="col p-lg-0 pt-lg-0 pt-2">
                             <div class="input-group filter-by">
-                                <input type="text" class="form-control" name="search" id="search" placeholder="What do you need?" />
+                                <input type="text" class="form-control" name="search" id="search" placeholder="What do you need?" value="<?php echo $search; ?>" />
                                 <span class="input-group-btn">
                                     <button class="btn btn-default search-bt" type="button" onclick="searchjb()">
                                         <i class="fa fa-search"></i>
@@ -127,17 +132,10 @@ $wishlist_count = json_decode($API_wishlist_count);
                                     <div class="container">
                                         <div class="row">
 <?php
-/*Fetch latest products through API*/
-$API_cart = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Cart.php?userId=1");
-$cart = json_decode($API_cart);
 if($cart){
     foreach($cart as $product){
         echo '<div class="col-md-3">';
-        $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$product->productId);
-        $product_img = json_decode($API_product_img);
-        foreach($product_img as $img){
-            echo '<img src="../AdminPanel/pics/'.$img[0].'" alt="" title="" class="img-fluid">';
-        }
+        echo '<img src="../AdminPanel/pics/'.$product->path.'" alt="" title="" class="img-fluid">';
         echo '</div>';
         echo '<div class="col-md-9"><p>'.$product->name.' <span class="price">$ '.$product->unitprice.'</span></p><a href="" class="close">x</a></div>';
     }
@@ -167,8 +165,8 @@ if($cart){
             <div class="col-6">
                 <div class="row">
                     <a href="about-us.php" class="nav-a bottom-nav"> About Us </a>
-                    <a href="#" class="nav-a bottom-nav"> Customer Service </a>
-                    <a href="#" class="nav-a bottom-nav"> Gift Cards </a>
+                    <a href="#" class="nav-a bottom-nav"> Privacy & Policy </a>
+                    <a href="#" class="nav-a bottom-nav"> Cookies </a>
                     <a href="#" class="nav-a bottom-nav"> Registry </a>
                     <a href="#" class="nav-a bottom-nav"> Sell </a></div>
 

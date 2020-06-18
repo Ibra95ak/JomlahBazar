@@ -1,7 +1,13 @@
 <?php
+/*get base class*/
 include('../AdminPanel/libraries/base.php');
+/*get page header*/
 include("header.php");
+/*initialize filter*/
 $filter="";
+/* start::create filter*/
+if(isset($_GET['page'])) $page=$_GET['page'];
+else $page=1;
 if(isset($_GET['search_by'])) $filter.="&search_by=".$_GET['search_by'];
 if(isset($_GET['filter_category'])) $filter.="&filter_category=".$_GET['filter_category'];
 if(isset($_GET['search'])) $filter.="&search=".$_GET['search'];
@@ -14,6 +20,13 @@ if(isset($_GET['dp'])) $filter.="&dp=".$_GET['dp'];
 if(isset($_GET['filter_brand'])) $filter.="&filter_brand=".$_GET['filter_brand'];
 if(isset($_GET['filter_rank'])) $filter.="&filter_rank=".$_GET['filter_rank'];
 if(isset($_GET['filter_location'])) $filter.="&filter_location=".$_GET['filter_location'];
+/* end::create filter*/
+/*Fetch  products through API*/
+$API_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Products.php?".$filter);
+$products = json_decode($API_products);
+/*Fetch best sellers products through API*/
+$API_bestsellers_products= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_BestSellerProducts.php");
+$bestsellers_products = json_decode($API_bestsellers_products);
 ?>
 <!-- Bread Crumbs and Filters and products -->
 <div class="container container-fluid">
@@ -41,18 +54,21 @@ if(isset($_GET['filter_location'])) $filter.="&filter_location=".$_GET['filter_l
                     <div class="clearfix"></div>
                     <div class="row">
                         <?php
-/*Fetch latest products through API*/
-$API_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Products.php?".$filter);
-$products = json_decode($API_products);
 if($products){
-  foreach($products as $product){
-    $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$product->productId);
-    $product_img = json_decode($API_product_img);
+  foreach($products->products as $product){
     echo '<div class="col-lg-3 col-md-4 col-sm-6 product-card-col">';
     echo '<div class="product product-card">';
-    foreach($product_img as $img){
-        echo '<a class="product-img" href="single_product.php?productId='.$product->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';
+    echo '<div id="carousel-'.$product->productId.'" class="carousel slide" data-ride="carousel"><div class="carousel-inner">';
+    $i=0;
+    foreach ($product->imgs as $img) {
+      $i++;
+      if($i==1) echo '<div class="carousel-item active"> <a class="product-img" href="single_product.php?productId='.$product->productId.'"><img src="../AdminPanel/pics/'.$img->path.'" alt=""></a> </div>';
+      else echo '<div class="carousel-item"> <a class="product-img" href="single_product.php?productId='.$product->productId.'"><img src="../AdminPanel/pics/'.$img->path.'" alt=""></a> </div>';
     }
+    echo '</div>';
+    if($i!=1)
+    echo '<a class="carousel-control-prev" href="#carousel-'.$product->productId.'" role="button" data-slide="prev"> <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> </a> <a class="carousel-control-next" href="#carousel-'.$product->productId.'" role="button" data-slide="next"> <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> </a> ';
+echo '</div>';
     echo '<h2><a><span class="product-title">'.$product->name.'</span></a></h2>';
     echo '<div class="row m-0 list-n">';
     echo '<div class="col-lg-12 p-0">';
@@ -62,36 +78,32 @@ if($products){
 }
 }
 ?>
+</div>
+
+
                         <div class="clearfix"></div>
 
-                        <!--Three-images-->
+                        <!-- Start - Bestsellers Products -->
                         <div id="bestsellers">
-                            <div class="container-fluid">
+                            <div class="container">
                                 <h2 class="wow fadeInDown">Bestsellers</h2>
                                 <div class="owl-carousel latest-products owl-theme wow fadeIn">
                                     <?php
-/*Fetch best sellers products through API*/
-$API_bestsellers_products= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_BestSellerProducts.php");
-$bestsellers_products = json_decode($API_bestsellers_products);
-if($bestsellers_products){
-  foreach($bestsellers_products as $bestseller){
-    $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$bestseller->productId);
-    $product_img = json_decode($API_product_img);
-    echo '<div class="item"><div class="product">';
-    foreach($product_img as $img){
-        echo '<a class="product-img" href="single_product.php?productId='.$bestseller->productId.'"><img src="../AdminPanel/pics/'.$img[0].'" alt=""></a>';
-    }
-    echo '<h5 class="product-type">'.$bestseller->brand_name.'</h5>';
-    echo '<h3 class="product-name">'.$bestseller->name.'</h3>';
-    echo '<h3 class="product-price">$'.$bestseller->unitprice.'</h3>';
-    echo '</div></div>';
-}
-}
-?>
+                        if($bestsellers_products){
+                          foreach($bestsellers_products as $bestseller){
+                            echo '<div class="item"><div class="product">';
+                            echo '<a class="product-img" href="single_product.php?productId='.$bestseller->productId.'"><img src="../AdminPanel/pics/'.$bestseller->path.'" alt=""></a>';
+                            echo '<h5 class="product-type">'.$bestseller->brand_name.'</h5>';
+                            echo '<h3 class="product-name">'.$bestseller->name.'</h3>';
+                            echo '<h3 class="product-price">$'.$bestseller->unitprice.'</h3>';
+                            echo '</div></div>';
+                        }
+                        }
+                        ?>
                                 </div>
                             </div>
                         </div>
-                        <!--Three-images-->
+                        <!-- End - Bestsellers Products -->
 
                         <!-- Advertisement -->
                         <div id="deal-of-the-week">

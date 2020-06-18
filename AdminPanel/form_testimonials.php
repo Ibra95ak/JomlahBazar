@@ -4,21 +4,24 @@ require_once 'libraries/Ser_Testimonials.php';
 $db = new Ser_Testimonials();
 $err=-1;
 
-if(isset($_GET['testimonialId'])) $testimonialId=$_GET['testimonialId'];
-else $testimonialId=0;
+if (isset($_GET['testimonialId'])) {
+    $testimonialId=$_GET['testimonialId'];
+} else {
+    $testimonialId=0;
+}
 
-if($testimonialId>0){
+if ($testimonialId>0) {
     //Edit testimonial
     $get_testimonial=$db->GetTestimonialById($testimonialId);
-    if($get_testimonial){
-     $name=$get_testimonial['name'];
-     $description=$get_testimonial['description'];
-     $pictureId=$get_testimonial['pictureId'];
-     $active=$get_testimonial['active'];
-    }else{
+    if ($get_testimonial) {
+        $name=$get_testimonial['name'];
+        $description=$get_testimonial['description'];
+        $path=$get_testimonial['path'];
+        $active=$get_testimonial['active'];
+    } else {
         $name='';
         $description='';
-        $pictureId='';
+        $path='';
         $active='';
     }
 }
@@ -43,9 +46,8 @@ include('header.php');
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="testimonialId" id="testimonialId" value="<?php if(isset($testimonialId)) echo $testimonialId;else echo '';?>">
+                        <input type="text" readonly class="form-control" placeholder="" name="testimonialId" id="testimonialId" value="<?php if (isset($testimonialId)){echo $testimonialId;}else{echo '';}?>">
                     </div>
-                    <span class="form-text text-muted">Please enter your testimonialId</span>
                 </div>
             </div>
             <div class="form-group row">
@@ -55,7 +57,7 @@ include('header.php');
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
                         <input type="text" class="form-control" placeholder="" name="name" id="name"
-                            value="<?php if(isset($name)) echo $name;else echo '';?>">
+                            value="<?php if (isset($name)){echo $name;}else{echo '';}?>">
                     </div>
                     <span class="form-text text-muted">Please enter your name</span>
                 </div>
@@ -67,27 +69,25 @@ include('header.php');
                         <div class="input-group-prepend"><span class="input-group-text"><i
                                     class="la la-user"></i></span></div>
                         <input type="text" class="form-control" placeholder="" name="description" id="description"
-                            value="<?php if(isset($description)) echo $description;else echo '';?>">
+                            value="<?php if (isset($description)){echo $description;}else{echo '';}?>">
                     </div>
                     <span class="form-text text-muted">Please enter your description</span>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-lg-4">
-                    <label>pictureId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="pictureId" id="pictureId"
-                            value="<?php if(isset($pictureId)) echo $pictureId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your pictureId</span>
-                </div>
+              <div class="col-lg-4">
+          <label>Choose Picture</label>
+          <div></div>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="path" name="path">
+            <label class="custom-file-label" for="icon">Choose file</label>
+          </div>
+              </div>
             </div>
         <div class="form-group" id="edits">
             <label>Status</label>
             <label class="kt-checkbox kt-checkbox--tick kt-checkbox--success">
-                <input name="active" id="active" type="checkbox" <?php if(isset($active) && $active==1) echo "checked"; else echo '';?>> Active
+                <input name="active" id="active" type="checkbox" <?php if (isset($active) && $active==1){echo "checked";}else{echo '';}?>> Active
                 <span></span>
             </label>
             <span class="form-text text-muted">Some help text goes here</span>
@@ -123,9 +123,6 @@ $('#btn_submit').click(function(e) {
                 required: true
             },
             description: {
-                required: true
-            },
-            pictureId: {
                 required: true
             },
         }

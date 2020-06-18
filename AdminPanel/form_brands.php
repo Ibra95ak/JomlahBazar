@@ -1,4 +1,4 @@
-<?php 
+<?php
 //Get brand class
 require_once 'libraries/Ser_Brands.php';
 $db = new Ser_Brands();
@@ -13,12 +13,12 @@ if($brandId>0){
     if($get_brand){
      $brandcategoryId=$get_brand['brandcategoryId'];
      $brand_name=$get_brand['brand_name'];
-     $pictureId=$get_brand['pictureId'];
+     $path=$get_brand['path'];
      $active=$get_brand['active'];
     }else{
         $brandcategoryId='';
         $brand_name='';
-        $pictureId='';
+        $path='';
         $active='';
     }
 }
@@ -73,16 +73,14 @@ include('header.php');
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-lg-4">
-                    <label>pictureId:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="la la-user"></i></span></div>
-                        <input type="text" class="form-control" placeholder="" name="pictureId" id="pictureId"
-                            value="<?php if(isset($pictureId)) echo $pictureId;else echo '';?>">
-                    </div>
-                    <span class="form-text text-muted">Please enter your pictureId</span>
+              <div class="col-lg-4">
+                <label>Choose Picture</label>
+                <div></div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="path" name="path">
+                  <label class="custom-file-label" for="icon">Choose file</label>
                 </div>
+              </div>
             </div>
         <div class="form-group" id="edits">
             <label>Status</label>
@@ -123,9 +121,6 @@ $('#btn_submit').click(function(e) {
                 required: true
             },
             brand_name: {
-                required: true
-            },
-            pictureId: {
                 required: true
             },
         }

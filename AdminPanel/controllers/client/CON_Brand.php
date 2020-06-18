@@ -1,7 +1,7 @@
 <?php
 /*Get brand class*/
 require_once '../../libraries/Ser_Brands.php';
-/*Create brand Instance*/
+/*create brand instance*/
 $db = new Ser_Brands();
 /*results array*/
 $results=array();

@@ -33,7 +33,7 @@ $reachout = json_decode($API_reachout);
                  <?php
 /*Fetch latest products through API*/
 $API_products = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Supplier_Products.php?supplierId=$supplierId");
-$products = json_decode($API_products); 
+$products = json_decode($API_products);
 if($products){
   foreach($products as $product){
     $API_product_img = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_ProductImage.php?productId=".$product->productId);
@@ -48,7 +48,7 @@ if($products){
     echo '<div class="single-product-price">';
     echo '<span class="a-price" data-a-size="l" data-a-color="base"><span class="price-dollar">$</span><span class="price-digit">'.$product->unitprice.'</span><span class="price-fraction"></span></span>';
     echo '</div></div></div></div></div>';
-}  
+}
 }
 ?>
               </div>
@@ -69,7 +69,7 @@ if($products){
 <?php
 /*Fetch supplier stores through API*/
 $API_supplierstores = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Supplier_Stores.php?supplierId=$supplierId");
-$supplierstores = json_decode($API_supplierstores); 
+$supplierstores = json_decode($API_supplierstores);
 if($supplierstores){
   foreach($supplierstores as $supplierstore){
       echo '<tr>';
@@ -80,7 +80,7 @@ if($supplierstores){
       echo '</tr>';
   }
 }
-      
+
 ?>
                   </tbody>
                 </table>
@@ -93,14 +93,14 @@ if($supplierstores){
 <?php
 /*Fetch supplier stores through API*/
 $API_supplieraddresses = file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Supplier_Addresses.php?supplierId=$supplierId");
-$supplieraddresses = json_decode($API_supplieraddresses); 
+$supplieraddresses = json_decode($API_supplieraddresses);
 if($supplieraddresses){
       echo '<div class="col-md-4"><div class="address-1">';
       echo '<p class="biller-name"><strong>'.$supplieraddresses->city.'</strong></p>';
       echo '<address><small>'.$supplieraddresses->address1.'<br>'.$supplieraddresses->address2.'</small> </address>';
       echo '</div></div>';
-}   
-?> 
+}
+?>
               </div>
 
             </div>
@@ -111,7 +111,7 @@ if($supplieraddresses){
                   <div class="account-login-form">
                     <a class="dropdown-toggle link" href="tel:00971509692636"><i class="fa fa-phone" aria-hidden="true"></i></a>
                     <a class="dropdown-toggle link" href="https://wa.me/1XXXXXXXXXX?text=I'm%20interested%20in%20your%20products"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
-                    <a class="dropdown-toggle link" href="m.me/ibrahim.abokhalil.7" data-toggle="dropdown"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a class="dropdown-toggle link" href="https://m.me/ibrahim.abokhalil.7" data-toggle="dropdown"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                     <a class="dropdown-toggle link" href="" data-toggle="dropdown"><i class="fa fa-telegram" aria-hidden="true"></i></a>
                   </div>
                 </div>

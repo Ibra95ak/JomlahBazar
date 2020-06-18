@@ -1,227 +1,227 @@
-<?php 
+<?php
 class Ser_Products {
     private $conn;
-    // constructor
+    /*constructor*/
     function __construct() {
         require_once 'DB_Connect.php';
-        // connecting to database
+        /*connecting to database*/
         $db = new Db_Connect();
         $this->conn = $db->connect();
     }
-    // destructor
+    /*destructor*/
     function __destruct() {
-        
+
     }
     /**
-     * Storing new Product
-     * returns Boolean
+     * storing new product
+     * parameters supplierId, productdetailId, inventoryId, name, quantity, min_order, unitprice, discount, ranking, brandId, blockId, active
+     * returns boolean
      */
-    public function addProduct($supplierId,$productdetailId,$inventoryId,$name,$quantity,$min_order,$unitprice,$discount,$ranking,$brandId,$blockId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_AddProduct(?,?,?,?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("iiisiiiiiiii",$supplierId,$productdetailId,$inventoryId,$name,$quantity,$min_order,$unitprice,$discount,$ranking,$brandId,$blockId,$active);
-		$result = $stmt->execute();
-        $stmt->close();
-        // check for successful store
-        if ($result) return true;
-        else return false;
-    }    
-    
+    public function addProduct($supplierId, $productdetailId, $inventoryId, $name, $quantity, $min_order, $unitprice, $discount, $ranking, $brandId, $blockId, $active) {
+      $stmt = $this->conn->prepare("CALL sp_AddProduct(?,?,?,?,?,?,?,?,?,?,?,?)");
+      $stmt->bind_param("iiisiiiiiiii", $supplierId, $productdetailId, $inventoryId, $name, $quantity, $min_order, $unitprice, $discount, $ranking, $brandId, $blockId, $active);
+      $result = $stmt->execute();
+      $stmt->close();
+      /*check for successful store*/
+      if ($result) return true;
+      else return false;
+    }
     /**
-     * Edit product 
-     * @param productId, username, password
-     * returns Boolean
+     * edit product
+     * parameters productId, supplierId, productdetailId, inventoryId, name, quantity, min_order, unitprice, discount, ranking, brandId, blockId, active
+     * returns boolean
      */
-    public function editProduct($productId,$supplierId,$productdetailId,$inventoryId,$name,$quantity,$min_order,$unitprice,$discount,$ranking,$brandId,$blockId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_EditProduct(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-		$stmt->bind_param("iiiisiiiiiiii",$productId,$supplierId,$productdetailId,$inventoryId,$name,$quantity,$min_order,$unitprice,$discount,$ranking,$brandId,$blockId,$active);
-        $result = $stmt->execute();
-        $stmt->close(); 
+    public function editProduct($productId, $supplierId, $productdetailId, $inventoryId, $name, $quantity, $min_order,  $unitprice, $discount, $ranking, $brandId, $blockId, $active) {
+      $stmt = $this->conn->prepare("CALL sp_EditProduct(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("iiiisiiiiiiii", $productId, $supplierId, $productdetailId, $inventoryId, $name, $quantity, $min_order, $unitprice, $discount, $ranking, $brandId, $blockId, $active);
+    $result = $stmt->execute();
+    $stmt->close();
+    /*check for successful edit*/
 		if($result) return true;
 		else return false;
     }
     /**
-     * Get all products 
+     * get all products
+     * returns json/null
+     */
+    public function GetProducts() {
+      $stmt = $this->conn->prepare("CALL sp_GetProducts()");
+      if ($stmt->execute()) {
+        $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); /*fetch data and store in json object*/
+        $stmt->close();
+        if ($products) return $products;
+        else return NULL;
+      }else return NULL;
+    }
+    /**
+     * get all products
+     *parameters sql{dynamic query}
      * returns json/Null
      */
-    public function GetProducts($sql) {
-        $stmt = $this->conn->prepare($sql);
-        if ($stmt->execute()) {
-            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
-            $stmt->close();
-            if ($products==true) {
-                return $products;
-            }
-        } else return NULL;
+    public function searchProducts($sql) {
+      $stmt = $this->conn->prepare($sql);
+      if ($stmt->execute()) {
+        $brands = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); /*fetch data in json object*/
+        $stmt->close();
+        if ($brands==true) return $brands;
+        else return NULL;
+      } else return NULL;
     }
-
     /**
-     * Get all products by supplier 
+     * count brands
+     * returns json/Null
+     */
+    public function countProducts($sql) {
+      $stmt = $this->conn->prepare($sql);
+      if ($stmt->execute()) {
+        $brands = $stmt->get_result()->fetch_assoc(); /*fetch data in json array*/
+        $stmt->close();
+        if ($brands==true) return $brands;
+        else return NULL;
+      } else return NULL;
+    }
+    /**
+     * get all products by supplier
+     * parameters supplierId
      * returns json/Null
      */
     public function GetSupplierProducts($supplierId) {
-        $stmt = $this->conn->prepare("CALL sp_GetSupplierProducts(?)");
-        $stmt->bind_param("i",$supplierId);
-        if ($stmt->execute()) {
-            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
-            $stmt->close();
-            if ($products==true) {
-                return $products;
-            }
-        } else return NULL;
+      $stmt = $this->conn->prepare("CALL sp_GetSupplierProducts(?)");
+      $stmt->bind_param("i",$supplierId);
+      if ($stmt->execute()) {
+        $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); /*fetch data and store in json object*/
+        $stmt->close();
+        if ($products==true) return $products;
+        else return NULL;
+      } else return NULL;
     }
     /**
-     * Get all products by cart 
+     * Get all products by cart
      * returns json/Null
      */
-    public function GetCartProducts($cartId) {
-        $stmt = $this->conn->prepare("CALL sp_GetCartProducts(?)");
-        $stmt->bind_param("i",$cartId);
-        if ($stmt->execute()) {
-            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
-            $stmt->close();
-            if ($products==true) {
-                return $products;
-            }
-        } else return NULL;
-    }
+    // public function GetCartProducts($cartId) {
+    //     $stmt = $this->conn->prepare("CALL sp_GetCartProducts(?)");
+    //     $stmt->bind_param("i",$cartId);
+    //     if ($stmt->execute()) {
+    //         $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
+    //         $stmt->close();
+    //         if ($products==true) {
+    //             return $products;
+    //         }
+    //     } else return NULL;
+    // }
     /**
-     * Get all products 
-     * params product Id
-     * returns json/Null
+     * get product by id
+     * params productId
+     * returns json/null
      */
     public function GetproductById($productId) {
-        $stmt = $this->conn->prepare("CALL sp_GetProductById(?)");
-        $stmt->bind_param("i",$productId);
-        if ($stmt->execute()) {
-            $products = $stmt->get_result()->fetch_assoc(); //fetch product data and product in array
-            $stmt->close();
-            if ($products==true) {
-                return $products;
-            }
-        } else return NULL;
+      $stmt = $this->conn->prepare("CALL sp_GetProductById(?)");
+      $stmt->bind_param("i",$productId);
+      if ($stmt->execute()) {
+        $products = $stmt->get_result()->fetch_assoc(); /*fetch data and store in json array*/
+        $stmt->close();
+        if ($products) return $products;
+        else return NULL;
+      } else return NULL;
     }
-
-        /**
-     * Delete Product By Id 
-     * params Product Id
-     * returns json/Null
+    /**
+     * delete product by id
+     * params productId
+     * returns boolean
      */
     public function DeleteProductById($productId) {
-        $stmt = $this->conn->prepare("CALL sp_DeleteProductbyId(?)");
-        $stmt->bind_param("i",$productId);
-        if ($stmt->execute()) {
-            $stmt->close();
-            return true;
-        } else return false;
+      $stmt = $this->conn->prepare("CALL sp_DeleteProductbyId(?)");
+      $stmt->bind_param("i",$productId);
+      $result = $stmt->execute();
+      $stmt->close();
+      /*check for successful delete*/
+  		if($result) return true;
+  		else return false;
     }
     /**
-     * Get product picture 
-     * params product Id
+     * get product picture
+     * params productId
      * returns json/Null
      */
-    public function GetProductPictures($productId) {
-        $stmt = $this->conn->prepare("CALL sp_GetProductPic(?)");
-        $stmt->bind_param("i",$productId);
-        if ($stmt->execute()) {
-            $products = $stmt->get_result()->fetch_all(); //fetch product data and product in array
-            $stmt->close();
-            if ($products==true) {
-                return $products;
-            }
-        } else return NULL;
+    public function GetFeaturedPicture($productId) {
+      $stmt = $this->conn->prepare("CALL sp_GetFeaturedPicture(?)");
+      $stmt->bind_param("i",$productId);
+      if ($stmt->execute()) {
+        $products = $stmt->get_result()->fetch_assoc(); /*fetch data and store in json array*/
+        $stmt->close();
+        if ($products) return $products;
+        else return NULL;
+      } else return NULL;
     }
-    
     /**
-     * Get product pictures 
-     * params product Id
+     * get 3 product picture
+     * params productId
+     * returns json/Null
+     */
+    public function GetProductSlider($productId) {
+      $stmt = $this->conn->prepare("CALL sp_GetProductSlider(?)");
+      $stmt->bind_param("i",$productId);
+      if ($stmt->execute()) {
+        $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); /*fetch data and store in json object*/
+        $stmt->close();
+        if ($products) return $products;
+        else return NULL;
+      } else return NULL;
+    }
+    /**
+     * get product pictures
+     * params productId
      * returns json/Null
      */
     public function GetProductPics($productId) {
-        $stmt = $this->conn->prepare("CALL sp_GetProductPic(?)");
-        $stmt->bind_param("i",$productId);
-        if ($stmt->execute()) {
-            $products = $stmt->get_result()->fetch_all(); //fetch product data and product in array
-            $stmt->close();
-            if ($products==true) {
-                return $products;
-            }
-        } else return NULL;
+      $stmt = $this->conn->prepare("CALL sp_GetProductPics(?)");
+      $stmt->bind_param("i",$productId);
+      if ($stmt->execute()) {
+        $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);/*fetch data and store in json object*/
+        $stmt->close();
+        if ($products==true) return $products;
+        else return NULL;
+      } else return NULL;
     }
-    
     /**
-     * Get Best seller products 
+     * get best seller products
      * returns json/Null
      */
     public function GetBestSellerProducts() {
-        $stmt = $this->conn->prepare("CALL sp_GetBestSellerProducts()");
-        if ($stmt->execute()) {
-            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
-            $stmt->close();
-            if ($products==true) {
-                return $products;
-            }
-        } else return NULL;
+      $stmt = $this->conn->prepare("CALL sp_GetBestSellerProducts()");
+      if ($stmt->execute()) {
+        $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);/*fetch data and store in json object*/
+        $stmt->close();
+        if ($products==true) return $products;
+        else return NULL;
+      } else return NULL;
     }
-    
     /**
-     * Get latest products 
+     * get latest products
      * returns json/Null
      */
     public function GetLatestProducts() {
-        $stmt = $this->conn->prepare("CALL sp_GetLatestProducts()");
-        if ($stmt->execute()) {
-            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
-            $stmt->close();
-            if ($products==true) {
-                return $products;
-            }
-        } else return NULL;
+      $stmt = $this->conn->prepare("CALL sp_GetLatestProducts()");
+      if ($stmt->execute()) {
+        $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); /*fetch data and store in json object*/
+        $stmt->close();
+        if ($products==true) return $products;
+        else return NULL;
+      } else return NULL;
     }
-    
     /**
-     * Get featured products 
+     * get featured products
      * returns json/Null
      */
     public function GetFeaturedProducts() {
-        $stmt = $this->conn->prepare("CALL sp_GetFeaturedProducts()");
-        if ($stmt->execute()) {
-            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
-            $stmt->close();
-            if ($products==true) {
-                return $products;
-            }
-        } else return NULL;
-    }
-    
-    /**
-     * search all products 
-     * returns json/Null
-     */
-    public function SearchProducts($text) {
-        $stmt = $this->conn->prepare("CALL sp_SearchProducts('%$text%')");
-        if ($stmt->execute()) {
-            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
-            $stmt->close();
-            if ($products==true) {
-                return $products;
-            }
-        } else return NULL;
-    }
-    
-    /**
-     * search all products 
-     * returns json/Null
-     */
-    public function SearchProductsByCategory($categoryId) {
-        $stmt = $this->conn->prepare("CALL sp_SearchProductsByCategory(?)");
-        $stmt->bind_param("i",$categoryId);
-        if ($stmt->execute()) {
-            $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch product data and product in array
-            $stmt->close();
-            if ($products==true) {
-                return $products;
-            }
-        } else return NULL;
+      $stmt = $this->conn->prepare("CALL sp_GetFeaturedProducts()");
+      if ($stmt->execute()) {
+        $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); /*fetch data and store in json object*/
+        $stmt->close();
+        if ($products==true) return $products;
+        else return NULL;
+      } else return NULL;
     }
 }
 ?>

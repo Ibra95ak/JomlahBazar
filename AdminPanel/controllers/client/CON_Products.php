@@ -4,12 +4,15 @@ require_once '../../libraries/Ser_Products.php';
 /*Create Product Instance*/
 $db = new Ser_Products();
 /*results array*/
-$results=array();
+$results['products']=array();
 /*Parameters*/
-$search=$_GET['search'];
 $query="SELECT products.productId, products.name, products.unitprice FROM products";
 $where="";
 $orderby="";
+if(isset($_GET['search'])  && $_GET['search']!=NULL){
+  if($where=="") $where.=" WHERE products.name LIKE '%".$_GET['search']."%'";
+  else $where.=" AND products.name LIKE '%".$_GET['search']."%'";
+}
 if(isset($_GET['order_by'])){
     switch ($_GET['order_by']) {
       case 1:
@@ -65,15 +68,15 @@ if(isset($_GET['filter_location']) && $_GET['filter_location']!='0'){
     else $where.=" AND address.city=".$_GET['filter_category'];
 }
 /*get all products */
-
-//if($search!=NULL) $getAll_products = $db->SearchProducts($search);
-//else $getAll_products = $db->GetProducts();
 $sql=$query.$where.$orderby;
-//echo $sql;
-$getAll_products = $db->GetProducts($sql);
+$getAll_products = $db->searchProducts($sql);
 if($getAll_products){
     foreach($getAll_products as $product){
-        array_push($results,$product);
+      $results['imgs']=array();
+      $get_productslider = $db->GetProductSlider($product['productId']);
+        //array_push($results['imgs'],$get_productslider);
+        $product['imgs'] = $get_productslider;
+      array_push($results['products'],$product);
     }
 }
 echo json_encode($results);

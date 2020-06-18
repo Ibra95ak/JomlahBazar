@@ -122,10 +122,10 @@
                                       <option value="0">All</option>
                                       <?php
   /*Fetch categories through API*/
-  $API_brands= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_Brands.php");
-  $brands = json_decode($API_brands);
-  if ($brands) {
-      foreach ($brands as $brand) {
+  $API_filterbrand= file_get_contents(DIR_ROOT.DIR_ADMINP.DIR_CON.DIR_CLI."CON_filterbrand.php");
+  $filterbrand = json_decode($API_filterbrand);
+  if ($filterbrand) {
+      foreach ($filterbrand as $brand) {
           if (isset($_GET['filter_brand']) && $_GET['filter_brand']==$brand->brandId) {
               echo '<option value="'.$brand->brandId.'" selected>'.$brand->brand_name.'</option>';
           } else {
@@ -213,7 +213,7 @@ document.getElementById("filter").onclick = function() {
     var filter_brand = document.getElementById("filter_brand").value;
     var filter_rank = document.getElementById("filter_rank").value;
     var filter_location = document.getElementById("filter_location").value;
-    if(search_by) filter += "search_by=" + search_by;
+    if(search_by) filter += "&search_by=" + search_by;
     if(filter_category) filter += "&filter_category=" + filter_category;
     if(search) filter += "&search=" + encodeURI(search);
     else filter += "&search=";

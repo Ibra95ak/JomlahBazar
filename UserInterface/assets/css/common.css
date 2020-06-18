@@ -548,3 +548,17 @@ li a {
   box-shadow: 0 0 6px #000;
   color: #fff;
 }
+
+
+/* Slider */
+.hero-section.overlay.bg-cover.position-relative.home-2{
+  max-height: calc(100vh - 100px);
+}
+
+.hero-slider.slick-initialized.slick-slider.slick-dotted{
+  max-height: calc(100vh - 100px);
+}
+
+.slick-list.draggable{
+  max-height: calc(100vh - 100px);
+}

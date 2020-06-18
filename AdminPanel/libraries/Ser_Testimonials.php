@@ -1,90 +1,97 @@
-<?php 
+<?php
 class Ser_Testimonials {
     private $conn;
-    // constructor
+    /*constructor*/
     function __construct() {
         require_once 'DB_Connect.php';
-        // connecting to database
+        /*connecting to database*/
         $db = new Db_Connect();
         $this->conn = $db->connect();
     }
-    // destructor
+    /*destructor*/
     function __destruct() {
-        
+
     }
-    	
     /**
-     * Get all testimonials 
+     * get all testimonials
      * returns json/Null
      */
-    public function Gettestimonials() {
-        $stmt = $this->conn->prepare("CALL sp_Gettestimonials()");
-        if ($stmt->execute()) {
-            $testimonials = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); //fetch testimonial data and testimonial in array
-            $stmt->close();
-            if ($testimonials==true) {
-                return $testimonials;
-            }
-        } else return NULL;
+     public function Gettestimonials() {
+       $stmt = $this->conn->prepare("CALL sp_Gettestimonials()");
+       if ($stmt->execute()) {
+         $testimonials = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); /*fetch data in json object*/
+         $stmt->close();
+         if ($testimonials) return $testimonials;
+         else return NULL;
+       } else return NULL;
     }
-    
     /**
-     * Get all testimonials 
-     * params testimonial Id
+     * get latest 6 testimonials
      * returns json/Null
      */
-    public function GetTestimonialById($testimonialId) {
-        $stmt = $this->conn->prepare("CALL sp_GetTestimonialById(?)");
-        $stmt->bind_param("i",$testimonialId);
-        if ($stmt->execute()) {
-            $testimonials = $stmt->get_result()->fetch_assoc(); //fetch testimonial data and testimonial in array
-            $stmt->close();
-            if ($testimonials==true) {
-                return $testimonials;
-            }
-        } else return NULL;
+     public function GetLatesttestimonials() {
+       $stmt = $this->conn->prepare("CALL sp_GetLatesttestimonials()");
+       if ($stmt->execute()) {
+         $testimonials = $stmt->get_result()->fetch_all(MYSQLI_ASSOC); /*fetch data in json object*/
+         $stmt->close();
+         if ($testimonials) return $testimonials;
+         else return NULL;
+       } else return NULL;
     }
     /**
-     * Storing new Testimonial
-     * returns Boolean
+     * get testimonial by id
+     * params testimonialId
+     * returns json/Null
      */
-    public function addTestimonial($name,$description,$pictureId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_AddTestimonial(?,?,?,?)");
-		$stmt->bind_param("ssii",$name,$description,$pictureId,$active);
-		$result = $stmt->execute();
-        $stmt->close();
-        // check for successful Testimonial
+     public function GetTestimonialById($testimonialId) {
+       $stmt = $this->conn->prepare("CALL sp_GetTestimonialById(?)");
+       $stmt->bind_param("i",$testimonialId);
+       if ($stmt->execute()) {
+         $testimonials = $stmt->get_result()->fetch_assoc(); /*fetch data in json array*/
+         $stmt->close();
+         if ($testimonials==true) return $testimonials;
+         else return NULL;
+       } else return NULL;
+    }
+    /**
+     * storing new testimonial
+     * parameters name,description,path,active
+     * returns boolean
+     */
+     public function addTestimonial($name,$description,$path,$active) {
+       $stmt = $this->conn->prepare("CALL sp_AddTestimonial(?,?,?,?)");
+       $stmt->bind_param("sssi",$name,$description,$path,$active);
+       $result = $stmt->execute();
+       $stmt->close();
+        /*heck for successful store*/
         if ($result) return true;
         else return false;
-    } 
-
-    
+    }
     /**
-     * Edit testimonial 
-     * @param testimonialId, username, password
-     * returns Boolean
+     * edit testimonial
+     * parameters testimonialId,name,description,pictureId,active
+     * returns boolean
      */
-    public function editTestimonial($testimonialId,$name,$description,$pictureId,$active) {
-        $stmt = $this->conn->prepare("CALL sp_EditTestimonial(?,?,?,?,?)");
-		$stmt->bind_param("issii",$testimonialId,$name,$description,$pictureId,$active);
-        $result = $stmt->execute();
-        $stmt->close(); 
-		if($result) return true;
-		else return false;
+     public function editTestimonial($testimonialId,$name,$description,$path,$active) {
+       $stmt = $this->conn->prepare("CALL sp_EditTestimonial(?,?,?,?,?)");
+       $stmt->bind_param("isssi",$testimonialId,$name,$description,$path,$active);
+       $result = $stmt->execute();
+       $stmt->close();
+       if($result) return true;
+       else return false;
     }
-        /**
-     * Delete Testimonial By Id 
-     * params Testimonial Id
-     * returns json/Null
+    /**
+     * delete testimonial by id
+     * params testimonialId
+     * returns boolean
      */
-    public function DeleteTestimonialById($testimonialId) {
-        $stmt = $this->conn->prepare("CALL sp_DeleteTestimonialbyId(?)");
-        $stmt->bind_param("i",$testimonialId);
-        if ($stmt->execute()) {
-            $stmt->close();
-            return true;
-        } else return false;
+     public function DeleteTestimonialById($testimonialId) {
+       $stmt = $this->conn->prepare("CALL sp_DeleteTestimonialbyId(?)");
+       $stmt->bind_param("i",$testimonialId);
+       $result = $stmt->execute();
+       $stmt->close();
+       if($result) return true;
+       else return false;
     }
-
 }
 ?>

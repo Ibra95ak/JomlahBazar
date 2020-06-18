@@ -45,11 +45,6 @@ var KTDatatableAutoColumnHideDemo = (function () {
           width: "auto",
         },
         {
-          field: "picname",
-          title: "Picture Name",
-          width: "auto",
-        },
-        {
           field: "path",
           title: "Picture",
           width: "auto",
