@@ -1,0 +1,9 @@
+{
+  "name": "my-project-name",
+  "version": "1.0.0",
+  "devDependencies": {
+    "grunt": "^1.4.1",
+    "grunt-contrib-uglify": "^5.0.1",
+    "grunt-contrib-watch": "^1.1.0"
+  }
+}

@@ -1,0 +1,4 @@
+[{"sliderId":1,"header1":"h1","header2":"h2","path":"assets\/media\/sliders\/app-slider1.jpg","btn_link":"l1","btn_text":"t1","active":1},
+  {"sliderId":2,"header1":"h1","header2":"h2","path":"assets\/media\/sliders\/app-slider2.jpg","btn_link":"l1","btn_text":"t1","active":1},
+  {"sliderId":3,"header1":"h1","header2":"h2","path":"assets\/media\/sliders\/app-slider3.jpg","btn_link":"l1","btn_text":"t1","active":1},
+  {"sliderId":4,"header1":"h1","header2":"h2","path":"assets\/media\/sliders\/app-slider4.jpg","btn_link":"l1","btn_text":"t1","active":1}]

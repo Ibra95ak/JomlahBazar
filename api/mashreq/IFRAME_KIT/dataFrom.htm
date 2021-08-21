@@ -1,0 +1,165 @@
+<html>
+<head>
+	<style media="screen">
+	#wait {
+		display: block;
+		position: absolute;
+		z-index: 2;
+		background-color: #0000003d;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		padding-top: 250px;
+	}
+	</style>
+</head>
+<body>
+	<div class="loader" id="wait">
+		<img src="https://www.jomlahbazar.com/assets/media/config/loader-jb.gif" alt="">
+	</div>
+	<form method="post" name="customerData" action="https://www.jomlahbazar.com/api/mashreq/IFRAME_KIT/ccavRequestHandler.php" style="display:none;">
+		<table width="40%" height="100" border='1' align="center"><caption><font size="4" color="blue"><b>Integration Kit</b></font></caption></table>
+			<table width="40%" height="100" border='1' align="center">
+				<tr>
+					<td>Parameter Name:</td><td>Parameter Value:</td>
+				</tr>
+				<tr>
+					<td colspan="2"> Compulsory information</td>
+				</tr>
+				<tr>
+					<td>Merchant Id	:</td><td><input type="text" name="merchant_id" value="47578"/></td>
+				</tr>
+				<tr>
+					<td>Order Id	:</td><td><input type="text" name="order_id" id="order_id"/></td>
+				</tr>
+				<tr>
+					<td>Amount	:</td><td><input type="text" name="amount" id="amount"/></td>
+				</tr>
+				<tr>
+					<td>Currency	:</td><td><input type="text" name="currency" value="AED"/></td>
+				</tr>
+				<tr>
+					<td>Redirect URL	:</td><td><input type="text" name="redirect_url" value="https://www.jomlahbazar.com/api/mashreq/IFRAME_KIT/ccavResponseHandler.php"/></td>
+				</tr>
+			 	<tr>
+			 		<td>Cancel URL	:</td><td><input type="text" name="cancel_url" value="https://www.jomlahbazar.com/"/></td>
+			 	</tr>
+			 	<tr>
+					<td>Language	:</td><td><input type="text" name="language" value="EN"/></td>
+				</tr>
+		     	<tr>
+		     		<td colspan="2">Billing information(optional):</td>
+		     	</tr>
+		        <tr>
+		        	<td>Billing Name	:</td><td><input type="text" name="billing_name" id="billing_name"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing Address	:</td><td><input type="text" name="billing_address" id="billing_address"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing City	:</td><td><input type="text" name="billing_city" id="billing_city"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing State	:</td><td><input type="text" name="billing_state" id="billing_state"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing Zip	:</td><td><input type="text" name="billing_zip" id="billing_zip"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing Country	:</td><td><input type="text" name="billing_country" id="billing_country"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing Tel	:</td><td><input type="text" name="billing_tel" id="billing_tel"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Billing Email	:</td><td><input type="text" name="billing_email" id="billing_email"/></td>
+		        </tr>
+		        <tr>
+		        	<td colspan="2">Shipping information(optional)</td>
+		        </tr>
+		        <tr>
+		        	<td>Shipping Name	:</td><td><input type="text" name="delivery_name" id="delivery_name"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Shipping Address	:</td><td><input type="text" name="delivery_address" id="delivery_address"/></td>
+		        </tr>
+		        <tr>
+		        	<td>shipping City	:</td><td><input type="text" name="delivery_city" id="delivery_city"/></td>
+		        </tr>
+		        <tr>
+		        	<td>shipping State	:</td><td><input type="text" name="delivery_state" id="delivery_state"/></td>
+		        </tr>
+		        <tr>
+		        	<td>shipping Zip	:</td><td><input type="text" name="delivery_zip" id="delivery_zip"/></td>
+		        </tr>
+		        <tr>
+		        	<td>shipping Country	:</td><td><input type="text" name="delivery_country" id="delivery_country"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Shipping Tel	:</td><td><input type="text" name="delivery_tel" id="delivery_tel"/></td>
+		        </tr>
+		        <tr>
+		        	<td>Merchant Param1	:</td><td><input type="text" name="merchant_param1" id="merchant_param1" value="additional Info."/></td>
+		        </tr>
+		        <tr>
+		        	<td>Merchant Param2	:</td><td><input type="text" name="merchant_param2" value="additional Info."/></td>
+		        </tr>
+				<tr>
+					<td>Merchant Param3	:</td><td><input type="text" name="merchant_param3" value="additional Info."/></td>
+				</tr>
+				<tr>
+					<td>Merchant Param4	:</td><td><input type="text" name="merchant_param4" value="additional Info."/></td>
+				</tr>
+				<tr>
+					<td>Merchant Param5	:</td><td><input type="text" name="merchant_param5" value="additional Info."/></td>
+				</tr>
+				<tr>
+					<td>Promo Code	:</td><td><input type="text" name="promo_code" value=""/></td>
+				</tr>
+				<tr>
+					<td>Vault Info.	:</td><td><input type="text" name="customer_identifier" value=""/></td>
+				</tr>
+		        <tr>
+		        	<td>Integration Type	:</td><td><input type="text" name="integration_type" value="iframe_normal"/></td>
+		        </tr>
+		        <tr>
+		        	<td></td><td><INPUT TYPE="submit" value="CheckOut"></td>
+		        </tr>
+	      	</table>
+	      </form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://www.jomlahbazar.com/assets/js/pages/base.js" type="text/javascript"></script>
+	<script>
+	$(document).ready(function(){
+		var tp = getCookie("cookiestp");
+		var userId = getCookie("cookiesuserId");
+		var addressId = getCookie("cookiesaddressId");
+		var orderNumber = getCookie("cookiesorderNumber");
+		$.ajax({
+			url: DIR_CONT+DIR_ADRS+'CON_addresses.php?action=get&userId='+userId+'&addressId='+addressId,
+			success: function(result){
+				var address = JSON.parse(result);
+				$('#order_id').val(orderNumber);
+				$('#amount').val(tp);
+				$('#billing_name').val(address['useraddress'][0].fullname);
+				$('#billing_address').val(address['useraddress'][0].address1);
+				$('#billing_city').val(address['useraddress'][0].city);
+				$('#billing_state').val(address['useraddress'][0].state);
+				$('#billing_zip').val(address['useraddress'][0].postalcode);
+				$('#billing_country').val(address['useraddress'][0].country);
+				$('#billing_tel').val(address['useraddress'][0].otp);
+				$('#billing_email').val(address['useraddress'][0].email);
+				$('#delivery_name').val(address['useraddress'][0].fullname);
+				$('#delivery_address').val(address['useraddress'][0].address1);
+				$('#delivery_city').val(address['useraddress'][0].city);
+				$('#delivery_state').val(address['useraddress'][0].state);
+				$('#delivery_zip').val(address['useraddress'][0].postalcode);
+				$('#delivery_country').val(address['useraddress'][0].country);
+				$('#delivery_tel').val(address['useraddress'][0].otp);
+				$('#delivery_email').val(address['useraddress'][0].email);
+				$("form").submit();
+	 }});
+	});
+	</script>
+	</body>
+</html>

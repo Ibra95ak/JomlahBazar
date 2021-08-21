@@ -1,0 +1,302 @@
+.kt-login.kt-login--v4 {
+  background-size: cover;
+  background-repeat: no-repeat; }
+  .kt-login.kt-login--v4 .kt-login__wrapper {
+    padding: 2rem 2rem 1rem 2rem;
+    margin: 0 auto 2rem 925px;
+    overflow: hidden; }
+    .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container {
+      width: 500px;
+      margin: 0 5px;
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 10px;}
+      .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__logo {
+        text-align: center;
+        margin: 0 auto 15px auto;
+        padding-top: 15px; }
+      .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__head {
+        margin-top: 1rem;
+        margin-bottom: 1rem; }
+        .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__head .kt-login__title {
+          text-align: center;
+          font-size: 1.5rem;
+          font-weight: 500;
+          color: #ffffff; }
+        .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__head .kt-login__desc {
+          margin: 0 55px;
+          margin-top: 1.5rem;
+          text-align: left;
+          font-size: 1rem;
+          font-weight: 400;
+          text-align: justify;
+          color: #cec8bd; }
+      .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form {
+        margin: 0 55px; }
+        .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .input-group {
+          padding: 0;
+          margin: 0 auto; }
+        .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .form-control {
+          height: 39.95px;
+          border: none;
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+          border-radius: 0.7rem;
+          margin-top: 1rem;
+          background: rgba(0, 0, 0, 0.47);
+          color: #ffffff;
+          padding-left: 50px;}
+          .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .form-control::-moz-placeholder {
+            color: #cec8bd;
+            opacity: 1; }
+          .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .form-control:-ms-input-placeholder {
+            color: #cec8bd; }
+          .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .form-control::-webkit-input-placeholder {
+            color: #cec8bd; }
+        .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .form-control.is-valid + .valid-feedback,
+        .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .form-control.is-invalid + .invalid-feedback {
+          font-weight: 500;
+          font-size: 0.9rem;
+          padding-left: 1.6rem; }
+        .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .kt-login__extra {
+          margin-top: 20px;
+          color: #74788d;
+          font-size: 1rem;
+          padding: 0 1.5rem; }
+          .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .kt-login__extra .kt-checkbox {
+            font-size: 1rem; }
+          .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .kt-login__extra .kt-login__link {
+            font-size: 1rem;
+            color: #74788d;
+            -webkit-transition: color 0.3s ease;
+            transition: color 0.3s ease; }
+            .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .kt-login__extra .kt-login__link:hover {
+              color: #fab400;
+              -webkit-transition: color 0.3s ease;
+              transition: color 0.3s ease; }
+        .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .kt-login__actions {
+          text-align: center;
+          padding-bottom: 1rem;
+          padding-top: 1rem;}
+          .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .kt-login__actions .kt-login__btn-secondary,
+          .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form .kt-login__actions .kt-login__btn-primary {
+            height: 50px;
+            padding-left: 2.5rem;
+            padding-right: 2.5rem; }
+      .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__account {
+        text-align: center;
+        padding-bottom: 1rem;
+        margin: 0 55px;}
+        .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__account .kt-login__account-msg {
+          font-size: 1rem;
+          font-weight: 400;
+          color: #74788d; }
+        .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__account .kt-login__account-link {
+          font-size: 1rem;
+          font-weight: 500;
+          color: #595d6e;
+          -webkit-transition: color 0.3s ease;
+          transition: color 0.3s ease; }
+          .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__account .kt-login__account-link:hover {
+            color: #fab400;
+            -webkit-transition: color 0.3s ease;
+            transition: color 0.3s ease; }
+
+.kt-login.kt-login--v4.kt-login--signin .kt-login__signup {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--signin .kt-login__signin {
+  display: block; }
+
+.kt-login.kt-login--v4.kt-login--signin .kt-login__forgot {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--signin .kt-login__phone {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--signin .kt-login__otp {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--signin .kt-login__signupotp {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--signup .kt-login__signup {
+  display: block; }
+
+.kt-login.kt-login--v4.kt-login--signup .kt-login__signin {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--signup .kt-login__forgot {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--signup .kt-login__account {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--signup .kt-login__phone {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--signup .kt-login__otp {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--signup .kt-login__signupotp {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--forgot .kt-login__signup {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--forgot .kt-login__signin {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--forgot .kt-login__forgot {
+  display: block; }
+
+.kt-login.kt-login--v4.kt-login--forgot .kt-login__phone {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--forgot .kt-login__otp {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--forgot .kt-login__signupotp {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--phone .kt-login__phone {
+    display: block; }
+
+    .kt-login.kt-login--v4.kt-login--phone .kt-login__signup {
+      display: none; }
+
+    .kt-login.kt-login--v4.kt-login--phone .kt-login__signin {
+      display: none; }
+
+    .kt-login.kt-login--v4.kt-login--phone .kt-login__forgot {
+      display: none; }
+
+.kt-login.kt-login--v4.kt-login--phone .kt-login__otp {
+  display: none; }
+
+.kt-login.kt-login--v4.kt-login--phone .kt-login__signupotp {
+  display: none; }
+
+  .kt-login.kt-login--v4.kt-login--otp .kt-login__otp {
+      display: block; }
+
+      .kt-login.kt-login--v4.kt-login--otp .kt-login__signup {
+        display: none; }
+      .kt-login.kt-login--v4.kt-login--otp .kt-login__phone {
+        display: none; }
+
+      .kt-login.kt-login--v4.kt-login--otp .kt-login__signin {
+        display: none; }
+
+      .kt-login.kt-login--v4.kt-login--otp .kt-login__forgot {
+        display: none; }
+        .kt-login.kt-login--v4.kt-login--otp .kt-login__signupotp {
+          display: none; }
+
+  .kt-login.kt-login--v4.kt-login--signupotp .kt-login__phone {
+    display: none; }
+
+    .kt-login.kt-login--v4.kt-login--signupotp .kt-login__otp {
+        display: none; }
+
+        .kt-login.kt-login--v4.kt-login--signupotp .kt-login__signup {
+          display: none; }
+
+        .kt-login.kt-login--v4.kt-login--signupotp .kt-login__signin {
+          display: none; }
+
+        .kt-login.kt-login--v4.kt-login--signupotp .kt-login__forgot {
+          display: none; }
+
+    .kt-login.kt-login--v4.kt-login--signupotp .kt-login__phone {
+      display: none; }
+
+    .kt-login.kt-login--v4.kt-login--signupotp .kt-login__signupotp {
+      display: block; }
+@media (max-width: 1024px) {
+  .kt-login.kt-login--v4 .kt-login__wrapper {
+    padding-top: 5rem;
+    width: 100%; }
+    .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container {
+      margin: 0 auto; }
+      .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__account {
+        margin-top: 1rem; } }
+
+@media (max-width: 768px) {
+  .kt-login.kt-login--v4 .kt-login__wrapper {
+    width: 100%; }
+    .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container {
+      width: 100%;
+      margin: 0 auto; }
+      .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-form {
+        width: 100%;
+        margin: 0 auto; }
+      .kt-login.kt-login--v4 .kt-login__wrapper .kt-login__container .kt-login__account {
+        margin-top: 1rem; } }
+
+        .box-wrapper {
+          width: 50px;
+          height: 50px;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 1s ease;
+        }
+        .box-wrapper .box {
+          width: 52%;
+          height: 90%;
+          background-image: linear-gradient(19deg, #21d4fd 0%, #fab400 100%);
+          transition: all 0.5s ease;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .box-wrapper .box::before, .box-wrapper .box::after {
+          content: "";
+          position: absolute;
+          background: inherit;
+          width: 100%;
+          height: 100%;
+          border-radius: 0;
+          transition: all 0.5s ease;
+          display: flex;
+          align-content: center;
+          justify-content: center;
+        }
+        .box-wrapper .box::before {
+          transform: rotateZ(60deg);
+        }
+        .box-wrapper .box::after {
+          transform: rotateZ(-60deg);
+        }
+        .box-wrapper .box:hover {
+          border-radius: 50px;
+        }
+        .box-wrapper .box:hover::before, .box-wrapper .box:hover::after {
+          border-radius: 50px;
+        }
+        .box-wrapper:hover {
+          transform: rotateZ(180deg);
+        }
+        .login-icon{
+          z-index: 1;
+        }
+        .kt-login__actions{
+          margin: 0 55px !important;
+          padding-bottom: 20px;
+        }
+        .kt-form .kt-login__actions{
+          margin: 0 !important;
+        }
+        @media (max-width: 1024px) {
+          .kt-login.kt-login--v4 .kt-login__wrapper {margin: 0 auto 2rem 0;}
+          .kt-login__account{margin: 0 !important;}
+          .kt-login__actions{margin: 0 !important;}
+        }
+        @media only screen and (max-width: 1440px) {
+          .kt-login-mac {
+            width: 435px !important;
+          }
+        }

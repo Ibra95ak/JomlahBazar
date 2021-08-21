@@ -1,0 +1,285 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body, html {
+    min-height: 100%;
+}
+html {
+    background-color: #fff;
+    position: relative;
+    display: block;
+}
+body {
+    margin: 0 0 119px;
+    padding: 0;
+    color: #2c2e2f;
+    font-family: pp-sans-small-regular,Helvetica Neue,Arial,sans-serif;
+    font-weight: 400;
+    font-variant: normal;
+    font-size: 93.75%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-backface-visibility: hidden;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+h1, p {
+    font-weight: 400;
+    font-variant: normal;
+    color: #2c2e2f;
+}
+h1 {
+    margin-bottom: 10px;
+    font-family: pp-sans-big-light,Helvetica Neue,Arial,sans-serif;
+    font-size: 2em;
+    line-height: 33px;
+}
+li, ol, ul {
+    margin: 0;
+    padding: 0;
+}
+a, a:link, a:visited {
+    color: #0070ba;
+    font-family: pp-sans-small-regular,Helvetica Neue,Arial,sans-serif;
+    font-weight: 400;
+    font-variant: normal;
+    text-decoration: none;
+    -webkit-transition: color .2s ease-out;
+    -moz-transition: color .2s ease-out;
+    -o-transition: color .2s ease-out;
+    transition: color .2s ease-out;
+}
+input[type="radio"], input[type="checkbox"] {
+    margin: 4px 0 0;
+    margin-top: 1px \9;
+}
+.xeonButton:focus, a.xeonButton:focus, a.xeonButton:link:focus, a.xeonButton:visited:focus {
+    text-decoration: underline;
+}
+.capital{
+    text-transform: capitalize;
+}
+::placeholder {
+  text-transform: none;
+}
+
+/*##[ BUTTON STYLE STYLE ]##*/
+
+.xeonButton{
+	width: 100%;
+    max-width: 360px;
+    height: 50px;
+    padding: 16px;
+    border: 0;
+    display: block;
+    background: #0070ba;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    color: #fff;
+    font-size: 1em;
+    text-align: center;
+    font-family: pp-sans-small-regular,Helvetica Neue,Arial,sans-serif;
+    font-weight: 400;
+    font-variant: normal;
+    text-shadow: none;
+    text-decoration: none;
+    -webkit-transition: background-color .4s ease-out;
+    -moz-transition: background-color .4s ease-out;
+    -o-transition: background-color .4s ease-out;
+    transition: background-color .4s ease-out;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 700;
+    margin: 30px auto 0;
+}
+.xeonButton:hover,.xeonButton:focus{
+	background: #005ea6;
+    outline: none;
+}
+
+/*##[ CONTAINER STYLE ]##*/
+
+.xeonContent {
+    position: relative;
+    width: 400px;
+    margin: 135px auto 0;
+    padding: 0;
+    background-color: #fff;
+}
+.xeonContentInfo{
+    margin-top: 80px;
+}
+.xeonsafeComponent {
+    text-align: center;
+}
+.xeonContent header {
+    padding: 0 0 20px;
+}
+.xeonContent header.xeonInfo{
+    padding: 0;
+}
+.xeonLogo {
+    margin: 0 auto;
+    background: transparent url(../img/mini.png) top no-repeat;
+    -moz-background-size: 30px 37px;
+    background-size: 30px 37px;
+    width: 30px;
+    height: 37px;
+    display: block;
+    text-indent: -999em;
+}
+.big{
+    margin: 0 auto 10px;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: transparent url(../img/big.svg) top center no-repeat;
+    background-size: auto 32px;
+    width: 139px;
+    height: 42px;
+    display: block;
+}
+.leftText{
+    text-align: left;
+    padding: 0 20px;
+}
+/*##[ LOADING STYLE ]##*/
+
+.xeonModalAnimate{
+	z-index: 17;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    overflow: hidden;
+}
+.hide{
+	display: none!important;
+}
+.xeonRotate {
+    background: transparent url(../img/oval.png) top no-repeat;
+    -moz-background-size: 100px 100px;
+    background-size: 100px 100px;
+    width: 100px;
+    height: 100px;
+    border: 0;
+    left: 50%;
+    top: 50%;
+    z-index: 6;
+}
+.xeonProcessing, .xeonRotate {
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.xeonRotate, .xeonRotate:before {
+    content: "";
+    position: absolute;
+}
+.xeonRotate:before {
+    left: -2px;
+    top: -2px;
+    width: 104px;
+    height: 104px;
+    border-top: 7px solid #fff;
+    border-right: 7px solid #fff;
+    border-bottom: 7px solid #fff;
+    border-left: 7px solid transparent;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-animation: rotation 1s linear infinite;
+    -moz-animation: rotation 1s linear infinite;
+    -o-animation: rotation 1s linear infinite;
+    animation: rotation 1s linear infinite;
+}
+@-webkit-keyframes rotation{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}
+@-moz-keyframes rotation{0%{-moz-transform:rotate(0deg);transform:rotate(0deg)}to{-moz-transform:rotate(359deg);transform:rotate(359deg)}}
+@-o-keyframes rotation{0%{-o-transform:rotate(0deg);transform:rotate(0deg)}to{-o-transform:rotate(359deg);transform:rotate(359deg)}}
+@keyframes rotation{0%{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}to{-webkit-transform:rotate(359deg);-moz-transform:rotate(359deg);-o-transform:rotate(359deg);transform:rotate(359deg)}}
+.xeonProcessing {
+    top: 130px;
+    height: 17px;
+    z-index: 17;
+    font-size: 15px;
+    font-family: pp-sans-small-regular,Helvetica Neue,Arial,sans-serif;
+    font-weight: 400;
+    font-variant: normal;
+}
+.xeonLoaderOverlayAdditionalElements, .xeonProcessing {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+}
+.xeonModalOverlay{
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 16;
+    -moz-opacity: .9;
+    -khtml-opacity: .9;
+    -webkit-opacity: .9;
+    opacity: .9;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+    filter: alpha(opacity=90);
+    background-color: #fff;
+}
+
+/*##[ FOOTER STYLE ]##*/
+
+footer {
+	left: 0;
+    height: 119px;
+}
+footer, footer ul {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+footer ul {
+    list-style-type: none;
+    height: 42px;
+    text-align: center;
+    background-color: #f7f9fa;
+}
+footer ul li {
+    display: inline-block;
+    margin: 0;
+    padding: 15px 0 15px .4em;
+    font-size: .73333333em;
+}
+footer ul li:first-child {
+    background: none;
+}
+footer ul li a, footer ul li a:focus, footer ul li a:hover, footer ul li a:link, footer ul li a:visited {
+    color: #666;
+    margin-right: .5em;
+    white-space: nowrap;
+    font-family: pp-sans-small-light,Helvetica Neue,Arial,sans-serif;
+    font-weight: 400;
+    font-variant: normal;
+}

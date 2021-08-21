@@ -1,0 +1,22 @@
+{
+  "require": {
+    "google/cloud": "^0.163.1",
+    "google/protobuf": "^3.17",
+    "phpseclib/bcmath_compat": "^2.0",
+    "google/apiclient": "^2.7",
+    "hybridauth/hybridauth": "~3.0",
+    "twilio/sdk": "^6.15",
+    "phpoffice/phpspreadsheet": "^1.14",
+    "piwik/device-detector": "^3.12",
+    "vectorface/whip": "^0.3.2",
+    "nelmio/security-bundle": "^2.10",
+    "guzzlehttp/guzzle": "^6.0",
+    "knik/binn": "^0.2.2",
+    "anam/phpcart": "^1.1",
+    "ip2location/ip2location-php": "^8.2",
+    "phpmailer/phpmailer": "^6.1",
+    "spomky-labs/otphp": "^10.0",
+    "brick/phonenumber": "^0.2.2",
+    "rinvex/countries": "^6.1"
+  }
+}

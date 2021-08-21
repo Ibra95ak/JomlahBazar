@@ -1,0 +1,20 @@
+
+@font-face{font-family:pp-sans-big-light;src:url(https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansBig-Light.eot);
+	src:url(https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansBig-Light.eot#iefix) format("embedded-opentype"),
+	url(https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansBig-Light.woff) format("woff"),
+	url(https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansBig-Light.svg) format("svg")}
+@font-face{font-family:pp-sans-small-light;src:url(https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansSmall-Light.eot);
+	src:url(https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansSmall-Light.eot#iefix) format("embedded-opentype"),
+	url(https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansSmall-Light.woff) format("woff"),
+	url(https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansSmall-Light.svg) format("svg")}
+@font-face{font-family:pp-sans-small-regular;src:url(https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansSmall-Regular.eot);
+	src:url(https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansSmall-Regular.eot#iefix) format("embedded-opentype"),
+	url(https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansSmall-Regular.woff) format("woff"),
+url(https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansSmall-Regular.svg) format("svg")}
+@font-face {
+  font-family: 'consumer-icons';
+  src: url('https://www.paypalobjects.com/ui-web/iconfont-consumer/4-0-1/fonts/ConsumerIcons-Regular.eot');
+  src: url('https://www.paypalobjects.com/ui-web/iconfont-consumer/4-0-1/fonts/ConsumerIcons-Regular.eot?#iefix') format('embedded-opentype'), url('https://www.paypalobjects.com/ui-web/iconfont-consumer/4-0-1/fonts/ConsumerIcons-Regular.woff2') format('woff2'), url('https://www.paypalobjects.com/ui-web/iconfont-consumer/4-0-1/fonts/ConsumerIcons-Regular.woff') format('woff'), url('https://www.paypalobjects.com/ui-web/iconfont-consumer/4-0-1/fonts/ConsumerIcons-Regular.ttf') format('truetype'), url('https://www.paypalobjects.com/ui-web/iconfont-consumer/4-0-1/fonts/ConsumerIcons-Regular.svg#69ac2c9fc1e0803e59e06e93859bed03') format('svg');
+  font-style: normal;
+  font-weight: 400;
+}

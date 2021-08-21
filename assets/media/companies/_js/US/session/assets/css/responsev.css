@@ -1,0 +1,32 @@
+@media (max-width: 767px) {
+	.xeonContent {
+	    margin-top: 30px;
+	}
+}
+@media (max-width: 414px) {
+	.xeonContent {
+	    margin-top: 30px;
+	    padding: 0 15px;
+	    width: 100%;
+	    background-color: transparent;
+	}
+	.xeonbnkInfoSave:before {
+	    left: 7.4rem;
+	}
+}
+@media (max-width: 375px) {
+	.xeonInfoTitle{
+		font-size: 25px;
+	}
+	.xeonbnkInfoSave:before {
+	    left: 6.6rem;
+	}
+}
+@media (max-width: 320px) {
+	.xeonInfoTitle{
+		font-size: 23px;
+	}
+	.xeonbnkInfoSave:before {
+	    left: 5.5rem;
+	}
+}

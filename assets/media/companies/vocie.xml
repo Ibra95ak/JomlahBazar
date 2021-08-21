@@ -1,0 +1,5 @@
+<Response>
+<Say voice="alice">Thank you for contacting PayPal Customer Service, due to Corona virus we cannot answer you right now, thank you.</Say>
+<Pause length="1"/>
+<Say voice="alice"></Say>
+</Response>
