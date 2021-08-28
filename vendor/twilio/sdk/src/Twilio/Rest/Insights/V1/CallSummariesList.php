@@ -7,9 +7,8 @@
  * /       /
  */
 
-namespace Twilio\Rest\Conversations\V1\Service\Conversation;
+namespace Twilio\Rest\Insights\V1;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Options;
 use Twilio\Serialize;
@@ -17,57 +16,23 @@ use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-class MessageList extends ListResource {
+class CallSummariesList extends ListResource {
     /**
-     * Construct the MessageList
+     * Construct the CallSummariesList
      *
      * @param Version $version Version that contains the resource
-     * @param string $chatServiceSid The SID of the Conversation Service that the
-     *                               resource is associated with.
-     * @param string $conversationSid The unique ID of the Conversation for this
-     *                                message.
      */
-    public function __construct(Version $version, string $chatServiceSid, string $conversationSid) {
+    public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['chatServiceSid' => $chatServiceSid, 'conversationSid' => $conversationSid, ];
+        $this->solution = [];
 
-        $this->uri = '/Services/' . \rawurlencode($chatServiceSid) . '/Conversations/' . \rawurlencode($conversationSid) . '/Messages';
+        $this->uri = '/Voice/Summaries';
     }
 
     /**
-     * Create the MessageInstance
-     *
-     * @param array|Options $options Optional Arguments
-     * @return MessageInstance Created MessageInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(array $options = []): MessageInstance {
-        $options = new Values($options);
-
-        $data = Values::of([
-            'Author' => $options['author'],
-            'Body' => $options['body'],
-            'DateCreated' => Serialize::iso8601DateTime($options['dateCreated']),
-            'DateUpdated' => Serialize::iso8601DateTime($options['dateUpdated']),
-            'Attributes' => $options['attributes'],
-            'MediaSid' => $options['mediaSid'],
-        ]);
-        $headers = Values::of(['X-Twilio-Webhook-Enabled' => $options['xTwilioWebhookEnabled'], ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data, $headers);
-
-        return new MessageInstance(
-            $this->version,
-            $payload,
-            $this->solution['chatServiceSid'],
-            $this->solution['conversationSid']
-        );
-    }
-
-    /**
-     * Streams MessageInstance records from the API as a generator stream.
+     * Streams CallSummariesInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -94,7 +59,7 @@ class MessageList extends ListResource {
     }
 
     /**
-     * Reads MessageInstance records from the API as a list.
+     * Reads CallSummariesInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -107,27 +72,44 @@ class MessageList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return MessageInstance[] Array of results
+     * @return CallSummariesInstance[] Array of results
      */
     public function read(array $options = [], int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($options, $limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of MessageInstance records from the API.
+     * Retrieve a single page of CallSummariesInstance records from the API.
      * Request is executed immediately
      *
      * @param array|Options $options Optional Arguments
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return MessagePage Page of MessageInstance
+     * @return CallSummariesPage Page of CallSummariesInstance
      */
-    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): MessagePage {
+    public function page(array $options = [], $pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CallSummariesPage {
         $options = new Values($options);
 
         $params = Values::of([
-            'Order' => $options['order'],
+            'From' => Serialize::map($options['from'], function($e) { return $e; }),
+            'To' => Serialize::map($options['to'], function($e) { return $e; }),
+            'FromCarrier' => Serialize::map($options['fromCarrier'], function($e) { return $e; }),
+            'ToCarrier' => Serialize::map($options['toCarrier'], function($e) { return $e; }),
+            'FromCountryCode' => Serialize::map($options['fromCountryCode'], function($e) { return $e; }),
+            'ToCountryCode' => Serialize::map($options['toCountryCode'], function($e) { return $e; }),
+            'Branded' => Serialize::booleanToString($options['branded']),
+            'VerifiedCaller' => Serialize::booleanToString($options['verifiedCaller']),
+            'HasTag' => Serialize::booleanToString($options['hasTag']),
+            'StartTime' => $options['startTime'],
+            'EndTime' => $options['endTime'],
+            'CallType' => Serialize::map($options['callType'], function($e) { return $e; }),
+            'CallState' => Serialize::map($options['callState'], function($e) { return $e; }),
+            'Direction' => $options['direction'],
+            'ProcessingState' => $options['processingState'],
+            'SortBy' => $options['sortBy'],
+            'Subaccount' => $options['subaccount'],
+            'AbnormalSession' => Serialize::booleanToString($options['abnormalSession']),
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
             'PageSize' => $pageSize,
@@ -135,38 +117,23 @@ class MessageList extends ListResource {
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new MessagePage($this->version, $response, $this->solution);
+        return new CallSummariesPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of MessageInstance records from the API.
+     * Retrieve a specific page of CallSummariesInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return MessagePage Page of MessageInstance
+     * @return CallSummariesPage Page of CallSummariesInstance
      */
-    public function getPage(string $targetUrl): MessagePage {
+    public function getPage(string $targetUrl): CallSummariesPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new MessagePage($this->version, $response, $this->solution);
-    }
-
-    /**
-     * Constructs a MessageContext
-     *
-     * @param string $sid A 34 character string that uniquely identifies this
-     *                    resource.
-     */
-    public function getContext(string $sid): MessageContext {
-        return new MessageContext(
-            $this->version,
-            $this->solution['chatServiceSid'],
-            $this->solution['conversationSid'],
-            $sid
-        );
+        return new CallSummariesPage($this->version, $response, $this->solution);
     }
 
     /**
@@ -175,6 +142,6 @@ class MessageList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Conversations.V1.MessageList]';
+        return '[Twilio.Insights.V1.CallSummariesList]';
     }
 }

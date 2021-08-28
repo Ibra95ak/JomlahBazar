@@ -7,57 +7,30 @@
  * /       /
  */
 
-namespace Twilio\Rest\Api\V2010\Account\Sip\Domain;
+namespace Twilio\Rest\Pricing\V2;
 
-use Twilio\Exceptions\TwilioException;
 use Twilio\ListResource;
 use Twilio\Stream;
 use Twilio\Values;
 use Twilio\Version;
 
-class CredentialListMappingList extends ListResource {
+class CountryList extends ListResource {
     /**
-     * Construct the CredentialListMappingList
+     * Construct the CountryList
      *
      * @param Version $version Version that contains the resource
-     * @param string $accountSid The unique id of the Account that is responsible
-     *                           for this resource.
-     * @param string $domainSid The unique string that identifies the SipDomain
-     *                          resource.
      */
-    public function __construct(Version $version, string $accountSid, string $domainSid) {
+    public function __construct(Version $version) {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = ['accountSid' => $accountSid, 'domainSid' => $domainSid, ];
+        $this->solution = [];
 
-        $this->uri = '/Accounts/' . \rawurlencode($accountSid) . '/SIP/Domains/' . \rawurlencode($domainSid) . '/CredentialListMappings.json';
+        $this->uri = '/Trunking/Countries';
     }
 
     /**
-     * Create the CredentialListMappingInstance
-     *
-     * @param string $credentialListSid A string that identifies the CredentialList
-     *                                  resource to map to the SIP domain
-     * @return CredentialListMappingInstance Created CredentialListMappingInstance
-     * @throws TwilioException When an HTTP error occurs.
-     */
-    public function create(string $credentialListSid): CredentialListMappingInstance {
-        $data = Values::of(['CredentialListSid' => $credentialListSid, ]);
-
-        $payload = $this->version->create('POST', $this->uri, [], $data);
-
-        return new CredentialListMappingInstance(
-            $this->version,
-            $payload,
-            $this->solution['accountSid'],
-            $this->solution['domainSid']
-        );
-    }
-
-    /**
-     * Streams CredentialListMappingInstance records from the API as a generator
-     * stream.
+     * Streams CountryInstance records from the API as a generator stream.
      * This operation lazily loads records as efficiently as possible until the
      * limit
      * is reached.
@@ -83,7 +56,7 @@ class CredentialListMappingList extends ListResource {
     }
 
     /**
-     * Reads CredentialListMappingInstance records from the API as a list.
+     * Reads CountryInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
      *
@@ -95,58 +68,53 @@ class CredentialListMappingList extends ListResource {
      *                        page_size is defined but a limit is defined, read()
      *                        will attempt to read the limit with the most
      *                        efficient page size, i.e. min(limit, 1000)
-     * @return CredentialListMappingInstance[] Array of results
+     * @return CountryInstance[] Array of results
      */
     public function read(int $limit = null, $pageSize = null): array {
         return \iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
-     * Retrieve a single page of CredentialListMappingInstance records from the API.
+     * Retrieve a single page of CountryInstance records from the API.
      * Request is executed immediately
      *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
-     * @return CredentialListMappingPage Page of CredentialListMappingInstance
+     * @return CountryPage Page of CountryInstance
      */
-    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CredentialListMappingPage {
+    public function page($pageSize = Values::NONE, string $pageToken = Values::NONE, $pageNumber = Values::NONE): CountryPage {
         $params = Values::of(['PageToken' => $pageToken, 'Page' => $pageNumber, 'PageSize' => $pageSize, ]);
 
         $response = $this->version->page('GET', $this->uri, $params);
 
-        return new CredentialListMappingPage($this->version, $response, $this->solution);
+        return new CountryPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Retrieve a specific page of CredentialListMappingInstance records from the
-     * API.
+     * Retrieve a specific page of CountryInstance records from the API.
      * Request is executed immediately
      *
      * @param string $targetUrl API-generated URL for the requested results page
-     * @return CredentialListMappingPage Page of CredentialListMappingInstance
+     * @return CountryPage Page of CountryInstance
      */
-    public function getPage(string $targetUrl): CredentialListMappingPage {
+    public function getPage(string $targetUrl): CountryPage {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
         );
 
-        return new CredentialListMappingPage($this->version, $response, $this->solution);
+        return new CountryPage($this->version, $response, $this->solution);
     }
 
     /**
-     * Constructs a CredentialListMappingContext
+     * Constructs a CountryContext
      *
-     * @param string $sid A string that identifies the resource to fetch
+     * @param string $isoCountry The ISO country code of the pricing information to
+     *                           fetch
      */
-    public function getContext(string $sid): CredentialListMappingContext {
-        return new CredentialListMappingContext(
-            $this->version,
-            $this->solution['accountSid'],
-            $this->solution['domainSid'],
-            $sid
-        );
+    public function getContext(string $isoCountry): CountryContext {
+        return new CountryContext($this->version, $isoCountry);
     }
 
     /**
@@ -155,6 +123,6 @@ class CredentialListMappingList extends ListResource {
      * @return string Machine friendly representation
      */
     public function __toString(): string {
-        return '[Twilio.Api.V2010.CredentialListMappingList]';
+        return '[Twilio.Pricing.V2.CountryList]';
     }
 }
